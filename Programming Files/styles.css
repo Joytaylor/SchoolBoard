@@ -1,0 +1,778 @@
+
+#index div.headbar {
+	width: 100%;
+	height: 0%;
+	margin-bottom: -1%;
+	animation-name: list;
+	animation-duration: 3s;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+}
+/*This is CSS3 code that makes it so that the header, images, and navigation bar all fade in*/
+#index div.heading {
+	border: 1px solid white;
+	margin: 11% 10% 5% 10%;
+	height: 30%;
+	opacity: 1.0;
+	animation-name: list;
+	animation-duration: 3s;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
+#index img.left_image {
+	float: left;
+	opacity: 1.0;
+	animation-name: list;
+	animation-duration: 3s;
+	width: 4%;
+	height: 4%;
+	margin-left: 25%;
+	margin-top: 2%;
+	box-sizing: border-box;
+
+}
+#index img.right_image {
+	float: right;
+	opacity: 1.0;
+	animation-name: list;
+	animation-duration: 3s;
+	width: 4%;
+	height: 4%;
+	margin-right: 25%;
+	margin-top: 2%;
+	box-sizing: border-box;
+}
+#index li {
+	display: inline;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.3em;
+	text-align: center;
+	color: white;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 1.4%;
+	padding-bottom: 1.4%;
+	opacity: 1.0;
+	animation-name: list;
+	animation-duration: 3s;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+}
+#index img.center {
+	opacity: 1.0;
+	animation-name: list;
+	animation-duration: 3s;
+	width: 30%;
+	animation-name: list;
+	animation-duration: 3s;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+}
+/*I got the 'Cinzel Decorative' font from Google Fonts. In fact, I got all of my fonts from there.*/
+
+#index div.body {
+	height: 100%;
+}
+#index p {
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	opacity: 1.0;
+	animation-name: list;
+	animation-duration: 3s;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+}
+#index .disclamer {
+	color: gray;
+	position: absolute;
+	bottom: 10px;
+	font-size: 12pt;
+}
+/*This is the div that contains the header and all of the descriptions of the fields of study that I put on thsis webpage*/
+#index #jpg{
+	overflow: auto;
+	background-image: url('backpic.jpg');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	height: 86.8%;
+	margin-left: -1%;
+	margin-right: -1%;
+}
+#index li:hover {
+	border-bottom: 1px solid white;
+}
+
+#index input {
+	width: 5%;
+	height: 3%;
+	color: black;
+	background-color: white;
+}
+#index div.login {
+	width: 10%;
+	height: 7%;
+	border: 1px solid white;
+	background-color: white;
+	margin-left: 45%;
+	margin-right: 45%;
+	font-family: 'Cinzel Decorative', cursive;
+	font-size: 20px;
+	margin-top: 3%;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 2s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	-webkit-animation-delay: 2s; /* Safari/Chrome */
+	animation-fill-mode: backwards; /* Safari/Chrome */
+}
+#index a {
+	text-decoration: none;
+}
+#index div.teacher {
+	margin-top: 1%;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 2s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	-webkit-animation-delay: 2s; /* Safari/Chrome */
+	animation-fill-mode: backwards;
+}
+#index h1 {
+	padding: 20px;
+	color: white;
+	font-size: 40px;
+	opacity: 1.0;
+	font-family: 'Cinzel Decorative', cursive;
+	animation-name: list;
+	animation-duration: 3s;
+	-webkit-animation-name: list; /* Safari/Chrome */
+	-webkit-animation-duration: 3s; /* Safari/Chrome */
+}
+
+
+
+#account div.greeting {
+	text-align: left;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account h1 {
+	font-family: 'Cinzel Decorative', cursive;
+	font-size: 150px;
+	letter-spacing: 5px;
+}
+#account h2 {
+	font-size: 80px;
+	font-family: 'Cinzel Decorative', cursive;
+	color: white;
+}
+#account h3 {
+	font-family: "Raleway",sans-serif;
+	font-size: 50px;
+	padding-left: 3%;
+	color: white;
+}
+#account h4 {
+	font-family: 'Cinzel', serif;
+	font-size: 35px;
+}
+#account h5 {
+	font-family: 'Syncopate', sans-serif;
+	font-size: 15px;
+}
+#account p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	color: black;
+}
+#account div.body {
+	height: 70%;
+	width: 100%;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account div.heading {
+	margin-top: 6%;
+}
+#account div.tab {
+	width: 100%;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1.7s;
+	animation-fill-mode: backwards;
+	margin-top: 3%;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1.7s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account div.tab button {
+	color: white;
+	font-family: 'Pontano Sans', sans-serif;
+	border: none;
+	outline: none;
+	text-align: center;
+	background-color: inherit;
+  	cursor: pointer;
+  	font-size: 30px;
+  	padding: 0% 3% 0% 3%;
+}
+#account div.tab button:hover {
+	border-bottom: 1px solid black;
+}
+#account div.tab button:active {
+	border-bottom: 1px solid black;
+}
+#classes {
+	height: 78%;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1.7s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1.7s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account #teachers {
+	height: 78%;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1.7s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1.7s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account #questions {
+	height: 78%;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1.7s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1.7s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account div.classLabel {
+	float: left;
+	border-right: 1px solid white;
+	height: 100%;
+	width: 50%;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#account div.quote {
+	background-color: white;
+	height: 80%;
+	width: 100%;
+	display: flex;
+  	align-items: center;
+}
+#account #box {
+	height: 250px;
+	width: 500px;
+	background-color: white;
+  	justify-content: center;
+}
+#account div.name {
+	width: 100%;
+	height: 80%;
+	margin-top: 0px;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#account div.launch {
+	width: 100%;
+	height: 20%;
+	color: white;
+	background-color: #164869;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#account div.envelope{
+	padding: 0% 20% 0% 20%;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	height: 100%
+}
+#account div.display {
+	border: 1px solid white;
+	float: right;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1.5s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1.5s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account div.profile {
+	height: 80%;
+	width: 100%;
+	background-color: white;
+	color: black;
+  	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1s;
+	-webkit-animation-fill-mode: backwards;
+	padding-top: 2%;
+}
+#account div.envelope2 {
+	padding: 0% 3% 0% 3%;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#account div.image {
+	width: 100%;
+}
+#account img {
+	width: 25%;
+	height: 7%;
+	animation-name: image;
+	animation-duration: 2s;
+	animation-delay: 1s;
+	animation-fill-mode: backwards;
+	animation-timing-function: ease;
+	-webkit-animation-name: image;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-delay: 1s;
+	-webkit-animation-fill-mode: backwards;
+}
+#account img.openQuote {
+	width: 8%;
+	height: 22%;
+	float: left;
+	margin-left: 5%;
+}
+#account img.closeQuote {
+	float: right;
+	width: 8%;
+	height: 22%;
+	margin-right: 5%;
+}
+#account div.quote1 {
+	width: 70%;
+}
+#account div.quote1 p {
+	font-size: 30px;
+	font-family: 'Quicksand', sans-serif;
+	font-style: italic;
+}
+#account div.quote1 p.description {
+	font-size: 20px;
+	float: right;
+}
+#account li {
+	border-bottom: 1px solid black;
+	padding-left: 5%;
+}
+#account table {
+	width: 40%;
+	height: 100%;
+}
+#account td {
+	font-size: 40px;
+	padding: 80%;
+}
+#account #myCarousel {
+	height: 100%;
+	width: 50%;
+	float: right;
+	padding-top: 3%;
+}
+#account div.statement {
+	margin-top: 2%;
+}
+#account a {
+	text-decoration: none;
+	color: white;
+}
+#account a:hover {
+	color: #bfbfbf;
+	border: none;
+}
+
+
+
+
+#classPage h1 {
+	font-family: 'Cinzel Decorative', cursive;
+	font-size: 100px;
+	color: white;
+}
+#classPage h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 40px;
+	color: #bfbfbf;
+}
+#classPage h3 {
+	font-family: 'Cinzel', serif;
+}
+#classPage p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	color: white;
+}
+#classPage div.body {
+	height: 70%;
+	width: 100%;
+}
+#classPage div.img {
+	width: 100%;
+	height: 11%;
+	background-color: white;
+}
+#classPage div.classLabel {
+	float: left;
+	border-right: 1px solid white;
+	height: 100%;
+	width: 50%;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#classPage div.classname {
+	height: 90%;
+	width: 100%;
+	color: black;
+	padding-top: 11%;
+}
+#classPage img {
+	width: 25%;
+	height: 100%;
+}
+#classPage div.statement {
+	margin-top: 2%;
+}
+#classPage div.outerContainer {
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	position: relative;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#classPage div.innerContainter {
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	margin-top: -50%;
+}
+#classPage div.ask {
+	margin-left: 30%;
+	margin-top: 6%;
+	margin-right: 30%;
+	padding-bottom: 1.7%;
+	padding-top: 1%;
+	color: white;
+	background-color: #164869;
+}
+#classPage a {
+	color: white;
+	text-decoration: none;
+}
+#classPage a.backLink {
+	color: gray;
+}
+#classPage a:hover {
+	color: gray;
+}
+
+
+
+
+#questionPage h1 {
+	font-family: 'Cinzel Decorative', cursive;
+	font-size: 50px;
+	color: black;
+}
+#questionPage h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 40px;
+	color: #bfbfbf;
+}
+#questionPage h3 {
+	font-family: 'Cinzel', serif;
+}
+#questionPage p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	color: white;
+}
+#questionPage div.body {
+	height: 89%;
+	width: 100%;
+	background-color: white;
+}
+#questionPage div.img {
+	width: 100%;
+	height: 11%;
+}
+#questionPage div.classname {
+	height: 30%;
+	width: 100%;
+	background-color: white;
+	color: black;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#questionPage img {
+	width: 25%;
+	height: 90%;
+}
+
+#questionPage div.heading {
+	width: 50%;
+	padding-bottom: 10%;
+}
+#questionPage a {
+	color: white;
+}
+#questionPage a.backLink {
+	color: gray;
+}
+#questionPage a:hover {
+	color: gray;
+}
+#questionPage div.ask {
+	height: 40%;
+}
+#questionPage textarea {
+	width: 40%;
+	height: 250px;
+	font-size: 30px;
+	text-align: center;
+	border: none;
+	margin-top: 2%;
+}
+#questionPage input {
+	width: 10%;
+	height: 50px;
+	background-color: #164869;
+	color: white;
+	border: none;
+	font-size: 20px;
+	font-family: 'Cinzel', serif;
+
+}
+
+
+
+
+
+#teacherPage img {
+	width: 20%;
+	height: 17%;
+	padding-top: 1%;
+	width: 25%; height:7%; margin-top: 1%;
+	margin: auto;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	animation-name: image;
+	animation-duration: 2s;
+	animation-delay: 1s;
+	animation-fill-mode: backwards;
+	animation-timing-function: ease;
+}
+#teacherPage div.img {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	background-color: white;
+	margin-left: -0.4%;
+	margin-right: -0.4%;
+	margin-top: -0.5%;
+}
+#teacherPage div.strip {
+	width: 100%;
+	height: 10px;
+	background-image: url(color.png);
+	background-size: cover;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1.2s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1.2s;
+	-webkit-animation-fill-mode: backwards;
+}
+#teacherPage div.container {
+	overflow: hidden;
+	overflow: auto;
+	position: absolute;
+	margin-left: -0.4%;
+	margin-right: -0.4%;
+	margin-top: 5%;
+	height: 100%;
+	width: 101%;
+}
+#teacherPage div.header {
+	width: 100%;
+	height: 60%;
+	margin: auto;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	background-image: url(color.png);
+  	background-size: cover;
+  	margin-left: -0.4%;
+	margin-right: -0.4%;
+	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 1s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 1s;
+	-webkit-animation-fill-mode: backwards;
+}
+#teacherPage div.description {
+	width: 100%;
+	height: 20%;
+	margin: auto;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	margin-top: 4%;
+  	margin-bottom: 10%;
+  	animation-name: list;
+	animation-duration: 3s;
+	animation-delay: 2.3s;
+	animation-fill-mode: backwards;
+	-webkit-animation-name: list;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-delay: 2.3s;
+	-webkit-animation-fill-mode: backwards;
+}
+#teacherPage div.class {
+	width: 100%;
+	height: 50%;
+	margin-top: 10%;
+}
+#teacherPage div.name {
+	width: 50%;
+	height: 100%;
+	border-right: 1px solid #164869;
+	margin-bottom: 10%;
+	float: left;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#teacherPage div.sections {
+	float: right;
+	width: 49%;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin-right: -15px;
+}
+#teacherPage div.sub {
+	width: 100%;
+	height: 60%;
+}
+#teacherPage div.left_container {
+	width: 90%;
+	float: left;
+	padding-left: 8%;
+	z-index: 5;
+	-webkit-transition: all .5s ease-out;  
+  	-moz-transition: all .5s ease-out;  
+  	-o-transition: all .5s ease-out;  
+  	-ms-transition: all .5s ease-out;  
+  	transition: all .5s ease-out;
+}
+#teacherPage div.right_container {
+	float: right;
+	height: 78%;
+	width: 0%;
+	border-bottom:  10px solid white;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+	background-color: #164869;
+	-webkit-transition: all .5s ease-out;  
+  	-moz-transition: all .5s ease-out;  
+  	-o-transition: all .5s ease-out;  
+  	-ms-transition: all .5s ease-out;  
+  	transition: all .5s ease-out;
+} /* Make it so that when the  user clicks on the section they want to see, the go button appears. */
+#teacherPage div.teacher{
+	border-bottom: 1px solid #164869;
+	height: 100%;
+}
+#teacherPage div.time {
+	padding-top: -3%;
+}
+#teacherPage h1 {
+	font-family: 'Cinzel Decorative', cursive;
+	font-size: 6.4vw;
+	color: white;
+}
+#teacherPage h2 {
+	color: #164869;
+	font-size: 5vw;
+	font-family: 'Cinzel', serif;
+}
+#teacherPage h3 {
+	font-size: 2vw;
+	font-family: 'Cinzel', serif;
+}
+#teacherPage h4 {
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	font-size: 5vw;
+}
+#teacherPage p {
+	font-size: 2vw;
+	font-family: 'Raleway', sans-serif;
+}
+#teacherPage input.section {
+	font-size: 4.5vw;
+	font-family: 'Raleway', sans-serif;
+	color: #164869;
+	background-color: white;
+	border: none;
+}

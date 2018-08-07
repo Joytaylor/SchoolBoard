@@ -1,0 +1,2 @@
+C:\Users\saman\Documents\3. SchoolBoard\Programming Files\obj\x86\Debug\SchoolBoard.vbprojAssemblyReference.cache
+C:\Users\saman\Documents\3. SchoolBoard\Programming Files\obj\x86\Debug\SchoolBoard.vbproj.CoreCompileInputs.cache
