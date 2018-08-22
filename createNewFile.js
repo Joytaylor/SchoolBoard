@@ -1,7 +1,7 @@
 
 var fs = require('fs')
-var courseName = 'replacement';
-var teachers = 'dr.coolness';
+var courseName = 'organic';
+var teachers = 'dr.white';
 fs.readFile("base.html", 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
