@@ -14,4 +14,13 @@ fs.readFile("base.html", 'utf8', function (err,data) {
   fs.writeFile(courseName + ".html", result, 'utf8', function (err) {
      if (err) return console.log(err);
   });
+  });
+  fs.readFile("basequestion.html", 'utf8', function(err,data){
+    if(err){
+      return consle.log(err);
+    }
+    var result = data.split('replacement').join(courseName);
+  fs.writeFile(courseName + "questionPage.html", result, 'utf8', function(err){
+    if(err) return console.log(err);
+  });
 });
