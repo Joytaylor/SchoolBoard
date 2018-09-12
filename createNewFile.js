@@ -1,5 +1,5 @@
 
-var fs = require('fs')
+var fs = require('fs');
 var courseName = 'Stats';
 var teachers = 'Trainor';
 fs.readFile("base.html", 'utf8', function (err,data) {
