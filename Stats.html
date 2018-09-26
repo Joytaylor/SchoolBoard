@@ -49,8 +49,22 @@ body {
 	</div>
 </div>
 <div class = "outerContainer">
+	<p id ='here'></p>
 	<div class = "innerContainer">
-		<h2>No questions asked for this class yet, check again soon!</h2>
+		<script>
+		window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+    document.getElementById('here').innerHTML = data.question;
+}
+		</script>
+
+		<h2>No more questions asked for this class yet, check again soon!</h2>
 		<div class = "ask"><a href = "StatsQuestionPage.html"><h3>Ask a question</h3></a></div>
 		<h4><a class = "backLink" href = "SchoolBoardAccountPage.html">Go back to account</a></h4>
     </div>
