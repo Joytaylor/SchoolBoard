@@ -49,17 +49,18 @@ body {
 	</div>
 </div>
 <div class = "ask">
-<form action = "Stats.html">
-	<textarea  name = "question" placeholder = "Ask your question here, and make sure to hit Submit!" autofocus></textarea><br/><br/><br/>
+<form action = "process.php" method = 'post'>
+	<textarea  name = "question" id="question" placeholder = "Ask your question here, and make sure to hit Submit!" autofocus></textarea><br/><br/><br/>
+	<input type='hidden' name="subject" value="stats">
 	<input type = "submit" name = "submit" value = "submit" id='submit'>
 	<script type="text/javascript">
 	document.getElementById("submit").onclick  = function(){
 	    var b = document.getElementById('question').value,
-	        url = 'http://SchoolBoard/stats..html?name=' + encodeURIComponent(b);
+	        url = 'http://SchoolBoard/stats.html?name=' + encodeURIComponent(b);
 
 	    document.location.href = "stats.html";
 	}
-	</script>
+</script>
 </form>
 </div>
 <div class = "submit">
