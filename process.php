@@ -3,7 +3,7 @@
 
  $question = $_POST['question'];
  $subject = $_POST['subject'];
- $sql = "INSERT INTO Classes ( subject, question ) VALUES ('$subject' , '$question')";
+ $sql = "INSERT INTO Question (votes, subject,user_id, question, dateOfAsk) VALUES ('0','$subject' ,'1', '$question', CURDATE())";
  if (mysqli_query($conn, $sql)){
    header( 'Location: /SchoolBoard/'.$subject.".php");
  }

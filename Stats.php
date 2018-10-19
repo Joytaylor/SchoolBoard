@@ -52,8 +52,8 @@ body {
 	<?php
 			include("config.php");
 			mysqli_select_db($conn, 'classes');
-			$sql= "SELECT * FROM `classes` WHERE subject ='stats'";
-			$result = mysqli_query($conn, $sql);
+			$sql= "SELECT * FROM `question` WHERE subject ='stats'";
+			$result = $conn->query($sql) or die($conn->error);
 
 			if (true) {
 				echo " <h3> PAST ANSWERS </h3>";
@@ -62,22 +62,7 @@ body {
 				}
 			}
 	 ?>
-	<h3> Your most Recent Question Was:</h3>
-	<h3 id ='here'></h3>
-	<div class = "innerContainer">
-	<script>
 
-		window.onload = function () {
-    var url = document.location.href,
-        params = url.split('?')[1].split('&'),
-        data = {}, tmp;
-    for (var i = 0, l = params.length; i < l; i++) {
-         tmp = params[i].split('=');
-         data[tmp[0]] = tmp[1];
-    }
-    document.getElementById('here').innerHTML = data.question;
-}
-		</script>
 
 		<h2>No more questions asked for this class yet, check again soon!</h2>
 		<div class = "ask"><a href = "StatsQuestionPage.html"><h3>Ask a question</h3></a></div>
