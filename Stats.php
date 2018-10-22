@@ -51,7 +51,7 @@ body {
 <div class = "outerContainer">
 	<?php
 			include("config.php");
-			mysqli_select_db($conn, 'classes');
+			mysqli_select_db($conn, 'SchoolBoard');
 			$sql= "SELECT * FROM `question` WHERE subject ='stats'";
 			$result = $conn->query($sql) or die($conn->error);
 
