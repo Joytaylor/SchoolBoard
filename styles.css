@@ -1,3 +1,8 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+@import url('https://fonts.googleapis.com/css?family=Syncopate');
 
 #index div.headbar {
 	width: 100%;
@@ -22,7 +27,6 @@
   	align-items: center;
   	justify-content: center;
 }
-
 #index img.left_image {
 	float: left;
 	opacity: 1.0;
@@ -48,7 +52,7 @@
 }
 #index li {
 	display: inline;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Raleway", sans-serif;
 	font-size: 1.3em;
 	text-align: center;
 	color: white;
@@ -78,7 +82,7 @@
 	height: 100%;
 }
 #index p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Raleway", sans-serif;
 	color: white;
 	text-align: center;
 	font-size: 20px;
@@ -200,7 +204,7 @@
 	font-size: 15px;
 }
 #account p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Raleway", sans-serif;
 	font-size: 20px;
 	color: black;
 }
@@ -393,7 +397,7 @@
 }
 #account div.quote1 p {
 	font-size: 30px;
-	font-family: 'Quicksand', sans-serif;
+	font-family: "Raleway", sans-serif;
 	font-style: italic;
 }
 #account div.quote1 p.description {
@@ -429,17 +433,19 @@
 	color: #bfbfbf;
 	border: none;
 }
-
-
+#account.carousel-indicators {
+	bottom: 0px;
+}
 
 
 #classPage h1 {
 	font-family: 'Cinzel Decorative', cursive;
-	font-size: 100px;
+	font-size: 7vw;
 	color: white;
+	font-weight: 300;
 }
 #classPage h2 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 40px;
 	color: #bfbfbf;
 }
@@ -447,33 +453,20 @@
 	font-family: 'Cinzel', serif;
 }
 #classPage p {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 2vw;
 	color: white;
-}
-#classPage div.body {
-	height: 70%;
-	width: 100%;
 }
 #classPage div.img {
 	width: 100%;
 	height: 11%;
 	background-color: white;
 }
-#classPage div.classLabel {
-	float: left;
-	border-right: 1px solid white;
-	height: 100%;
-	width: 50%;
-	display: flex;
-  	align-items: center;
-  	justify-content: center;
-}
 #classPage div.classname {
-	height: 90%;
 	width: 100%;
 	color: black;
-	padding-top: 11%;
+	padding-top: 5%;
+    padding-bottom: 5%;
 }
 #classPage img {
 	width: 25%;
@@ -483,19 +476,15 @@
 	margin-top: 2%;
 }
 #classPage div.outerContainer {
-	height: 100%;
 	width: 100%;
-	background-color: white;
-	position: relative;
-	display: flex;
-  	align-items: center;
-  	justify-content: center;
+    background-color: whitesmoke;
 }
 #classPage div.innerContainter {
 	height: 100%;
-	position: absolute;
-	top: 50%;
-	margin-top: -50%;
+	width: 60%;
+	margin: auto;
+	background-color: white;
+	padding-bottom: 4%;
 }
 #classPage div.ask {
 	margin-left: 30%;
@@ -516,6 +505,11 @@
 #classPage a:hover {
 	color: gray;
 }
+#classPage div.strip {
+            background: radial-gradient(black 50%, white 50%);
+            height: 5px;
+            width: 100%;
+        }
 
 
 
@@ -524,17 +518,20 @@
 	font-family: 'Cinzel Decorative', cursive;
 	font-size: 50px;
 	color: black;
+	margin-top: 20%;
+	font-weight:  300;
 }
 #questionPage h2 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 40px;
 	color: #bfbfbf;
 }
 #questionPage h3 {
 	font-family: 'Cinzel', serif;
+	margin-top: 5%;
 }
 #questionPage p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 20px;
 	color: white;
 }
@@ -560,7 +557,6 @@
 	width: 25%;
 	height: 90%;
 }
-
 #questionPage div.heading {
 	width: 50%;
 	padding-bottom: 10%;
@@ -584,6 +580,12 @@
 	text-align: center;
 	border: none;
 	margin-top: 2%;
+	border-left: 1px solid #164869;
+	border-right: 1px solid #164869;
+	overflow:  auto;
+	font-family: "Raleway", sans-serif;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 #questionPage input {
 	width: 10%;
@@ -761,7 +763,7 @@
 	font-family: 'Cinzel', serif;
 }
 #teacherPage h4 {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	color: white;
 	font-size: 5vw;
 }
