@@ -61,7 +61,15 @@ body {
 </div>
 <div class = "body">
 	<div class = "greeting">
-		<h3>Welcome,</h3>
+		<h3>Welcome <?php
+		include("config.php");
+		mysqli_select_db($conn, 'SchoolBoard');
+		$sql = "SELECT name FROM users WHERE username = '". $_COOKIE['user']."'";
+		$result = $conn->query($sql) or die($conn ->error);
+		$row = $result->fetch_assoc();
+		echo $row['name'];
+
+		?>,</h3>
 	</div>
 <div class = "profile">
 	<div class = "heading">
@@ -79,8 +87,7 @@ body {
 	  <!-- Indicators -->
 	  <ol class = "carousel-indicators">
 		<?php
-		 include("config.php");
-		 mysqli_select_db($conn, 'SchoolBoard');
+
 		 $sql = "SELECT COUNT(subject) FROM classes";
 		 $rs =$conn->query($sql) or die($conn->error);
 		 $result = $rs->fetch_assoc();
