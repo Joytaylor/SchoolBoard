@@ -37,18 +37,21 @@ votes int(3) Not Null,
 dateOfAsk DATETIME Not Null,
 subject VARCHAR(30) NOT NULL,
 user_id int(6)Not Null,
-question VARCHAR(1000)
+question VARCHAR(1000),
+teacherResponce VARCHAR(300)
+
 )";
 if ($conn->query($sql) === TRUE) {
     //echo "Database created successfully";
 } else {
-    //echo "Error creating table: " . $conn->error;
+  //  echo "Error creating table: " . $conn->error;
 }
 $sql = "CREATE TABLE Users (
 user_id int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(10) Not Null,
 name VARCHAR(10) Not Null,
-password VARCHAR(30) Not Null
+password VARCHAR(30) Not Null,
+status VARCHAR(30) Not Null
 )";
 if ($conn->query($sql) === TRUE) {
     //echo "Database created successfully";

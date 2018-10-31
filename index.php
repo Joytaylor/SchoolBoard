@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-<?php
-$user = "user";
-$cookie_value = "UserName";
-setcookie($user, $cookie_value, time() + (360), "/"); // 86400 = 1 day
-?>
-<html>
-<body>
-
-<?php
-if(!isset($_COOKIE[$user])) {
-    echo "Cookie named '" . $user . "' is not set!";
-} else {
-    echo "Cookie '" . $user . "' is set!<br>";
-    echo "Value is: " . $_COOKIE[$user];
-}
-?>
 <html id = "index">
 <!--Samuel Anozie, March 1, 2017. This is my div excersise for CSI, but it is also doubling as my SoCent project and my CSI quarter project. This website is not completely done, as there are multiple pages still left to add, but it meets the requirements for the CSI project as it is.-->
 <!--URL = "students.imsa.edu/~sanozie"-->

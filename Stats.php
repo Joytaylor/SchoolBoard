@@ -1,4 +1,7 @@
 <!--Joy Taylor Aug 9th  Base for creating sites updated -->
+<?php
+
+?>
 <!DOCTYPE html>
 <html id = "classPage">
 <head>
@@ -45,14 +48,35 @@ body {
 <div class = "innerContainter">
 	<?php
 			include("config.php");
+			include("cookiecheck.php");
 			mysqli_select_db($conn, 'SchoolBoard');
+			$teach = false;
+
+			$sql =  "SELECT status FROM users WHERE username = '".$_COOKIE["user"] ."'";
+			$result = $conn->query($sql) or die($conn->error);
+			$row = $result->fetch_assoc();
+			if( $row["status"] == "teacher"){
+				$teach= true;
+			}
 			$sql= "SELECT * FROM `question` WHERE subject ='stats' ORDER BY `dateOfAsk` DESC";
 			$result = $conn->query($sql) or die($conn->error);
 
 			if (true) {
 				echo " <h3>This Week</h3><br><div class = 'strip'></div>";
 				while($row = $result->fetch_assoc()) {
-					echo "<div class = 'question'><h6> ". $row['question']."</h6></div><br/>";
+					echo "<div class = 'question'><h6> ". $row['question']."</h6>";
+					if ($row['teacherResponce'] != NULL){
+						echo "<h6> Answer:". $row['teacherResponce']."</h6>";
+					}
+					echo "</div><br/>";
+					if($teach == true){
+						echo "<form action='teacherprocess.php' method =post>
+						<input type = 'hidden' name='question' value=". $row["question"].">
+						<input type='hidden' name='subject' value='stats'>
+						<input type='text' name='teacherResponce'>
+						<input type = 'submit' name = 'submit' value = 'submit' id='submit'>
+						";
+					}
 				}
 			//Each question will be a div, so when data is pulled from the database, will it only pull the text  for the question, then put it in the div, or will it pull the whole div? in any case, I will put the div below with the content needed, including space for the voting section and the counter for the votes. I will assume that the text will be pulled, so I will leave an empty <p> tag for pastes.
 			}
