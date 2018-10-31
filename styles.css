@@ -77,9 +77,9 @@
 	-webkit-animation-duration: 3s; /* Safari/Chrome */
 }
 /*I got the 'Cinzel Decorative' font from Google Fonts. In fact, I got all of my fonts from there.*/
-
 #index div.body {
 	height: 100%;
+	margin: auto;
 }
 #index p {
 	font-family: "Raleway", sans-serif;
@@ -111,7 +111,6 @@
 #index li:hover {
 	border-bottom: 1px solid white;
 }
-
 #index input {
 	width: 5%;
 	height: 3%;
@@ -162,6 +161,7 @@
 	font-family: 'Cinzel Decorative', cursive;
 	animation-name: list;
 	animation-duration: 3s;
+	font-weight: 100;
 	-webkit-animation-name: list; /* Safari/Chrome */
 	-webkit-animation-duration: 3s; /* Safari/Chrome */
 }
@@ -451,6 +451,20 @@
 }
 #classPage h3 {
 	font-family: 'Cinzel', serif;
+	font-weight: 200;
+	height: 20px;
+}
+#classPage h4 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 100;
+}
+#classPage h6 {
+	font-size: 1.4vw;
+	color: #595959;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 100;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 #classPage p {
 	font-family: 'Raleway', sans-serif;
@@ -477,6 +491,7 @@
 }
 #classPage div.outerContainer {
 	width: 100%;
+	margin: auto;
     background-color: whitesmoke;
 }
 #classPage div.innerContainter {
@@ -485,6 +500,7 @@
 	margin: auto;
 	background-color: white;
 	padding-bottom: 4%;
+	padding-top: 5px;
 }
 #classPage div.ask {
 	margin-left: 30%;
@@ -506,11 +522,51 @@
 	color: gray;
 }
 #classPage div.strip {
-            background: radial-gradient(black 50%, white 50%);
-            height: 5px;
-            width: 100%;
-        }
-
+	background: radial-gradient(black 50%, white 50%);
+	height: 5px;
+	width: 100%;
+	margin-bottom: 30px;
+}
+#classPage div#question {
+	background-color: white;
+	height: 10%;
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+	display: inline-block;
+	position: relative;
+}
+#classPage div#text{
+	height: 100%;
+	width: 70%;
+	float: left;
+	padding: 20px;
+	margin-left: 10%;
+	border-top: 1px solid whitesmoke;
+	border-bottom: 1px solid whitesmoke;
+	
+}
+#classPage div.vote {
+	float: left;
+	background-color: #164869;
+	color: white;
+	height: 100%;
+	width: 15%;
+	position: absolute;
+    right: 0;
+    top: 0;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.7vw;
+	border: none;
+	line-height: 100%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#classPage span.num {
+	margin-left: 6px;
+	font-size: 0.8vw;
+}
 
 
 
