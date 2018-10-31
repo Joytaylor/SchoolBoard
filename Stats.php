@@ -43,6 +43,22 @@ body {
 </div>
 <div class = "outerContainer">
 <div class = "innerContainter">
+	<script>
+		function vote(div) {
+			var num = parseInt(document.getElementById("num_" + div).innerHTML);
+			document.getElementById("num_" + div).innerHTML = num + 1;
+			num += 1;
+			/*for (var i = (div-1); i > 0; i--) {
+				var compare = parseInt(document.getElementById("num_" + i).innerHTML);
+				if (num > compare) {
+					var higher = document.getElementById("div_" + div);
+					var lower = document.getElementById("div_" + i);
+					document.getElementById("div_" + div).innerHTML = lower.innerHTML;
+					document.getElementById("div_" + i).innerHTML = higher.innerHTML;
+				}
+			}*/
+		}
+	</script>
 	<?php
 			include("config.php");
 			mysqli_select_db($conn, 'SchoolBoard');
@@ -50,15 +66,17 @@ body {
 			$result = $conn->query($sql) or die($conn->error);
 
 			if (true) {
-				echo " <h3>This Week</h3><br><div class = 'strip'></div>";
+				echo "<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>";
+				$num = 1;
 				while($row = $result->fetch_assoc()) {
-					echo "<div class = 'question'><h6> ". $row['question']."</h6></div><br/>";
+					echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ". $row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
+					$num++;
 				}
 			//Each question will be a div, so when data is pulled from the database, will it only pull the text  for the question, then put it in the div, or will it pull the whole div? in any case, I will put the div below with the content needed, including space for the voting section and the counter for the votes. I will assume that the text will be pulled, so I will leave an empty <p> tag for pastes.
 			}
 	 ?>
-		<div class = "ask"><a href = "StatsQuestionPage.html"><h3>Ask a question</h3></a></div>
-		<h4><a class = "backLink" href = "SchoolBoardAccountPage.html">Go back to account</a></h4>
+		<div class = "ask"><a href = "StatsQuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
+		<h4><a class = "backLink" href = "SchoolBoardAccountPage.html">GO BACK TO ACCOUNT</a></h4>
    </div>
 </div>
 </body>
