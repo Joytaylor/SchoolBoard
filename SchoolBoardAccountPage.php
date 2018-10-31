@@ -61,7 +61,7 @@ body {
 </div>
 <div class = "body">
 	<div class = "greeting">
-		<h3>Welcome, Sam</h3>
+		<h3>Welcome,</h3>
 	</div>
 <div class = "profile">
 	<div class = "heading">
@@ -78,29 +78,33 @@ body {
 	<div id = "myCarousel" class = "carousel slide" data-ride = "carousel">
 	  <!-- Indicators -->
 	  <ol class = "carousel-indicators">
-	    <li data-target = "#myCarousel" data-slide-to="0" class="active"></li>
-	    <li data-target = "#myCarousel" data-slide-to="1"></li>
-	    <li data-target = "#myCarousel" data-slide-to="2"></li>
-		<li data-target = "#myCarousel" data-slide-to="3"></li>
-		<li data-target = "#myCarousel" data-slide-to="4"></li>
-		<li data-target = "#myCarousel" data-slide-to="5"></li>
-		<li data-target = "#myCarousel" data-slide-to="6"></li>
+		<?php
+		 include("config.php");
+		 mysqli_select_db($conn, 'SchoolBoard');
+		 $sql = "SELECT COUNT(subject) FROM classes";
+		 $rs =$conn->query($sql) or die($conn->error);
+		 $result = $rs->fetch_assoc();
+		 for($i = 0; $i<current($result); $i++){
+		   if ($i==1){
+
+		  echo "<li data-target = '#myCarousel' data-slide-to=".$i." class='active'></li>";
+		 }
+		  else {
+		     echo "<li data-target = '#myCarousel' data-slide-to=".$i."></li>";
+		  }
+		 }
+		 ?>
 	  </ol>
 
 	  <!-- Wrapper for slides -->
 	  <div class = "carousel-inner">
 		<?php
-		 include("config.php");
-		 mysqli_select_db($conn, 'SchoolBoard');
-		 $sql= "SELECT * FROM classes WHERE user_id = '1'";
+		$sql= "SELECT * FROM classes WHERE user_id = '1'";
 		 $result = $conn->query($sql) or die($conn->error);
-
-		 if (true) {
-			 echo"hi";
 			 while($row = $result->fetch_assoc()) {
 				 echo "<div class = 'item'>
 						 <div class = 'envelope'>
-				       	<div id = 'box' class = AdChemII>
+				       	<div id = 'box' class = 'NetandWall'>
 							 <div class = 'name'>
 								 <h4>". $row['subject']."</h4>
 							 </div>
@@ -111,8 +115,8 @@ body {
 						 </div>
 				     </div>";
 			 }
-		 }
 	?>
+	<!--
 	    <div class = "item ">
 			<div class = "envelope">
 	      	<div id = "box" class = "AdChemII">
@@ -190,7 +194,7 @@ body {
 				</div>
 			</div>
 	    </div>
-//
+-->
 
 	  <!-- Left and right controls -->
 	  <a class = "left carousel-control" href = "#myCarousel" data-slide = "prev">

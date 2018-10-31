@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!--Samuel Anozie, June 2, 2017. This is just the log in page.--> 
+<!--Samuel Anozie, June 2, 2017. This is just the log in page.-->
 <head>
 <title>SchoolBoard</title>
 <meta charset = "UTF-8"/>
@@ -16,7 +16,7 @@ body {
 	height: 100%;
 }
 h1 {
-	color: white; 
+	color: white;
 	font-family: 'Cinzel Decorative', cursive;
 }
 form {
@@ -97,7 +97,7 @@ h2 {
 	font-size: 20px;
 	transition-duration: 0.4s;
 	animation-name: list;
-	animation-duration: 3s; 
+	animation-duration: 3s;
 	-webkit-animation-name: list; /* Safari/Chrome */
 	-webkit-animation-duration: 3s; /* Safari/Chrome */
 }
@@ -128,11 +128,11 @@ h2 {
 		<h1>Log In</h1>
 	</div>
 	<div class = "form">
-		<form action = "SchoolBoardAccountPage.html" method="POST">
+		<form action = "auth.php" method="POST">
 			<h2>Username</h2>
 			<input id = "input" type = "text" name = "first_name" required/>
 			<h2>Password</h2>
-			<input id = "input" type = "password" name = "last_name" requred/><br/><br/>
+			<input id = "input" type = "password" name = "password" requred/><br/><br/>
 			<input id = "submit" type = "Submit" value = "Submit">
 		</form>
 	</div>

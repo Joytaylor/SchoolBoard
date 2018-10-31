@@ -46,7 +46,7 @@ body {
 	<?php
 			include("config.php");
 			mysqli_select_db($conn, 'SchoolBoard');
-			$sql= "SELECT * FROM `question` WHERE subject ='stats'";
+			$sql= "SELECT * FROM `question` WHERE subject ='stats' ORDER BY `dateOfAsk` DESC";
 			$result = $conn->query($sql) or die($conn->error);
 
 			if (true) {

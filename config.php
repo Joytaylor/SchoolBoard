@@ -21,7 +21,8 @@ if ($conn->query($sql) === TRUE) {
 mysqli_select_db($conn, 'SchoolBoard');
 $sql = "CREATE TABLE Classes (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-subject VARCHAR(30) NOT NULL,
+subject_id VARCHAR(30) NOT NULL,
+subject VARCHAR(30),
 user_id int(6)
 )";
 if ($conn->query($sql) === TRUE) {
@@ -33,7 +34,7 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE Question (
 questionid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 votes int(3) Not Null,
-dateOfAsk date Not Null,
+dateOfAsk DATETIME Not Null,
 subject VARCHAR(30) NOT NULL,
 user_id int(6)Not Null,
 question VARCHAR(1000)
@@ -45,6 +46,7 @@ if ($conn->query($sql) === TRUE) {
 }
 $sql = "CREATE TABLE Users (
 user_id int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(10) Not Null,
 name VARCHAR(10) Not Null,
 password VARCHAR(30) Not Null
 )";
@@ -53,6 +55,10 @@ if ($conn->query($sql) === TRUE) {
 } else {
     //echo "Error creating table: " . $conn->error;
 }
+
+
+
+
 
 
 ?>
