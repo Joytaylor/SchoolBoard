@@ -106,10 +106,10 @@ body {
 	  <!-- Wrapper for slides -->
 	  <div class = "carousel-inner">
 		<?php
-		$sql= "SELECT * FROM classes WHERE user_id = '1'";
+		$sql= "SELECT * FROM classes WHERE user_id = '0'";
 		 $result = $conn->query($sql) or die($conn->error);
 			 while($row = $result->fetch_assoc()) {
-				 echo "<div class = 'item'><div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4>". $row['subject']."</h4></div><div class = 'launch'><h5><a href = ".$row['subject'].".html'>Launch</a></h5></div></div></div></div>";
+				 echo "<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4>". $row['subject']."</h4></div><div class = 'launch'><h5><a href = ".$row['subject'].".php>Launch</a></h5></div></div></div>";
 			 }
 	?>
 	<!--

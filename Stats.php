@@ -85,7 +85,7 @@ body {
 
 										echo "<div class = 'question'><h6> ". $row['question']."</h6>";
 										if ($row['teacherResponce'] != NULL){
-											echo "<h6> Answer:". $row['teacherResponce']."</h6>";
+											echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ". $row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
 										}
 										echo "</div><br/>";
 										if($teach == true){
@@ -96,7 +96,6 @@ body {
 											<input type = 'submit' name = 'submit' value = 'submit' id='submit'>
 											";
 										}
-										echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ". $row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
 										$num++;
 
 				}
