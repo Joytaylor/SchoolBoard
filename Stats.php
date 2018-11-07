@@ -83,20 +83,19 @@ body {
 				while($row = $result->fetch_assoc()) {
 
 
-										echo "<div class = 'question'><h6> ". $row['question']."</h6>";
+										echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ". $row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
 										if ($row['teacherResponce'] != NULL){
-											echo "<h6> Answer:". $row['teacherResponce']."</h6>";
+											echo "<div id = 'answer'><div id = 'text'><h6> ". $row['teacherResponce']."</h6></div></div></span>";
 										}
 										echo "</div><br/>";
 										if($teach == true){
-											echo "<form action='teacherprocess.php' method =post>
+											echo "<form action='teacherprocess.php' method = 'post'>
 											<input type = 'hidden' name='question' value=". $row["question"].">
 											<input type='hidden' name='subject' value='stats'>
 											<input type='text' name='teacherResponce'>
 											<input type = 'submit' name = 'submit' value = 'submit' id='submit'>
 											";
 										}
-										echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ". $row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
 										$num++;
 
 				}
