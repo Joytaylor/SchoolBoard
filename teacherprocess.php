@@ -11,6 +11,6 @@ include("cookiecheck.php");
    header( 'Location: /SchoolBoard/'.$subject.".php");
  }
  else{
-    echo "Error". $sql . "<br> ". mysqli_error($conn);
+   echo "Error". $sql . "<br> ". mysqli_error($conn);
  }
 ?>

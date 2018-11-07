@@ -62,6 +62,7 @@ body {
 <div class = "body">
 	<div class = "greeting">
 		<h3>Welcome <?php
+		include("cookiecheck.php");
 		include("config.php");
 		mysqli_select_db($conn, 'SchoolBoard');
 		$sql = "SELECT name FROM users WHERE username = '". $_COOKIE['user']."'";
