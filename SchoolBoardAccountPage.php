@@ -55,7 +55,7 @@ body {
 </head>
 <body id = "account">
 <div class = "img">
-	<a href = "index.html">
+	<a href = "index.php">
 		<img src = "Picture2.png"/>
 	</a>
 </div>

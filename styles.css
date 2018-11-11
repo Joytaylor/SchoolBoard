@@ -567,6 +567,12 @@
 	margin-left: 6px;
 	font-size: 0.8vw;
 }
+#classPage button {
+	display: block;
+}
+#classPage #form {
+	display: none;
+}
 
 
 
