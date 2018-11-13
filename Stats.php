@@ -89,11 +89,12 @@ body {
 										}
 										echo "</div><br/>";
 										if($teach == true){
-											echo "<form action='teacherprocess.php' method = 'GET'>
-											<input type = 'hidden' name='question' value=". $row["question"].">
+											echo "<form action='teacherprocess.php' method = 'POST'>
+											<input type = 'hidden' name='question' value='". $row["question"]."'>
 											<input type='hidden' name='subject' value='stats'>
 											<input type='text' name='teacher'>
 											<input type = 'submit' name = 'submit' value = 'submit' id='submit'>
+											</form>
 											";
 										}
 										$num++;
