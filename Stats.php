@@ -32,7 +32,7 @@ body {
 </head>
 <body>
 <div class = "img" id = "Stats">
-	<a href = "index.html">
+	<a href = "index.php">
 		<img src = "Picture1.png" id = "Stats"/>
 	</a>
 </div>
@@ -81,7 +81,8 @@ body {
 				echo "<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>";
 				$num = 1;
 				while($row = $result->fetch_assoc()) {
-
+<<<<<<< HEAD
+/*
 
 										echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ". $row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
 										if ($row['teacherResponce'] != NULL){
@@ -96,6 +97,35 @@ body {
 											<input type = 'submit' name = 'submit' value = 'submit' id='submit'>
 											</form>
 											";
+
+					echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ".$row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
+					if ($row['teacherResponce'] != NULL){
+						echo "<div id = 'answer'><div id = 'text'><h6> ". $row['teacherResponce'] . "</h6></div></div>";
+					}
+					echo "<br/>";
+					if($teach == true){
+						echo "<button id = 'answerButton' onclick = 'visible('answerButton')'>ANSWER</button>";
+						echo "<form id = 'answerForm' action='teacherprocess.php' method = 'POST'>
+						<input type = 'hidden' name='question' value='".$row['question']."'>
+						<input type='hidden' name='subject' value='stats'>
+						<input type='text' name='teacher'>
+						<input type = 'submit' name = 'submit' value = 'submit' id='submit'>
+						<p id = 'answerBack'onclick = 'visible('answerForm')>Close Form</p>
+						";
+						echo "<script>
+						function visible(form) {
+							var div = document.getElementById(form).style;
+							if (form == 'answerButton') {
+								div.display = 'block';
+								document.getElementById('answerForm').style.display = 'none';
+							}
+							else {
+								document.getElementById('answerForm').style.display = 'block';
+								div.display = 'none';
+							}
+						}
+											</script>";
+*/
 										}
 										$num++;
 
@@ -104,7 +134,7 @@ body {
 			}
 	 ?>
 		<div class = "ask"><a href = "StatsQuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
-		<h4><a class = "backLink" href = "SchoolBoardAccountPage.html">GO BACK TO ACCOUNT</a></h4>
+		<h4><a class = "backLink" href = "SchoolBoardAccountPage.php">GO BACK TO ACCOUNT</a></h4>
    </div>
 </div>
 </body>
