@@ -79,9 +79,8 @@ body {
 
 			if (true) {
 				echo "<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>";
-				$num = 1;
+				static $num = 1;
 				while($row = $result->fetch_assoc()) {
-<<<<<<< HEAD
 /*
 
 										echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ". $row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
@@ -100,6 +99,8 @@ body {
 
 					echo "<span id = 'div_$num'><div id = 'question'><div id = 'text'><h6> ".$row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
 					if ($row['teacherResponce'] != NULL){
+					/*	echo "<span id = 'div_$num'><div id = 'question'><button class = 'answerButton' id = 'answerButton_$num' onclick = visible('answerForm_$num')>ANSWER</button><div id = 'text'><h6> ".$row['question']."</h6></div><div class = 'vote'  onclick = 'vote($num)'><p class = 'vote'>VOTE</p><span class = 'num' id = 'num_$num'>0</span></div></div></span>";
+						if ($row['teacherResponce'] != NULL) {*/
 						echo "<div id = 'answer'><div id = 'text'><h6> ". $row['teacherResponce'] . "</h6></div></div>";
 					}
 					echo "<br/>";
@@ -108,9 +109,11 @@ body {
 						echo "<form id = 'answerForm' action='teacherprocess.php' method = 'POST'>
 						<input type = 'hidden' name='question' value='".$row['question']."'>
 						<input type='hidden' name='subject' value='stats'>
-						<input type='text' name='teacher'>
+						<input type='text' name='teacher' placeholder = 'Type your answer here'><br>
 						<input type = 'submit' name = 'submit' value = 'submit' id='submit'>
-						<p id = 'answerBack'onclick = 'visible('answerForm')>Close Form</p>
+						<button id = 'closeButton' onclick = visible('answerForm_$num')>Close Form</button>
+						</form>
+						</div>
 						";
 						echo "<script>
 						function visible(form) {
@@ -130,9 +133,20 @@ body {
 										$num++;
 
 				}
-			//Each question will be a div, so when data is pulled from the database, will it only pull the text  for the question, then put it in the div, or will it pull the whole div? in any case, I will put the div below with the content needed, including space for the voting section and the counter for the votes. I will assume that the text will be pulled, so I will leave an empty <p> tag for pastes.
+				echo "<script>
+function visible(form) {
+	var div = document.getElementById(form);
+	if (div.className != 'answerButton') {
+		document.getElementById(form).style.display = 'block';
+	}
+	else {
+		document.getElementById(form).style.display = 'none';
+	}
+}
+</script>";
 			}
 	 ?>
+
 		<div class = "ask"><a href = "StatsQuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
 		<h4><a class = "backLink" href = "SchoolBoardAccountPage.php">GO BACK TO ACCOUNT</a></h4>
    </div>

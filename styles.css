@@ -539,9 +539,9 @@
 #classPage div#text{
 	height: 100%;
 	width: 70%;
+	margin-left: 15%;
 	float: left;
 	padding: 20px;
-	margin-left: 10%;
 	border-top: 1px solid whitesmoke;
 	border-bottom: 1px solid whitesmoke;
 	
@@ -567,11 +567,45 @@
 	margin-left: 6px;
 	font-size: 0.8vw;
 }
-#classPage button {
+#classPage .answerButton {
 	display: block;
+	position: absolute;
+	height: 100%;
+	width: 15%;
+	float: left;
+	color: white;
+	background: none;
+	background-color: lightgrey;
+	font-family: 'Raleway', sans-serif;
+	border-style: none;
+	transition: width .40s ease-in-out;
+	-webkit-transition: width .40s ease-in-out;
+	transition: margin-left .40s ease-in-out;
+	-webkit-transition: margin-left .40s ease-in-out;
+	font-size: 1.3vw;
 }
-#classPage #form {
+#classPage .answerForm {
 	display: none;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	width: 30%;
+	margin-left: 35%;
+	padding: 1%;
+}
+#classPage .answerForm input {
+	border: none;
+	border-bottom: 1px solid lightgray;
+	margin-bottom: 6%;
+	font-family: 'Raleway', sans-serif;
+}
+#classPage p#answerBack {
+	font-size: 1vw;
+	color: #595959;
+}
+#classPage div.formContainer {
+	text-align: center;
+	display: flex;
+    align-items: center;
 }
 
 
