@@ -468,7 +468,7 @@
 }
 #classPage p {
 	font-family: 'Raleway', sans-serif;
-	font-size: 2vw;
+	font-size: .5vw;
 	color: white;
 }
 #classPage div.img {
@@ -536,6 +536,13 @@
 	display: inline-block;
 	position: relative;
 }
+#classPage div#answer {
+	margin: auto;
+	display: inline-block;
+	position: relative;
+	background-color: whitesmoke;
+	color: black;
+}
 #classPage div#text{
 	height: 100%;
 	width: 70%;
@@ -544,7 +551,15 @@
 	padding: 20px;
 	border-top: 1px solid whitesmoke;
 	border-bottom: 1px solid whitesmoke;
-	
+}
+#classPage div#atext{
+	height: 100%;
+	width: 70%;
+	margin-left: 10%;
+	float: left;
+	padding: 20px;
+	border-top: 1px solid whitesmoke;
+	border-bottom: 1px solid whitesmoke;
 }
 #classPage div.vote {
 	float: left;
@@ -565,7 +580,7 @@
 }
 #classPage span.num {
 	margin-left: 6px;
-	font-size: 0.8vw;
+	font-size: 2vw;
 }
 #classPage .answerButton {
 	display: block;
@@ -585,14 +600,34 @@
 	font-size: 1.3vw;
 }
 #classPage .answerForm {
-	display: none;
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
-	width: 30%;
-	margin-left: 35%;
+	width: 40%;
+	margin-left: 30%;
 	padding: 1%;
 }
+#classPage .answerForm textarea {
+	border: none;
+	border-bottom: 1px solid lightgray;
+	width: 100%;
+	text-align: center;
+	color: black;
+	font-size: 1vw;
+	font-weight: 600;
+	font-family: 'Raleway', sans-serif;
+}
 #classPage .answerForm input {
+	border: none;
+	width: 80%;
+	text-align: center;
+	color: black;
+	padding: 3%;
+	font-size: 1.2vw;
+	background-color: #164869;
+	font-family: 'Raleway', sans-serif;
+	color: white;
+}
+#classPage .formContainer button {
 	border: none;
 	border-bottom: 1px solid lightgray;
 	margin-bottom: 6%;
@@ -604,10 +639,20 @@
 }
 #classPage div.formContainer {
 	text-align: center;
-	display: flex;
     align-items: center;
+	display: none;
 }
-
+#classPage div.top {
+	height: 60%;
+	width: 100%;
+	position: absolute;
+}
+#classPage div.bottom {
+	height: 25%;
+	width: 100%;
+	position: absolute;
+	margin-top: 5%;
+}
 
 
 #questionPage h1 {
@@ -873,4 +918,8 @@
 	color: #164869;
 	background-color: white;
 	border: none;
+}
+#teacherPage a {
+	text-decoration: none;
+	text-underl
 }

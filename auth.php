@@ -14,14 +14,18 @@ if(current($result) == 1){
   $sql =  "SELECT status FROM users WHERE username = '".$_COOKIE["user"] ."'";
   $result = $conn->query($sql) or die($conn->error);
   $row = $result->fetch_assoc();
-  if( $row["status"] == "teacher"){
-    header( 'Location: /SchoolBoard/SchoolBoardTeacherAccount.php');
+  if ($row["status"] == "teacher") {
+    header('Location: /SchoolBoard/SchoolBoardTeacherAccount.php');
   }
-  else{
+  else if ($row["status"] == "student") {
   header( 'Location: /SchoolBoard/SchoolBoardAccountPage.php');
 }
-
-} else {
+else {
+  include("SchoolBoardloginpage.html");
+  echo "<script type='text/javascript'>alert('Sorry! We cant find you account :(. Please try Again');</script>";
+}
+}
+else {
   include("SchoolBoardloginpage.html");
   echo "<script type='text/javascript'>alert('Sorry! We cant find you account :(. Please try Again');</script>";
 

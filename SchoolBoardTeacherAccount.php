@@ -57,251 +57,79 @@ function widthChange(name)
 }
 </script>
 <div class = "img">
-	<a href = "index.html">
+	<a href = "index.php">
 		<img src = "Picture1.png"/>
 	</a>
 	<div class = "strip"></div>
 </div>
 <div class = "container">
 	<div class = "header">
-		<h1>Welcome, Teacher X</h1><!--Add description beneath, eventually-->
+		<h1>Welcome <?php
+		include("cookiecheck.php");
+		include("config.php");
+		mysqli_select_db($conn, 'SchoolBoard');
+		$sql = "SELECT name FROM users WHERE username = '". $_COOKIE['user']."'";
+		$result = $conn->query($sql) or die($conn ->error);
+		$row = $result->fetch_assoc();
+		echo $row['name'];
+
+		?>,</h1><!--Add description beneath, eventually-->
 	</div>
 	<div class = "description">
 		<p>This is where you can view information on the classes in your department.</p>
 	</div>
 	<div class = "class">
 		<div class = "name">
-			<h2>SI Chemistry</h2>
+			<h2>STATS</h2>
 		</div>
 		<div class = "sections">
 			<div class = "sub">
 				<div id = "left_container_SCI105-7" class = "left_container">
 					<div class = "teacher">
-						<h3>Dr. Kopff</h3>
+						<h3>Dr. Anozie</h3>
 					</div>
 					<div class = "time">
-						<input type = "button" class = "section" value = "1-2 (A,C)" onclick = "widthChange('_SCI105-7')"></input>
+						<input type = "button" class = "section" value = "1-2 (A,C)" onclick = "widthChange('_SCI105-7')">
 					</div>
 				</div>
 				<div id = "right_container_SCI105-7" class = "right_container">
 					<div class = "new">
-						<h4>GO</h4>
+						<a href = "Stats.php"><h4>GO</h4></a>
 					</div>
 				</div>
 			</div>
-			<span>
 				<div class = "sub">
 					<div id = "left_container_SCI105-8" class = "left_container">
 					<div class = "teacher">
-						<h3>Dr. Kopff</h3>
+						<h3>Dr. Taylor</h3>
 					</div>
 					<div class = "time">
-						<input type = "button" class = "section" value = "3-4 (A,C)" onclick = "widthChange('_SCI105-8')"></input>
+						<input type = "button" class = "section" value = "3-4 (A,C)" onclick = "widthChange('_SCI105-8')">
 					</div>
 				</div>
 				<div id = "right_container_SCI105-8" class = "right_container">
 					<div class = "new">
-						<h4>GO</h4>
+						<a href = "Stats.php"><h4>GO</h4></a>
 					</div>
 				</div>
 				</div>
-			</span>
 			<div class = "sub">
 				<div id = "left_container_SCI105-9" class = "left_container">
 					<div class = "teacher">
-						<h3>Dr. Kopff</h3>
+						<h3>Dr. Anozie</h3>
 					</div>
 					<div class = "time">
-						<input type = "button" class = "section" value = "3-4 (B,D)" onclick = "widthChange('_SCI105-9')"></input>
+						<input type = "button" class = "section" value = "3-4 (B,D)" onclick = "widthChange('_SCI105-9')">
 					</div>
 				</div>
 				<div id = "right_container_SCI105-9" class = "right_container">
 					<div class = "new">
-						<h4>GO</h4>
+						<a href = "Stats.php"><h4>GO</h4></a>
 					</div>
 				</div>
 			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI105-10" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Golab</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "5-6 (B,D)" onclick = "widthChange('_SCI105-10')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI105-10" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI105-11" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Golab</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "7-8 (A,C)" onclick = "widthChange('_SCI105-11')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI105-11" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI105-12" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Golab</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "7-8 (B,D)" onclick = "widthChange('_SCI105-12')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI105-12" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class = "class">
-		<div class = "name">
-			<h2>AD Chemistry</h2>
-		</div>
-		<div class = "sections">
-			<div class = "sub">
-				<div id = "left_container_SCI202-1" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Devol</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "1-2 (A,C)" onclick = "widthChange('_SCI202-1')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI202-1" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI202-2" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Devol</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "3-4 (A,C)" onclick = "widthChange('_SCI202-2')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI202-2" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI202-3" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Clancy</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "3-4 (B,D)" onclick = "widthChange('_SCI202-3')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI202-3" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI202-4" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Kopff</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "5-6 (B,D)" onclick = "widthChange('_SCI202-4')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI202-4" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI202-5" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Clancy</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "7-8 (A,C)" onclick = "widthChange('_SCI202-5')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI202-5" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class = "class">
-		<div class = "name">
-			<h2>ORG Chemistry</h2>
-		</div>
-		<div class = "sections">
-			<div class = "sub">
-				<div id = "left_container_SCI222-1" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. White</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "1-2 (B,D)" onclick = "widthChange('_SCI222-1')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI222-1" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI222-2" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Thurmond</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "3-4 (A,C)" onclick = "widthChange('_SCI222-2')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI222-2" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-			<div class = "sub">
-				<div id = "left_container_SCI222-3" class = "left_container">
-					<div class = "teacher">
-						<h3>Dr. Thurmond</h3>
-					</div>
-					<div class = "time">
-						<input type = "button" class = "section" value = "7-8 (A,C)" onclick = "widthChange('_SCI222-3')"></input>
-					</div>
-				</div>
-				<div id = "right_container_SCI222-3" class = "right_container">
-					<div class = "new">
-						<h4>GO</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 </body>
 </html>
