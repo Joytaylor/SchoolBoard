@@ -466,7 +466,7 @@
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
-#classPage p {
+#classPage input[value = "VOTE"] {
 	font-family: 'Raleway', sans-serif;
 	font-size: .5vw;
 	color: white;
@@ -488,6 +488,9 @@
 }
 #classPage div.statement {
 	margin-top: 2%;
+}
+#classPage div.statement p {
+	color: white;
 }
 #classPage div.outerContainer {
 	width: 100%;
@@ -546,7 +549,7 @@
 #classPage div#text{
 	height: 100%;
 	width: 70%;
-	margin-left: 15%;
+	margin-left: 10%;
 	float: left;
 	padding: 20px;
 	border-top: 1px solid whitesmoke;
@@ -574,14 +577,8 @@
 	font-size: 0.7vw;
 	border: none;
 	line-height: 100%;
-	display: flex;
-    align-items: center;
-    justify-content: center;
 }
-#classPage span.num {
-	margin-left: 6px;
-	font-size: 2vw;
-}
+
 #classPage .answerButton {
 	display: block;
 	position: absolute;
@@ -605,6 +602,7 @@
 	width: 40%;
 	margin-left: 30%;
 	padding: 1%;
+    display: none
 }
 #classPage .answerForm textarea {
 	border: none;
@@ -627,6 +625,12 @@
 	font-family: 'Raleway', sans-serif;
 	color: white;
 }
+#classPage .answerForm button {
+    background: none;
+    border: 1px solid #164869;
+    color: #164869;
+    padding: 1%;
+}
 #classPage .formContainer button {
 	border: none;
 	border-bottom: 1px solid lightgray;
@@ -636,6 +640,27 @@
 #classPage p#answerBack {
 	font-size: 1vw;
 	color: #595959;
+}
+#classPage input.vote {
+    color: white;
+    background: none;
+    border: none;
+}
+#classPage #voteform {
+    position: relative;
+    line-height: normal;
+}
+#classPage div.votecontainer {
+    height: 100%;
+    width: 100%;
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#classPage span.num {
+	font-size: 2.5vw;
+    line-height: normal;
 }
 #classPage div.formContainer {
 	text-align: center;

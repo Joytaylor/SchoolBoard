@@ -38,8 +38,8 @@ dateOfAsk DATETIME Not Null,
 subject VARCHAR(30) NOT NULL,
 user_id int(6)Not Null,
 question VARCHAR(1000),
-teacherResponce VARCHAR(1000)
-
+teacherResponce VARCHAR(1000),
+studentHasVoted INT(1)
 )";
 if ($conn->query($sql) === TRUE) {
     //echo "Database created successfully";
