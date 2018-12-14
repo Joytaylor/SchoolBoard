@@ -10,6 +10,11 @@ if(current($result) == 1){
   $user = "user";
   $cookie_value = $username;
   setcookie($user, $cookie_value, time() + (3600), "/");
+  $sql =  "SELECT user_id FROM users WHERE username = '".$_COOKIE["user"] ."'";
+  $result = $conn->query($sql) or die($conn->error);
+  $row = $result->fetch_assoc();
+
+  setcookie("user_id",$row['user_id'],time() + (3600), "/");
 
   $sql =  "SELECT status FROM users WHERE username = '".$_COOKIE["user"] ."'";
   $result = $conn->query($sql) or die($conn->error);

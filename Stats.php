@@ -144,7 +144,8 @@ body {
                         echo "<div id = 'answer'><div id = 'text'><h6> ". $row['teacherResponce']."</h6></div></div>";
                     }
                     echo "<script>";
-                        $sql = "SELECT `studentHasVoted` FROM `question` WHERE `questionid` = $i";
+                        $sql = "SELECT `studentHasVoted` FROM `studentVotes` WHERE `questionid` = $i AND `studentid` = ".
+												"'".$_COOKIE['user_id']."'";
                         $result = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                             if ($row['studentHasVoted'] == 1) {
