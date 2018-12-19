@@ -1,8 +1,7 @@
 <?php
-
 include("config.php");
-$username= $_POST["first_name"];
-$password=$_POST["password"];
+$username = $_POST["first_name"];
+$password = md5($_POST["password"]);
 $sql = "SELECT COUNT(*) FROM users WHERE `username` = '". $username ."' and `password` = '". $password."'";
 $result = $conn->query($sql);
 $result = $result->fetch_assoc();
@@ -27,12 +26,11 @@ if(current($result) == 1){
 }
 else {
   include("SchoolBoardloginpage.html");
-  echo "<script type='text/javascript'>alert('Sorry! We cant find you account :(. Please try Again');</script>";
+  echo "<script type='text/javascript'>alert('Sorry! We cant find you account. Please try Again');</script>";
 }
 }
 else {
   include("SchoolBoardloginpage.html");
   echo "<script type='text/javascript'>alert('Sorry! We cant find you account :(. Please try Again');</script>";
-
 }
 ?>

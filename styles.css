@@ -9,9 +9,9 @@
 	height: 0%;
 	margin-bottom: -1%;
 	animation-name: list;
-	animation-duration: 3s;
+	animation-duration: 1s;
 	-webkit-animation-name: list; /* Safari/Chrome */
-	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	-webkit-animation-duration: 1s; /* Safari/Chrome */
 }
 /*This is CSS3 code that makes it so that the header, images, and navigation bar all fade in*/
 #index div.heading {
@@ -20,9 +20,9 @@
 	height: 30%;
 	opacity: 1.0;
 	animation-name: list;
-	animation-duration: 3s;
+	animation-duration: 1s;
 	-webkit-animation-name: list; /* Safari/Chrome */
-	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	-webkit-animation-duration: 1s; /* Safari/Chrome */
 	display: flex;
   	align-items: center;
   	justify-content: center;
@@ -62,19 +62,17 @@
 	padding-bottom: 1.4%;
 	opacity: 1.0;
 	animation-name: list;
-	animation-duration: 3s;
+	animation-duration: 1s;
 	-webkit-animation-name: list; /* Safari/Chrome */
-	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	-webkit-animation-duration: 1s; /* Safari/Chrome */
 }
 #index img.center {
 	opacity: 1.0;
-	animation-name: list;
-	animation-duration: 3s;
 	width: 30%;
 	animation-name: list;
-	animation-duration: 3s;
+	animation-duration: 1s;
 	-webkit-animation-name: list; /* Safari/Chrome */
-	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	-webkit-animation-duration: 1s; /* Safari/Chrome */
 }
 /*I got the 'Cinzel Decorative' font from Google Fonts. In fact, I got all of my fonts from there.*/
 #index div.body {
@@ -88,9 +86,9 @@
 	font-size: 20px;
 	opacity: 1.0;
 	animation-name: list;
-	animation-duration: 3s;
+	animation-duration: 1s;
 	-webkit-animation-name: list; /* Safari/Chrome */
-	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	-webkit-animation-duration: 1s; /* Safari/Chrome */
 }
 #index .disclamer {
 	color: gray;
@@ -131,26 +129,27 @@
   	align-items: center;
   	justify-content: center;
   	animation-name: list;
-	animation-duration: 3s;
-	animation-delay: 2s;
+	animation-duration: 1s;
+	animation-delay: .5s;
 	animation-fill-mode: backwards;
 	-webkit-animation-name: list; /* Safari/Chrome */
-	-webkit-animation-duration: 3s; /* Safari/Chrome */
-	-webkit-animation-delay: 2s; /* Safari/Chrome */
+	-webkit-animation-duration: 1s; /* Safari/Chrome */
+	-webkit-animation-delay: .5s; /* Safari/Chrome */
 	animation-fill-mode: backwards; /* Safari/Chrome */
 }
 #index a {
 	text-decoration: none;
+    font-family: "Raleway", sans-serif;
 }
 #index div.teacher {
 	margin-top: 1%;
 	animation-name: list;
-	animation-duration: 3s;
-	animation-delay: 2s;
+	animation-duration: 1s;
+	animation-delay: .5s;
 	animation-fill-mode: backwards;
 	-webkit-animation-name: list; /* Safari/Chrome */
-	-webkit-animation-duration: 3s; /* Safari/Chrome */
-	-webkit-animation-delay: 2s; /* Safari/Chrome */
+	-webkit-animation-duration: 1s; /* Safari/Chrome */
+	-webkit-animation-delay: .5s; /* Safari/Chrome */
 	animation-fill-mode: backwards;
 }
 #index h1 {
