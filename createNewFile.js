@@ -11,7 +11,7 @@ fs.readFile("stats.php", 'utf8', function (err,data) {
    data1.split('Trainer').join(teachers);
   var result = data2.split('StatsquestionPage.html') .join(courseName+'QuestionPage.html');
 
-  fs.writeFile(courseName + ".html", result, 'utf8', function (err) {
+  fs.writeFile(courseName + ".php", result, 'utf8', function (err) {
      if (err) return console.log(err);
   });
   });
