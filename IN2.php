@@ -38,7 +38,7 @@ body {
 </div>
 <div class = "classname" id = "IN2">
 	<div class = "heading">
-		<h1>IN2</h1>
+		<h1> IN2 </h1>
 	</div>
 	<div class = "statement">
 		<p>Q u e s t i o n s</p>
@@ -101,11 +101,11 @@ body {
         }
             echo "<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>";
             static $num = 1;
-            $sql= "SELECT * FROM question WHERE subject = 'stats'";
+            $sql= "SELECT * FROM question WHERE subject = 'IN2'";
             $result = mysqli_query($conn, $sql);
             $numrows = mysqli_num_rows($result);
             for ($i = 1; $i <= $numrows; $i++) {
-                $sql= "SELECT * FROM question WHERE subject = 'stats' AND questionid = $i ORDER BY dateOfAsk DESC";
+                $sql= "SELECT * FROM question WHERE subject = 'IN2' AND questionid = $i ORDER BY dateOfAsk DESC";
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)) {
                 echo "<span id = 'div_$num'>
@@ -133,7 +133,7 @@ body {
                         echo "
                     <form class = 'answerForm' id = 'answerForm_$num' action='teacherprocess.php' method = 'POST'>
                         <input type = 'hidden' name='question' value='".$row['question']."'>
-                        <input type='hidden' name='subject' value='stats'>
+                        <input type='hidden' name='subject' value='IN2'>
                         <textarea name='teacher' placeholder = 'Type your answer here'></textarea><br>
                         <input type = 'submit' name = 'submit' value = 'SUBMIT' id='submit'><br>
                         <button id = 'closeButton' onclick = visible('answerForm_$num', 'closeButton')>CLOSE FORM</button>

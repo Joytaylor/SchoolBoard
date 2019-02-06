@@ -38,7 +38,7 @@ body {
 </div>
 <div class = "classname" id = "Stats">
 	<div class = "heading">
-		<h1>Stats</h1>
+		<h1> Stats </h1>
 	</div>
 	<div class = "statement">
 		<p>Q u e s t i o n s</p>
