@@ -74,8 +74,9 @@ input[type = 'text']:focus, input[type = 'password']:focus {
 /*making sure that the text always looks clean*/
 h1 {
 	color: #164869;
-	font-size: 3vw;
+	font-size: 7vw;
 	opacity: 1.0;
+	letter-spacing: 1vw;
 	font-family: 'Cinzel Decorative', cursive;
 	animation-name: list;
 	animation-duration: 3s;

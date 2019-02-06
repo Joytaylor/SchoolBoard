@@ -4,8 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Log in - SchoolBoard</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!--DataTable things-->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
+
 <link rel = "stylesheet" href = "newformstyles.css"/>
+
 <link rel = "icon" href = "favicon.png" type = "image/jpg"/>
+<script>
+	$(document).ready( function () {
+    $('#table').DataTable();
+} );
+	</script>
 </head>
 <body>
 <div id = "headbar"><!--user can head back to the  index page by clicking this image-->
@@ -28,6 +41,7 @@ Status:  <select name = "status" placeholder =  "Status" required>
     <!--the following code was obtained from W3 schools. It does two functions: First, it checks the "confirm password" field with the normal password one and makes sure they are the same. If they are not the same, it prompts the user to try again. Secondly, it makes sure that when the user is putting in passwords, it uses extra characters and a character minimum to ensure a secure password. Wouldn't want other people snooping to see their score on a math quiz, would we now?-->
 <br><input type="password" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name = "password" placeholder = "Password" required><br>
 <br><input type = "password" name = "password" placeholder = "Confirm Password" onkeyup="checkPass(); return false;" required id = "pass2"><br>
+<br>
 <span id="confirmMessage" class="confirmMessage"></span>
     <div id="message">
 
@@ -132,6 +146,13 @@ myInput.onkeyup = function() {
     length.classList.add("invalid");
   }
 }
+</script>
+<script id = "tablePrint">
+	document.write("<table id = 'table'>");
+	document.write("<tr><th>Class</th><th>Mod</th></tr>");
+	for(var i = 0; i <= 50; i++) {
+		document.write("<tr><td>Class" + i + "</td><td>" + i + "</td><tr>");
+	}
 </script>
 </body>
 </html>

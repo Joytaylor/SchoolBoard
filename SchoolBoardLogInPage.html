@@ -65,7 +65,7 @@ h2 {
 	font-size: 40px;
 	font-family: 'Cinzel Decorative', cursive;
 }
-#input {
+.input {
 	font-family: 'Open Sans', sans-serif;
 	color: white;
 	background: none;
@@ -84,7 +84,7 @@ h2 {
 	-webkit-animation-name: list; /* Safari/Chrome */
 	-webkit-animation-duration: 3s; /* Safari/Chrome */
 }
-#input:focus {
+.input:focus {
 	width: 26%;
 }
 #submit {
@@ -132,9 +132,9 @@ h2 {
 	<div class = "form">
 		<form action = "auth.php" method="POST">
 			<h2>Username</h2>
-			<input id = "input" type = "text" name = "first_name" required/>
+			<input class = "input" type = "text" name = "username" required/>
 			<h2>Password</h2>
-			<input id = "input" type = "password" name = "password" requred/><br/><br/>
+			<input  class = "input" type = "password" name = "password" requred/><br/><br/>
 			<input id = "submit" type = "Submit" value = "Submit">
 		</form>
 	</div>

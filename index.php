@@ -1,3 +1,6 @@
+<?php
+include("config.php");
+?>
 <!DOCTYPE html>
 <html id = "index">
 <!--Samuel Anozie, March 1, 2017. This is my div excersise for CSI, but it is also doubling as my SoCent project and my CSI quarter project. This website is not completely done, as there are multiple pages still left to add, but it meets the requirements for the CSI project as it is.-->
@@ -55,7 +58,7 @@ body {
 		<a href = "SchoolBoardloginpage.html" style = "color: black">Log In</a>
 	</div>
 	<div class = "teacher">
-		<a href = "SchoolBoardTeacherAccount.html" style = "color: white">View Teacher Site</a>
+		<a href = "newform.html" class = "signup" style = "color: white">Sign Up Here</a>
 	</div>
 </div>
 </div>

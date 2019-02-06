@@ -69,14 +69,14 @@ $sql = "CREATE TABLE studentVotes(
 if ($conn->query($sql)) {
     //echo "Database created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    //echo "Error creating table: " . $conn->error;
 }
 $sql = "CREATE TABLE Users (
 user_id int(6) UNSIGNED PRIMARY KEY,
 username VARCHAR(10) Not Null,
 name VARCHAR(10) Not Null,
 lastname VARCHAR(10) Not Null,
-password VARCHAR(30) Not Null,
+password VARCHAR(100) Not Null,
 status VARCHAR(30) Not Null
 )";
 if ($conn->query($sql) === TRUE) {
@@ -84,10 +84,4 @@ if ($conn->query($sql) === TRUE) {
 } else {
     //echo "Error creating table: " . $conn->error;
 }
-
-
-
-
-
-
 ?>
