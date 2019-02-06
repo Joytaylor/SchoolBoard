@@ -52,14 +52,14 @@ body {
 <div class = "ask">
 <form action = "process.php" method = 'post'>
 	<textarea  name = "question" id="question" placeholder = "Ask your question here, and make sure to hit Submit!"></textarea><br/><br/><br/>
-	<input type='hidden' name="subject" value="stats">
+	<input type='hidden' name="subject" value="IN2">
 	<input type = "submit" name = "submit" value = "submit" id='submit'>
 	<script type="text/javascript">
 	document.getElementById("submit").onclick  = function(){
 	    var b = document.getElementById('question').value,
-	        url = 'http://SchoolBoard/stats.html?name=' + encodeURIComponent(b);
+	        url = 'http://SchoolBoard/IN2.html?name=' + encodeURIComponent(b);
 
-	    document.location.href = "stats.html";
+	    document.location.href = "IN2.html";
 	}
 </script>
 </form>
