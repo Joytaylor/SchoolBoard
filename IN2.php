@@ -123,7 +123,8 @@ body {
                             <div class = 'votecontainer'>
                             <form id = 'voteform' method='POST' action='votes.php'>
                                 <span class = 'num' id = 'num_$num'>" . $row['votes'] . "</span>
-                                <input type= 'hidden' name='question' value=". $row['questionid']."><br>
+                                <input type = 'hidden' name = 'question' value=". $row['questionid']."><br>
+								<input type = 'hidden' name = 'class' value = 'IN2'><br>
                                 <input class = 'vote' id = 'vote_$num' type = 'submit' name = 'submit' value = 'VOTE' >
                             </form>
                             </div>

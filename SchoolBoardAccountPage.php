@@ -89,7 +89,7 @@ body {
 	  <ol class = "carousel-indicators">
 		<?php
 
-		 $sql = "SELECT COUNT(subject) FROM classes";
+		 $sql = "SELECT COUNT(subject) FROM classes WHERE user_id = '" . $_COOKIE['user_id'] . "'";
 		 $rs =$conn->query($sql) or die($conn->error);
 		 $result = $rs->fetch_assoc();
 		 for($i = 0; $i<current($result); $i++){
@@ -113,85 +113,6 @@ body {
 				 echo "<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4>". $row['subject']."</h4></div><div class = 'launch'><h5><a href = ".$row['subject'].".php>Launch</a></h5></div></div></div>";
 			 }
 	?>
-	<!--
-	    <div class = "item ">
-			<div class = "envelope">
-	      	<div id = "box" class = "AdChemII">
-				<div class = "name">
-					<h4>Advanced Chemistry II</h4>
-				</div>
-				<div class = "launch">
-					<h5><a href = "AdvancedChemistryII.html">Launch</a></h5>
-				</div>
-			</div>
-			</div>
-	    </div>
-
-	    <div class = "item">
-			<div class = "envelope">
-	      	<div id = "box" class = "Biophysics">
-				<div class = "name">
-					<h4>Biophysics</h4>
-				</div>
-				<div class = "launch">
-					<h5><a href = "Biophysics.html">Launch</a></h5>
-				</div>
-			</div>
-			</div>
-	    </div>
-
-		<div class = "item">
-			<div class = "envelope">
-	      	<div id = "box" class = "20th">
-				<div class = "name">
-					<h4>20th Century</h4>
-				</div>
-				<div class = "launch">
-					<h5><a href = "20thCentury.html">Launch</a></h5>
-				</div>
-			</div>
-			</div>
-	    </div>
-
-		<div class = "item">
-			<div class = "envelope">
-	      	<div id = "box" class = "ModernWorldFiction">
-				<div class = "name">
-					<h4>Modern World Fiction</h4>
-				</div>
-				<div class = "launch">
-					<h5><a href = "MWF.html">Launch</a></h5>
-				</div>
-			</div>
-			</div>
-	    </div>
-
-		<div class = "item">
-			<div class = "envelope">
-	      	<div id = "box" class = "MandarinII">
-				<div class = "name">
-					<h4>Mandarin II</h4>
-				</div>
-				<div class = "launch">
-					<h5><a href = "MandarinII.html">Launch</a></h5>
-				</div>
-			</div>
-			</div>
-	    </div>
-
-		<div class = "item">
-			<div class = "envelope">
-	      	<div id = "box" class = "NetandWall">
-				<div class = "name">
-					<h4>Net and Wall Games</h4>
-				</div>
-				<div class = "launch">
-					<h5><a href = "NetAndWall">Launch</a></h5>
-				</div>
-				</div>
-			</div>
-	    </div>
--->
 
 	  <!-- Left and right controls -->
 	  <a class = "left carousel-control" href = "#myCarousel" data-slide = "prev">

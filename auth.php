@@ -19,7 +19,8 @@ if(password_verify($password, current($result))) {
 	$result = $conn->query($sql) or die($conn->error);
 	$row = $result->fetch_assoc();
 	if ($row["status"] == "teacher") {
-		header('Location: /SchoolBoard/SchoolBoardTeacherAccount.php');
+		//header('Location: /SchoolBoard/SchoolBoardTeacherAccount.php');
+		header('Location: /SchoolBoard/SchoolBoardAccountPage.php');
 	}
 	else if ($row["status"] == "student") {
 		header('Location: /SchoolBoard/SchoolBoardAccountPage.php');
