@@ -35,32 +35,32 @@ body {
 <link href = "https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
 <script src ="script.js"></script>
 <div class = "body">
-<img id = "pic" class = "right_image" src = "flower.png" alt = "flower"/>
-<img class = "center" src = "Picture1.png" alt = "header"/>
-<img id = "pic" class = "left_image" src = "flower.png" alt = "flower"/>
-	<div class = "headbar">
-<!--I have yet to finish the Schools and About Us page, but I will work on this over Spring Break-->
-		<ul>
-			<li>Schools</li>
-			<li>About Us</li>
-			<li><a (href = "SchoolBoardSamplePage.html")>Sample</a></li>
-			<li><a (href = "SchoolBoardContactPage.html")>Contact</a></li>
-			<li><a (href = "SchoolBoardRequestPage.html")>Request</a></li>
-		</ul>
+	<img id = "pic" class = "right_image" src = "flower.png" alt = "flower"/>
+	<img class = "center" src = "Picture1.png" alt = "header"/>
+	<img id = "pic" class = "left_image" src = "flower.png" alt = "flower"/>
+		<div class = "headbar">
+	<!--I have yet to finish the Schools and About Us page, but I will work on this over Spring Break-->
+			<ul>
+				<li>Schools</li>
+				<li>About Us</li>
+				<li><a (href = "SchoolBoardSamplePage.html")>Sample</a></li>
+				<li><a (href = "SchoolBoardContactPage.html")>Contact</a></li>
+				<li><a (href = "SchoolBoardRequestPage.html")>Request</a></li>
+			</ul>
+		</div>
+		<div id="jpg">
+		<div class = "heading"><h1>The Future of Inquiry</h1></div>
+		<div class = "statement">
+			<p>Our mission is simple: create a learning environment in which instinct and impulsiveness is never limited.</p>
+		</div>
+		<div class = "login">
+			<a href = "SchoolBoardloginpage.html" style = "color: black">Log In</a>
+		</div>
+		<div class = "teacher">
+			<a href = "newform.html" class = "signup" style = "color: white">Sign Up Here</a>
+			<p>By using this site, you are consenting to the use of cookies. Cookies are only set when logging into our site and are used to display your classes.</p>
+		</div>
 	</div>
-<!--I put overflow: auto on this div because there's just too much content! However, it worked out pretty well in the end. I originally wanted to put the pictures and descriptions side by side but then I realized that putting them in a line looked better.  I might change this just to see how it looks, and I had some ideas for animations concerning the pictures in the future.-->
-	<div id="jpg">
-	<div class = "heading"><h1>The Future of Inquiry</h1></div>
-	<div class = "statement">
-		<p>Our mission is simple: create a learning environment in which instinct and impulsiveness is never limited.</p>
-	</div>
-	<div class = "login">
-		<a href = "SchoolBoardloginpage.html" style = "color: black">Log In</a>
-	</div>
-	<div class = "teacher">
-		<a href = "newform.html" class = "signup" style = "color: white">Sign Up Here</a>
-	</div>
-</div>
 </div>
 </body>
 </html>
