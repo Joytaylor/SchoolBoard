@@ -24,7 +24,9 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 
 //checking if they are not already in the system, then putting them in the system
 if (mysqli_num_rows($result) != 1) {
-	$sql = "INSERT INTO Users (username, name, lastname, password, status) VALUES ($username, $firstName, $lastName,  $password, $status);";
+	$sql = "INSERT INTO Users (username, name, lastname, password, status) VALUES ('$username', '$firstName', '$lastName',  '$password', '$status');";
+	echo $sql;
+	$conn->query($sql) or die($conn->error);
     if (mysqli_query($conn, $sql)) {
 		$sql = "INSERT INTO classes (subject_id, subject) VALUES (1, 'in2');";
 		header('Location: /SchoolBoard/SchoolBoardLogInPage.html');

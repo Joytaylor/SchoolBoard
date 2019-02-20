@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$result = $conn->query($sql);
 	$result = $result->fetch_assoc();
 	if(password_verify($password, current($result))) {
-		$user = "user";
+	//	$user = "user";
 		$cookie_value = $username;
 		setcookie($user, $cookie_value, time() + (3600), "/");
 		$sql =  "SELECT user_id FROM users WHERE username = '".$_COOKIE["user"] ."'";
