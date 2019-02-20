@@ -34,14 +34,16 @@ Status:  <select name = "status" placeholder =  "Status" required>
         Teacher
     </option>
 </select><br>
-<br><input type = "text" name = "firstName" placeholder = "First Name" required><br>
-<br><input type = "text" name = "lastName" placeholder = "Last Name" required><br>
-<br><input type = "text" name = "user_id" placeholder = "ID Number" required><br>
-<br><input type = "text" name = "username" placeholder = "Username" required><br>
-    <!--the following code was obtained from W3 schools. It does two functions: First, it checks the "confirm password" field with the normal password one and makes sure they are the same. If they are not the same, it prompts the user to try again. Secondly, it makes sure that when the user is putting in passwords, it uses extra characters and a character minimum to ensure a secure password. Wouldn't want other people snooping to see their score on a math quiz, would we now?-->
-<br><input type="password" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name = "password" placeholder = "Password" required><br>
-<br><input type = "password" name = "password" placeholder = "Confirm Password" onkeyup="checkPass(); return false;" required id = "pass2"><br>
+<br><input class = "names" type = "text" name = "firstName" placeholder = "First Name" required><input class = "names" type = "text" name = "lastName" placeholder = "Last Name" required><br>
 <br>
+<div id = "sensitiveInfo">
+	<input type = "text" name = "username" placeholder = "Username" required><br>
+    <!--the following code was obtained from W3 schools. It does two functions: First, it checks the "confirm password" field with the normal password one and makes sure they are the same. If they are not the same, it prompts the user to try again. Secondly, it makes sure that when the user is putting in passwords, it uses extra characters and a character minimum to ensure a secure password. Wouldn't want other people snooping to see their score on a math quiz, would we now?-->
+	<br><input type="password" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name = "password" placeholder = "Password" required><br>
+	<br><input type = "password" name = "password" placeholder = "Confirm Password" onkeyup="checkPass(); return false;" required id = "pass2"><br>
+	<br>
+	<p>*Do not use your school account information*</p>
+</div>
 <span id="confirmMessage" class="confirmMessage"></span>
     <div id="message">
 
