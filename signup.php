@@ -1,7 +1,6 @@
-<!--Samuel Anozie, Eric Errampalli. Quarter Project. Due 12/9/18. This is the backend of the signup form that makes all the magic happen.-->
+
 <?php
-include 'config.php'; //including config file
-// Create database. Following code from w3schools.com
+include 'config.php';
 
 mysqli_select_db($conn, 'schoolboard');
 
