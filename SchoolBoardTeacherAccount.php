@@ -57,7 +57,7 @@ function widthChange(name)
 }
 </script>
 <div class = "img">
-	<a href = "index.php">
+	<a href = "index.html">
 		<img src = "Picture1.png"/>
 	</a>
 	<div class = "strip"></div>

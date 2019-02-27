@@ -32,7 +32,7 @@ body {
 </head>
 <body>
 <div class = "img" id = "Stats">
-	<a href = "index.php">
+	<a href = "index.html">
 		<img src = "Picture1.png" id = "Stats"/>
 	</a>
 </div>
