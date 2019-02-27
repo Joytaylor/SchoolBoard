@@ -9,15 +9,19 @@ function test_input($data) {
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = test_input($_POST['username']);
 	$password = test_input($_POST['password']);
-	$sql = "SELECT `password` FROM users WHERE `username` = '". $username ."'";
-	$result = $conn->query($sql);
-	$result = $result->fetch_assoc();
-	if(password_verify($password, current($result))) {
-	//	$user = "user";
+	$stmt= $conn->prepare("SELECT `password` FROM users WHERE `username` = ?");
+	$stmt -> bind_param("s", $username);
+	$stmt->execute();
+	$stmt->bind_result($result);
+	$stmt->fetch();
+	$stmt->close();
+	if(password_verify($password, $result)) {
 		$cookie_value = $username;
-		setcookie($user, $cookie_value, time() + (3600), "/");
+		setcookie("user", $cookie_value, time() + (3600), "/");
 		$sql =  "SELECT user_id FROM users WHERE username = '".$_COOKIE["user"] ."'";
+		echo("hi");
 		$result = $conn->query($sql) or die($conn->error);
+		echo("elloi");
 		$row = $result->fetch_assoc();
 
 		setcookie("user_id",$row['user_id'],time() + (3600), "/");

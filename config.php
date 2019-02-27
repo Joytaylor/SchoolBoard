@@ -72,7 +72,7 @@ if ($conn->query($sql)) {
     //echo "Error creating table: " . $conn->error;
 }
 $sql = "CREATE TABLE Users (
-user_id int(6) AUTO_INCREMENT PRIMARY KEY,
+user_id int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(10) Not Null,
 name VARCHAR(10) Not Null,
 lastname VARCHAR(10) Not Null,

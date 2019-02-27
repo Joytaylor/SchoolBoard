@@ -18,23 +18,25 @@ $firstName = test_input($_POST['firstName']);
 $lastName = test_input($_POST['lastName']);
 $status = test_input($_POST['status']);
 	//insert data from form responses into the table while checkng for duplicates. if its all good, it's ready to go to the registered page.
-$sql = "SELECT username FROM Users WHERE username = '" . $username . "';";
-$result = mysqli_query($conn, $sql);
+$stmt = $conn->prepare("SELECT `username` FROM Users WHERE `username` = ?");
+$stmt -> bind_param("s", $username);
+$stmt->execute();
+$stmt->bind_result($result);
+$stmt->fetch();
+$stmt->close();
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 //checking if they are not already in the system, then putting them in the system
-if (mysqli_num_rows($result) != 1) {
-	$sql = "INSERT INTO Users (username, name, lastname, password, status) VALUES ('$username', '$firstName', '$lastName',  '$password', '$status');";
-	echo $sql;
-	$conn->query($sql) or die($conn->error);
-    if (mysqli_query($conn, $sql)) {
+if ($result == null) {
+
+	$stmt = $conn-> prepare( "INSERT INTO Users (username, name, lastname, password, status) VALUES (?, ?, ?, ?, ?)");
+	$stmt -> bind_param("sssss", $username, $firstName, $lastName, $password, $status );
+	$stmt->execute();
+	$stmt->close();
 		$sql = "INSERT INTO classes (subject_id, subject) VALUES (1, 'in2');";
 		header('Location: /SchoolBoard/SchoolBoardLogInPage.html');
-	}
-	else {
-		include("newform.html");
-		echo "<script type='text/javascript'>alert('Error entering form into database');</script>";
-	}
+
+
 }
 else {
     include("newform.html");

@@ -4,8 +4,11 @@
 
  $question = $_POST['question'];
  $subject = $_POST['subject'];
- $sql = "INSERT INTO Question (votes, subject,user_id, question, dateOfAsk) VALUES ('0','$subject' ,". $_COOKIE['user_id'].", '$question', NOW())";
- if (mysqli_query($conn, $sql)){
+ $question= addslashes($question);
+ $stmt= $conn->prepare( "INSERT INTO Question (votes, subject,user_id, question, dateOfAsk) VALUES ('0', ? ,". $_COOKIE['user_id'].", ?, NOW())");
+ $stmt-> bind_param("ss", $subject, $question);
+
+ if ($stmt->execute()){
    header( 'Location: /SchoolBoard/'.$subject.".php");
  }
  else{
