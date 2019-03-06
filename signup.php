@@ -36,7 +36,7 @@ else {
 	$stmt->execute();
 	$stmt->close();
 	$sql =  "INSERT INTO classes (subject_id, subject) VALUES (1, 'in2')";
-	$conn->query();
+	$conn->query($sql);
 	header('Location: /SchoolBoard/SchoolBoardLogInPage.html');
 }
 }
