@@ -35,7 +35,8 @@ else {
 	$stmt -> bind_param("sssss", $username, $firstName, $lastName, $password, $status );
 	$stmt->execute();
 	$stmt->close();
-	$sql = "INSERT INTO classes (subject_id, subject) VALUES (1, 'in2');";
+	$sql =  "INSERT INTO classes (subject_id, subject) VALUES (1, 'in2')";
+	$conn->query();
 	header('Location: /SchoolBoard/SchoolBoardLogInPage.html');
 }
 }
