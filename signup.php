@@ -26,22 +26,17 @@ $stmt->close();
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 //checking if they are not already in the system, then putting them in the system
-if ($result == null) {
-
+if ($result) {
+	include("newform.html");
+    echo "<script type='text/javascript'>alert('Sorry! That username is taken! :(. Please try Again');</script>";
+}
+else {
 	$stmt = $conn-> prepare( "INSERT INTO Users (username, name, lastname, password, status) VALUES (?, ?, ?, ?, ?)");
 	$stmt -> bind_param("sssss", $username, $firstName, $lastName, $password, $status );
 	$stmt->execute();
 	$stmt->close();
-		$sql = "INSERT INTO classes (subject_id, subject) VALUES (1, 'in2');";
-		header('Location: /SchoolBoard/SchoolBoardLogInPage.html');
-
-
-}
-else {
-    include("newform.html");
-    echo "<script type='text/javascript'>alert('Sorry! That username is taken! :(. Please try Again');</script>";
+	$sql = "INSERT INTO classes (subject_id, subject) VALUES (1, 'in2');";
+	header('Location: /SchoolBoard/SchoolBoardLogInPage.html');
 }
 }
-
-
 ?>
