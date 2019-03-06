@@ -22,15 +22,17 @@ $stmt -> bind_param("s", $username);
 $stmt->execute();
 $stmt->bind_result($result);
 $stmt->fetch();
-$stmt->close();
+
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 //checking if they are not already in the system, then putting them in the system
 if ($result) {
+	$stmt->close();
 	include("newform.html");
     echo "<script type='text/javascript'>alert('Sorry! That username is taken! :(. Please try Again');</script>";
 }
 else {
+	$stmt->close();
 	$stmt = $conn-> prepare( "INSERT INTO Users (username, name, lastname, password, status) VALUES (?, ?, ?, ?, ?)");
 	$stmt -> bind_param("sssss", $username, $firstName, $lastName, $password, $status );
 	$stmt->execute();
