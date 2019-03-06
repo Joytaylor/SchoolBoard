@@ -65,7 +65,7 @@ body {
 		include("cookiecheck.php");
 		include("config.php");
 		mysqli_select_db($conn, 'SchoolBoard');
-		$sql = "SELECT name FROM users WHERE username = '". $_COOKIE['user']."'";
+		$sql = "SELECT `name` FROM Users WHERE `username` = '". $_COOKIE['user']."'";
 		$result = $conn->query($sql) or die($conn ->error);
 		$row = $result->fetch_assoc();
 		echo $row['name'];
@@ -88,8 +88,9 @@ body {
 	  <!-- Indicators -->
 	  <ol class = "carousel-indicators">
 		<?php
-
-		 $sql = "SELECT COUNT(subject) FROM classes WHERE user_id = '" . $_COOKIE['user_id'] . "'";
+		  //for when there are multiple classes
+		  /*
+		 $sql = "SELECT COUNT(subject) FROM Classes WHERE `user_id` = '" . $_COOKIE['user_id'] . "'";
 		 $rs =$conn->query($sql) or die($conn->error);
 		 $result = $rs->fetch_assoc();
 		 for($i = 0; $i<current($result); $i++){
@@ -101,13 +102,14 @@ body {
 		     echo "<li data-target = '#myCarousel' data-slide-to=".$i."></li>";
 		  }
 		 }
+		 */
 		 ?>
 	  </ol>
 
 	  <!-- Wrapper for slides -->
 	  <div class = "carousel-inner">
 		<?php
-		$sql= "SELECT * FROM classes WHERE user_id = '" . $_COOKIE['user_id'] . "'";
+		$sql= "SELECT * FROM Classes WHERE `subject` = 'in2'";
 		 $result = $conn->query($sql) or die($conn->error);
 			 while($row = $result->fetch_assoc()) {
 				 echo "<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4>". $row['subject']."</h4></div><div class = 'launch'><h5><a href = ".$row['subject'].".php>Launch</a></h5></div></div></div>";

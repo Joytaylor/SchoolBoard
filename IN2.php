@@ -93,7 +93,7 @@ body {
 	<!--in the event that a question has to be deleted from the database, all of the question Id's will be thrown off. Proceed with caution-->
 	<?php
         $teach = false;
-        $sql =  "SELECT status FROM users WHERE username = '".$_COOKIE["user"] ."'";
+        $sql =  "SELECT `status` FROM Users WHERE `username` = '".$_COOKIE["user"] ."'";
         $result = mysqli_query($conn, $sql);
         $row = $result->fetch_assoc();
         if( $row["status"] == "teacher"){
@@ -101,11 +101,11 @@ body {
         }
             echo "<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>";
             static $num = 1;
-            $sql= "SELECT * FROM question WHERE subject = 'IN2'";
+            $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2'";
             $result = mysqli_query($conn, $sql);
             $numrows = mysqli_num_rows($result);
             for ($i = 1; $i <= $numrows; $i++) {
-                $sql= "SELECT * FROM question WHERE subject = 'IN2' AND questionid = $i ORDER BY dateOfAsk DESC";
+                $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2' AND `questionid` = $i ORDER BY dateOfAsk DESC";
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)) {
                 echo "<span id = 'div_$num'>
