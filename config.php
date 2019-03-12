@@ -8,7 +8,7 @@ $database = 'schoolboard';
 $conn = new mysqli($hostname, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    //die("Connection failed: " . $conn->connect_error);
 }
 
 
@@ -20,9 +20,9 @@ subject VARCHAR(30),
 user_id int(6)
 )";
 if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully";
+    //echo "Database created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    //echo "Error creating table: " . $conn->error;
 }
 
 $sql = "CREATE TABLE teacherResponces(
@@ -35,9 +35,9 @@ teacherResponce VARCHAR(1000)
 
 )";
 if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully";
+    //echo "Database created successfully";
 } else {
-	echo "Error creating table: " . $conn->error;
+	//echo "Error creating table: " . $conn->error;
 }
 $sql = "CREATE TABLE Question (
 questionid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -49,9 +49,9 @@ question VARCHAR(1000),
 teacherResponce VARCHAR(1000)
 )";
 if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully";
+    //echo "Database created successfully";
 } else {
-	echo "Error creating table: " . $conn->error;
+	//echo "Error creating table: " . $conn->error;
 }
 $sql = "CREATE TABLE studentVotes(
   voteId int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -60,9 +60,9 @@ $sql = "CREATE TABLE studentVotes(
   studentHasVoted boolean Not Null
 )";
 if ($conn->query($sql)) {
-    echo "studentvotes created successfully";
+    //echo "studentvotes created successfully";
 } else {
-	echo "Error creating table: " . $conn->error;
+	//echo "Error creating table: " . $conn->error;
 }
 $sql = "CREATE TABLE Users (
 user_id int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -72,9 +72,9 @@ lastname VARCHAR(10) Not Null,
 password VARCHAR(100) Not Null,
 status VARCHAR(30) Not Null
 )";
-if ($conn->query($sql) === TRUE) {
-    echo "table users created successfully";
+if ($conn->query($sql)) {
+    //echo "table users created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    //echo "Error creating table: " . $conn->error;
 }
 ?>

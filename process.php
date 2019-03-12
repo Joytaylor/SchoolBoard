@@ -9,7 +9,7 @@
  $stmt-> bind_param("ss", $subject, $question);
 
  if ($stmt->execute()){
-   header( 'Location: /SchoolBoard/'.$subject.".php");
+   header( 'Location: '.$subject.".php");
  }
  else{
     echo "Error". $sql . "<br> ". mysqli_error($conn);

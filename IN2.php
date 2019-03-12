@@ -41,11 +41,12 @@ body {
 		<h1> IN2 </h1>
 	</div>
 	<div class = "statement">
-		<p>Q u e s t i o n s</p>
+		<p class = "statement">Questions</p>
 	</div>
 </div>
 <div class = "outerContainer">
 <div class = "innerContainter">
+<div id = "ask" class = "ask"><a href = "IN2QuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
 	<?php
     include("config.php");
 	include("cookiecheck.php");
@@ -93,7 +94,7 @@ body {
 	<!--in the event that a question has to be deleted from the database, all of the question Id's will be thrown off. Proceed with caution-->
 	<?php
         $teach = false;
-        $sql =  "SELECT status FROM users WHERE username = '".$_COOKIE["user"] ."'";
+        $sql =  "SELECT `status` FROM Users WHERE `username` = '".$_COOKIE["user"] ."'";
         $result = mysqli_query($conn, $sql);
         $row = $result->fetch_assoc();
         if( $row["status"] == "teacher"){
@@ -101,11 +102,14 @@ body {
         }
             echo "<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>";
             static $num = 1;
-            $sql= "SELECT * FROM question WHERE subject = 'IN2'";
+            $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2'";
             $result = mysqli_query($conn, $sql);
             $numrows = mysqli_num_rows($result);
+			if ($teach == true && $numrows == 0) {
+				echo "<p class = 'null'>No questions asked yet</p>";
+			}
             for ($i = 1; $i <= $numrows; $i++) {
-                $sql= "SELECT * FROM question WHERE subject = 'IN2' AND questionid = $i ORDER BY dateOfAsk DESC";
+                $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2' AND `questionid` = $i ORDER BY dateOfAsk DESC";
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)) {
                 echo "<span id = 'div_$num'>
@@ -158,7 +162,6 @@ body {
                     }
 }
 	 ?>
-		<div id = "ask" class = "ask"><a href = "IN2QuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
 		<h4><a class = "backLink" href = "SchoolBoardAccountPage.php">GO BACK TO ACCOUNT</a></h4>
 		<?php
             if ($teach == true) {

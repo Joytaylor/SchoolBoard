@@ -9,7 +9,7 @@ include("cookiecheck.php");
  $stmt = $conn -> prepare("UPDATE Question SET teacherResponce = ? WHERE subject= ? AND question = ?");
  $stmt -> bind_param("sss", $teacher, $subject, $question);
  if ($stmt->execute()){
-   header( 'Location: /SchoolBoard/'.$subject.".php");
+   header( 'Location: '.$subject.".php");
  }
  else{
    echo "Error". $sql . "<br> ". mysqli_error($conn);
