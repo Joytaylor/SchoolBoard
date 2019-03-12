@@ -222,6 +222,28 @@
 	-webkit-animation-delay: 1s;
 	-webkit-animation-fill-mode: backwards;
 }
+#account #logout {
+	height: 100px;
+	width: 20%;
+	background-color: white;
+	color: red;
+	border: none;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.3vw;
+	margin: 2%;
+}
+#account #logout:hover {
+	color: white;
+	background-color: red;
+	border: none;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+}
+#account .logout {
+	width: 100%;
+	background-color: white;
+	border-top: 1px solid red;
+}
 #account div.heading {
 	margin-top: 6%;
 }
@@ -467,6 +489,19 @@
 	font-weight: 100;
 	margin-top: 0px;
 	margin-bottom: 0px;
+}
+#classPage p.statement {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 100;
+	color: white;
+	font-size: 3vw;
+	letter-spacing: 0.5vw;
+}
+#classPage p.null {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	color: darkslategray;
+	font-size: 1.4vw;
 }
 #classPage input[value = "VOTE"] {
 	font-family: 'Raleway', sans-serif;

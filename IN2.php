@@ -41,11 +41,12 @@ body {
 		<h1> IN2 </h1>
 	</div>
 	<div class = "statement">
-		<p>Q u e s t i o n s</p>
+		<p class = "statement">Questions</p>
 	</div>
 </div>
 <div class = "outerContainer">
 <div class = "innerContainter">
+<div id = "ask" class = "ask"><a href = "IN2QuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
 	<?php
     include("config.php");
 	include("cookiecheck.php");
@@ -104,6 +105,9 @@ body {
             $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2'";
             $result = mysqli_query($conn, $sql);
             $numrows = mysqli_num_rows($result);
+			if ($teach == true && $numrows == 0) {
+				echo "<p class = 'null'>No questions asked yet</p>";
+			}
             for ($i = 1; $i <= $numrows; $i++) {
                 $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2' AND `questionid` = $i ORDER BY dateOfAsk DESC";
                 $result = mysqli_query($conn, $sql);
@@ -158,7 +162,6 @@ body {
                     }
 }
 	 ?>
-		<div id = "ask" class = "ask"><a href = "IN2QuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
 		<h4><a class = "backLink" href = "SchoolBoardAccountPage.php">GO BACK TO ACCOUNT</a></h4>
 		<?php
             if ($teach == true) {

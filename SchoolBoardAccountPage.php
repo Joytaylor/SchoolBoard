@@ -52,6 +52,16 @@ body {
 	100% {width: 25%; height:7%; margin-top: 0%;}
 }
 </style>
+<script>
+function logout() {
+	var response = confirm("Are you sure you want to log out?");
+	if (response == true) {
+	   window.location = "logout.php";
+	} else {
+		window.location = "quizSelect.php";
+	}
+}
+</script>
 </head>
 <body id = "account">
 <div class = "img">
@@ -77,7 +87,7 @@ body {
 		<h1>Profile</h1>
 	</div>
 	<div class = "statement">
-		<p>This is where you can check the questions asked in your classes, talk to teachers,  and see if your questions have been answered.</p>
+		<p>This is where you can check the questions asked in your classes</p>
 	</div>
 </div>
 <div id = "classes" class = "tabcontent">
@@ -159,12 +169,13 @@ body {
 	</div>
 	<img class = "closeQuote" src = "ClosingQuote.png"/>
 </div>
+<!--eventual displayal of bookmarked/asked questions-->
+<!--
 <div id = "questions" class = "tabcontent">
 	<div class = "classLabel">
 		<h2>Questions</h2>
 	</div>
 	<div id = "myCarousel" class = "carousel slide" data-ride = "carousel">
-	  <!-- Indicators -->
 	  <ol class = "carousel-indicators">
 	    <li data-target = "#myCarousel" data-slide-to="0" class="active"></li>
 	    <li data-target = "#myCarousel" data-slide-to="1"></li>
@@ -175,7 +186,6 @@ body {
 		<li data-target = "#myCarousel" data-slide-to="6"></li>
 	  </ol>
 
-	  <!-- Wrapper for slides -->
 	  <div class = "carousel-inner">
 	    <div class = "item active">
 			<div class = "envelope">
@@ -268,7 +278,6 @@ body {
 			</div>
 	    </div>
 
-	  <!-- Left and right controls -->
 	  <a class = "left carousel-control" href = "#myCarousel" data-slide = "prev">
 	    <span class = "glyphicon glyphicon-chevron-left"></span>
 	    <span class = "sr-only">Previous</span>
@@ -279,6 +288,10 @@ body {
 	  </a>
 </div>
 </div>
+</div>
+-->
+<div class = "logout">
+	<input id = "logout" type = "button" value = "LOGOUT" onclick = "logout()">
 </div>
 </div>
 </body>

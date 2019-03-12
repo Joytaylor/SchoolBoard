@@ -44,12 +44,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		else {
 			include("SchoolBoardLogInPage.html");
-			echo "<script type='text/javascript'>alert('Sorry! We cant find you account. Please try Again');</script>";
+			echo "<script type='text/javascript'>alert(There's something wrong with your account. Please contact your SchoolBoard administrator.);</script>";
 		}
 	}
 	else {
 		include("SchoolBoardLogInPage.html");
-		echo "<script type='text/javascript'>alert('Sorry! We cant find you account and all ur code is failing, Please try Again');</script>";
+		echo "<script type='text/javascript'>alert('Sorry! That username/password combination is incorrect, please try again');</script>";
 	}
 }
 ?>
