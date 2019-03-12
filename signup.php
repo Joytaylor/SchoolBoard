@@ -22,7 +22,7 @@ $stmt -> bind_param("s", $username);
 $stmt->execute();
 $stmt->bind_result($result);
 $stmt->fetch();
-
+echo($result);
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 //checking if they are not already in the system, then putting them in the system

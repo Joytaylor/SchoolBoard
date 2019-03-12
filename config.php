@@ -1,5 +1,5 @@
 <?php
-$hostname = "mysql.theschoolboard.co";
+$hostname = "localhost";
 $username = "samanozie";
 $password = 'CsIs4souperKoolkids';
 $database = 'schoolboard';
@@ -25,15 +25,14 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-$sql = "CREATE TABLE Question (
+$sql = "CREATE TABLE teacherResponces(
 questionid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 votes int(3) Not Null,
-dateOfAsk DATETIME Not Null,
-subject VARCHAR(30) NOT NULL,
+dateOfResponce DATETIME Not Null,
 user_id int(6)Not Null,
 question VARCHAR(1000),
-teacherResponce VARCHAR(1000),
-studentHasVoted INT(1)
+teacherResponce VARCHAR(1000)
+
 )";
 if ($conn->query($sql) === TRUE) {
     echo "Database created successfully";
