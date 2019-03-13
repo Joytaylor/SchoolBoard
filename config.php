@@ -1,5 +1,5 @@
 <?php
-$hostname = "localhost";
+$hostname = "mysql.theschoolboard.co";
 $username = "samanozie";
 $password = 'CsIs4souperKoolkids';
 $database = 'schoolboard';
@@ -25,34 +25,37 @@ if ($conn->query($sql) === TRUE) {
     //echo "Error creating table: " . $conn->error;
 }
 
-$sql = "CREATE TABLE teacherResponces(
-questionid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-votes int(3) Not Null,
-dateOfResponce DATETIME Not Null,
-user_id int(6)Not Null,
-question VARCHAR(1000),
-teacherResponce VARCHAR(1000)
 
-)";
-if ($conn->query($sql) === TRUE) {
-    //echo "Database created successfully";
-} else {
-	//echo "Error creating table: " . $conn->error;
-}
 $sql = "CREATE TABLE Question (
 questionid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 votes int(3) Not Null,
 dateOfAsk DATETIME Not Null,
 subject VARCHAR(30) NOT NULL,
 user_id int(6)Not Null,
-question VARCHAR(1000),
-teacherResponce VARCHAR(1000)
+question VARCHAR(1000)
 )";
 if ($conn->query($sql) === TRUE) {
     //echo "Database created successfully";
 } else {
 	//echo "Error creating table: " . $conn->error;
 }
+
+$sql = "CREATE TABLE teacherResponses (
+responseid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+questionid INT(10) UNSIGNED,
+FOREIGN KEY (questionid) REFERENCES Question(questionid),
+votes int(3) Not Null,
+dateOfResponse DATETIME Not Null,
+user_id int(6) Not Null,
+question VARCHAR(1000),
+teacherResponse VARCHAR(1000)
+)";
+if ($conn->query($sql) === TRUE) {
+    //echo "Database created successfully";
+} else {
+	//echo "Error creating table: " . $conn->error;
+}
+
 $sql = "CREATE TABLE studentVotes(
   voteId int(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   studentid int(6) Not Null,
@@ -77,4 +80,9 @@ if ($conn->query($sql)) {
 } else {
     //echo "Error creating table: " . $conn->error;
 }
+
+//for product testing in IN2
+
+$sql = "INSERT INTO Classes VALUES (1, 1, 'IN2', 1)";
+mysqli_query($conn, $sql);
 ?>

@@ -45,6 +45,7 @@ else {
 	}
 	else {
 		echo "<script type='text/javascript'>alert('Something went wrong');</script>";
+		echo $conn->error;
 	}
 }
 }

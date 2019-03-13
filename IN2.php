@@ -139,15 +139,19 @@ body {
                     <form class = 'answerForm' id = 'answerForm_$num' action='teacherprocess.php' method = 'POST'>
                         <input type = 'hidden' name='question' value='".$row['question']."'>
                         <input type='hidden' name='subject' value='IN2'>
-                        <textarea name='teacher' placeholder = 'Type your answer here'></textarea><br>
+						<input type='hidden' name='questionid' value='" . $row['questionid'] . "'>
+                        <textarea name='response' placeholder = 'Type your answer here'></textarea><br>
                         <input type = 'submit' name = 'submit' value = 'SUBMIT' id='submit'><br>
                         <button id = 'closeButton' onclick = visible('answerForm_$num', 'closeButton')>CLOSE FORM</button>
                     </form>";
                     }
                     echo "</span>";
-                    if ($row['teacherResponce'] != NULL){
-                        echo "<div id = 'answer'><div id = 'text'><h6> ". $row['teacherResponce']."</h6></div></div>";
-                    }
+
+					$sql = "SELECT * FROM teacherResponses WHERE questionid ='" . $row['questionid'] . "' ORDER BY dateOfResponse DESC";
+					$result = mysqli_query($conn, $sql);
+					while ($row = mysqli_fetch_assoc($result)) {
+						echo "<div id = 'answer'><div id = 'text'><h6>". $row['teacherResponse']."</h6></div></div><br>";
+					}
                     echo "<script>";
                         $sql = "SELECT `studentHasVoted` FROM `studentVotes` WHERE `questionid` = $i AND `studentid` = ".
 												"'".$_COOKIE['user_id']."'";
