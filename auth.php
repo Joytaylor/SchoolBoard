@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$fetchedPassword = $row["password"];
 	if (password_verify($password, $fetchedPassword)) {
 		$cookie_value = $username;
-		$sql =  "SELECT `user_id` FROM Users WHERE `username` = '".$_COOKIE["user"] ."'";
+		$sql =  "SELECT `user_id` FROM Users WHERE `username` = '$username'";
 		$result = $conn->query($sql) or die($conn->error);
 		$row = $result->fetch_assoc();
 		setcookie("user", $cookie_value, time() + (3600), "/");
