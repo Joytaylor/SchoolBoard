@@ -108,8 +108,8 @@ body {
 			if ($teach == true && $numrows == 0) {
 				echo "<p class = 'null'>No questions asked yet</p>";
 			}
-            for ($i = 1; $i <= $numrows; $i++) {
-                $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2' AND `questionid` = $i ORDER BY dateOfAsk DESC";
+            for ($i = $numrows; $i >= 1; $i--) {
+                $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2' AND `questionid` = $i ORDER BY dateOfAsk ASC";
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)) {
                 echo "<span id = 'div_$num'>
