@@ -22,30 +22,33 @@ $stmt->execute();
 $stmt-> store_result();
 $stmt->bind_result($result);
 $stmt->fetch();
-$stmt->close();
+
 
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 //checking if they are not already in the system, then putting them in the system
 if (mysqli_num_rows($result) == 1) {
+	$stmt->close();
 	include("newform.html");
     echo "<script type='text/javascript'>alert('Sorry! That username is taken! :(. Please try Again');</script>";
 }
 else {
-
+  $stmt->close();
 	$stmt = $conn-> prepare("INSERT INTO Users (username, name, lastname, password, status) VALUES (?, ?, ?, ?, ?)");
 	$stmt -> bind_param("sssss", $username, $firstName, $lastName, $password, $status );
 	$stmt->execute();
 	$stmt-> store_result();
 	$stmt->bind_result($result);
 	$stmt->fetch();
-	$stmt->close();
+
 
 //	$sql = "INSERT INTO Users (username, name, lastname, password, status) VALUES ('$username', '$firstName', '$lastName', '$password', '$status')";
 	if (result != null )){
+		$stmt->close();
 		include("SchoolBoardLogInPage.html");
 	}
 	else {
+		$stmt->close();
 		echo "<script type='text/javascript'>alert('Something went wrong');</script>";
 		echo $conn->error;
 	}
