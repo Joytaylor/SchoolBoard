@@ -9,13 +9,6 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!--Fonts-->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

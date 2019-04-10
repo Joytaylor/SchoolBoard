@@ -1,7 +1,7 @@
 <?php
-$hostname = "localhost";
-$username = "root";
-$password = '';
+$hostname = "mysql.theschoolboard.co";
+$username = "samanozie";
+$password = 'CsIs4souperKoolkids';
 $database = 'schoolboard';
 
 // Create connection
