@@ -1,6 +1,6 @@
 /*Samuel Anozie, Eric Errampalli. Quarter Project. Due 12/9/18. This is the styles for the form page.*/
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
-@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900');
 body, html {
 	height: 100%;
 }
@@ -106,14 +106,14 @@ input.names {
 h1 {
 	color: #164869;
 	font-size: 7vw;
+	font-weight: 700;
 	opacity: 1.0;
-	letter-spacing: 1vw;
-	font-family: 'Cinzel Decorative', cursive;
+	font-family: 'Cinzel Decorative', serif;
 	animation-name: list;
 	animation-duration: 3s;
-	font-weight: 100;
 	-webkit-animation-name: list; /* Safari/Chrome */
 	-webkit-animation-duration: 3s; /* Safari/Chrome */
+	margin-top: 6rem;
 }
 p {
 	font-family: 'Raleway', sans-serif;

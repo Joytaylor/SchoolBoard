@@ -43,7 +43,7 @@ else {
 
 
 //	$sql = "INSERT INTO Users (username, name, lastname, password, status) VALUES ('$username', '$firstName', '$lastName', '$password', '$status')";
-	if (result != null )){
+	if (result != null ){
 		$stmt->close();
 		include("SchoolBoardLogInPage.html");
 	}

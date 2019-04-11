@@ -4,26 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Log in - SchoolBoard</title>
+
+<!-- Bootstrap Links -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<!--DataTable things-->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
-
-<link rel = "stylesheet" href = "newformstyles.css"/>
-
+<!--My Styles-->
+<link rel = stylesheet href = "newformstyles.css"/>
 <link rel = "icon" href = "favicon.png" type = "image/jpg"/>
-<script>
-	$(document).ready( function () {
-    $('#table').DataTable();
-} );
-	</script>
 </head>
 <body>
-<div id = "headbar"><!--user can head back to the  index page by clicking this image-->
-	<a href = "index.html"><img src = "Picture1.png"/></a>
-</div>
 <h1>SIGNUP</h1>
 <form method = "post" action = "signup.php">
 Status:  <select name = "status" placeholder =  "Status" required>
@@ -52,7 +44,13 @@ Status:  <select name = "status" placeholder =  "Status" required>
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 </div>
 <div id = "submit" class = "submit"></div><br>
+<div id = "footer" class = "container-fluid d-flex flex-column bg-dark">
+	<div class = "col-md-3">
+		<img href = "index.html" class = "logo img-fluid" src = "WhiteLogoWithFlowers.svg" alt = "header"/>
+	</div>
+</div>
 </form>
+
 <script>
 function checkPass()
     {
@@ -146,5 +144,6 @@ myInput.onkeyup = function() {
   }
 }
 </script>
+
 </body>
 </html>

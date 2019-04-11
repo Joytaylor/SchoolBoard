@@ -1,3 +1,4 @@
+//createDiv() makes the divs that are seen in the background
 function createDiv(id, tags, question, cardType) {
 	var div =
 	"<div id = 'card" + id + "' class = 'card " + cardType + "'>" +
@@ -13,7 +14,14 @@ function createDiv(id, tags, question, cardType) {
 	"</div>";
 	return div;
 }
+
 $(function() {
+	//info about
+	var docHeight = $("#header").outerHeight(true);
+	var docWidth = $("#header").outerWidth(true);
+	var barHeight = $("#headbar").height();
+	var barWidth = $("#headbar").width();
+
 	$.getJSON("qExamples.json", function(data) {
 		var ObjTops = [];
 		var ObjLefts = [];
@@ -25,28 +33,16 @@ $(function() {
 			var div = createDiv(i, tags, question, cardType);
 			$("#cardBackground").append(div);
 
-			//setting the actual positioning variables here
-			var holeHeight = $("#headerItem").height;
-			var holeWidth = $("#headerItem").width;
-			var divWidth = $("#card" + i).width();
-			var divHeight = $("#card" + i).height();
-			var scale = Math.random();
 			//saving the positioning variables in an object here
+			var divHeight = $("#card" + i).height();
+			var divWidth = $("#card" + i).width();
+			var scale = Math.random() + 1.5;
+			var useTop = (Math.random()*1.3-0.3)*100;
+			var useLeft = (Math.random()*1.3-0.3)*100;
 			ObjLefts.push(useLeft);
 			ObjTops.push(useTop);
-
-			//Preventing divs from overlapping in width
-			for(var j = 0; j < ObjLefts.length; j++) {
-				var spaceCheck = Math.abs(ObjLefts[j] - useLeft);
-				if(spaceCheck < widthPercentage) {
-					var offset = useLeft + widthPercentage - ObjLefts[j];
-					useLeft = useLeft - offset;
-					ObjLefts[j] = useLeft;
-				}
-			}
-			console.log(ObjLefts);
 			$("#card" + i).css("transform", "translate(" + useLeft + "vw, " + useTop + "vh) scale(" + scale + ")");
-			$("#card" + i).delay(120*(i+1)).fadeTo("slow", 0.1);
+			$("#card" + i).delay(80*(i+1)).fadeTo(900, 1);
 		}
 	});
 });

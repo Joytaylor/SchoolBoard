@@ -24,10 +24,12 @@ $subFont: 'Raleway', sans-serif;
 
 /*Global Styles*/
 //Cards
+body {
+	background-color: white;
+}
 .card {
 	position: absolute;
-	z-index: -100;
-	width: 80rem;
+	z-index: -1;
 	max-width: 300px;
 	min-width: 20px;
 	opacity: 0;
@@ -36,7 +38,7 @@ $subFont: 'Raleway', sans-serif;
 	border: 1px solid $primaryColor;
 	.card-header {
 		background-color: $primaryColor;
-		color: white;
+		color: rgba(255, 255, 255, 0.52);
 		font-family: $subFont;
 	}
 	.card-title {
@@ -45,12 +47,13 @@ $subFont: 'Raleway', sans-serif;
 		font-weight: 700;
 	}
 	.card-body {
-		background-color: rgba(22, 72, 105, 0.8);
-		color: white;
+		background-color: rgba(13, 37, 52, 0.75);
+		color: rgba(16, 46, 65, 0.63);
 	}
 	.card-btn {
-		background-color: white;
-		color: $primaryColor;
+		background: none;
+		color: rgba(16, 46, 65, 0.63);
+		border: 1px solid rgba(16, 46, 65, 0.63);
 		width: 100%;
 	}
 }
@@ -58,7 +61,7 @@ $subFont: 'Raleway', sans-serif;
 	border: 1px solid $secondaryColor;
 	.card-header {
 		background-color: $secondaryColor;
-		color: white;
+		color: rgba(255, 255, 255, 0.52);
 		font-family: $subFont;
 	}
 	.card-title {
@@ -67,12 +70,13 @@ $subFont: 'Raleway', sans-serif;
 		font-weight: 700;
 	}
 	.card-body {
-		background-color: rgba(106, 165, 189, 0.82);
-		color: white;
+		background-color: rgba(71, 112, 129, 0.82);
+		color: rgba(53, 78, 88, 0.47);
 	}
 	.card-btn {
-		background-color: white;
-		color: $secondaryColor;
+		background: none;
+		border: 1px solid rgba(53, 78, 88, 0.49);
+		color: rgba(53, 78, 88, 0.41);
 		width: 100%;
 	}
 }
@@ -80,7 +84,7 @@ $subFont: 'Raleway', sans-serif;
 	border: 1px solid $tertiaryColor;
 	.card-header {
 		background-color: $tertiaryColor;
-		color: white;
+		color: rgba(255, 255, 255, 0.67);
 		font-family: $subFont;
 	}
 	.card-title {
@@ -89,12 +93,62 @@ $subFont: 'Raleway', sans-serif;
 		font-weight: 700;
 	}
 	.card-body {
-		background-color: rgba(174, 68, 93, 0.77);
-		color: white;
+		background-color: rgba(90, 36, 49, 0.77);
+		color: rgba(100, 37, 52, 0.49);
+
 	}
 	.card-btn {
-		background-color: white;
-		color: $tertiaryColor;
+		background: none;
+		border: 1px solid rgba(100, 37, 52, 0.49);
+		color: rgba(100, 37, 52, 0.49);
+		width: 100%;
+	}
+}
+.card-quaternary {
+	border: 1px solid #657c17;
+	.card-header {
+		background-color: #4b5c11;
+		color: rgba(255, 255, 255, 0.67);
+		font-family: $subFont;
+	}
+	.card-title {
+		font-family: $subFont;
+		padding: 1rem;
+		font-weight: 700;
+	}
+	.card-body {
+		background-color: rgba(51, 62, 13, 0.66);
+		color: rgba(45, 56, 10, 0.49);
+
+	}
+	.card-btn {
+		background: none;
+		border: 1px solid rgba(45, 56, 10, 0.49);
+		color: rgba(45, 56, 10, 0.49);
+		width: 100%;
+	}
+}
+.card-quinary {
+	border: 1px solid #7c5c9d;
+	.card-header {
+		background-color: #4b385f;
+		color: rgba(255, 255, 255, 0.67);
+		font-family: $subFont;
+	}
+	.card-title {
+		font-family: $subFont;
+		padding: 1rem;
+		font-weight: 700;
+	}
+	.card-body {
+		background-color: rgba(78, 60, 96, 0.8);
+		color: rgba(73, 55, 92, 0.5);
+
+	}
+	.card-btn {
+		background: none;
+		border: 1px solid rgba(73, 55, 92, 0.5);
+		color: rgba(73, 55, 92, 0.5);
 		width: 100%;
 	}
 }
@@ -103,6 +157,7 @@ $subFont: 'Raleway', sans-serif;
 	div {
 		&#headbar {
 			background-color: $primaryColor;
+			border-bottom: 3px solid white;
 			position: relative;
 			z-index: 100;
 		}
@@ -112,15 +167,13 @@ $subFont: 'Raleway', sans-serif;
 			flex-grow: 1;
 			@include center;
 		}
-		&#headerItem {
+		&#headerCol {
 			padding-left: 3rem;
 			padding-right: 3rem;
 		}
-		&.intro {
-			background: url("backpic.jpg");
-			background-size: cover;
-			background-repeat: no-repeat;
+		&#headerRow {
 		}
+
 		&.statement {
 			background-color: $primaryColor;
 			color: white;
@@ -160,7 +213,13 @@ $subFont: 'Raleway', sans-serif;
 		}
 		&#envelope {
 			position: relative;
+
 		}
+		&#mission {
+			padding-top: 20rem;
+			padding-bottom: 20rem;
+		}
+
 	}
 	//img
 	img.logo {
@@ -169,11 +228,21 @@ $subFont: 'Raleway', sans-serif;
 	}
 	//text
 	h1 {
-		color: $primaryColor;
+		color: white;
 		font-size: 6rem;
 		font-family: $headerFontDecorative;
 		font-weight: 700;
-		background: linear-gradient(to right bottom, #164869, #2b5e7e, #3f7593, #548da8, #6aa5bd);
+		/*background: linear-gradient(to right bottom, #164869, #2b5e7e, #3f7593, #548da8, #6aa5bd);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;*/
+	}
+	h2 {
+		font-size: 6rem;
+		font-family: $subFont;
+		font-weight: 700;
+	}
+	span.gradient {
+		background: linear-gradient(to right bottom, #164869, #2b5e7e, #5b93b2, #7ab4d0, #b2e9ff);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
@@ -188,6 +257,7 @@ $subFont: 'Raleway', sans-serif;
 		font-size: 1.5rem;
 		color: $primaryColor;
 		font-family: $subFont;
+		font-weight: 700;
 		padding: .8rem 2rem;
 		border: 1px solid $primaryColor;
 		width: 100%;
@@ -1021,6 +1091,7 @@ $subFont: 'Raleway', sans-serif;
 
 #grand-parent {
 	height: 100vh;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 }

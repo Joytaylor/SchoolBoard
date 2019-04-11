@@ -5,10 +5,13 @@
 @import url("https://fonts.googleapis.com/css?family=Syncopate");
 /*Formalities*/
 /*Global Styles*/
+body {
+  background-color: white;
+}
+
 .card {
   position: absolute;
-  z-index: -100;
-  width: 80rem;
+  z-index: -1;
   max-width: 300px;
   min-width: 20px;
   opacity: 0;
@@ -19,7 +22,7 @@
 }
 .card-primary .card-header {
   background-color: #164869;
-  color: white;
+  color: rgba(255, 255, 255, 0.52);
   font-family: "Raleway", sans-serif;
 }
 .card-primary .card-title {
@@ -28,12 +31,13 @@
   font-weight: 700;
 }
 .card-primary .card-body {
-  background-color: rgba(22, 72, 105, 0.8);
-  color: white;
+  background-color: rgba(13, 37, 52, 0.75);
+  color: rgba(16, 46, 65, 0.63);
 }
 .card-primary .card-btn {
-  background-color: white;
-  color: #164869;
+  background: none;
+  color: rgba(16, 46, 65, 0.63);
+  border: 1px solid rgba(16, 46, 65, 0.63);
   width: 100%;
 }
 
@@ -42,7 +46,7 @@
 }
 .card-secondary .card-header {
   background-color: #6AA5BD;
-  color: white;
+  color: rgba(255, 255, 255, 0.52);
   font-family: "Raleway", sans-serif;
 }
 .card-secondary .card-title {
@@ -51,12 +55,13 @@
   font-weight: 700;
 }
 .card-secondary .card-body {
-  background-color: rgba(106, 165, 189, 0.82);
-  color: white;
+  background-color: rgba(71, 112, 129, 0.82);
+  color: rgba(53, 78, 88, 0.47);
 }
 .card-secondary .card-btn {
-  background-color: white;
-  color: #6AA5BD;
+  background: none;
+  border: 1px solid rgba(53, 78, 88, 0.49);
+  color: rgba(53, 78, 88, 0.41);
   width: 100%;
 }
 
@@ -65,7 +70,7 @@
 }
 .card-tertiary .card-header {
   background-color: #AE445D;
-  color: white;
+  color: rgba(255, 255, 255, 0.67);
   font-family: "Raleway", sans-serif;
 }
 .card-tertiary .card-title {
@@ -74,17 +79,67 @@
   font-weight: 700;
 }
 .card-tertiary .card-body {
-  background-color: rgba(174, 68, 93, 0.77);
-  color: white;
+  background-color: rgba(90, 36, 49, 0.77);
+  color: rgba(100, 37, 52, 0.49);
 }
 .card-tertiary .card-btn {
-  background-color: white;
-  color: #AE445D;
+  background: none;
+  border: 1px solid rgba(100, 37, 52, 0.49);
+  color: rgba(100, 37, 52, 0.49);
+  width: 100%;
+}
+
+.card-quaternary {
+  border: 1px solid #657c17;
+}
+.card-quaternary .card-header {
+  background-color: #4b5c11;
+  color: rgba(255, 255, 255, 0.67);
+  font-family: "Raleway", sans-serif;
+}
+.card-quaternary .card-title {
+  font-family: "Raleway", sans-serif;
+  padding: 1rem;
+  font-weight: 700;
+}
+.card-quaternary .card-body {
+  background-color: rgba(51, 62, 13, 0.66);
+  color: rgba(45, 56, 10, 0.49);
+}
+.card-quaternary .card-btn {
+  background: none;
+  border: 1px solid rgba(45, 56, 10, 0.49);
+  color: rgba(45, 56, 10, 0.49);
+  width: 100%;
+}
+
+.card-quinary {
+  border: 1px solid #7c5c9d;
+}
+.card-quinary .card-header {
+  background-color: #4b385f;
+  color: rgba(255, 255, 255, 0.67);
+  font-family: "Raleway", sans-serif;
+}
+.card-quinary .card-title {
+  font-family: "Raleway", sans-serif;
+  padding: 1rem;
+  font-weight: 700;
+}
+.card-quinary .card-body {
+  background-color: rgba(78, 60, 96, 0.8);
+  color: rgba(73, 55, 92, 0.5);
+}
+.card-quinary .card-btn {
+  background: none;
+  border: 1px solid rgba(73, 55, 92, 0.5);
+  color: rgba(73, 55, 92, 0.5);
   width: 100%;
 }
 
 #index div#headbar {
   background-color: #164869;
+  border-bottom: 3px solid white;
   position: relative;
   z-index: 100;
 }
@@ -97,14 +152,9 @@
   align-items: center;
   justify-content: center;
 }
-#index div#headerItem {
+#index div#headerCol {
   padding-left: 3rem;
   padding-right: 3rem;
-}
-#index div.intro {
-  background: url("backpic.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 #index div.statement {
   background-color: #164869;
@@ -140,16 +190,30 @@
 #index div#envelope {
   position: relative;
 }
+#index div#mission {
+  padding-top: 20rem;
+  padding-bottom: 20rem;
+}
 #index img.logo {
   margin-top: 8%;
   margin-bottom: 8%;
 }
 #index h1 {
-  color: #164869;
+  color: white;
   font-size: 6rem;
   font-family: "Cinzel Decorative", serif;
   font-weight: 700;
-  background: linear-gradient(to right bottom, #164869, #2b5e7e, #3f7593, #548da8, #6aa5bd);
+  /*background: linear-gradient(to right bottom, #164869, #2b5e7e, #3f7593, #548da8, #6aa5bd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+}
+#index h2 {
+  font-size: 6rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+}
+#index span.gradient {
+  background: linear-gradient(to right bottom, #164869, #2b5e7e, #5b93b2, #7ab4d0, #b2e9ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -164,6 +228,7 @@
   font-size: 1.5rem;
   color: #164869;
   font-family: "Raleway", sans-serif;
+  font-weight: 700;
   padding: 0.8rem 2rem;
   border: 1px solid #164869;
   width: 100%;
@@ -965,6 +1030,7 @@
 
 #grand-parent {
   height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
