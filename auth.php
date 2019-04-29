@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = test_input($_POST['username']);
 	$password = test_input($_POST['password']);
 	
-	$stmt = $conn->prepare("SELECT `username` FROM Users WHERE `username` = ?");
+	$stmt = $conn->prepare("SELECT `password` FROM Users WHERE `username` = ?");
 	$stmt -> bind_param("s", $username);
 	$stmt->execute();
 	$stmt-> store_result();
@@ -19,9 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$stmt->close();
 
 
-	$row = mysqli_fetch_assoc($result);
-	$fetchedPassword = $row["password"];
-	if (password_verify($password, $fetchedPassword)) {
+	if (password_verify($password, $result)) {
 		$cookie_value = $username;
 		$sql =  "SELECT `user_id` FROM Users WHERE `username` = '$username'";
 		$result = $conn->query($sql) or die($conn->error);

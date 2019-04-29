@@ -105,6 +105,7 @@ body {
             $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2'";
             $result = mysqli_query($conn, $sql);
             $numrows = mysqli_num_rows($result);
+	//delete the $teach == true
 			if ($teach == true && $numrows == 0) {
 				echo "<p class = 'null'>No questions asked yet</p>";
 			}

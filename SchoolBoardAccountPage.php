@@ -71,7 +71,7 @@ function logout() {
 		$sql = "SELECT `name` FROM Users WHERE `username` = '". $_COOKIE['user']."'";
 		$result = $conn->query($sql) or die($conn ->error);
 		$row = $result->fetch_assoc();
-		echo $row['name'];
+		echo stripslashes($row['name']);
 
 		?>,</h3>
 	</div>
@@ -115,7 +115,7 @@ function logout() {
 		$sql= "SELECT * FROM Classes WHERE `subject` = 'in2'";
 		 $result = $conn->query($sql) or die($conn->error);
 			 while($row = $result->fetch_assoc()) {
-				 echo "<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4>". $row['subject']."</h4></div><div class = 'launch'><h5><a href = ".$row['subject'].".php>Launch</a></h5></div></div></div>";
+				 echo "<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4>". stripslashes($row['subject'])."</h4></div><div class = 'launch'><h5><a href = ".stripslashes($row['subject']).".php>Launch</a></h5></div></div></div>";
 			 }
 	?>
 

@@ -14,8 +14,8 @@ function createDiv(id, tags, question, cardType) {
 	"</div>";
 	return div;
 }
-
-$(function() {
+//Almost all the code here, code for generating random positions for all the cards
+function pasteRandom() {
 	//info about
 	var docHeight = $("#header").outerHeight(true);
 	var docWidth = $("#header").outerWidth(true);
@@ -45,4 +45,13 @@ $(function() {
 			$("#card" + i).delay(80*(i+1)).fadeTo(900, 1);
 		}
 	});
+}
+//darkens the background after all the divs have been pasted
+function darkenBack() {
+	$("#grand-parent").addClass("bg-dark");
+}
+
+$(function() {
+	setTimeout(pasteRandom, 400);
+	setTimeout(darkenBack, 2500);
 });

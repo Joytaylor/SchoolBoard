@@ -1,19 +1,20 @@
-/*Fonts (from Google Fonts)*/
+/*Font Links(from Google Fonts)*/
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
 @import url('https://fonts.googleapis.com/css?family=Cinzel');
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900');
 @import url('https://fonts.googleapis.com/css?family=Syncopate');
 
-/*Formalities*/
 //Colors
 $primaryColor: #164869;
 $secondaryColor: #6AA5BD;
 $tertiaryColor: #AE445D;
 $greyColor: #6c757d;
+
 //Fonts
 $headerFontDecorative: 'Cinzel Decorative', serif;
 $headerFont: 'Cinzel', serif;
 $subFont: 'Raleway', sans-serif;
+
 //mixins
 @mixin center {
 	margin: auto;
@@ -22,20 +23,16 @@ $subFont: 'Raleway', sans-serif;
 	justify-content: center;
 }
 
-/*Global Styles*/
-//Cards
-body {
-	background-color: white;
-}
+//Cards that pop up at the beginning (each type is for different color)
 .card {
 	position: absolute;
 	z-index: -1;
 	max-width: 300px;
 	min-width: 20px;
 	opacity: 0;
+	border: none;
 }
 .card-primary {
-	border: 1px solid $primaryColor;
 	.card-header {
 		background-color: $primaryColor;
 		color: rgba(255, 255, 255, 0.52);
@@ -47,8 +44,8 @@ body {
 		font-weight: 700;
 	}
 	.card-body {
-		background-color: rgba(13, 37, 52, 0.75);
-		color: rgba(16, 46, 65, 0.63);
+		background-color: rgba(37, 85, 116, 0.75);
+		color: rgba(28, 76, 106, 0.63);
 	}
 	.card-btn {
 		background: none;
@@ -58,7 +55,6 @@ body {
 	}
 }
 .card-secondary {
-	border: 1px solid $secondaryColor;
 	.card-header {
 		background-color: $secondaryColor;
 		color: rgba(255, 255, 255, 0.52);
@@ -81,7 +77,6 @@ body {
 	}
 }
 .card-tertiary {
-	border: 1px solid $tertiaryColor;
 	.card-header {
 		background-color: $tertiaryColor;
 		color: rgba(255, 255, 255, 0.67);
@@ -105,7 +100,6 @@ body {
 	}
 }
 .card-quaternary {
-	border: 1px solid #657c17;
 	.card-header {
 		background-color: #4b5c11;
 		color: rgba(255, 255, 255, 0.67);
@@ -129,7 +123,6 @@ body {
 	}
 }
 .card-quinary {
-	border: 1px solid #7c5c9d;
 	.card-header {
 		background-color: #4b385f;
 		color: rgba(255, 255, 255, 0.67);
@@ -152,39 +145,33 @@ body {
 		width: 100%;
 	}
 }
+
+//styles for index.html
 #index {
 	//div styles
-	div {
-		&#headbar {
+	#headbar {
 			background-color: $primaryColor;
 			border-bottom: 3px solid white;
 			position: relative;
 			z-index: 100;
 		}
-		&#header {
+	#header {
 			padding-top: 6rem;
 			padding-bottom: 6rem;
 			flex-grow: 1;
 			@include center;
 		}
-		&#headerCol {
-			padding-left: 3rem;
-			padding-right: 3rem;
-		}
-		&#headerRow {
-		}
-
-		&.statement {
+	.statement {
 			background-color: $primaryColor;
 			color: white;
 			padding: 3%;
 		}
-		&.button {
+	.button {
 			transition-duration: 0.15s;
 			-webkit-transition-duration: 0.15s;
 			height: 100%;
 		}
-		&.button:hover {
+	.button:hover {
 			a {
 				color: white;
 				width: 100%;
@@ -193,43 +180,42 @@ body {
 				background-color: $primaryColor;
 			}
 		}
-		#login {
+	#login {
 			a {
 				border: 1px solid $greyColor;
 			}
 		}
-		#login:hover {
+	#login:hover {
 			a {
 				background-color: $greyColor;
 				color: white;
 			}
 		}
-		&#class-img {
+	#class-img {
 			overflow: auto;
 			height: 100%;
 		}
-		&#cardBackground {
+	#cardBackground {
 			overflow: hidden;
 		}
-		&#envelope {
+	#envelope {
 			position: relative;
-
 		}
-		&#mission {
+	#mission {
 			padding-top: 20rem;
 			padding-bottom: 20rem;
 		}
 
-	}
-	//img
+	//img styles
 	img.logo {
 		margin-top: 8%;
 		margin-bottom: 8%;
 	}
-	//text
+
+	//text styles
 	h1 {
 		color: white;
-		font-size: 6rem;
+		font-size: 7rem;
 		font-family: $headerFontDecorative;
 		font-weight: 700;
 		/*background: linear-gradient(to right bottom, #164869, #2b5e7e, #3f7593, #548da8, #6aa5bd);
@@ -264,6 +250,154 @@ body {
 	}
 	#login a {
 		color: $greyColor;
+	}
+
+	//Misc
+	.bg-dark {
+		will-change: background;
+		transition: background 1s;
+	}
+}
+
+//styles for the signup form
+#newform {
+	form {
+		font-family: 'Raleway', sans-serif;
+		font-size: 2.5vw;
+	}
+	div#sensitiveInfo {
+		background: linear-gradient(to right bottom, #164869, #2b5e7e, #5b93b2, #7ab4d0, #b2e9ff);
+		width: 100%;
+	}
+	/*styling allllllllll the inputs here*/
+	select {
+		font-family: 'Raleway', sans-serif;
+		font-size: 2.3vw;
+		width: 15rem;
+	}
+	option {
+		font-size: 1.5vw;
+	}
+	option:hover {
+		background-color: $primaryColor;
+		box-shadow: 0 0 10px 100px $primaryColor inset;
+		color: white;
+	}
+	input {
+		text-align: center;
+	}
+	input[type = 'submit'] {
+		height: 100px;
+		width: 20%;
+		background-color: $primaryColor;
+		color: white;
+		border: none;
+		font-family: 'Raleway', sans-serif;
+		font-size: 1.3vw;
+		margin: 2%;
+	}
+	input[type = 'submit']:hover {
+		color: $primaryColor;
+		background-color: white;
+		border: 1px solid $primaryColor;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+	}
+	input.names {
+		border: none;
+		border-bottom: 1px solid $primaryColor;
+		margin-bottom: 1.5%;
+		margin-top: 1.5%;
+		width: 17%;
+		font-size: 2vw;
+		font-family: 'Raleway', sans-serif;
+		color: $primaryColor;
+	}
+	input.names:focus {
+		width: 20%;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+	}
+
+	#sensitiveInfo input {
+		background: none;
+		color: white;
+		border-bottom: 1px solid white;
+		font-family: 'Raleway', sans-serif;
+		padding: 3rem;
+
+	}
+	#sensitiveInfo ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	  color: ghostwhite;
+	  opacity: 1; /* Firefox */
+	}
+
+	#sensitiveInfo :-ms-input-placeholder { /* Internet Explorer 10-11 */
+	  color: ghostwhite;
+	}
+
+	#sensitiveInfo ::-ms-input-placeholder { /* Microsoft Edge */
+	  color: ghostwhite;
+	}
+	#sensitiveInfo p {
+		color: whitesmoke;
+	}
+
+
+	/*making sure that the text always looks clean*/
+	h1 {
+		color: $primaryColor;
+		font-size: 10rem;
+		font-weight: 700;
+		font-family: $subFont;
+
+
+	}
+	p {
+		font-family: 'Raleway', sans-serif;
+		color: $primaryColor;
+		margin-top: 1%;
+		font-size: 1.6vw;
+		font-weight: 600;
+	}
+
+
+
+	/*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
+	#message {
+		display:none;
+		background: #f1f1f1;
+		color: #000;
+		position: relative;
+		padding: 20px;
+		margin-top: 10px;
+	}
+
+	#message p {
+		padding: 10px 35px;
+		font-size: 18px;
+	}
+
+	/* Add a green text color and a checkmark when the requirements are right */
+	.valid {
+		color: green;
+	}
+
+	.valid:before {
+		position: relative;
+		left: -35px;
+		content: "✔";
+	}
+
+	/* Add a red text color and an "x" when the requirements are wrong */
+	.invalid {
+		color: red;
+	}
+
+	.invalid:before {
+		position: relative;
+		left: -35px;
+		content: "✖";
 	}
 }
 
@@ -1094,4 +1228,6 @@ body {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+	position: relative;
+	z-index: -5;
 }

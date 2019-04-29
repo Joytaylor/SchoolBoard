@@ -1,9 +1,14 @@
-@charset "UTF-8";
-/*Font Links(from Google Fonts)*/
+/*Fonts (from Google Fonts)*/
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700,900");
 @import url("https://fonts.googleapis.com/css?family=Cinzel");
 @import url("https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900");
 @import url("https://fonts.googleapis.com/css?family=Syncopate");
+/*Formalities*/
+/*Global Styles*/
+body {
+  background-color: white;
+}
+
 .card {
   position: absolute;
   z-index: -1;
@@ -24,8 +29,8 @@
   font-weight: 700;
 }
 .card-primary .card-body {
-  background-color: rgba(37, 85, 116, 0.75);
-  color: rgba(28, 76, 106, 0.63);
+  background-color: rgba(13, 37, 52, 0.75);
+  color: rgba(16, 46, 65, 0.63);
 }
 .card-primary .card-btn {
   background: none;
@@ -118,13 +123,13 @@
   width: 100%;
 }
 
-#index #headbar {
+#index div#headbar {
   background-color: #164869;
   border-bottom: 3px solid white;
   position: relative;
   z-index: 100;
 }
-#index #header {
+#index div#header {
   padding-top: 6rem;
   padding-bottom: 6rem;
   flex-grow: 1;
@@ -133,41 +138,41 @@
   align-items: center;
   justify-content: center;
 }
-#index .statement {
+#index div.statement {
   background-color: #164869;
   color: white;
   padding: 3%;
 }
-#index .button {
+#index div.button {
   transition-duration: 0.15s;
   -webkit-transition-duration: 0.15s;
   height: 100%;
 }
-#index .button:hover a {
+#index div.button:hover a {
   color: white;
   width: 100%;
   transition-duration: 0.15s;
   -webkit-transition-duration: 0.15s;
   background-color: #164869;
 }
-#index #login a {
+#index div #login a {
   border: 1px solid #6c757d;
 }
-#index #login:hover a {
+#index div #login:hover a {
   background-color: #6c757d;
   color: white;
 }
-#index #class-img {
+#index div#class-img {
   overflow: auto;
   height: 100%;
 }
-#index #cardBackground {
+#index div#cardBackground {
   overflow: hidden;
 }
-#index #envelope {
+#index div#envelope {
   position: relative;
 }
-#index #mission {
+#index div#mission {
   padding-top: 20rem;
   padding-bottom: 20rem;
 }
@@ -212,141 +217,6 @@
 }
 #index #login a {
   color: #6c757d;
-}
-#index .bg-dark {
-  will-change: background;
-  transition: background 1s;
-}
-
-#newform {
-  /*styling allllllllll the inputs here*/
-  /*making sure that the text always looks clean*/
-  /*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
-  /* Add a green text color and a checkmark when the requirements are right */
-  /* Add a red text color and an "x" when the requirements are wrong */
-}
-#newform form {
-  font-family: "Raleway", sans-serif;
-  font-size: 2.5vw;
-}
-#newform div#sensitiveInfo {
-  background: linear-gradient(to right bottom, #164869, #2b5e7e, #5b93b2, #7ab4d0, #b2e9ff);
-  width: 100%;
-}
-#newform select {
-  font-family: "Raleway", sans-serif;
-  font-size: 2.3vw;
-  width: 15rem;
-}
-#newform option {
-  font-size: 1.5vw;
-}
-#newform option:hover {
-  background-color: #164869;
-  box-shadow: 0 0 10px 100px #164869 inset;
-  color: white;
-}
-#newform input {
-  text-align: center;
-}
-#newform input[type=submit] {
-  height: 100px;
-  width: 20%;
-  background-color: #164869;
-  color: white;
-  border: none;
-  font-family: "Raleway", sans-serif;
-  font-size: 1.3vw;
-  margin: 2%;
-}
-#newform input[type=submit]:hover {
-  color: #164869;
-  background-color: white;
-  border: 1px solid #164869;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
-  transition-duration: 0.4s;
-}
-#newform input.names {
-  border: none;
-  border-bottom: 1px solid #164869;
-  margin-bottom: 1.5%;
-  margin-top: 1.5%;
-  width: 17%;
-  font-size: 2vw;
-  font-family: "Raleway", sans-serif;
-  color: #164869;
-}
-#newform input.names:focus {
-  width: 20%;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
-  transition-duration: 0.4s;
-}
-#newform #sensitiveInfo input {
-  background: none;
-  color: white;
-  border-bottom: 1px solid white;
-  font-family: "Raleway", sans-serif;
-  padding: 3rem;
-}
-#newform #sensitiveInfo ::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: ghostwhite;
-  opacity: 1;
-  /* Firefox */
-}
-#newform #sensitiveInfo :-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: ghostwhite;
-}
-#newform #sensitiveInfo ::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: ghostwhite;
-}
-#newform #sensitiveInfo p {
-  color: whitesmoke;
-}
-#newform h1 {
-  color: #164869;
-  font-size: 10rem;
-  font-weight: 700;
-  font-family: "Raleway", sans-serif;
-}
-#newform p {
-  font-family: "Raleway", sans-serif;
-  color: #164869;
-  margin-top: 1%;
-  font-size: 1.6vw;
-  font-weight: 600;
-}
-#newform #message {
-  display: none;
-  background: #f1f1f1;
-  color: #000;
-  position: relative;
-  padding: 20px;
-  margin-top: 10px;
-}
-#newform #message p {
-  padding: 10px 35px;
-  font-size: 18px;
-}
-#newform .valid {
-  color: green;
-}
-#newform .valid:before {
-  position: relative;
-  left: -35px;
-  content: "✔";
-}
-#newform .invalid {
-  color: red;
-}
-#newform .invalid:before {
-  position: relative;
-  left: -35px;
-  content: "✖";
 }
 
 #account div.greeting {
@@ -1149,4 +1019,4 @@
   z-index: -5;
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=styles.cs.map */
