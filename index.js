@@ -72,6 +72,10 @@ const Users = db.collection('Users');
 
 const Enrollments = db.collection('Enrollments');
 
+const Questions = db.collection('Questions');
+
+const Teacher_Responses = db.collection('Teacher_Responses');
+
 app.get('/', function(req, res){
 	
 	res.render("index")
@@ -80,41 +84,14 @@ app.get('/', function(req, res){
 
 app.get('/SchoolBoardAccountPage', function(req, res){
 	
-	if(req.signedCookies.user_id){
-		var user_id = req.signedCookies.user_id;
-		console.log(user_id)
-		Users.doc(user_id).get().then(doc => {
-			if (doc.exists) {
-				var user_data = doc.data();
-					user_data.first_name = stripslashes(user_data.first_name)
-			Enrollments.where('user_id','==',user_id).get().then(function(resultsOfQuery){
-				if(resultsOfQuery.size > 0){
-					var ids = [];
-					resultsOfQuery.forEach(function(doc){
-						ids.push(doc.data().class_id)
-					})
-					
-					var documentarray = []
-					getDocumentsByID(Classes, ids, documentarray, function(documents){
-						res.render("SchoolBoardAccountPage", {user_data: user_data, class_documents: documents})
-					})
-				}
-				else{
-					
-					res.render("SchoolBoardAccountPage", {user_data: user_data, class_documents: [{class_name: "none"}]})
-				}
-			})		
-				
-			} else {
-				var err = "no user";
-				res.redirect('/SchoolBoardLogInPage?err='+err)
-			}
-		})
-	}
-	else {
-				var err = "no cookies";
-				res.redirect('/SchoolBoardLogInPage?err='+err)
-			}
+	getUserAndClassInfo(res, req, function(result){
+		if(result.user_data==null){
+			res.redirect('/SchoolBoardLogInPage?err='+'no_user')
+		}
+		else{
+			res.render("SchoolBoardAccountPage", result)
+		}
+	})
 });
 
 app.get('/SchoolBoardLogInPage', function(req, res){
@@ -126,6 +103,50 @@ app.get('/SchoolBoardLogInPage', function(req, res){
 	
 	
 	res.render('SchoolBoardLogInPage', {err: err})
+
+});
+
+app.get('/classPage', function(req, res){
+	
+	
+	if(req.query && req.query.id){
+		var class_id = req.query.id
+		getUserInfo(res, req, function(user_data){
+			var query = Questions.where("class_id", "==", class_id);
+			query.get().then(function(questions){
+				var question_info = []
+				var question_ids = []
+				questions.forEach(function(question){
+					var question_data = question.data()
+					question_data.id = question.id
+					question_data.responses = []
+					question_info.push(question_data)
+					question_ids.push(question.id)
+				})
+				getDocumentsByFeature(Teacher_Responses, "question_id", question_ids, [], function(responses){
+					responses.forEach(function(response){
+						
+						question_info.forEach(function(question){
+							if(question.id == response.question_id){
+								console.log(response)
+								question.responses.push(response)
+							}
+						})
+					})
+					//keep working here
+					console.log(user_data)
+					console.log(question_info[0].responses)
+					//res.render('classPage',{user_data: user_data, question_info: question_info})
+				})
+			})
+		})
+	}
+	else{
+		res.redirect("/")
+	}
+	
+	
+	
 
 });
 
@@ -390,9 +411,30 @@ function getIds(query, callback){
 function getDocumentsByID(collection, ids, documents, callback){
 	if(ids.length > 0){
 		collection.doc(ids[0]).get().then(doc => {
-			documents.push(doc.data())
+			var docData = doc.data()
+			docData.id = ids[0];
+			documents.push(docData)
 			ids.shift()
 			return getDocumentsByID(collection, ids, documents, callback)
+		})
+	}
+	else{
+		callback(documents);
+	}
+}
+
+function getDocumentsByFeature(collection, feature_title, features, documents, callback){
+	if(features.length > 0){
+		
+		collection.where(feature_title,'==',features[0]).get().then(function(resultsOfQuery){
+			resultsOfQuery.forEach(function(doc){
+			var docData = doc.data()
+			
+			documents.push(docData)
+			features.shift()
+			
+			})
+			return getDocumentsByFeature(collection, feature_title, features, documents, callback)
 		})
 	}
 	else{
@@ -434,7 +476,52 @@ function htmlspecialchars(text) {
 
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
-
+function getUserInfo(res, req, callback){
+	if(req.signedCookies.user_id){
+		var user_id = req.signedCookies.user_id;
+		Users.doc(user_id).get().then(doc => {
+			if (doc.exists) {
+				var user_data = doc.data();
+				user_data.first_name = stripslashes(user_data.first_name)
+				user_data.id = user_id
+				callback(user_data)		
+			} else {
+				callback(null)
+			}
+		})
+	}
+	else {		
+		callback(null)		
+	}
+}
+function getUserAndClassInfo(res, req, callback){
+	getUserInfo(res, req, function(user_data){
+				if(user_data != null){
+				user_id = user_data.id ;
+				Enrollments.where('user_id','==',user_id).get().then(function(resultsOfQuery){
+					if(resultsOfQuery.size > 0){
+						var ids = [];
+						resultsOfQuery.forEach(function(doc){
+							ids.push(doc.data().class_id)
+						})
+						
+						var documentarray = []
+						getDocumentsByID(Classes, ids, documentarray, function(documents){
+							callback({user_data: user_data, class_documents: documents})
+							
+						})
+					}
+					else{
+						callback({user_data: user_data, class_documents: [{class_name: "none", id:null}]})
+					}
+				})		
+				}
+				else{
+					callback({user_data: null, class_documents: [{class_name: "none", id:null}]})
+				}
+		})
+	
+}
 
 
 

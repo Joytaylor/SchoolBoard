@@ -110,14 +110,18 @@ function logout() {
 		
 	<%var i = 0;
 		class_documents.forEach(function(document){%>
-			<%if(i==0){%>
+			<%if(document.id==null){%>
 			<div class="item active">
-			<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4><%=document.class_name%></h4></div><div class = 'launch'><h5><a href = '<%=document.class_name+".php"%>'>Launch</a></h5></div></div></div>
+			<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4><%=document.class_name%></h4></div><div class = 'launch'></div></div></div>
+			</div>
+			<%}else if(i==0){%>
+			<div class="item active">
+			<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4><%=document.class_name%></h4></div><div class = 'launch'><h5><a href = '/classPage?id=<%=document.id%>'>Launch</a></h5></div></div></div>
 			</div>
 			
 			<%}else{%>
 			<div class="item">
-			<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4><%=document.class_name%></h4></div><div class = 'launch'><h5><a href = '<%=document.class_name+".php"%>'>Launch</a></h5></div></div></div>
+			<div class = 'envelope'><div id = 'box' class = 'NetandWall'><div class = 'name'><h4><%=document.class_name%></h4></div><div class = 'launch'><h5><a href = '/classPage?id=<%=document.id%>'>Launch</a></h5></div></div></div>
 			</div>
 			<%}%>
 		<%i++;})%>
