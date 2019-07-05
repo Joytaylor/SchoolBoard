@@ -89,6 +89,11 @@ app.get('/SchoolBoardAccountPage', function(req, res){
 			res.redirect('/SchoolBoardLogInPage?err='+'no_user')
 		}
 		else{
+			if(req.query && req.query.err){
+				err = "There is something wrong with the class you were trying to reach. Please contact your SchoolBoard administrator.";
+				result.err = err
+			}
+			
 			res.render("SchoolBoardAccountPage", result)
 		}
 	})
@@ -112,32 +117,44 @@ app.get('/classPage', function(req, res){
 	if(req.query && req.query.id){
 		var class_id = req.query.id
 		getUserInfo(res, req, function(user_data){
-			var query = Questions.where("class_id", "==", class_id);
-			query.get().then(function(questions){
-				var question_info = []
-				var question_ids = []
-				questions.forEach(function(question){
-					var question_data = question.data()
-					question_data.id = question.id
-					question_data.responses = []
-					question_info.push(question_data)
-					question_ids.push(question.id)
-				})
-				getDocumentsByFeature(Teacher_Responses, "question_id", question_ids, [], function(responses){
-					responses.forEach(function(response){
-						
-						question_info.forEach(function(question){
-							if(question.id == response.question_id){
-								console.log(response)
-								question.responses.push(response)
+			getClassInfo(class_id, function(class_data){	
+				if(class_data != null){
+					var query = Questions.where("class_id", "==", class_id);
+					query.get().then(function(questions){
+						var question_info = []
+						var question_ids = []
+						questions.forEach(function(question){
+							var question_data = question.data()
+							question_data.id = question.id
+							question_data.responses = []
+							question_info.push(question_data)
+							question_ids.push(question.id)
+						})
+						getDocumentsByFeature(Teacher_Responses, "question_id", question_ids, [], function(responses){
+							responses.forEach(function(response){
+								
+								question_info.forEach(function(question){
+									if(question.id == response.question_id){
+										console.log(response)
+										question.responses.push(response)
+									}
+								})
+							})
+							//keep working here
+							if(user_data==null){
+								res.redirect('/SchoolBoardLogInPage?err='+'no_user')
 							}
+							else {
+								res.render('classPage',{class_data: class_data, user_data: user_data, question_info: question_info})
+							}
+							
+							
 						})
 					})
-					//keep working here
-					console.log(user_data)
-					console.log(question_info[0].responses)
-					//res.render('classPage',{user_data: user_data, question_info: question_info})
-				})
+				}
+				else{
+					res.redirect('/SchoolBoardAccountPage?err='+'no_class')
+				}
 			})
 		})
 	}
@@ -494,6 +511,22 @@ function getUserInfo(res, req, callback){
 		callback(null)		
 	}
 }
+
+function getClassInfo(class_id, callback){
+	
+	Classes.doc(class_id).get().then(doc => {
+		if (doc.exists) {
+			var class_data = doc.data();
+			
+			class_data.id = class_id
+			callback(class_data)		
+		} else {
+			callback(null)
+		}
+	})
+	
+}
+
 function getUserAndClassInfo(res, req, callback){
 	getUserInfo(res, req, function(user_data){
 				if(user_data != null){
@@ -507,17 +540,17 @@ function getUserAndClassInfo(res, req, callback){
 						
 						var documentarray = []
 						getDocumentsByID(Classes, ids, documentarray, function(documents){
-							callback({user_data: user_data, class_documents: documents})
+							callback({user_data: user_data, class_documents: documents, err: ''})
 							
 						})
 					}
 					else{
-						callback({user_data: user_data, class_documents: [{class_name: "none", id:null}]})
+						callback({user_data: user_data, class_documents: [{class_name: "none", id:null}], err: ''})
 					}
 				})		
 				}
 				else{
-					callback({user_data: null, class_documents: [{class_name: "none", id:null}]})
+					callback({user_data: null, class_documents: [{class_name: "none", id:null}], err: ''})
 				}
 		})
 	
