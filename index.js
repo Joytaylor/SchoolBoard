@@ -76,6 +76,9 @@ const Questions = db.collection('Questions');
 
 const Teacher_Responses = db.collection('Teacher_Responses');
 
+const Question_Votes = db.collection('Question_Votes');
+
+
 app.get('/', function(req, res){
 	
 	res.render("index")
@@ -111,6 +114,42 @@ app.get('/SchoolBoardLogInPage', function(req, res){
 
 });
 
+app.post('/vote', function(req, res){
+	if(req.signedCookies.user_id){
+		var user_id = req.signedCookies.user_id
+		var question_id = req.body.question_id
+		var vote_value = req.body.vote_value
+		var query = Question_Votes.where("user_id", "==", user_id).where("question_id", "==", question_id);
+		query.get().then(function(question_votes){
+			if(question_votes.size == 0){
+				insertQuestion_Vote(user_id, question_id, vote_value, function(){
+					getVotes(question_id, function(votes){
+						console.log(votes)
+						res.send({votes: votes})
+					})
+				})
+				
+			}
+			else{
+				question_votes.forEach(function(question_vote){
+					var question_vote_id = question_vote.id
+					Question_Votes.doc(question_vote_id).update({
+						vote_value: vote_value
+					}).then(function(){
+						getVotes(question_id, function(votes){
+							console.log(votes)
+							res.send({votes: votes})
+						})
+					})
+				})
+				
+				
+				
+			}
+		})
+	}
+})
+
 app.get('/classPage', function(req, res){
 	
 	
@@ -135,11 +174,20 @@ app.get('/classPage', function(req, res){
 								
 								question_info.forEach(function(question){
 									if(question.id == response.question_id){
-										console.log(response)
+										//console.log(response)
 										question.responses.push(response)
 									}
 								})
+								
 							})
+							question_info = sortByTimestamp(question_info)
+							
+							question_info.forEach(function(question){
+								
+								question.responses = sortByVotes(question.responses)
+								console.log(question.responses)	
+							})
+							
 							//keep working here
 							if(user_data==null){
 								res.redirect('/SchoolBoardLogInPage?err='+'no_user')
@@ -166,6 +214,59 @@ app.get('/classPage', function(req, res){
 	
 
 });
+
+
+
+function sortByVotes(responses)
+{
+
+    var swapp;
+    var lastIndex = responses.length-1;
+    var newResponses = responses;
+    do {
+        swapp = false;
+        for (var i=0; i < lastIndex; i++)
+        {
+            if (newResponses[i].votes < newResponses[i+1].votes)
+            {
+				
+               var temp = newResponses[i];
+               newResponses[i] = newResponses[i+1];
+               newResponses[i+1] = temp;
+               swapp = true;
+            }
+        }
+        lastIndex--;
+    } while (swapp);
+ return newResponses; 
+}
+
+function sortByTimestamp(responses)
+{
+	
+    var swapp;
+    var lastIndex = responses.length-1;
+    var newResponses = responses;
+    do {
+		
+        swapp = false;
+        for (var i=0; i < lastIndex; i++)
+        {
+			
+            if (newResponses[i].date_of_ask._seconds > newResponses[i+1].date_of_ask._seconds)
+            {
+				
+               var temp = newResponses[i];
+               newResponses[i] = newResponses[i+1];
+               newResponses[i+1] = temp;
+               swapp = true;
+            }
+        }
+        lastIndex--;
+    } while (swapp);
+ return newResponses; 
+}
+
 
 app.get('/newform', function(req, res){
 	
@@ -337,6 +438,16 @@ function insertSubject(subject_name){
 	});
 }
 
+function insertQuestion_Vote(user_id, question_id, vote_value, callback){
+	Question_Votes.add({
+		user_id: user_id,
+		question_id: question_id,
+		vote_value: vote_value
+	}).then(function(){
+		callback()
+	});
+}
+
 function insertDistrict(district_name){
 	Districts.add({
 		district_name: district_name
@@ -411,6 +522,15 @@ function checkIfExists(query, callback){
 		else{
 			callback(false);
 		}
+	})
+}
+
+
+
+function checkIfEnrolled(user_id, class_id, callback){
+	var query = Enrollments.where("user_id", "==", user_id).where("class_id", "==", class_id);
+	checkIfExists(query, function(isEnrolled){
+		callback(isEnrolled)
 	})
 }
 
@@ -527,36 +647,66 @@ function getClassInfo(class_id, callback){
 	
 }
 
-function getUserAndClassInfo(res, req, callback){
-	getUserInfo(res, req, function(user_data){
-				if(user_data != null){
-				user_id = user_data.id ;
-				Enrollments.where('user_id','==',user_id).get().then(function(resultsOfQuery){
-					if(resultsOfQuery.size > 0){
-						var ids = [];
-						resultsOfQuery.forEach(function(doc){
-							ids.push(doc.data().class_id)
-						})
-						
-						var documentarray = []
-						getDocumentsByID(Classes, ids, documentarray, function(documents){
-							callback({user_data: user_data, class_documents: documents, err: ''})
-							
-						})
-					}
-					else{
-						callback({user_data: user_data, class_documents: [{class_name: "none", id:null}], err: ''})
-					}
-				})		
-				}
-				else{
-					callback({user_data: null, class_documents: [{class_name: "none", id:null}], err: ''})
-				}
+function getClassIdsOfUser(user_id, callback){
+	var user_id_array = []
+	var documents = []
+	user_id_array.push(user_id)
+	getDocumentsByFeature(Enrollments, 'user_id', user_id_array, documents, function(enrollments){
+		var class_ids = []
+		enrollments.forEach(function(enrollment){
+			class_ids.push(enrollment.class_id)
 		})
-	
+		callback(class_ids)
+	})	
 }
 
+function getUserAndClassInfo(res, req, callback){
+	getUserInfo(res, req, function(user_data){
+		if(user_data != null){
+			user_id = user_data.id ;
+			getClassIdsOfUser(user_id, function(class_ids){
+				console.log(class_ids)
+				if(class_ids.length > 0){
+					var documentarray = []
+					getDocumentsByID(Classes, class_ids, documentarray, function(documents){
+						callback({user_data: user_data, class_documents: documents, err: ''})	
+					})
+				}
+				else{
+					callback({user_data: user_data, class_documents: [{class_name: "none", id:null}], err: ''})
+				}
+			})		
+		}
+		else{
+			callback({user_data: null, class_documents: [{class_name: "none", id:null}], err: ''})
+		}
+	})
+}
 
+function getVotes(question_id, callback){
+	var query = Question_Votes.where("question_id", "==", question_id);
+	query.get().then(function(question_votes){
+		if(question_votes.size == 0){
+			Questions.doc(question_id).update({
+				votes:0
+			}).then(function(){
+				callback(0)
+			})
+		}
+		else{
+			var votes = 0
+			question_votes.forEach(function(question_vote){
+				votes += parseInt(question_vote.data().vote_value);
+			})
+			
+			Questions.doc(question_id).update({
+				votes:votes
+			}).then(function(){
+				callback(votes)
+			})
+		}
+	})
+}
 
 
 

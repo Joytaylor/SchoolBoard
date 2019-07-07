@@ -46,6 +46,29 @@ body {
 <div class = "innerContainter">
 <div id = "ask" class = "ask"><a href = "IN2QuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
 	<script>
+		function upvote(anElement){
+			var question_id = anElement.getAttribute("data-question_id")
+			
+			$.ajax({
+				url:"/vote",
+				method:"Post",
+				data: {question_id: question_id, vote_value: 1},
+				success:function(data){
+					$("[data-vote_question_id="+question_id+"]").html(data.votes)
+				}
+			});
+		}
+		function downvote(anElement){
+			var question_id = anElement.getAttribute("data-question_id")
+			$.ajax({
+				url:"/vote",
+				method:"Post",
+				data: {question_id: question_id, vote_value: -1},
+				success:function(data){
+					$("[data-vote_question_id="+question_id+"]").html(data.votes)
+				}
+			});
+		}
 		function vote(div) {
 			var num = parseInt(document.getElementById("num_" + div).innerHTML);
 			document.getElementById("num_" + div).innerHTML = num + 1;
@@ -85,87 +108,57 @@ body {
 
 	</script>
 	<!--in the event that a question has to be deleted from the database, all of the question Id's will be thrown off. Proceed with caution-->
-	<?php
-        $teach = false;
-        $sql =  "SELECT `status` FROM Users WHERE `username` = '".$_COOKIE["user"] ."'";
-        $result = mysqli_query($conn, $sql);
-        $row = $result->fetch_assoc();
-        if( $row["status"] == "teacher"){
-            $teach= true;
-        }
-            echo "<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>";
-            static $num = 1;
-            $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2'";
-            $result = mysqli_query($conn, $sql);
-            $numrows = mysqli_num_rows($result);
-	//delete the $teach == true
-			if ($teach == true && $numrows == 0) {
-				echo "<p class = 'null'>No questions asked yet</p>";
-			}
-            for ($i = $numrows; $i >= 1; $i--) {
-                $sql= "SELECT * FROM `Question` WHERE `subject` = 'IN2' AND `questionid` = $i ORDER BY dateOfAsk ASC";
-                $result = mysqli_query($conn, $sql);
-                while($row = mysqli_fetch_assoc($result)) {
-                echo "<span id = 'div_$num'>
-                <div id = 'question'>";
-                    //make sure that teachers are not able to vote on questions, or I guess they could?
-                    if($teach == true){
-                        echo "
-                        <button class = 'answerButton' id = 'answerButton' onclick = visible('answerForm_$num','answerButton')>ANSWER</button>
-                        ";
-                    }
-                       echo "<div id = 'text'>
-                            <h6> ". $row['question']. "</h6>
+	<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>
+	<%var isTeacher = user_data.status == "teacher";
+		if(isTeacher == true && question_info.length == 0){%>
+			<p class = 'null'>No questions asked yet</p>
+		<%}
+	%>
+	<% 
+	var num = 1;
+	question_info.forEach(function(question){%>
+	<span id = 'div_<%=num%>'><div id = 'question'>
+	<%
+	if(isTeacher){%>
+	<button class = 'answerButton' id = 'answerButton' onclick = visible('answerForm_<%=num%>','answerButton')>ANSWER</button>
+	<%}%>
+	<div id = 'text'>
+                            <h6> <%=question.question%></h6>
                         </div>
                         <div class = 'vote'>
                             <div class = 'votecontainer'>
-                            <form id = 'voteform' method='POST' action='votes.php'>
-                                <span class = 'num' id = 'num_$num'>" . $row['votes'] . "</span>
-                                <input type = 'hidden' name = 'question' value=". $row['questionid']."><br>
+                            
+                                <span class = 'num' id = 'num_<%=num%>' data-vote_question_id='<%=question.id%>'> <%=question.votes%> </span>
+                                <input type = 'hidden' name = 'question' value="<%=question.id%>"><br>
 								<input type = 'hidden' name = 'class' value = '<%=class_data.class_name%>'><br>
-                                <input class = 'vote' id = 'vote_$num' type = 'submit' name = 'submit' value = 'VOTE' >
-                            </form>
+                                <input class = 'vote' id = 'vote_<%=num%>' data-question_id='<%=question.id%>' type = 'image' name = 'submit' onclick='upvote(this)' value = 'UP' >
+								<input class = 'vote' id = 'vote_<%=num%>' data-question_id='<%=question.id%>' type = 'image' name = 'submit' onclick='downvote(this)' value = 'DOWN' >
+                            
                             </div>
                         </div>
-                    </div>";
-                    if ($teach == true) {
-                        echo "
-                    <form class = 'answerForm' id = 'answerForm_$num' action='teacherprocess.php' method = 'POST'>
-                        <input type = 'hidden' name='question' value='".$row['question']."'>
+                    </div>
+					<%if(isTeacher){%>
+					<form class = 'answerForm' id = 'answerForm_<%=num%>' action='teacherprocess.php' method = 'POST'>
+                        <input type = 'hidden' name='question' value='<%=question.question%>'>
                         <input type='hidden' name='subject' value='<%=class_data.class_name%>'>
-						<input type='hidden' name='questionid' value='" . $row['questionid'] . "'>
+						<input type='hidden' name='questionid' value='<%=question.id%>'>
                         <textarea name='response' placeholder = 'Type your answer here'></textarea><br>
                         <input type = 'submit' name = 'submit' value = 'SUBMIT' id='submit'><br>
-                        <button id = 'closeButton' onclick = visible('answerForm_$num', 'closeButton')>CLOSE FORM</button>
-                    </form>";
-                    }
-                    echo "</span>";
-
-					$sql = "SELECT * FROM teacherResponses WHERE questionid ='" . $row['questionid'] . "' ORDER BY dateOfResponse DESC";
-					$result = mysqli_query($conn, $sql);
-					while ($row = mysqli_fetch_assoc($result)) {
-						echo "<div id = 'answer'><div id = 'text'><h6>". $row['teacherResponse']."</h6></div></div><br>";
-					}
-                    echo "<script>";
-                        $sql = "SELECT `studentHasVoted` FROM `studentVotes` WHERE `questionid` = $i AND `studentid` = ".
-												"'".$_COOKIE['user_id']."'";
-                        $result = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            if ($row['studentHasVoted'] == 1) {
-                                echo "disable('vote_$num');";
-                            }
-                        }
-                    echo "</script>";
-                    $num++;
-                    }
-}
-	 ?>
+                        <button id = 'closeButton' onclick = visible('answerForm_<%=num%>', 'closeButton')>CLOSE FORM</button>
+                    </form>
+					<%}%>
+					</span>
+					<%question.responses.forEach(function(response){%>
+						<div id = 'answer'><div id = 'text'><h6><%=response.teacher_response%></h6></div></div><br>
+					<%})%>
+	<%
+	num++;
+	})%>
+	
 		<h4><a class = "backLink" href = "SchoolBoardAccountPage.php">GO BACK TO ACCOUNT</a></h4>
-		<?php
-            if ($teach == true) {
-                echo "<script>removeElement('ask')</script>";
-            }
-    ?>
+		<%if(isTeacher){%>
+		<script>removeElement('ask')</script>
+		<%}%>
    </div>
 </div>
 </body>
