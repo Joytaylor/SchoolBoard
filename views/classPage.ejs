@@ -44,7 +44,7 @@ body {
 </div>
 <div class = "outerContainer">
 <div class = "innerContainter">
-<div id = "ask" class = "ask"><a href = "IN2QuestionPage.html"><h3>ASK A QUESTION</h3></a></div>
+<div id = "ask" class = "ask"><a href = "/IN2QuestionPage?id=<%=class_data.id%>"><h3>ASK A QUESTION</h3></a></div>
 	<script>
 		function upvote(anElement){
 			var question_id = anElement.getAttribute("data-question_id")
@@ -138,11 +138,12 @@ body {
                         </div>
                     </div>
 					<%if(isTeacher){%>
-					<form class = 'answerForm' id = 'answerForm_<%=num%>' action='teacherprocess.php' method = 'POST'>
+					<form class = 'answerForm' id = 'answerForm_<%=num%>' action='/addAnswer' method = 'POST'>
                         <input type = 'hidden' name='question' value='<%=question.question%>'>
                         <input type='hidden' name='subject' value='<%=class_data.class_name%>'>
-						<input type='hidden' name='questionid' value='<%=question.id%>'>
-                        <textarea name='response' placeholder = 'Type your answer here'></textarea><br>
+						<input type='hidden' name='class_id' value='<%=class_data.id%>'>
+						<input type='hidden' name='question_id' value='<%=question.id%>'>
+                        <textarea name='teacher_response' placeholder = 'Type your answer here'></textarea><br>
                         <input type = 'submit' name = 'submit' value = 'SUBMIT' id='submit'><br>
                         <button id = 'closeButton' onclick = visible('answerForm_<%=num%>', 'closeButton')>CLOSE FORM</button>
                     </form>
@@ -155,7 +156,7 @@ body {
 	num++;
 	})%>
 	
-		<h4><a class = "backLink" href = "SchoolBoardAccountPage.php">GO BACK TO ACCOUNT</a></h4>
+		<h4><a class = "backLink" href = "/SchoolBoardAccountPage">GO BACK TO ACCOUNT</a></h4>
 		<%if(isTeacher){%>
 		<script>removeElement('ask')</script>
 		<%}%>

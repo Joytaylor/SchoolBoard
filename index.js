@@ -102,6 +102,16 @@ app.get('/SchoolBoardAccountPage', function(req, res){
 	})
 });
 
+app.get('/IN2QuestionPage', function(req, res){
+	
+	if(req.query && req.query.id){
+		var id = req.query.id
+		console.log(id)
+		res.render('IN2QuestionPage', {class_id: id})
+		
+	}
+});
+
 app.get('/SchoolBoardLogInPage', function(req, res){
 	var err = "";
 	
@@ -113,6 +123,7 @@ app.get('/SchoolBoardLogInPage', function(req, res){
 	res.render('SchoolBoardLogInPage', {err: err})
 
 });
+
 
 app.post('/vote', function(req, res){
 	if(req.signedCookies.user_id){
@@ -150,16 +161,48 @@ app.post('/vote', function(req, res){
 	}
 })
 
+app.post('/addQuestion', function(req, res){
+	if(req.signedCookies.user_id){
+		var user_id = req.signedCookies.user_id
+		var class_id = req.body.class_id
+		var question = req.body.question
+		insertQuestion(user_id, class_id, question, function(){
+			res.redirect('/classPage?id='+class_id)
+		})
+		
+	}
+})
+
+
+app.post('/addAnswer', function(req, res){
+	if(req.signedCookies.user_id){
+		var user_id = req.signedCookies.user_id
+		var class_id = req.body.class_id
+		var question_id = req.body.question_id
+		var teacher_response = req.body.teacher_response
+		insertTeacher_Response(user_id, question_id, teacher_response, function(){
+			res.redirect('/classPage?id='+class_id)
+		})
+		
+	}
+})
+
+
 app.get('/classPage', function(req, res){
 	
 	
 	if(req.query && req.query.id){
 		var class_id = req.query.id
+		
 		getUserInfo(res, req, function(user_data){
+			
 			getClassInfo(class_id, function(class_data){	
+				
 				if(class_data != null){
+					
 					var query = Questions.where("class_id", "==", class_id);
 					query.get().then(function(questions){
+						
 						var question_info = []
 						var question_ids = []
 						questions.forEach(function(question){
@@ -169,7 +212,9 @@ app.get('/classPage', function(req, res){
 							question_info.push(question_data)
 							question_ids.push(question.id)
 						})
+						console.log("IDBJOEWFJPPFKSDMPDKF")
 						getDocumentsByFeature(Teacher_Responses, "question_id", question_ids, [], function(responses){
+							
 							responses.forEach(function(response){
 								
 								question_info.forEach(function(question){
@@ -185,14 +230,16 @@ app.get('/classPage', function(req, res){
 							question_info.forEach(function(question){
 								
 								question.responses = sortByVotes(question.responses)
-								console.log(question.responses)	
+								//console.log(question.responses)	
 							})
 							
 							//keep working here
 							if(user_data==null){
+								
 								res.redirect('/SchoolBoardLogInPage?err='+'no_user')
 							}
 							else {
+								
 								res.render('classPage',{class_data: class_data, user_data: user_data, question_info: question_info})
 							}
 							
@@ -322,6 +369,9 @@ app.post('/signup', function(req, res){
 				signed: true
 				//add maxAge attribute in milliseconds if wanted
 			})
+			//firebase.auth().createUserWithEmailAndPassword(email, aPassword)
+    //.then(user => console.log(user))
+    //.catch(error => console.error(error));
 			res.redirect('/SchoolBoardAccountPage')
 		}
 		else{
@@ -438,6 +488,32 @@ function insertSubject(subject_name){
 	});
 }
 
+function insertQuestion(user_id, class_id, question, callback){
+	Questions.add({
+		user_id: user_id,
+		class_id: class_id,
+		question: question,
+		date_of_ask: new Date(),
+		votes: 0
+		
+	}).then(function(){
+		callback()
+	});
+}
+
+function insertTeacher_Response(user_id, question_id, teacher_response, callback){
+	Teacher_Responses.add({
+		user_id: user_id,
+		question_id: question_id,
+		teacher_response: teacher_response,
+		date_of_ask: new Date(),
+		votes: 0
+		
+	}).then(function(){
+		callback()
+	});
+}
+
 function insertQuestion_Vote(user_id, question_id, vote_value, callback){
 	Question_Votes.add({
 		user_id: user_id,
@@ -447,6 +523,7 @@ function insertQuestion_Vote(user_id, question_id, vote_value, callback){
 		callback()
 	});
 }
+
 
 function insertDistrict(district_name){
 	Districts.add({
@@ -564,13 +641,18 @@ function getDocumentsByFeature(collection, feature_title, features, documents, c
 	if(features.length > 0){
 		
 		collection.where(feature_title,'==',features[0]).get().then(function(resultsOfQuery){
+			if(resultsOfQuery.size > 0){
 			resultsOfQuery.forEach(function(doc){
-			var docData = doc.data()
-			
-			documents.push(docData)
-			features.shift()
-			
+				console.log('documents')
+				console.log(doc.data())
+				
+					var docData = doc.data()
+					
+					documents.push(docData)
+				
 			})
+			}
+			features.shift()
 			return getDocumentsByFeature(collection, feature_title, features, documents, callback)
 		})
 	}
@@ -665,6 +747,7 @@ function getUserAndClassInfo(res, req, callback){
 		if(user_data != null){
 			user_id = user_data.id ;
 			getClassIdsOfUser(user_id, function(class_ids){
+				console.log("class_id: ")
 				console.log(class_ids)
 				if(class_ids.length > 0){
 					var documentarray = []
