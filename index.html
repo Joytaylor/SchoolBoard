@@ -11,51 +11,61 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<!--My Stuff-->
-<link rel = "stylesheet" href = "styles.css"/>
-<script src = "img.js"></script>
+<!--Anime.js-->
+<script src="anime-master/lib/anime.min.js"></script>
 
+<!--My Stuff-->
+<link rel = "stylesheet" href = "public/css/styles.css"/>
+<script src = "img.js"></script>
 <title>SchoolBoard</title>
 <link rel = "icon" href = "favicon.png" type = "image/jpg"/>
 </head>
 <body>
-<div id = "grand-parent">
-<div id = "envelope">
-	<div id = "cardBackground"></div>
-</div>
-<div id = "header" class = "container-fluid">
-	<div id = "headerRow" class = "row justify-content-center">
-		<div id = "headerCol" class = "col-md-12 text-center">
-			<div class = "row text-center justify-content-center">
-				<h1>The Future of</h1>
-			</div>
-			<div class = "row text-center justify-content-center">
-				<h1>INQUIRY</h1>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-<div id = "mission" class = "container">
-	<div class = "row text-center">
-		<div class = "col-md-12">
-			<h2><span class = "text-dark">Our mission is simple: </span><span class = "gradient">Better the educational experience for all.</span></h2>
-			<p class = "text-dark">By putting data analytics tools in the hands of teachers, we're changing the way education is done, one school at a time.</p>
-		</div>
-	</div>
+<img src = "public/imgs/LogoWithFlowers.svg" class = "position-absolute"/>
+<div id = "mission" class = "container-fluid">
 	<div class = "row justify-content-center">
-		<div id = "signup" class = "col-md-3 button">
-			<a href = "newform.html" class = "stretched-link btn btn-lg">SIGN UP</a>
+		<div class = "col-md-6">
+			<div class = "row">
+				<div class = "col-md-12">
+					<h2><span class = "gradient">Education, meet Future.</span></h2>
+					<p class = "text-dark">By combining the power of inqiury with data analytics, we're building an educational system that's responsive to student needs. <span id = "beta">Beta Testing Fall 2019</span></p>
+					<p id = "question">We love questions. <a href="mailto:sanoziec@gmail.com?cc=jtaylor2@imsa.edu&subject=Hi! I'd like to know about SchoolBoard.&body=Hi SchoolBoard Team! My name is ___, and I am a __.">Ask us Anything.</a>
+					</p>
+				</div>
+			</div>
 		</div>
-		<div id = "login" class = "col-md-3 button">
-			<a href = "cookiecheckstart.php" class = "stretched-link btn btn-lg">LOG IN</a>
+		<div id = "floatingDivs" class = "col-md-6">
+			<div id = "floatContainer" class = "row justify-content-center">
+				<div class = 'card x-position'>
+					<div class = 'card-header'></div>
+					<div class = 'card-body justify-content-center'>
+						<h5 class = 'card-title'>
+						</h5>
+						<a href = '#' class = 'btn card-btn'>Answer</a>
+					</div>
+				</div>
+				<div class = 'card x-position'>
+					<div class = 'card-header'></div>
+					<div class = 'card-body justify-content-center'>
+						<h5 class = 'card-title'>
+						</h5>
+						<a href = '#' class = 'btn card-btn'>Answer</a>
+					</div>
+				</div>
+				<div class = 'card x-position'>
+					<div class = 'card-header'></div>
+					<div class = 'card-body justify-content-center'>
+						<h5 class = 'card-title'>
+						</h5>
+						<a href = '#' class = 'btn card-btn'>Answer</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-<div id = "footer" class = "container-fluid  d-flex flex-column bg-dark">
-	<div class = "col-md-3">
-		<img class = "logo img-fluid mx-auto d-block" src = "WhiteLogoWithFlowers.svg" alt = "header"/>
-	</div>
+<div id = "footer" class = "container-fluid text-center">
+	Copyright 2019 ©
 </div>
 </body>
 </html>
