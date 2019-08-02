@@ -173,6 +173,29 @@ a {
   #floatingDivs {
     display: none;
   }
+
+  #future {
+    font-size: 10vw;
+    margin-top: 20vw;
+  }
+
+  #mission {
+    text-align: center;
+  }
+
+  #footer {
+    margin-top: 5%;
+  }
+
+  #logo {
+    width: 60vw;
+    transform: translateX(20vw);
+  }
+}
+@media (max-width: 1400px) {
+  #floatContainer {
+    transform: translateY(-10vh);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
