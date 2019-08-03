@@ -554,7 +554,7 @@ function insertUser(username, aPassword, first_name, last_name, aStatus,district
 		last_name: last_name,
 		status: aStatus,
 		district_id: district_id,
-		email, email
+		email: email
 	}).then(ref => {
   callback(ref.id);
 });
