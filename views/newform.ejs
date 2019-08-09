@@ -231,5 +231,24 @@ myInput.onkeyup = function() {
 				}
 			} );
 		</script>
+		<script>
+<%if(!(district_id && username && password && email)){
+var message = '';
+if(!district_id){
+	message += 'The district was not found.\\n';
+}
+if(!username){
+	message += 'The username was taken.\\n';
+}
+if(!password){
+	message += 'The password was taken.\\n';
+}
+if(!email){
+	message += 'The email was taken.';
+}
+%> alert('<%=message%>')
+<%}%>
+</script>
+
 </body>
 </html>

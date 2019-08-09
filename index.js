@@ -369,9 +369,7 @@ app.post('/signup', function(req, res){
 				signed: true
 				//add maxAge attribute in milliseconds if wanted
 			})
-			//firebase.auth().createUserWithEmailAndPassword(email, aPassword)
-    //.then(user => console.log(user))
-    //.catch(error => console.error(error));
+			
 			res.redirect('/SchoolBoardAccountPage')
 		}
 		else{
