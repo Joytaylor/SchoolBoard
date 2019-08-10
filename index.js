@@ -37,6 +37,7 @@ app.use(express.static(__dirname+'/views'));
 app.use(express.static(__dirname+'/public'));
 app.use(express.static(__dirname+'/images'));
 app.use(express.static(__dirname+'/JS'));
+app.use(express.static(__dirname+'/anime-master/lib'));
 
 //requires ejs to be used in the rendering of ejs files
 app.set('view engine', 'ejs');
