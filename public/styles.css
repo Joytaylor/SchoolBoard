@@ -6,16 +6,28 @@
 @import url("https://fonts.googleapis.com/css?family=Syncopate");
 .card {
   position: absolute;
-  z-index: -1;
-  max-width: 300px;
-  min-width: 20px;
-  opacity: 0;
+  max-width: 50%;
+  max-height: 100%;
   border: none;
+}
+
+.x-position:nth-of-type(1) {
+  z-index: 0;
+  margin-left: -13%;
+}
+
+.x-position:nth-of-type(2) {
+  z-index: 2;
+}
+
+.x-position:nth-of-type(3) {
+  z-index: 1;
+  margin-left: 13%;
 }
 
 .card-primary .card-header {
   background-color: #164869;
-  color: rgba(255, 255, 255, 0.52);
+  color: white;
   font-family: "Raleway", sans-serif;
 }
 .card-primary .card-title {
@@ -25,39 +37,17 @@
 }
 .card-primary .card-body {
   background-color: rgba(37, 85, 116, 0.75);
-  color: rgba(28, 76, 106, 0.63);
+  color: white;
 }
 .card-primary .card-btn {
-  background: none;
-  color: rgba(16, 46, 65, 0.63);
-  border: 1px solid rgba(16, 46, 65, 0.63);
-  width: 100%;
-}
-
-.card-secondary .card-header {
-  background-color: #6AA5BD;
-  color: rgba(255, 255, 255, 0.52);
-  font-family: "Raleway", sans-serif;
-}
-.card-secondary .card-title {
-  font-family: "Raleway", sans-serif;
-  padding: 1rem;
-  font-weight: 700;
-}
-.card-secondary .card-body {
-  background-color: rgba(71, 112, 129, 0.82);
-  color: rgba(53, 78, 88, 0.47);
-}
-.card-secondary .card-btn {
-  background: none;
-  border: 1px solid rgba(53, 78, 88, 0.49);
-  color: rgba(53, 78, 88, 0.41);
+  background: white;
+  color: #164869;
   width: 100%;
 }
 
 .card-tertiary .card-header {
   background-color: #AE445D;
-  color: rgba(255, 255, 255, 0.67);
+  color: white;
   font-family: "Raleway", sans-serif;
 }
 .card-tertiary .card-title {
@@ -67,39 +57,17 @@
 }
 .card-tertiary .card-body {
   background-color: rgba(90, 36, 49, 0.77);
-  color: rgba(100, 37, 52, 0.49);
+  color: white;
 }
 .card-tertiary .card-btn {
-  background: none;
-  border: 1px solid rgba(100, 37, 52, 0.49);
-  color: rgba(100, 37, 52, 0.49);
-  width: 100%;
-}
-
-.card-quaternary .card-header {
-  background-color: #4b5c11;
-  color: rgba(255, 255, 255, 0.67);
-  font-family: "Raleway", sans-serif;
-}
-.card-quaternary .card-title {
-  font-family: "Raleway", sans-serif;
-  padding: 1rem;
-  font-weight: 700;
-}
-.card-quaternary .card-body {
-  background-color: rgba(51, 62, 13, 0.66);
-  color: rgba(45, 56, 10, 0.49);
-}
-.card-quaternary .card-btn {
-  background: none;
-  border: 1px solid rgba(45, 56, 10, 0.49);
-  color: rgba(45, 56, 10, 0.49);
+  background: white;
+  color: #AE445D;
   width: 100%;
 }
 
 .card-quinary .card-header {
   background-color: #4b385f;
-  color: rgba(255, 255, 255, 0.67);
+  color: white;
   font-family: "Raleway", sans-serif;
 }
 .card-quinary .card-title {
@@ -109,115 +77,131 @@
 }
 .card-quinary .card-body {
   background-color: rgba(78, 60, 96, 0.8);
-  color: rgba(73, 55, 92, 0.5);
+  color: white;
 }
 .card-quinary .card-btn {
-  background: none;
-  border: 1px solid rgba(73, 55, 92, 0.5);
-  color: rgba(73, 55, 92, 0.5);
+  background: white;
+  color: #4b385f;
   width: 100%;
 }
 
-#index #headbar {
-  background-color: #164869;
-  border-bottom: 3px solid white;
-  position: relative;
-  z-index: 100;
+.card-title {
+  font-size: 2rem;
 }
-#index #header {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  flex-grow: 1;
+
+#logo {
+  opacity: 0.6;
+  padding: 3%;
+  margin-top: 1%;
+  height: 100%;
+  width: auto;
+}
+
+html, body {
+  height: 100%;
+}
+
+#index #mission {
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5%;
+}
+#index #mission #eduMeetFuture {
+  margin-top: -10vh;
+}
+#index #mission #question {
+  padding-left: 15px;
+}
+#index .nav-item {
+  height: 100%;
+}
+#index #floatingDivs {
+  position: relative;
+  height: 100%;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#index .statement {
-  background-color: #164869;
-  color: white;
-  padding: 3%;
-}
-#index .button {
-  transition-duration: 0.15s;
-  -webkit-transition-duration: 0.15s;
-  height: 100%;
-}
-#index .button:hover a {
-  color: white;
-  width: 100%;
-  transition-duration: 0.15s;
-  -webkit-transition-duration: 0.15s;
-  background-color: #164869;
-}
-#index #login a {
-  border: 1px solid #6c757d;
-}
-#index #login:hover a {
-  background-color: #6c757d;
-  color: white;
-}
-#index #class-img {
-  overflow: auto;
-  height: 100%;
-}
-#index #cardBackground {
-  overflow: hidden;
-}
-#index #envelope {
+#index #floatContainer {
   position: relative;
+  height: 100%;
+  width: 100%;
+  margin-top: -50vh;
 }
-#index #mission {
-  padding-top: 20rem;
-  padding-bottom: 20rem;
+#index #footer {
+  opacity: 0.4;
+  padding-bottom: 1%;
 }
-#index img.logo {
-  margin-top: 8%;
-  margin-bottom: 8%;
+#index .nav {
+  height: 4vh;
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-top: 2%;
 }
-#index h1 {
-  color: white;
-  font-size: 7rem;
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 700;
-  /*background: linear-gradient(to right bottom, #164869, #2b5e7e, #3f7593, #548da8, #6aa5bd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
+#index #missionh1 {
+  font-size: 4.5vw;
 }
 #index h2 {
-  font-size: 6rem;
+  font-size: 7vw;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
 }
 #index span.gradient {
-  background: linear-gradient(to right bottom, #164869, #2b5e7e, #5b93b2, #7ab4d0, #b2e9ff);
+  background-image: linear-gradient(to right top, #164869, #1a4764, #1f4660, #22455b, #264457);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 #index p {
   font-family: "Raleway", sans-serif;
   color: #164869;
-  font-size: 20px;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
-#index div.button a {
-  text-decoration: none;
-  font-size: 1.5rem;
+#index #beta {
+  color: #6B7225;
+  font-weight: bold;
+}
+#index a {
+  color: #6B7225;
+}
+#index .nav-link {
   color: #164869;
   font-family: "Raleway", sans-serif;
-  font-weight: 700;
-  padding: 0.8rem 2rem;
-  border: 1px solid #164869;
-  width: 100%;
-}
-#index #login a {
-  color: #6c757d;
-}
-#index .bg-dark {
-  will-change: background;
-  transition: background 1s;
+  font-weight: bold;
+  opacity: 0.5;
 }
 
+@media (max-width: 1000px) {
+  #index #floatingDivs {
+    display: none;
+  }
+  #index #future {
+    font-size: 10vw;
+    margin-top: 20vw;
+  }
+  #index #mission {
+    text-align: center;
+  }
+  #index #footer {
+    margin-top: 5%;
+  }
+  #index #logo {
+    width: 60vw;
+    transform: translateX(20vw);
+  }
+  #index .nav-item:nth-of-type(n+2) {
+    display: none;
+  }
+}
+@media (max-width: 1400px) {
+  #index #floatContainer {
+    transform: translateY(-10vh);
+  }
+}
 #newform {
   /*styling allllllllll the inputs here*/
   /*making sure that the text always looks clean*/
@@ -1136,17 +1120,5 @@
 }
 
 /* Make it so that when the  user clicks on the section they want to see, the go button appears. */
-.nav {
-  background-color: #164869;
-}
-
-#grand-parent {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: -5;
-}
 
 /*# sourceMappingURL=styles.css.map */
