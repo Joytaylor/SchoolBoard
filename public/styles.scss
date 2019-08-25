@@ -23,7 +23,7 @@ $subFont: 'Raleway', sans-serif;
 	justify-content: center;
 }
 
-///Cards that pop up at the beginning (each type is for different color)
+//Misc Styles
 .card {
 	position: absolute;
 	max-width: 50%;
@@ -120,6 +120,27 @@ $subFont: 'Raleway', sans-serif;
 html, body {
 	height: 100%;
 }
+
+//recuring styles
+.nav {
+	height: 4vh;
+	margin-left: 10.5%;
+	margin-right: 14%;
+	margin-top: 2%;
+}
+.nav-item {
+	height: 100%;
+}
+.nav-link {
+	color: $primaryColor;
+	font-family: $subFont;
+	font-weight: bold;
+	opacity: 0.5;
+	transition: 0.2s ease-in-out;
+}
+.nav-link:hover {
+	opacity: 1;
+}
 //div styles
 #index {
 	#mission {
@@ -135,9 +156,7 @@ html, body {
 			padding-left: 15px;
 		}
 	}
-	.nav-item {
-		height: 100%;
-	}
+
 	#floatingDivs {
 		position: relative;
 		height: 100%;
@@ -153,12 +172,7 @@ html, body {
 		opacity: 0.4;
 		padding-bottom: 1%;
 	}
-	.nav {
-		height: 4vh;
-		margin-left: 10.5%;
-		margin-right: 14%;
-		margin-top: 2%;
-	}
+
 	//text styles
 	#missionh1 {
 		font-size: 4.5vw;
@@ -183,15 +197,10 @@ html, body {
 		color: #6B7225;
 		font-weight: bold;
 	}
-	a {
+	#aua {
 		color: #6B7225;
 	}
-	.nav-link {
-		color: $primaryColor;
-		font-family: $subFont;
-		font-weight: bold;
-		opacity: 0.5;
-	}
+
 }
 
 
@@ -232,17 +241,18 @@ html, body {
 #newform {
 	form {
 		font-family: 'Raleway', sans-serif;
-		font-size: 2.5vw;
+		font-size: 2.5rem;
 	}
-	div#sensitiveInfo {
-		background: linear-gradient(to right bottom, #164869, #2b5e7e, #5b93b2, #7ab4d0, #b2e9ff);
-		width: 100%;
+
+	.statusLabel {
+		font-weight: bold;
+		color: #525252;
+		width: auto;
 	}
-	/*styling allllllllll the inputs here*/
 	select {
 		font-family: 'Raleway', sans-serif;
 		font-size: 2.3vw;
-		width: 15rem;
+		width: auto;
 	}
 	option {
 		font-size: 1.5vw;
@@ -252,8 +262,18 @@ html, body {
 		box-shadow: 0 0 10px 100px $primaryColor inset;
 		color: white;
 	}
+
+	.formLabel {
+		color: #818181;
+	}
+
+	.next {
+		display: none;
+	}
+
 	input {
 		text-align: center;
+		width: 100%;
 	}
 	input[type = 'submit'] {
 		height: 100px;
@@ -264,59 +284,18 @@ html, body {
 		font-family: 'Raleway', sans-serif;
 		font-size: 1.3vw;
 		margin: 2%;
+		transition: 0.2s ease-in;
 	}
 	input[type = 'submit']:hover {
 		color: $primaryColor;
 		background-color: white;
 		border: 1px solid $primaryColor;
 		-webkit-transition-duration: 0.4s; /* Safari */
-		transition-duration: 0.4s;
 	}
-	input.names {
-		border: none;
-		border-bottom: 1px solid $primaryColor;
-		margin-bottom: 1.5%;
-		margin-top: 1.5%;
-		width: 17%;
-		font-size: 2vw;
-		font-family: 'Raleway', sans-serif;
-		color: $primaryColor;
-	}
-	input.names:focus {
-		width: 20%;
-		-webkit-transition-duration: 0.4s; /* Safari */
-		transition-duration: 0.4s;
-	}
-
-	#sensitiveInfo input {
-		background: none;
-		color: white;
-		border-bottom: 1px solid white;
-		font-family: 'Raleway', sans-serif;
-		padding: 3rem;
-
-	}
-	#sensitiveInfo ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-	  color: ghostwhite;
-	  opacity: 1; /* Firefox */
-	}
-
-	#sensitiveInfo :-ms-input-placeholder { /* Internet Explorer 10-11 */
-	  color: ghostwhite;
-	}
-
-	#sensitiveInfo ::-ms-input-placeholder { /* Microsoft Edge */
-	  color: ghostwhite;
-	}
-	#sensitiveInfo p {
-		color: whitesmoke;
-	}
-
-
 	/*making sure that the text always looks clean*/
 	h1 {
 		color: $primaryColor;
-		font-size: 10rem;
+		font-size: 5rem;
 		font-weight: 700;
 		font-family: $subFont;
 
@@ -334,7 +313,7 @@ html, body {
 
 	/*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
 	#message {
-		display:none;
+		display: none;
 		background: #f1f1f1;
 		color: #000;
 		position: relative;

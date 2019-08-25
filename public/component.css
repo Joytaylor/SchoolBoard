@@ -12,11 +12,10 @@
 .simform {
 	position: relative;
 	margin: 0 auto;
-	padding: 2em 0;
 	max-width: 860px;
 	width: 100%;
-	text-align: left;
-	font-size: 2.5em;
+	text-align: center;
+	font-size: 1em;
 }
 
 .simform .submit {
@@ -100,8 +99,7 @@
 /* Input field */
 .questions input {
 	display: block;
-	margin: 0.3em 0 0 0;
-	padding: 0.5em 1em 0.5em 0.7em;
+	padding: 0.5em 1em 0.5em 1em;
 	width: calc(100% - 2em);
 	border: none;
 	background: transparent;
@@ -252,7 +250,7 @@
 }
 
 .simform .error-message {
-	padding: 0.4em 3.5em 0 0;
+	padding: 2em 3.5em 0 0;
 	width: 100%;
 	color: rgba(0,0,0,0.7);
 	font-style: italic;

@@ -67,7 +67,7 @@ const Subjects = db.collection('Subjects');
 
 const Classes = db.collection('Classes');
 
-const Districts = db.collection('Districts');
+const Schools = db.collection('Schools');
 
 const Users = db.collection('Users');
 
@@ -319,7 +319,7 @@ function sortByTimestamp(responses)
 app.get('/newform', function(req, res){
 	
 	
-	var validity = {district_id: true, username: true, password: true, email: true}
+	var validity = {school_id: true, username: true, password: true, email: true}
 	res.render('newform', validity)
 
 });
@@ -352,18 +352,18 @@ app.post('/logout', function(req, res){
 })
 
 app.post('/signup', function(req, res){
+	//Taking all of the info from the form
 	var username = test_input(req.body.username);
 	var aPassword = test_input(req.body.password);
 	var first_name = test_input(req.body.first_name);
 	var last_name = test_input(req.body.last_name);
 	var aStatus = test_input(req.body.status);
-	var district_name = test_input(req.body.district_name);
+	var school_name = test_input(req.body.school_name);
 	var email = test_input(req.body.email);
 	
-	
-	
-	registerUser(username, aPassword, first_name, last_name, aStatus,district_name, email, function(validity, user_id){
-		if(validity.district_id && validity.username && validity.password && validity.email){
+	//registering the user
+	registerUser(username, aPassword, first_name, last_name, aStatus,school_name, email, function(validity, user_id){
+		if(validity.school_id && validity.username && validity.password && validity.email){
 			console.log(validity)
 			res.cookie('user_id', user_id, {
 				httpOnly: true,
@@ -375,6 +375,7 @@ app.post('/signup', function(req, res){
 		}
 		else{
 			res.render('newform', validity)
+			console.log(validity);
 		}
 		
 	})
@@ -424,7 +425,7 @@ checkIfExists(Classes, "class_name", "20th_Century",function(result){
 })*/
 
 
-
+/*
 var query = Subjects.where("subject_name", "==", "Math");
 checkIfExists(query,function(result){
 	if(!result){
@@ -439,7 +440,7 @@ checkIfExists(query,function(result){
 	}
 })
 
-
+*/
 
 /*var query = Districts.where("district_name", "==", "157c");
 getIds(query,function(district_ids){
@@ -447,7 +448,7 @@ getIds(query,function(district_ids){
 		console.log(uniqueness)
 	})
 })*/
-
+/*
 var query = Users.where("username", "==", "tlyke");
 getIds(query,function(user_ids){
 	var query = Classes.where("class_name", "==", "Algebra II");
@@ -478,7 +479,7 @@ checkIfExists(query,function(result){
 })
 
 
-
+*/
 //insertSubject("Math")
 //insertClass("Algebra I","1")
 function insertSubject(subject_name){
@@ -523,18 +524,17 @@ function insertQuestion_Vote(user_id, question_id, vote_value, callback){
 	});
 }
 
-
-function insertDistrict(district_name){
-	Districts.add({
-		district_name: district_name
+function insertSchool(school_name){
+	Schools.add({
+		school_name: school_name_name
 	});
 }
 
-function insertClass(class_name, subject_id, district_id){
+function insertClass(class_name, subject_id, school_id){
 	Classes.add({
 		class_name: class_name,
 		subject_id: subject_id,
-		district_id: district_id
+		school_id: school_id
 	});
 }
 
@@ -545,51 +545,48 @@ function insertEnrollment(class_id, user_id){
 	});
 }
 
-function insertUser(username, aPassword, first_name, last_name, aStatus,district_id, email, callback){
+function insertUser(username, aPassword, first_name, last_name, aStatus,school_id, email, callback){
 	Users.add({
 		username: username,
 		password: trencryption.constantEncrypt(aPassword),
 		first_name: first_name,
 		last_name: last_name,
 		status: aStatus,
-		district_id: district_id,
+		school_id: school_id,
 		email: email
 	}).then(ref => {
   callback(ref.id);
 });
 }
 
-function registerUser(username, aPassword, first_name, last_name, aStatus,district_name, email, callback){
-	var validity = {district_id: false, username: false, password: false, email: false}
-	var query = Districts.where("district_name", "==", district_name);
+function registerUser(username, aPassword, first_name, last_name, aStatus,school_name, email, callback) {
+	var validity = {school_id: false, username: false, password: false, email: false}
+	var query = Schools.where("school_name", "==", school_name);
+	//Setting password as true (check again)
+	validity.password = true;
 	getIds(query, function(ids){
 		if(ids[0]){
-			validity.district_id = true;
+			validity.school_id = true;
 		}
 		var query = Users.where("username", "==", username);
 		checkIfExists(query,function(usernameExists){
 			validity.username = !usernameExists;
-			var query = Users.where("password", "==", trencryption.constantEncrypt(aPassword));
-			checkIfExists(query,function(passwordExists){
-				validity.password = !passwordExists;
-				var query = Users.where("email", "==", email);
-				checkIfExists(query,function(emailExists){
-					validity.email = !emailExists;
-					if(validity.district_id && validity.username && validity.password && validity.email){
-						insertUser(username, aPassword, addslashes(first_name), addslashes(last_name), aStatus,ids[0], email, function(id){
-							callback(validity, id)
-						})
-						
-					}
-					else{
-						callback(validity, '')
-					}
-				})
+			var query = Users.where("email", "==", email);
+			checkIfExists(query,function(emailExists){
+				validity.email = !emailExists;
+				if(validity.school_id && validity.username && validity.password && validity.email){
+					insertUser(username, aPassword, addslashes(first_name), addslashes(last_name), aStatus,ids[0], email, function(id){
+						callback(validity, id)
+					})
+				}
+				else{
+					callback(validity, '')
+				}
 			})
-			
 		})
 	})
 }
+
 function checkIfExists(query, callback){
 	query.get().then(function(resultsOfQuery){
 		if(resultsOfQuery.size > 0){
@@ -601,8 +598,6 @@ function checkIfExists(query, callback){
 	})
 }
 
-
-
 function checkIfEnrolled(user_id, class_id, callback){
 	var query = Enrollments.where("user_id", "==", user_id).where("class_id", "==", class_id);
 	checkIfExists(query, function(isEnrolled){
@@ -611,7 +606,6 @@ function checkIfEnrolled(user_id, class_id, callback){
 }
 
 function getIds(query, callback){
-	
 	query.get().then(function(resultsOfQuery){
 		var ids = []
 		resultsOfQuery.forEach(function(doc){
@@ -694,6 +688,7 @@ function htmlspecialchars(text) {
 
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
+
 function getUserInfo(res, req, callback){
 	if(req.signedCookies.user_id){
 		var user_id = req.signedCookies.user_id;
@@ -714,7 +709,6 @@ function getUserInfo(res, req, callback){
 }
 
 function getClassInfo(class_id, callback){
-	
 	Classes.doc(class_id).get().then(doc => {
 		if (doc.exists) {
 			var class_data = doc.data();
@@ -725,7 +719,6 @@ function getClassInfo(class_id, callback){
 			callback(null)
 		}
 	})
-	
 }
 
 function getClassIdsOfUser(user_id, callback){
@@ -789,7 +782,3 @@ function getVotes(question_id, callback){
 		}
 	})
 }
-
-
-
-

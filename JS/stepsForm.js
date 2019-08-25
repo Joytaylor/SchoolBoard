@@ -30,7 +30,43 @@
 		}
 		return a;
 	}
+	function isEmail(email) {
+		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return regex.test(email);
+	}
+	function isGoodPass(myInput) {
+		var validated, validNum, validLCase, validUCase, validLen;
 
+		// Validate lowercase letters
+		var lowerCaseLetters = /[a-z]/g;
+		if(myInput.value.match(lowerCaseLetters)) {
+			validLCase = true;
+		} else {
+			validLCase = false;
+		}
+
+		// Validate capital letters
+		var upperCaseLetters = /[A-Z]/g;
+		if(myInput.value.match(upperCaseLetters)) {
+			validUCase = true;
+		} else {
+			validUCase = false;
+		}
+
+		// Validate length
+		if(myInput.value.length >= 8) {
+			validLen = true;
+		} else {
+			validLen = false;
+		}
+
+		if (validLCase == true && validLen == true && validLCase == true && validUCase == true) {
+			validated = true;
+		} else {
+			validated = false;
+		}
+		return validated;
+	}
 	function stepsForm( el, options ) {
 		this.el = el;
 		this.options = extend( {}, this.options );
@@ -88,11 +124,6 @@
 		// show the next question control first time the input gets focused
 		firstElInput.addEventListener( 'focus', onFocusStartFn );
 
-		// show next question
-		this.ctrlNext.addEventListener( 'click', function( ev ) {
-			ev.preventDefault();
-			self._nextQuestion();
-		} );
 
 		// pressing enter will jump to next question
 		document.addEventListener( 'keydown', function( ev ) {
@@ -201,12 +232,29 @@
 	stepsForm.prototype._validade = function() {
 		// current question´s input
 		var input = this.questions[ this.current ].querySelector( 'input' ).value;
+		var inputFeild = this.questions[ this.current ].querySelector( 'input' );
+		var emptyInput, badEmail, badPsw;
 		if( input === '' ) {
 			this._showError( 'EMPTYSTR' );
-			return false;
+			emptyInput = true
 		}
-
-		return true;
+		if (inputFeild.id == "email") {
+			if (!isEmail(input)) {
+				this._showError('INVALIDEMAIL');
+				badEmail = true;
+			}
+		}
+		if (inputFeild.id == "psw") {
+			if(isGoodPass(inputFeild) == false) {
+				this._showError('INVALIDPASS');
+				badPsw = true;
+			}
+		}
+		if(emptyInput == true || badEmail == true || badPsw == true) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	// TODO (next version..)
@@ -219,7 +267,10 @@
 			case 'INVALIDEMAIL' :
 				message = 'Please fill a valid email address';
 				break;
-			// ...
+			case 'INVALIDPASS':
+				message = 'Please make sure your password is fully secure';
+				break;
+			//...
 		};
 		this.error.innerHTML = message;
 		classie.addClass( this.error, 'show' );
