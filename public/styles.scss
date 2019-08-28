@@ -140,8 +140,11 @@ html, body {
 }
 .nav-link:hover {
 	opacity: 1;
+	color: $primaryColor;
 }
-//div styles
+
+
+//Index Styles
 #index {
 	#mission {
 		height: 100vh;
@@ -183,7 +186,7 @@ html, body {
 		font-weight: 700;
 	}
 	span.gradient {
-		background-image: linear-gradient(to right top, #164869, #1a4764, #1f4660, #22455b, #264457);
+		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
@@ -202,8 +205,6 @@ html, body {
 	}
 
 }
-
-
 //Media Queries
 @media (max-width: 1000px) {
 	#index {
@@ -237,7 +238,7 @@ html, body {
 	}
 }
 
-//styles for the signup form
+//Signup Styles
 #newform {
 	form {
 		font-family: 'Raleway', sans-serif;
@@ -294,7 +295,9 @@ html, body {
 	}
 	/*making sure that the text always looks clean*/
 	h1 {
-		color: $primaryColor;
+		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 		font-size: 5rem;
 		font-weight: 700;
 		font-family: $subFont;
@@ -347,6 +350,76 @@ html, body {
 		left: -35px;
 		content: "✖";
 	}
+}
+
+//Login Styles
+#logInPage {
+	#backgroundContainer {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -10;
+		background-image: url("lightpic.png");
+		background-size: cover;
+	}
+	#loginFormContainer {
+		@include center;
+		height: 100%;
+	}
+	#containerRow {
+		padding: 3%;
+		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+		border-radius: 10px;
+	}
+	.loginInput {
+		font-family: $subFont;
+		padding: 5%;
+		margin-top: 15%;
+		margin-bottom: 15%;
+		color: white;
+		border: none;
+		opacity: 0.55;
+		border-left: 1px solid rgba(255, 255, 255, 0.2);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		background: none;
+		border-radius: 10px;
+		transition: 0.3s ease-in-out;
+	}
+	input[type = "submit"] {
+		width: 100%;
+		font-family: $subFont;
+		background: none;
+		border: 1px solid rgba(255, 255, 255, 0.8);
+		margin-top: 15%;
+		padding: 5%;
+		color: rgba(255, 255, 255, 0.8);
+		transition: 0.2s ease-in-out;
+		border-radius: 7px;
+	}
+	input[type = "submit"]:hover {
+		color: $primaryColor;
+		background-color: white;
+
+	}
+
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		color: white;
+		opacity: 0.3;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+		color: white;
+		opacity: 0.3;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+		color: white;
+		opacity: 0.3;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+		color: white;
+		opacity: 0.3;
+	}
+
 }
 
 #account {
