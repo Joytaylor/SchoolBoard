@@ -150,7 +150,7 @@ html, body {
   align-items: center;
   justify-content: center;
 }
-#index #floatContainer {
+#index #floatingDivs #floatContainer {
   position: relative;
   height: 100%;
   width: 100%;
@@ -164,14 +164,17 @@ html, body {
   font-size: 4.5vw;
 }
 #index h2 {
-  font-size: 7vw;
+  font-size: 6vw;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
+  opacity: 0.9;
 }
 #index span.gradient {
   background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: "Cinzel Decorative", serif;
+  opacity: 1;
 }
 #index p {
   font-family: "Raleway", sans-serif;
@@ -215,7 +218,6 @@ html, body {
   }
 }
 #newform {
-  /*making sure that the text always looks clean*/
   /*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
   /* Add a green text color and a checkmark when the requirements are right */
   /* Add a red text color and an "x" when the requirements are wrong */
@@ -224,35 +226,32 @@ html, body {
   font-family: "Raleway", sans-serif;
   font-size: 2.5rem;
 }
-#newform .statusLabel {
+#newform form .statusLabel {
   font-weight: bold;
   color: #525252;
   width: auto;
 }
-#newform select {
+#newform form select {
   font-family: "Raleway", sans-serif;
   font-size: 2.3vw;
   width: auto;
 }
-#newform option {
+#newform form option {
   font-size: 1.5vw;
 }
-#newform option:hover {
+#newform form option:hover {
   background-color: #164869;
   box-shadow: 0 0 10px 100px #164869 inset;
   color: white;
 }
-#newform .formLabel {
+#newform form .formLabel {
   color: #818181;
 }
-#newform .next {
-  display: none;
-}
-#newform input {
+#newform form input {
   text-align: center;
   width: 100%;
 }
-#newform input[type=submit] {
+#newform form input[type=submit] {
   height: 100px;
   width: 20%;
   background-color: #164869;
@@ -263,12 +262,11 @@ html, body {
   margin: 2%;
   transition: 0.2s ease-in;
 }
-#newform input[type=submit]:hover {
+#newform form input[type=submit]:hover {
   color: #164869;
   background-color: white;
   border: 1px solid #164869;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
+  -webkit-transition-duration: 0.2s;
 }
 #newform h1 {
   background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
@@ -342,12 +340,19 @@ html, body {
   margin-bottom: 15%;
   color: white;
   border: none;
-  opacity: 0.55;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
   background: none;
   border-radius: 10px;
   transition: 0.3s ease-in-out;
+}
+#logInPage .loginInput:hover {
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+}
+#logInPage .loginInput:focus {
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
 }
 #logInPage input[type=submit] {
   width: 100%;
@@ -368,99 +373,68 @@ html, body {
   /* Chrome/Opera/Safari */
   color: white;
   opacity: 0.3;
+  transition: 0.3s ease-in-out;
+}
+#logInPage ::-webkit-input-placeholder:hover {
+  opacity: 0.6;
+}
+#logInPage ::-webkit-input-placeholder:focus {
+  opacity: 0.6;
 }
 #logInPage ::-moz-placeholder {
   /* Firefox 19+ */
   color: white;
   opacity: 0.3;
 }
+#logInPage ::-moz-input-placeholder:hover {
+  opacity: 0.6;
+}
+#logInPage ::-moz-input-placeholder:focus {
+  opacity: 0.6;
+}
 #logInPage :-ms-input-placeholder {
   /* IE 10+ */
   color: white;
   opacity: 0.3;
+}
+#logInPage :-ms-input-placeholder:hover {
+  opacity: 0.6;
+}
+#logInPage :-ms-input-placeholder:focus {
+  opacity: 0.6;
 }
 #logInPage :-moz-placeholder {
   /* Firefox 18- */
   color: white;
   opacity: 0.3;
 }
+#logInPage :-moz-input-placeholder:hover {
+  opacity: 0.6;
+}
+#logInPage :-moz-input-placeholder:focus {
+  opacity: 0.6;
+}
 
-#account #theSVG #txtMask {
-  font-size: 10vh;
-  font-weight: bold;
-  overflow: hidden;
-}
-#account #classes {
-  animation-name: list;
-  animation-duration: 3s;
-  animation-delay: 1.7s;
-  animation-fill-mode: backwards;
-  -webkit-animation-name: list;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 1.7s;
-  -webkit-animation-fill-mode: backwards;
-}
 #account body {
   background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-#account #disclaim {
-  font-size: 2.4vh;
-  z-index: 10%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -6%;
-}
-#account svg {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  position: relative;
-}
-#account div.greeting {
-  text-align: left;
-  animation-name: list;
-  animation-duration: 3s;
+#account #logo {
+  padding: 1%;
+  opacity: 1;
+  width: 25%;
+  height: 7%;
+  animation-name: image;
+  animation-duration: 2s;
   animation-delay: 1s;
-  animation-fill-mode: forwards;
-  -webkit-animation-name: list;
-  -webkit-animation-duration: 3s;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease;
+  -webkit-animation-name: image;
+  -webkit-animation-duration: 2s;
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: backwards;
-}
-#account h1 {
-  font-family: "Raleway", sans-serif;
-  font-weight: bold;
-  font-size: 150px;
-  letter-spacing: 5px;
-}
-#account h2 {
-  font-size: 80px;
-  font-family: "Cinzel Decorative", serif;
-  color: white;
-}
-#account h3 {
-  font-family: "Raleway", sans-serif;
-  font-size: 50px;
-  padding-left: 3%;
-  color: white;
-}
-#account h4 {
-  font-family: "Cinzel", serif;
-  font-size: 35px;
-}
-#account h5 {
-  font-family: "Syncopate", sans-serif;
-  font-size: 15px;
-}
-#account p {
-  font-family: "Raleway", sans-serif;
-  font-size: 20px;
-  color: black;
 }
 #account #fullContainer {
   padding: 0;
@@ -474,176 +448,145 @@ html, body {
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: backwards;
 }
-#account #cauroselContainer {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 1px solid white;
+#account #fullContainer #greeting {
+  text-align: left;
+  animation-name: list;
+  animation-duration: 3s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: list;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-fill-mode: backwards;
 }
-#account #svgCol {
+#account #fullContainer #svgCol {
   padding: 0;
 }
-#account #logout {
-  height: 100px;
-  width: 20%;
+#account #fullContainer #classes {
+  animation-name: list;
+  animation-duration: 3s;
+  animation-delay: 1.7s;
+  animation-fill-mode: backwards;
+  -webkit-animation-name: list;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 1.7s;
+  -webkit-animation-fill-mode: backwards;
+}
+#account #fullContainer #classes .classItem {
+  padding: 5%;
+}
+#account #fullContainer #classes .classItem .name {
+  background-color: white;
+  padding: 10% 10% 5% 10%;
+  color: #393939;
+}
+#account #fullContainer #classes .sectionInfo {
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 5% 5% 5% 10%;
+}
+#account #fullContainer #logoutContainer {
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid red;
+  margin: 0;
+}
+#account #fullContainer #logoutContainer #logout {
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   background-color: white;
   color: red;
   border: none;
   font-family: "Raleway", sans-serif;
-  font-size: 1.3vw;
+  font-size: calc(0.8rem + 0.8vw);
   margin: 2%;
+  -webkit-transition-duration: 0.2s;
+  /* Safari */
+  transition-duration: 0.2s;
 }
-#account #logout:hover {
+#account #fullContainer #logoutContainer #logout:hover {
   color: white;
   background-color: red;
   border: none;
-  -webkit-transition-duration: 0.4s;
-  /* Safari */
-  transition-duration: 0.4s;
 }
-#account #logoutContainer {
+#account svg {
   width: 100%;
-  background-color: white;
-  border-top: 1px solid red;
-}
-#account div.statement {
-  margin-top: 2%;
-}
-#account div.classLabel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#account div.quote {
-  background-color: white;
-  height: 80%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-#account div.name {
-  width: 100%;
-  height: 80%;
-  margin-top: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#account div.launch {
-  width: 100%;
-  height: 20%;
-  color: white;
-  background-color: #164869;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#account div.envelope {
-  margin: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
+  text-align: center;
+  position: relative;
 }
-#account div.display {
-  border: 1px solid white;
-  float: right;
-  animation-name: list;
-  animation-duration: 3s;
-  animation-delay: 1.5s;
-  animation-fill-mode: backwards;
-  -webkit-animation-name: list;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 1.5s;
-  -webkit-animation-fill-mode: backwards;
+#account #theSVG #txtMask {
+  font-size: 10vh;
+  font-weight: bold;
+  overflow: hidden;
 }
-#account div.profile {
-  height: 80%;
-  width: 100%;
-  background-color: white;
+#account #disclaim {
+  z-index: 10%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -6%;
+}
+#account h1 {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  padding-left: 3%;
+  font-size: calc(1.8rem + 1.5vw);
+}
+#account h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: calc(1.8rem + 1.5vw);
+}
+#account h3 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 100;
+  padding-left: 3%;
+  color: white;
+  font-size: calc(2.3rem + 0.6vw);
+}
+#account h4 {
+  font-family: "Raleway", sans-serif;
+  font-size: calc(0.9rem + 0.3vw);
+}
+#account h5 {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: calc(0.6rem + 0.3vw);
+}
+#account p {
+  font-family: "Raleway", sans-serif;
   color: black;
-  animation-name: list;
-  animation-duration: 3s;
-  animation-delay: 1s;
-  animation-fill-mode: backwards;
-  -webkit-animation-name: list;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 1s;
-  -webkit-animation-fill-mode: backwards;
-  padding-top: 2%;
+  font-size: calc(0.8rem + 0.8vw);
 }
-#account div.envelope2 {
+#account #quoteRow {
+  background-color: white;
+}
+#account .quoteImg {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#account #envelope {
   padding-top: 6%;
   padding-bottom: 4%;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#account div.image {
-  width: 100%;
-}
-#account #box {
-  height: 250px;
-  width: 500px;
-  background-color: white;
-  justify-content: center;
-}
-#account #quote {
-  width: 70%;
-}
 #account #quote p {
-  font-size: 30px;
+  font-size: calc(1.2rem + 0.8vw);
   font-family: "Raleway", sans-serif;
   font-style: italic;
+  padding-left: 10%;
+  padding-right: 10%;
 }
-#account #quote p.description {
+#account #quote p#description {
   font-size: 20px;
   float: right;
-}
-#account li {
-  border-bottom: 1px solid black;
-  padding-left: 5%;
-}
-#account table {
-  width: 40%;
-  height: 100%;
-}
-#account td {
-  font-size: 40px;
-  padding: 80%;
-}
-#account #myCarousel {
-  height: 100%;
-  width: 50%;
-  padding-top: 3%;
-}
-#account div.statement {
-  margin-top: 2%;
-}
-#account a {
-  text-decoration: none;
-  color: white;
-}
-#account a:hover {
-  color: #bfbfbf;
-  border: none;
-}
-#account.carousel-indicators {
-  bottom: 0px;
-}
-#account img {
-  width: 25%;
-  height: 7%;
-  animation-name: image;
-  animation-duration: 2s;
-  animation-delay: 1s;
-  animation-fill-mode: backwards;
-  animation-timing-function: ease;
-  -webkit-animation-name: image;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-  -webkit-animation-fill-mode: backwards;
 }
 
 #classPage h1 {

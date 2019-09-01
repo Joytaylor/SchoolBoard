@@ -146,6 +146,7 @@ html, body {
 
 //Index Styles
 #index {
+	//Div Styles
 	#mission {
 		height: 100vh;
 		@include center;
@@ -164,12 +165,12 @@ html, body {
 		position: relative;
 		height: 100%;
 		@include center;
-	}
-	#floatContainer {
-		position: relative;
-		height: 100%;
-		width: 100%;
-		margin-top: -50vh;
+		#floatContainer {
+			position: relative;
+			height: 100%;
+			width: 100%;
+			margin-top: -50vh;
+		}
 	}
 	#footer {
 		opacity: 0.4;
@@ -181,14 +182,17 @@ html, body {
 		font-size: 4.5vw;
 	}
 	h2 {
-		font-size: 7vw;
+		font-size: 6vw;
 		font-family: $subFont;
 		font-weight: 700;
+		opacity: 0.9;
 	}
 	span.gradient {
 		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		font-family: $headerFontDecorative;
+		opacity: 1;
 	}
 	p {
 		font-family: $subFont;
@@ -205,7 +209,7 @@ html, body {
 	}
 
 }
-//Media Queries
+//Index Media Queries
 @media (max-width: 1000px) {
 	#index {
 		#floatingDivs {
@@ -240,60 +244,55 @@ html, body {
 
 //Signup Styles
 #newform {
+	//div styles
 	form {
 		font-family: 'Raleway', sans-serif;
 		font-size: 2.5rem;
+		.statusLabel {
+			font-weight: bold;
+			color: #525252;
+			width: auto;
+		}
+		select {
+			font-family: 'Raleway', sans-serif;
+			font-size: 2.3vw;
+			width: auto;
+		}
+		option {
+			font-size: 1.5vw;
+			&:hover {
+				background-color: $primaryColor;
+				box-shadow: 0 0 10px 100px $primaryColor inset;
+				color: white;
+			}
+		}
+		.formLabel {
+			color: #818181;
+		}
+		input {
+			text-align: center;
+			width: 100%;
+			&[type = 'submit'] {
+				height: 100px;
+				width: 20%;
+				background-color: $primaryColor;
+				color: white;
+				border: none;
+				font-family: 'Raleway', sans-serif;
+				font-size: 1.3vw;
+				margin: 2%;
+				transition: 0.2s ease-in;
+				&:hover {
+					color: $primaryColor;
+					background-color: white;
+					border: 1px solid $primaryColor;
+					-webkit-transition-duration: 0.2s;
+				}
+			}
+		}
 	}
 
-	.statusLabel {
-		font-weight: bold;
-		color: #525252;
-		width: auto;
-	}
-	select {
-		font-family: 'Raleway', sans-serif;
-		font-size: 2.3vw;
-		width: auto;
-	}
-	option {
-		font-size: 1.5vw;
-	}
-	option:hover {
-		background-color: $primaryColor;
-		box-shadow: 0 0 10px 100px $primaryColor inset;
-		color: white;
-	}
-
-	.formLabel {
-		color: #818181;
-	}
-
-	.next {
-		display: none;
-	}
-
-	input {
-		text-align: center;
-		width: 100%;
-	}
-	input[type = 'submit'] {
-		height: 100px;
-		width: 20%;
-		background-color: $primaryColor;
-		color: white;
-		border: none;
-		font-family: 'Raleway', sans-serif;
-		font-size: 1.3vw;
-		margin: 2%;
-		transition: 0.2s ease-in;
-	}
-	input[type = 'submit']:hover {
-		color: $primaryColor;
-		background-color: white;
-		border: 1px solid $primaryColor;
-		-webkit-transition-duration: 0.4s; /* Safari */
-	}
-	/*making sure that the text always looks clean*/
+	//Text styles
 	h1 {
 		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
 		-webkit-background-clip: text;
@@ -301,8 +300,6 @@ html, body {
 		font-size: 5rem;
 		font-weight: 700;
 		font-family: $subFont;
-
-
 	}
 	p {
 		font-family: 'Raleway', sans-serif;
@@ -311,9 +308,6 @@ html, body {
 		font-size: 1.6vw;
 		font-weight: 600;
 	}
-
-
-
 	/*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
 	#message {
 		display: none;
@@ -323,28 +317,23 @@ html, body {
 		padding: 20px;
 		margin-top: 10px;
 	}
-
 	#message p {
 		padding: 10px 35px;
 		font-size: 18px;
 	}
-
 	/* Add a green text color and a checkmark when the requirements are right */
 	.valid {
 		color: green;
 	}
-
 	.valid:before {
 		position: relative;
 		left: -35px;
 		content: "✔";
 	}
-
 	/* Add a red text color and an "x" when the requirements are wrong */
 	.invalid {
 		color: red;
 	}
-
 	.invalid:before {
 		position: relative;
 		left: -35px;
@@ -379,12 +368,19 @@ html, body {
 		margin-bottom: 15%;
 		color: white;
 		border: none;
-		opacity: 0.55;
-		border-left: 1px solid rgba(255, 255, 255, 0.2);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		border-left: 1px solid rgba(255, 255, 255, 0.6);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 		background: none;
 		border-radius: 10px;
 		transition: 0.3s ease-in-out;
+	}
+	.loginInput:hover {
+		border-left: 1px solid white;
+		border-bottom: 1px solid white;
+	}
+	.loginInput:focus {
+		border-left: 1px solid white;
+		border-bottom: 1px solid white;
 	}
 	input[type = "submit"] {
 		width: 100%;
@@ -406,103 +402,68 @@ html, body {
 	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		color: white;
 		opacity: 0.3;
+		transition: 0.3s ease-in-out;
+	}
+	::-webkit-input-placeholder:hover {
+		opacity: 0.6;
+	}
+	::-webkit-input-placeholder:focus {
+		opacity: 0.6;
 	}
 	::-moz-placeholder { /* Firefox 19+ */
 		color: white;
 		opacity: 0.3;
 	}
+	::-moz-input-placeholder:hover {
+		opacity: 0.6;
+	}
+	::-moz-input-placeholder:focus {
+		opacity: 0.6;
+	}
 	:-ms-input-placeholder { /* IE 10+ */
 		color: white;
 		opacity: 0.3;
+	}
+	:-ms-input-placeholder:hover {
+		opacity: 0.6;
+	}
+	:-ms-input-placeholder:focus {
+		opacity: 0.6;
 	}
 	:-moz-placeholder { /* Firefox 18- */
 		color: white;
 		opacity: 0.3;
 	}
-
+	:-moz-input-placeholder:hover {
+		opacity: 0.6;
+	}
+	:-moz-input-placeholder:focus {
+		opacity: 0.6;
+	}
 }
-
-
 
 //Account Page Styles
 #account {
-	#theSVG #txtMask {
-		font-size: 10vh;
-		font-weight: bold;
-		overflow: hidden;
-	}
-	#classes {
-		animation-name: list;
-		animation-duration: 3s;
-		animation-delay: 1.7s;
-		animation-fill-mode: backwards;
-		-webkit-animation-name: list;
-		-webkit-animation-duration: 3s;
-		-webkit-animation-delay: 1.7s;
-		-webkit-animation-fill-mode: backwards;
-	}
 	body {
 		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 	}
-	#disclaim {
-		font-size: 2.4vh;
-		z-index: 10%;
-		@include center;
-		margin-top: -6%;
-	}
-	svg {
-		width: 100%;
-		height: 100%;
-		text-align: center;
-		position: relative;
-	}
-	#whitespace {
-	}
-
-	div.greeting {
-		text-align: left;
-		animation-name: list;
-		animation-duration: 3s;
+	#logo {
+		padding: 1%;
+		opacity: 1;
+		width: 25%;
+		height: 7%;
+		animation-name: image;
+		animation-duration: 2s;
 		animation-delay: 1s;
-		animation-fill-mode: forwards;
-		-webkit-animation-name: list;
-		-webkit-animation-duration: 3s;
+		animation-fill-mode: backwards;
+		animation-timing-function: ease;
+		-webkit-animation-name: image;
+		-webkit-animation-duration: 2s;
 		-webkit-animation-delay: 1s;
 		-webkit-animation-fill-mode: backwards;
-	}
-	h1 {
-		font-family: $subFont;
-		font-weight: bold;
-		font-size: 150px;
-		letter-spacing: 5px;
-
-	}
-	h2 {
-		font-size: 80px;
-		font-family: $headerFontDecorative;
-		color: white;
-	}
-	h3 {
-		font-family: "Raleway",sans-serif;
-		font-size: 50px;
-		padding-left: 3%;
-		color: white;
-	}
-	h4 {
-		font-family: 'Cinzel', serif;
-		font-size: 35px;
-	}
-	h5 {
-		font-family: 'Syncopate', sans-serif;
-		font-size: 15px;
-	}
-	p {
-		font-family: $subFont;
-		font-size: 20px;
-		color: black;
 	}
 	#fullContainer {
 		padding: 0;
@@ -515,176 +476,150 @@ html, body {
 		-webkit-animation-duration: 3s;
 		-webkit-animation-delay: 1s;
 		-webkit-animation-fill-mode: backwards;
-	}
-	#cauroselContainer {
-		@include center;
-		border-left: 1px solid white;
-	}
-	#svgCol {
-		padding: 0;
-	}
-	#logout {
-		height: 100px;
-		width: 20%;
-		background-color: white;
-		color: red;
-		border: none;
-		font-family: 'Raleway', sans-serif;
-		font-size: 1.3vw;
-		margin: 2%;
-		&:hover {
-			color: white;
-			background-color: red;
-			border: none;
-			-webkit-transition-duration: 0.4s;
-			/* Safari */
-			transition-duration: 0.4s;
-		}
-	}
-	#logoutContainer {
-		width: 100%;
-		background-color: white;
-		border-top: 1px solid red;
-	}
-	div.statement {
-		margin-top: 2%;
-	}
-	div {
-		&.classLabel {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		&.quote {
-			background-color: white;
-			height: 80%;
-			width: 100%;
-			display: flex;
-			align-items: center;
-		}
-		&.name {
-			width: 100%;
-			height: 80%;
-			margin-top: 0px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		&.launch {
-			width: 100%;
-			height: 20%;
-			color: white;
-			background-color: $primaryColor;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		&.envelope {
-			margin: 10%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 100%;
-		}
-		&.display {
-			border: 1px solid white;
-			float: right;
-			animation-name: list;
-			animation-duration: 3s;
-			animation-delay: 1.5s;
-			animation-fill-mode: backwards;
-			-webkit-animation-name: list;
-			-webkit-animation-duration: 3s;
-			-webkit-animation-delay: 1.5s;
-			-webkit-animation-fill-mode: backwards;
-		}
-		&.profile {
-			height: 80%;
-			width: 100%;
-			background-color: white;
-			color: black;
+
+		#greeting {
+			text-align: left;
 			animation-name: list;
 			animation-duration: 3s;
 			animation-delay: 1s;
-			animation-fill-mode: backwards;
+			animation-fill-mode: forwards;
 			-webkit-animation-name: list;
 			-webkit-animation-duration: 3s;
 			-webkit-animation-delay: 1s;
 			-webkit-animation-fill-mode: backwards;
-			padding-top: 2%;
 		}
-		&.envelope2 {
-			padding-top: 6%;
-			padding-bottom: 4%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
+
+		#svgCol {
+			padding: 0;
 		}
-		&.image {
+
+		#classes {
+			animation-name: list;
+			animation-duration: 3s;
+			animation-delay: 1.7s;
+			animation-fill-mode: backwards;
+			-webkit-animation-name: list;
+			-webkit-animation-duration: 3s;
+			-webkit-animation-delay: 1.7s;
+			-webkit-animation-fill-mode: backwards;
+			.classItem {
+				padding: 5%;
+				.name {
+					background-color: white;
+					padding: 10% 10% 5% 10%;
+					color: #393939;
+				}
+			}
+			.sectionInfo {
+				background-color: rgba(255, 255, 255, 0.25);
+				padding: 5% 5% 5% 10%;
+			}
+		}
+
+		#logoutContainer {
 			width: 100%;
+			background-color: white;
+			border-top: 1px solid red;
+			margin: 0;
+			#logout {
+				padding-left: 7%;
+				padding-right: 7%;
+				padding-top: 2%;
+				padding-bottom: 2%;
+				background-color: white;
+				color: red;
+				border: none;
+				font-family: $subFont;
+				font-size: calc(0.8rem + 0.8vw);
+				margin: 2%;
+				-webkit-transition-duration: 0.2s;
+				/* Safari */
+				transition-duration: 0.2s;
+				&:hover {
+					color: white;
+					background-color: red;
+					border: none;
+
+				}
+			}
 		}
 	}
-	#box {
-		height: 250px;
-		width: 500px;
+
+	//SVG Styles
+	svg {
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		position: relative;
+	}
+	#theSVG #txtMask {
+		font-size: 10vh;
+		font-weight: bold;
+		overflow: hidden;
+	}
+	#disclaim {
+		z-index: 10%;
+		@include center;
+		margin-top: -6%;
+	}
+
+	//Text Styles
+	h1 {
+		font-family: $subFont;
+		color: white;
+		padding-left: 3%;
+		font-size: calc(1.8rem + 1.5vw);
+	}
+	h2 {
+		font-family: $subFont;
+		font-size: calc(1.8rem + 1.5vw);
+	}
+	h3 {
+		font-family: $subFont;
+		font-weight: 100;
+		padding-left: 3%;
+		color: white;
+		font-size: calc(2.3rem + 0.6vw);
+	}
+	h4 {
+		font-family: $subFont;
+		font-size: calc(0.9rem + 0.3vw);
+	}
+	h5 {
+		color: white;
+		font-family: $subFont;
+		font-size: calc(0.6rem + 0.3vw);
+	}
+	p {
+		font-family: $subFont;
+		color: black;
+		font-size: calc(0.8rem + 0.8vw);
+	}
+
+	//Quote Row styles
+	#quoteRow {
 		background-color: white;
-		justify-content: center;
+	}
+	.quoteImg {
+		@include center;
+	}
+	#envelope {
+		padding-top: 6%;
+		padding-bottom: 4%;
+		@include center;
 	}
 	#quote {
-		width: 70%;
 		p {
-			font-size: 30px;
+			font-size: calc(1.2rem + 0.8vw);
 			font-family: $subFont;
 			font-style: italic;
-			&.description {
+			padding-left: 10%;
+			padding-right: 10%;
+			&#description {
 				font-size: 20px;
 				float: right;
 			}
 		}
-	}
-	li {
-		border-bottom: 1px solid black;
-		padding-left: 5%;
-	}
-	table {
-		width: 40%;
-		height: 100%;
-	}
-	td {
-		font-size: 40px;
-		padding: 80%;
-	}
-	#myCarousel {
-		height: 100%;
-		width: 50%;
-		padding-top: 3%;
-	}
-	div.statement {
-		margin-top: 2%;
-	}
-	a {
-		text-decoration: none;
-		color: white;
-		&:hover {
-			color: #bfbfbf;
-			border: none;
-		}
-	}
-	&.carousel-indicators {
-		bottom: 0px;
-	}
-	img {
-		width: 25%;
-		height: 7%;
-		animation-name: image;
-		animation-duration: 2s;
-		animation-delay: 1s;
-		animation-fill-mode: backwards;
-		animation-timing-function: ease;
-		-webkit-animation-name: image;
-		-webkit-animation-duration: 2s;
-		-webkit-animation-delay: 1s;
-		-webkit-animation-fill-mode: backwards;
 	}
 }
 

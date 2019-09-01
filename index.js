@@ -11,8 +11,6 @@ var app = express()
 app.use(cookieParser(secretKey));
 app.use(cookieEncrypter(secretKey));
 
-
-
 //requires nodemailer module
 var nodemailer = require('nodemailer');
 
@@ -21,7 +19,6 @@ var bodyParser = require("body-parser");
 
 //puts post data into javascript objects
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 
 var transporter = nodemailer.createTransport({
@@ -59,8 +56,6 @@ admin.initializeApp({
 	databaseURL: "https://my-awsome-project-cedd0.firebaseio.com"
 })
 
-
-
 const db = admin.firestore();
 
 const Subjects = db.collection('Subjects');
@@ -87,7 +82,6 @@ app.get('/', function(req, res){
 });
 
 app.get('/SchoolBoardAccountPage', function(req, res){
-	
 	getUserAndClassInfo(res, req, function(result){
 		if(result.user_data==null){
 			res.redirect('/SchoolBoardLogInPage?err='+'no_user')
@@ -104,7 +98,6 @@ app.get('/SchoolBoardAccountPage', function(req, res){
 });
 
 app.get('/IN2QuestionPage', function(req, res){
-	
 	if(req.query && req.query.id){
 		var id = req.query.id
 		console.log(id)
@@ -115,12 +108,9 @@ app.get('/IN2QuestionPage', function(req, res){
 
 app.get('/SchoolBoardLogInPage', function(req, res){
 	var err = "";
-	
 	if(req.query && req.query.err){
 		err = "There is something wrong with your account. Please contact your SchoolBoard administrator.";
 	}
-	
-	
 	res.render('SchoolBoardLogInPage', {err: err})
 
 });
@@ -154,9 +144,6 @@ app.post('/vote', function(req, res){
 						})
 					})
 				})
-				
-				
-				
 			}
 		})
 	}
@@ -170,10 +157,8 @@ app.post('/addQuestion', function(req, res){
 		insertQuestion(user_id, class_id, question, function(){
 			res.redirect('/classPage?id='+class_id)
 		})
-		
 	}
 })
-
 
 app.post('/addAnswer', function(req, res){
 	if(req.signedCookies.user_id){
@@ -188,10 +173,8 @@ app.post('/addAnswer', function(req, res){
 	}
 })
 
-
 app.get('/classPage', function(req, res){
-	
-	
+
 	if(req.query && req.query.id){
 		var class_id = req.query.id
 		
@@ -243,8 +226,6 @@ app.get('/classPage', function(req, res){
 								
 								res.render('classPage',{class_data: class_data, user_data: user_data, question_info: question_info})
 							}
-							
-							
 						})
 					})
 				}
@@ -264,9 +245,7 @@ app.get('/classPage', function(req, res){
 });
 
 
-
-function sortByVotes(responses)
-{
+function sortByVotes(responses) {
 
     var swapp;
     var lastIndex = responses.length-1;
@@ -289,8 +268,7 @@ function sortByVotes(responses)
  return newResponses; 
 }
 
-function sortByTimestamp(responses)
-{
+function sortByTimestamp(responses) {
 	
     var swapp;
     var lastIndex = responses.length-1;
@@ -316,12 +294,9 @@ function sortByTimestamp(responses)
 }
 
 
-app.get('/newform', function(req, res){
-	
-	
+app.get('/newform', function(req, res) {
 	var validity = {school_id: true, username: true, password: true, email: true}
 	res.render('newform', validity)
-
 });
 
 app.post('/auth', function(req, res){
@@ -371,7 +346,7 @@ app.post('/signup', function(req, res){
 				//add maxAge attribute in milliseconds if wanted
 			})
 			
-			res.redirect('/SchoolBoardAccountPage')
+			res.redirect('/enrollment')
 		}
 		else{
 			res.render('newform', validity)
@@ -389,8 +364,6 @@ app.get('/cookiecheckstart', function(req, res){
 		res.redirect('SchoolBoardLogInPage')
 	}
 });
-
-
 
 //the server is listening on port 3000 for connections
 app.listen(3000, function () {
@@ -482,11 +455,6 @@ checkIfExists(query,function(result){
 */
 //insertSubject("Math")
 //insertClass("Algebra I","1")
-function insertSubject(subject_name){
-	Subjects.add({
-		subject_name: subject_name
-	});
-}
 
 function insertQuestion(user_id, class_id, question, callback){
 	Questions.add({
@@ -526,22 +494,17 @@ function insertQuestion_Vote(user_id, question_id, vote_value, callback){
 
 function insertSchool(school_name){
 	Schools.add({
-		school_name: school_name_name
+		school_name: school_name
 	});
 }
 
-function insertClass(class_name, subject_id, school_id){
+function insertClass(class_code, class_name, class_section, class_teacher, school_id){
 	Classes.add({
+		class_code: class_code,
 		class_name: class_name,
-		subject_id: subject_id,
+		class_section: class_section,
+		class_teacher: class_teacher,
 		school_id: school_id
-	});
-}
-
-function insertEnrollment(class_id, user_id){
-	Enrollments.add({
-		class_id: class_id,
-		user_id: user_id
 	});
 }
 
@@ -575,9 +538,11 @@ function registerUser(username, aPassword, first_name, last_name, aStatus,school
 			checkIfExists(query,function(emailExists){
 				validity.email = !emailExists;
 				if(validity.school_id && validity.username && validity.password && validity.email){
+					//inserting the user here
 					insertUser(username, aPassword, addslashes(first_name), addslashes(last_name), aStatus,ids[0], email, function(id){
 						callback(validity, id)
-					})
+					});
+					//redirecting the user to enrollment page
 				}
 				else{
 					callback(validity, '')
