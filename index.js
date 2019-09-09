@@ -343,7 +343,7 @@ app.post('/signup', function(req, res){
 				//add maxAge attribute in milliseconds if wanted
 			})
 			
-			res.redirect('/enrollment')
+			res.redirect('/SchoolBoardAccountPage')
 		}
 		else{
 			res.render('newform', validity)
