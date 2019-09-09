@@ -463,6 +463,8 @@ html, body {
   padding: 0;
 }
 #account #fullContainer #classes {
+  margin-left: 10%;
+  margin-right: 10%;
   animation-name: list;
   animation-duration: 3s;
   animation-delay: 1.7s;

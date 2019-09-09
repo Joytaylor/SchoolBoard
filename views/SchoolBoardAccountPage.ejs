@@ -10,9 +10,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-	<!--Anime.js-->
-	<script src="anime.min.js"></script>
-
 	<!--My Stuff-->
 	<link rel = "stylesheet" type = "text/css" href = "styles.css"/>
 	<script src = "img.js"></script>
@@ -76,7 +73,7 @@ function logout() {
 <div id = "fullContainer" class = "container-fluid">
 	<div id = "greeting" class = "row">
 		<h1>Welcome,
-		<%=user_data.first_name%></h1>
+		<%=userData.first_name%></h1>
 	</div>
 	<div class = "row">
 		<div id = "svgCol" class = "col-12 position-relative">
@@ -93,63 +90,36 @@ function logout() {
 		</div>
 	</div>
 	<div id = "classes" class = "tabcontent row justify-content-center">
-		<%var i = 0;
-		class_documents.forEach(function(document){%>
-		<%if(i==0){%>
+		<% classData.forEach(function(document){%>
+		<% 	%>
 		<!--<a href = '/classPage?id=<%//=document.id%>'>-->
 		<div class="classItem active col-md-4">
 			<div class = 'name'>
 				<div class = "row">
 					<h2>
-						<%=//document.class_code%>
-						CS 1336
+						<%=document.class_code%>
 					</h2>
 				</div>
 				<div class = "row text-left">
 					<h4>
-						<%=//document.class_name%>
-						Programming Fundamentals
+						<%=document.class_name%>
 					</h4>
 				</div>
 			</div>
 			<div class = "sectionInfo">
 				<div class = "row">
 					<h5>
-						<%=//document.class_section%>
-						Section 009
+						<%=document.class_section%>
 					</h5>
 				</div>
 				<div class = "row">
-					<h5>
-						<%=//document.class_teacher%>
-						Jeyakesavan Veerasamy
-					</h5>
-				</div>
-			</div>
-		</div>
-		<%} else {%>
-		<a href = '/classPage?id=<%=document.id%>'>
-			<div class="classItem active col-md-4">
-				<div class = 'name'>
-					<h2>
-						<%=document.class_code%>
-					</h2>
-					<h4>
-						<%=document.class_name%>
-					</h4>
-				</div>
-				<div class = "sectionInfo">
-					<h5>
-						<%=document.class_section%>
-					</h5>
 					<h5>
 						<%=document.class_teacher%>
 					</h5>
 				</div>
 			</div>
-		</a>
-		<%}%>
-		<%i++;})%>
+		</div>
+		<%})%>
 		</div>
 	<div id = "quoteRow" class = "row justify-content-center">
 		<div class = "quoteImg col-sm-2">
@@ -171,7 +141,5 @@ function logout() {
 	</div>
 </body>
 <script>
-<%if(err){%> alert('<%=err%>')
-<%}%>
 </script>
 </html>

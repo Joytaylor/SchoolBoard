@@ -66,55 +66,35 @@ const Schools = db.collection('Schools');
 
 const Users = db.collection('Users');
 
-const Enrollments = db.collection('Enrollments');
-
 const Questions = db.collection('Questions');
 
 const Teacher_Responses = db.collection('Teacher_Responses');
 
 const Question_Votes = db.collection('Question_Votes');
 
-
 app.get('/', function(req, res){
-	
 	res.render("index")
-	
 });
 
-app.get('/SchoolBoardAccountPage', function(req, res){
-	getUserAndClassInfo(res, req, function(result){
-		if(result.user_data==null){
-			res.redirect('/SchoolBoardLogInPage?err='+'no_user')
-		}
-		else{
-			if(req.query && req.query.err){
-				err = "There is something wrong with the class you were trying to reach. Please contact your SchoolBoard administrator.";
-				result.err = err
-			}
-			
-			res.render("SchoolBoardAccountPage", result)
-		}
-	})
+app.get('/SchoolBoardLogInPage', function(req, res){
+	var err = "";
+	if (req.query && req.query.err) {
+		err = "There is something wrong with your account. Please contact your SchoolBoard administrator.";
+		res.render('SchoolBoardLogInPage', {err: err});
+	}
+	if (req.signedCookies.user_id) {
+		res.redirect("/loadAccountWithData");
+	}
+
 });
 
 app.get('/IN2QuestionPage', function(req, res){
 	if(req.query && req.query.id){
 		var id = req.query.id
-		console.log(id)
 		res.render('IN2QuestionPage', {class_id: id})
 		
 	}
 });
-
-app.get('/SchoolBoardLogInPage', function(req, res){
-	var err = "";
-	if(req.query && req.query.err){
-		err = "There is something wrong with your account. Please contact your SchoolBoard administrator.";
-	}
-	res.render('SchoolBoardLogInPage', {err: err})
-
-});
-
 
 app.post('/vote', function(req, res){
 	if(req.signedCookies.user_id){
@@ -126,7 +106,6 @@ app.post('/vote', function(req, res){
 			if(question_votes.size == 0){
 				insertQuestion_Vote(user_id, question_id, vote_value, function(){
 					getVotes(question_id, function(votes){
-						console.log(votes)
 						res.send({votes: votes})
 					})
 				})
@@ -139,7 +118,6 @@ app.post('/vote', function(req, res){
 						vote_value: vote_value
 					}).then(function(){
 						getVotes(question_id, function(votes){
-							console.log(votes)
 							res.send({votes: votes})
 						})
 					})
@@ -196,7 +174,6 @@ app.get('/classPage', function(req, res){
 							question_info.push(question_data)
 							question_ids.push(question.id)
 						})
-						console.log("IDBJOEWFJPPFKSDMPDKF")
 						getDocumentsByFeature(Teacher_Responses, "question_id", question_ids, [], function(responses){
 							
 							responses.forEach(function(response){
@@ -306,19 +283,40 @@ app.post('/auth', function(req, res){
 	query.get().then(function(resultsOfQuery){
 		if(resultsOfQuery.size > 0){
 			resultsOfQuery.forEach(function(doc){
-				console.log(doc.data())
 				res.cookie('user_id', doc.id, {
 					httpOnly: true,
 					signed: true
 					//add maxAge attribute in milliseconds if wanted
 				})
 			})
-			res.redirect('/SchoolBoardAccountPage')
-		}
-		else{
+			res.redirect('/loadAccountWithData')
+		} else {
 			res.redirect('/SchoolBoardLogInPage')
 		}
 	})
+})
+
+app.get("/loadAccountWithData", function(req, res) {
+	var classData = [];
+	getUserInfo(res, req, function(userData) {
+		var i = 0;
+		var numOfClasses = userData.classes.length;
+		userData.classes.forEach(function(class_id) {
+			Classes.doc(class_id).get().then(doc => {
+				var class_data = doc.data();
+				class_data.id = class_id
+				classData.push(class_data)
+				i++;
+				if (numOfClasses == i) {
+					res.render("SchoolBoardAccountPage", {classData, userData})
+				}
+			})
+
+		})
+
+
+	})
+
 })
 
 app.post('/logout', function(req, res){
@@ -339,7 +337,6 @@ app.post('/signup', function(req, res){
 	//registering the user
 	registerUser(username, aPassword, first_name, last_name, aStatus,school_name, email, function(validity, user_id){
 		if(validity.school_id && validity.username && validity.password && validity.email){
-			console.log(validity)
 			res.cookie('user_id', user_id, {
 				httpOnly: true,
 				signed: true
@@ -350,7 +347,6 @@ app.post('/signup', function(req, res){
 		}
 		else{
 			res.render('newform', validity)
-			console.log(validity);
 		}
 		
 	})
@@ -368,7 +364,6 @@ app.get('/cookiecheckstart', function(req, res){
 //the server is listening on port 3000 for connections
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
-  
 });
 
 /*// Add a new document with a generated id.
@@ -423,7 +418,7 @@ getIds(query,function(district_ids){
 })*/
 /*
 var query = Users.where("username", "==", "tlyke");
-getIds(query,function(user_ids){
+	getIds(query,function(user_ids){
 	var query = Classes.where("class_name", "==", "Algebra II");
 	getIds(query,function(class_ids){
 		console.log(class_ids)
@@ -601,8 +596,6 @@ function getDocumentsByFeature(collection, feature_title, features, documents, c
 		collection.where(feature_title,'==',features[0]).get().then(function(resultsOfQuery){
 			if(resultsOfQuery.size > 0){
 			resultsOfQuery.forEach(function(doc){
-				console.log('documents')
-				console.log(doc.data())
 				
 					var docData = doc.data()
 					
@@ -661,15 +654,15 @@ function getUserInfo(res, req, callback){
 			if (doc.exists) {
 				var user_data = doc.data();
 				user_data.first_name = stripslashes(user_data.first_name)
-				user_data.id = user_id
-				callback(user_data)		
+				user_data.id = user_id;
+				callback(user_data);
 			} else {
 				callback(null)
 			}
 		})
 	}
-	else {		
-		callback(null)		
+	else {
+		callback(null)
 	}
 }
 
@@ -677,7 +670,6 @@ function getClassInfo(class_id, callback){
 	Classes.doc(class_id).get().then(doc => {
 		if (doc.exists) {
 			var class_data = doc.data();
-			
 			class_data.id = class_id
 			callback(class_data)		
 		} else {
@@ -686,38 +678,20 @@ function getClassInfo(class_id, callback){
 	})
 }
 
-function getClassIdsOfUser(user_id, callback){
-	var user_id_array = []
-	var documents = []
-	user_id_array.push(user_id)
-	getDocumentsByFeature(Enrollments, 'user_id', user_id_array, documents, function(enrollments){
-		var class_ids = []
-		enrollments.forEach(function(enrollment){
-			class_ids.push(enrollment.class_id)
-		})
-		callback(class_ids)
-	})	
-}
-
 function getUserAndClassInfo(res, req, callback){
 	getUserInfo(res, req, function(user_data){
 		if(user_data != null){
 			user_id = user_data.id ;
-			getClassIdsOfUser(user_id, function(class_ids){
-				console.log("class_id: ")
-				console.log(class_ids)
-				if(class_ids.length > 0){
-					var documentarray = []
-					getDocumentsByID(Classes, class_ids, documentarray, function(documents){
-						callback({user_data: user_data, class_documents: documents, err: ''})	
-					})
-				}
-				else{
-					callback({user_data: user_data, class_documents: [{class_name: "none", id:null}], err: ''})
-				}
-			})		
-		}
-		else{
+			classes = user_data.classes;
+			if(classes.length > 0){
+				var documentarray = []
+				getDocumentsByID(Classes, classes, documentarray, function(documents){
+					callback({user_data: user_data, class_documents: documents, err: ''})
+				})
+			} else {
+				callback({user_data: user_data, class_documents: [{class_name: "none", id:null}], err: ''})
+			}
+		} else {
 			callback({user_data: null, class_documents: [{class_name: "none", id:null}], err: ''})
 		}
 	})
