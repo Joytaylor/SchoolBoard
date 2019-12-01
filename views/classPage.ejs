@@ -1,166 +1,313 @@
-<!--Joy Taylor Aug 9th  Base for creating sites updated -->
-
 <!DOCTYPE html>
-<html id = "classPage">
+<html id="classPage">
+
 <head>
-<!--Samuel Anozie, July 29, 2017. This is the <%=class_data.class_name%> page. -->
-<title><%=class_data.class_name%> - SchoolBoard</title>
-<meta charset = "UTF-8"/>
-<link rel = "stylesheet" type = "text/css" href = "styles.css"/>
-<link rel = "icon" href = "favicon.jpg" type = "image/jpg"/>
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Samuel Anozie, July 29, 2017. V0.1 Redesign September 2019.-->
+    <title>
+        <%=class_data.class_name%> | SchoolBoard</title>
+    <meta charset="UTF-8" />
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
+    <!-- Bootstrap Links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-html {
-	height: 100%;
-}
-body {
-	text-align: center;
-	height: 100%;
-	background-image: url('backpic.jpg');
-	background-size: cover;
-	overflow: auto;
-	margin: auto;
-}
-</style>
+    <!--Socket-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        /*
+                var demoObject = {
+                    class_code: "hey"
+                }
+                $(function() {
+                    var socket = io();
+                    $(".menuItem").on('click', function(e) {
+                        var data = $(this).attr('id');
+                        e.preventDefault(); // prevents page reloading
+                        socket.emit('menu', data);
+                        return false;
+                    });
+                    socket.on('rewrite', function() {
+                        class_data.class_code = "wawa"
+                    })
+                });*/
+    </script>
+
+    <!--Local Links-->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="icon" href="favicon.png" type="image/jpg" />
+    <script src="animations.js"></script>
 </head>
+
 <body>
-<div class = "img" id = "<%=class_data.class_name%>">
-	<a href = "index.html">
-		<img src = "Picture1.png" id = "<%=class_data.class_name%>"/>
-	</a>
-</div>
-<div class = "classname" id = "<%=class_data.class_name%>">
-	<div class = "heading">
-		<h1> <%=class_data.class_name%> </h1>
-	</div>
-	<div class = "statement">
-		<p class = "statement">Questions</p>
-	</div>
-</div>
-<div class = "outerContainer">
-<div class = "innerContainter">
-<div id = "ask" class = "ask"><a href = "/IN2QuestionPage?id=<%=class_data.id%>"><h3>ASK A QUESTION</h3></a></div>
-	<script>
-		function upvote(anElement){
-			var question_id = anElement.getAttribute("data-question_id")
-			
-			$.ajax({
-				url:"/vote",
-				method:"Post",
-				data: {question_id: question_id, vote_value: 1},
-				success:function(data){
-					$("[data-vote_question_id="+question_id+"]").html(data.votes)
-				}
-			});
-		}
-		function downvote(anElement){
-			var question_id = anElement.getAttribute("data-question_id")
-			$.ajax({
-				url:"/vote",
-				method:"Post",
-				data: {question_id: question_id, vote_value: -1},
-				success:function(data){
-					$("[data-vote_question_id="+question_id+"]").html(data.votes)
-				}
-			});
-		}
-		function vote(div) {
-			var num = parseInt(document.getElementById("num_" + div).innerHTML);
-			document.getElementById("num_" + div).innerHTML = num + 1;
-			console.log("num_" + div)
-			num += 1;
-
-			/*for (var i = (div-1); i > 0; i--) {
-				var compare = parseInt(document.getElementById("num_" + i).innerHTML);
-				if (num > compare) {
-					var higher = document.getElementById("div_" + div);
-					var lower = document.getElementById("div_" + i);
-					document.getElementById("div_" + div).innerHTML = lower.innerHTML;
-					document.getElementById("div_" + i).innerHTML = higher.innerHTML;
-				}
-			}*/
-		}
-        function disable(input) {
-			var vote = document.getElementById(input);
-            vote.disabled = true;
-			vote.style.opacity = 0.2;
-		}
-        function visible(form, button) {
-        var div = document.getElementById(form).style;
-        var clicked = document.getElementById(button);
-        if (button == 'answerButton') {
-            div.display = 'block';
-        }
-        else {
-            div.display = 'none';
-        }
-    }
-        function removeElement(elementId) {
-    // Removes an element from the document
-    var element = document.getElementById(elementId);
-    element.parentNode.removeChild(element);
-}
-
-	</script>
-	<!--in the event that a question has to be deleted from the database, all of the question Id's will be thrown off. Proceed with caution-->
-	<div class = 'time'><h3>This Week</h3><div class = 'strip'></div></div>
-	<%var isTeacher = user_data.status == "teacher";
-		if(isTeacher == true && question_info.length == 0){%>
-			<p class = 'null'>No questions asked yet</p>
-		<%}
-	%>
-	<% 
-	var num = 1;
-	question_info.forEach(function(question){%>
-	<span id = 'div_<%=num%>'><div id = 'question'>
-	<%
-	if(isTeacher){%>
-	<button class = 'answerButton' id = 'answerButton' onclick = visible('answerForm_<%=num%>','answerButton')>ANSWER</button>
-	<%}%>
-	<div id = 'text'>
-                            <h6> <%=question.question%></h6>
+    <div id="blur">
+        <header>
+            <div class="container-fluid h-100">
+                <div class="row justify-content-center h-100">
+                    <div id="logoContainer" class="col-4">
+                        <img id="logo" src="/Logo.svg" class="img-fluid" />
+                    </div>
+                    <div id="headingContainer" class="col-4">
+                        <div class="w-100">
+                            <div class="row justify-content-center">
+                                <div class="col-8 text-center">
+                                    <h1 id="classCode">
+                                        <%=class_data.class_code%>
+                                    </h1>
+                                </div>
+                            </div>
+                            <%if(user_data.status != "teacher") {%>
+                                <div class="row justify-content-center">
+                                    <div class="col-8 text-center">
+                                        <button onclick='toggleDisplays("question")' id="askQuestion" class="btn">Ask a Question</button>
+                                    </div>
+                                </div>
+                                <%}%>
                         </div>
-                        <div class = 'vote'>
-                            <div class = 'votecontainer'>
-                            
-                                <span class = 'num' id = 'num_<%=num%>' data-vote_question_id='<%=question.id%>'> <%=question.votes%> </span>
-                                <input type = 'hidden' name = 'question' value="<%=question.id%>"><br>
-								<input type = 'hidden' name = 'class' value = '<%=class_data.class_name%>'><br>
-                                <input class = 'vote' id = 'vote_<%=num%>' data-question_id='<%=question.id%>' type = 'image' name = 'submit' onclick='upvote(this)' value = 'UP' >
-								<input class = 'vote' id = 'vote_<%=num%>' data-question_id='<%=question.id%>' type = 'image' name = 'submit' onclick='downvote(this)' value = 'DOWN' >
-                            
+                    </div>
+                    <div id="navContainer" class="col-4">
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <a class="nav-link" href="/account">Account</a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a class="nav-link" href="/">Home</a>
                             </div>
                         </div>
                     </div>
-					<%if(isTeacher){%>
-					<form class = 'answerForm' id = 'answerForm_<%=num%>' action='/addAnswer' method = 'POST'>
-                        <input type = 'hidden' name='question' value='<%=question.question%>'>
-                        <input type='hidden' name='subject' value='<%=class_data.class_name%>'>
-						<input type='hidden' name='class_id' value='<%=class_data.id%>'>
-						<input type='hidden' name='question_id' value='<%=question.id%>'>
-                        <textarea name='teacher_response' placeholder = 'Type your answer here'></textarea><br>
-                        <input type = 'submit' name = 'submit' value = 'SUBMIT' id='submit'><br>
-                        <button id = 'closeButton' onclick = visible('answerForm_<%=num%>', 'closeButton')>CLOSE FORM</button>
-                    </form>
-					<%}%>
-					</span>
-					<%question.responses.forEach(function(response){%>
-						<div id = 'answer'><div id = 'text'><h6><%=response.teacher_response%></h6></div></div><br>
-					<%})%>
-	<%
-	num++;
-	})%>
-	
-		<h4><a class = "backLink" href = "/SchoolBoardAccountPage">GO BACK TO ACCOUNT</a></h4>
-		<%if(isTeacher){%>
-		<script>removeElement('ask')</script>
-		<%}%>
-   </div>
-</div>
+                </div>
+            </div>
+        </header>
+        <div id="app" class="container-fluid">
+            <div class="row justify-content-center">
+                <%if(question_info.length == 0) {%>
+                    <p class='null'>No questions asked yet</p>
+                    <%} else {%>
+                        <div id="timeMenu" class="col-2 sideMenu align-self-start">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p id="thisWeek" class="menuItem active">This Week</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p id="thisMonth" class="menuItem">This Month</p>
+                                </div>
+                            </div>
+                            <!--Add feature for this semester-->
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="menuItem">All Time</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="questionContainer" class="col-6">
+                            <div class="row">
+                                <%question_info.forEach(data => {%>
+                                    <div class="question card-primary col-md-12">
+                                        <div class="header card-header row">
+                                            <div class="hashtags col-10 d-flex">
+                                                <h3 class="align-self-center">
+                                                    <%data.hashtags.forEach(topic => {%>
+                                                        <%="#"+topic%>
+                                                            <%})%>
+                                                </h3>
+                                            </div>
+                                            <div class="vote col-2">
+                                                <button id="<%=data.id%>" type="submit" class="voteButton btn" onclick="disableAndAnimate('<%=data.id%>')" <%if(data.voter_ids) { data.voter_ids.forEach(voterId=> {
+                                                               if(voterId == user_data.id) { %>
+                                                          disabled
+                                                          <%}})}%>
+                                                          ><span class = "font-weight-bold"><%=data.votes%></span> Votes</button>
+                                                <script>
+                                                    var id = "#<%=data.id%>"
+                                                    $(id).click(function() {
+                                                        $.ajax({
+                                                            url: "/vote",
+                                                            type: "POST",
+                                                            data: {
+                                                                question_id: "<%=data.id%>"
+                                                            }
+                                                        })
+                                                    })
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="questionText card-body row">
+                                            <div class="col-12 questionBody">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p>
+                                                            <%=data.question_text%>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div id="timeContainer" class="col-12 text-center">
+                                                        <p class="timestamp">
+                                                            <%=data.date_of_ask%>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <%if(user_data.status == "teacher") {%>
+                                                    <button class="btn card-btn" onclick='toggleDisplays("answer", "<%=data.question_text%>", "<%=data.id%>")'>Answer</button>
+                                                    <%}%>
+                                            </div>
+                                        </div>
+                                        <% if(data.responses) { %>
+                                            <div class="questionResponse row">
+                                                <% data.responses.forEach(response => { %>
+                                                    <div id="responseContainer" class="col-12">
+                                                        <p>
+                                                            <%=response.teacher_response %>
+                                                        </p>
+                                                    </div>
+                                                    <%})}%>
+                                            </div>
+                                    </div>
+                                    <%})%>
+                            </div>
+                        </div>
+                        <div id="voteMenu" class="col-2 sideMenu align-self-start">
+                            <div class="col-12 text-right">
+                                <p class="menuItem active">Recent Questions</p>
+                            </div>
+                            <div class="col-12 text-right">
+                                <p class="menuItem">Recent Answers</p>
+                            </div>
+                            <div class="col-12 text-right">
+                                <p class="menuItem">Most Voted</p>
+                            </div>
+                            <%if(user_data.status == "teacher") {%>
+                                <div class="col-12 text-right">
+                                    <p class="menuItem">Least Voted</p>
+                                </div>
+                                <%}%>
+                        </div>
+                        <%}%>
+            </div>
+        </div>
+    </div>
+
+    <!--Spaces that contain the question form and the answer form-->
+    <div id="black" onclick="toggleDisplays('outfocus')" class="position-fixed inactive"></div>
+    <div id="invisibleQuestionContainer" class="position-fixed invisibleSpace inactive">
+        <div class="askContainer row justify-content-center">
+            <div class="col-md-12">
+                <div class="row justify-content-center text-center">
+                    <h4>Ask a Question</h4>
+                </div>
+                <div class="row justify-content-center">
+                    <div id="askCard" class="col-md-12 card">
+                        <div id="askCardHeader" class="row">
+                            <div class="col-12">
+
+                                <input type="hidden" value="<%=class_data.id%>" name="class_id" />
+                                <div class="row card-header">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <p>Add hashtags here (all one word, CamelCase!)</p>
+                                        </div>
+                                        <div class="row">
+                                            <div id="hashtagPaste" class="col-9">
+                                                <div class="row hashtagElement">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">#</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="hashtags" placeholder="Hashtag" aria-label="Username" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-3 align-self-start">
+                                                <button type="button" id="addInput" class="btn" onclick="addHashtag()">Add #</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>Ask your question. Remember to be respectful!</p>
+                                        <textarea placeholder="Start typing here..." name="question"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-6 text-center">
+                        <button id="questionSubmit" type="submit" class="btn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="invisibleAnswerContainer" class="position-fixed invisibleSpace inactive">
+        <div class="askContainer row justify-content-center">
+            <div class="col-md-9">
+                <div class="row justify-content-center text-center">
+                    <h4>Answer a Question</h4>
+                </div>
+                <form action="/addAnswer" method="POST">
+                    <div class="row justify-content-center">
+                        <div id="askCard" class="col-md-12 card">
+                            <div id="askCardHeader" class="row">
+                                <div class="col-12">
+                                    <div class="row card-header">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <!--Paste question text here-->
+                                                <p id="questionPreview"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p>Answer your student's question. Remember to be respectful!</p>
+                                            <textarea placeholder="Start typing here..." name="teacher_response"></textarea>
+                                        </div>
+                                    </div>
+                                    <input id="answerResponseID" type="hidden" name="question_id" />
+                                    <input id="classResopnseID" type="hidden" name="class_id" value="<%=class_data.id%>" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-6 text-center">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".menuItem").on('click', function() {
+            var data = $(this).attr('id');
+            var classID = "<%=class_data.id%>";
+            console.log()
+            $.ajax({
+                url: "/timeQuery",
+                type: 'post',
+                data: {
+                    queryType: data,
+                    classID: classID
+                }
+            })
+        })
+        fetch("/timeQuery", {
+                method: "post"
+            })
+            .then(res => console.log(res.clone().json()))
+            .catch(function(err) {
+                alert(err)
+            })
+    </script>
 </body>
+
 </html>

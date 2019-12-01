@@ -1,45 +1,25 @@
 @charset "UTF-8";
-/*Font Links(from Google Fonts)*/
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700,900");
 @import url("https://fonts.googleapis.com/css?family=Cinzel");
 @import url("https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900");
 @import url("https://fonts.googleapis.com/css?family=Syncopate");
-.card {
-  position: absolute;
-  max-width: 50%;
-  max-height: 100%;
-  border: none;
-}
-
-.x-position:nth-of-type(1) {
-  z-index: 0;
-  margin-left: -25%;
-}
-
-.x-position:nth-of-type(2) {
-  z-index: 2;
-  margin-left: -17%;
-}
-
-.x-position:nth-of-type(3) {
-  z-index: 1;
-  margin-left: -9%;
-}
-
 .card-primary .card-header {
   background-color: #164869;
   color: white;
   font-family: "Raleway", sans-serif;
 }
+
 .card-primary .card-title {
   font-family: "Raleway", sans-serif;
   padding: 1rem;
   font-weight: 700;
 }
+
 .card-primary .card-body {
   background-color: rgba(37, 85, 116, 0.75);
   color: white;
 }
+
 .card-primary .card-btn {
   background: white;
   color: #164869;
@@ -51,15 +31,18 @@
   color: white;
   font-family: "Raleway", sans-serif;
 }
+
 .card-tertiary .card-title {
   font-family: "Raleway", sans-serif;
   padding: 1rem;
   font-weight: 700;
 }
+
 .card-tertiary .card-body {
   background-color: rgba(90, 36, 49, 0.77);
   color: white;
 }
+
 .card-tertiary .card-btn {
   background: white;
   color: #AE445D;
@@ -71,15 +54,18 @@
   color: white;
   font-family: "Raleway", sans-serif;
 }
+
 .card-quinary .card-title {
   font-family: "Raleway", sans-serif;
   padding: 1rem;
   font-weight: 700;
 }
+
 .card-quinary .card-body {
   background-color: rgba(78, 60, 96, 0.8);
   color: white;
 }
+
 .card-quinary .card-btn {
   background: white;
   color: #4b385f;
@@ -98,10 +84,6 @@
   width: auto;
 }
 
-html, body {
-  height: 100%;
-}
-
 .nav {
   height: 4vh;
   margin-left: 10.5%;
@@ -118,6 +100,7 @@ html, body {
   font-family: "Raleway", sans-serif;
   font-weight: bold;
   opacity: 0.5;
+  -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
 
@@ -126,66 +109,117 @@ html, body {
   color: #164869;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 #index #mission {
   height: 100vh;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-left: 5%;
   margin-left: 5%;
   margin-right: 10%;
 }
+
 #index #mission #eduMeetFuture {
   margin-top: -10vh;
 }
+
 #index #mission #question {
   padding-left: 15px;
 }
+
+#index .card {
+  position: absolute;
+  max-width: 50%;
+  max-height: 100%;
+  border: none;
+}
+
 #index #floatingDivs {
   position: relative;
   height: 100%;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #index #floatingDivs #floatContainer {
   position: relative;
   height: 100%;
   width: 100%;
   margin-top: -50vh;
 }
+
+#index .x-position:nth-of-type(1) {
+  z-index: 0;
+  margin-left: -25%;
+}
+
+#index .x-position:nth-of-type(2) {
+  z-index: 2;
+  margin-left: -17%;
+}
+
+#index .x-position:nth-of-type(3) {
+  z-index: 1;
+  margin-left: -9%;
+}
+
 #index #footer {
   opacity: 0.4;
   padding-bottom: 1%;
 }
+
 #index #missionh1 {
   font-size: 4.5vw;
 }
+
 #index h2 {
   font-size: 6vw;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   opacity: 0.9;
 }
+
 #index span.gradient {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#164869), color-stop(#3f4b7a), color-stop(#6a497e), color-stop(#924474), to(#ae445d));
   background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Cinzel Decorative", serif;
   opacity: 1;
 }
+
 #index p {
   font-family: "Raleway", sans-serif;
   color: #164869;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
 #index #beta {
   color: #6B7225;
   font-weight: bold;
 }
+
 #index #aua {
   color: #6B7225;
 }
@@ -206,69 +240,86 @@ html, body {
   }
   #index #logo {
     width: 60vw;
-    transform: translateX(20vw);
+    -webkit-transform: translateX(20vw);
+            transform: translateX(20vw);
   }
   #index .nav-item:nth-of-type(n+2) {
     display: none;
   }
 }
+
 @media (max-width: 1400px) {
   #index #floatContainer {
-    transform: translateY(-10vh);
+    -webkit-transform: translateY(-10vh);
+            transform: translateY(-10vh);
   }
 }
+
 #newform {
   /*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
   /* Add a green text color and a checkmark when the requirements are right */
   /* Add a red text color and an "x" when the requirements are wrong */
 }
+
 #newform form {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 2.5rem;
 }
+
 #newform form .statusLabel {
   font-weight: bold;
   color: #525252;
   width: auto;
 }
+
 #newform form select {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 2.3vw;
   width: auto;
 }
+
 #newform form option {
   font-size: 1.5vw;
 }
+
 #newform form option:hover {
   background-color: #164869;
-  box-shadow: 0 0 10px 100px #164869 inset;
+  -webkit-box-shadow: 0 0 10px 100px #164869 inset;
+          box-shadow: 0 0 10px 100px #164869 inset;
   color: white;
 }
+
 #newform form .formLabel {
   color: #818181;
 }
+
 #newform form input {
   text-align: center;
   width: 100%;
 }
-#newform form input[type=submit] {
+
+#newform form input[type='submit'] {
   height: 100px;
   width: 20%;
   background-color: #164869;
   color: white;
   border: none;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.3vw;
   margin: 2%;
+  -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
-#newform form input[type=submit]:hover {
+
+#newform form input[type='submit']:hover {
   color: #164869;
   background-color: white;
   border: 1px solid #164869;
   -webkit-transition-duration: 0.2s;
 }
+
 #newform h1 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#164869), color-stop(#3f4b7a), color-stop(#6a497e), color-stop(#924474), to(#ae445d));
   background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -276,13 +327,15 @@ html, body {
   font-weight: 700;
   font-family: "Raleway", sans-serif;
 }
+
 #newform p {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: #164869;
   margin-top: 1%;
   font-size: 1.6vw;
   font-weight: 600;
 }
+
 #newform #message {
   display: none;
   background: #f1f1f1;
@@ -291,21 +344,26 @@ html, body {
   padding: 20px;
   margin-top: 10px;
 }
+
 #newform #message p {
   padding: 10px 35px;
   font-size: 18px;
 }
+
 #newform .valid {
   color: green;
 }
+
 #newform .valid:before {
   position: relative;
   left: -35px;
   content: "✔";
 }
+
 #newform .invalid {
   color: red;
 }
+
 #newform .invalid:before {
   position: relative;
   left: -35px;
@@ -321,18 +379,28 @@ html, body {
   background-image: url("lightpic.png");
   background-size: cover;
 }
+
 #logInPage #loginFormContainer {
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
 }
+
 #logInPage #containerRow {
   padding: 3%;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#164869), color-stop(#3f4b7a), color-stop(#6a497e), color-stop(#924474), to(#ae445d));
   background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
   border-radius: 10px;
 }
+
 #logInPage .loginInput {
   font-family: "Raleway", sans-serif;
   padding: 5%;
@@ -344,17 +412,21 @@ html, body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
   background: none;
   border-radius: 10px;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
+
 #logInPage .loginInput:hover {
   border-left: 1px solid white;
   border-bottom: 1px solid white;
 }
+
 #logInPage .loginInput:focus {
   border-left: 1px solid white;
   border-bottom: 1px solid white;
 }
-#logInPage input[type=submit] {
+
+#logInPage input[type="submit"] {
   width: 100%;
   font-family: "Raleway", sans-serif;
   background: none;
@@ -362,65 +434,81 @@ html, body {
   margin-top: 15%;
   padding: 5%;
   color: rgba(255, 255, 255, 0.8);
+  -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
   border-radius: 7px;
 }
-#logInPage input[type=submit]:hover {
+
+#logInPage input[type="submit"]:hover {
   color: #164869;
   background-color: white;
 }
+
 #logInPage ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: white;
   opacity: 0.3;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
+
 #logInPage ::-webkit-input-placeholder:hover {
   opacity: 0.6;
 }
+
 #logInPage ::-webkit-input-placeholder:focus {
   opacity: 0.6;
 }
+
 #logInPage ::-moz-placeholder {
   /* Firefox 19+ */
   color: white;
   opacity: 0.3;
 }
+
 #logInPage ::-moz-input-placeholder:hover {
   opacity: 0.6;
 }
+
 #logInPage ::-moz-input-placeholder:focus {
   opacity: 0.6;
 }
+
 #logInPage :-ms-input-placeholder {
   /* IE 10+ */
   color: white;
   opacity: 0.3;
 }
+
 #logInPage :-ms-input-placeholder:hover {
   opacity: 0.6;
 }
+
 #logInPage :-ms-input-placeholder:focus {
   opacity: 0.6;
 }
+
 #logInPage :-moz-placeholder {
   /* Firefox 18- */
   color: white;
   opacity: 0.3;
 }
+
 #logInPage :-moz-input-placeholder:hover {
   opacity: 0.6;
 }
+
 #logInPage :-moz-input-placeholder:focus {
   opacity: 0.6;
 }
 
 #account body {
-  background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+  background-image: url("accountback.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
 #account #logo {
   padding: 1%;
   opacity: 1;
@@ -430,12 +518,14 @@ html, body {
   animation-duration: 2s;
   animation-delay: 1s;
   animation-fill-mode: backwards;
-  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
   -webkit-animation-name: image;
   -webkit-animation-duration: 2s;
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: backwards;
 }
+
 #account #fullContainer {
   padding: 0;
   overflow-x: hidden;
@@ -448,23 +538,26 @@ html, body {
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: backwards;
 }
+
 #account #fullContainer #greeting {
   text-align: left;
   animation-name: list;
   animation-duration: 3s;
   animation-delay: 1s;
-  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
   -webkit-animation-name: list;
   -webkit-animation-duration: 3s;
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: backwards;
 }
+
 #account #fullContainer #svgCol {
   padding: 0;
 }
+
 #account #fullContainer #classes {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: 5% 6% 5% 6%;
   animation-name: list;
   animation-duration: 3s;
   animation-delay: 1.7s;
@@ -474,24 +567,29 @@ html, body {
   -webkit-animation-delay: 1.7s;
   -webkit-animation-fill-mode: backwards;
 }
+
 #account #fullContainer #classes .classItem {
-  padding: 5%;
+  padding: 3%;
 }
+
 #account #fullContainer #classes .classItem .name {
   background-color: white;
   padding: 10% 10% 5% 10%;
   color: #393939;
 }
+
 #account #fullContainer #classes .sectionInfo {
   background-color: rgba(255, 255, 255, 0.25);
   padding: 5% 5% 5% 10%;
 }
+
 #account #fullContainer #logoutContainer {
   width: 100%;
   background-color: white;
   border-top: 1px solid red;
   margin: 0;
 }
+
 #account #fullContainer #logoutContainer #logout {
   padding-left: 7%;
   padding-right: 7%;
@@ -507,40 +605,53 @@ html, body {
   /* Safari */
   transition-duration: 0.2s;
 }
+
 #account #fullContainer #logoutContainer #logout:hover {
   color: white;
   background-color: red;
   border: none;
 }
+
 #account svg {
   width: 100%;
   height: 100%;
   text-align: center;
   position: relative;
 }
+
 #account #theSVG #txtMask {
   font-size: 10vh;
   font-weight: bold;
   overflow: hidden;
 }
+
 #account #disclaim {
   z-index: 10%;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: -6%;
 }
+
 #account h1 {
   font-family: "Raleway", sans-serif;
   color: white;
   padding-left: 3%;
   font-size: calc(1.8rem + 1.5vw);
 }
+
 #account h2 {
   font-family: "Raleway", sans-serif;
   font-size: calc(1.8rem + 1.5vw);
 }
+
 #account h3 {
   font-family: "Raleway", sans-serif;
   font-weight: 100;
@@ -548,37 +659,56 @@ html, body {
   color: white;
   font-size: calc(2.3rem + 0.6vw);
 }
+
 #account h4 {
   font-family: "Raleway", sans-serif;
   font-size: calc(0.9rem + 0.3vw);
 }
+
 #account h5 {
   color: white;
   font-family: "Raleway", sans-serif;
   font-size: calc(0.6rem + 0.3vw);
 }
+
 #account p {
   font-family: "Raleway", sans-serif;
   color: black;
   font-size: calc(0.8rem + 0.8vw);
 }
+
 #account #quoteRow {
   background-color: white;
 }
+
 #account .quoteImg {
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #account #envelope {
   padding-top: 6%;
   padding-bottom: 4%;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #account #quote p {
   font-size: calc(1.2rem + 0.8vw);
   font-family: "Raleway", sans-serif;
@@ -586,517 +716,419 @@ html, body {
   padding-left: 10%;
   padding-right: 10%;
 }
+
 #account #quote p#description {
   font-size: 20px;
   float: right;
 }
 
-#classPage h1 {
-  font-family: "Cinzel Decorative", serif;
-  font-size: 7vw;
-  color: white;
-  font-weight: 300;
-}
-#classPage h2 {
-  font-family: "Raleway", sans-serif;
-  font-size: 40px;
-  color: #bfbfbf;
-}
-#classPage h3 {
-  font-family: "Cinzel", serif;
-  font-weight: 200;
-  height: 20px;
-}
-#classPage h4 {
-  font-family: "Raleway", sans-serif;
-  font-weight: 100;
-}
-#classPage h6 {
-  font-size: 1.4vw;
-  color: #595959;
-  font-family: "Raleway", sans-serif;
-  font-weight: 100;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-#classPage p.statement {
-  font-family: "Raleway", sans-serif;
-  font-weight: 100;
-  color: white;
-  font-size: 3vw;
-  letter-spacing: 0.5vw;
-}
-#classPage p.null {
-  font-family: "Raleway", sans-serif;
-  font-weight: 500;
-  color: darkslategray;
-  font-size: 1.4vw;
-}
-#classPage input[value=VOTE] {
-  font-family: "Raleway", sans-serif;
-  font-size: 0.5vw;
-  color: white;
-}
-#classPage div.img {
-  width: 100%;
-  height: 11%;
-  background-color: white;
-}
-#classPage div.classname {
-  width: 100%;
-  color: black;
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-#classPage img {
-  width: 25%;
-  height: 100%;
-}
-#classPage div.statement {
-  margin-top: 2%;
-}
-#classPage div.statement p {
-  color: white;
-}
-#classPage div.outerContainer {
-  width: 100%;
-  margin: auto;
-  background-color: whitesmoke;
-}
-#classPage div.innerContainter {
-  height: 100%;
-  width: 60%;
-  margin: auto;
-  background-color: white;
-  padding-bottom: 4%;
-  padding-top: 5px;
-}
-#classPage div.ask {
-  margin-left: 30%;
-  margin-top: 6%;
-  margin-right: 30%;
-  padding-bottom: 1.7%;
-  padding-top: 1%;
-  color: white;
-  background-color: #164869;
-}
-#classPage a {
-  color: white;
+#account a {
   text-decoration: none;
-}
-#classPage a.backLink, #classPage a:hover {
-  color: gray;
-}
-#classPage div.strip {
-  background: radial-gradient(black 50%, white 50%);
-  height: 5px;
   width: 100%;
-  margin-bottom: 30px;
 }
-#classPage div#question {
-  background-color: white;
-  height: 10%;
+
+#classPage {
+  font-family: "Raleway", sans-serif;
+}
+
+#classPage #logoContainer {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#classPage #logoContainer #logo {
+  width: 30vh;
+}
+
+#classPage #headingContainer {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#classPage body {
+  background-image: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#classPage header {
+  height: 20vh;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transition-timing-function: cubic-bezier(0.43, 0.87, 0.44, 0.95);
+          transition-timing-function: cubic-bezier(0.43, 0.87, 0.44, 0.95);
+}
+
+#classPage header #navContainer {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#classPage header #askQuestion {
+  background-image: -webkit-gradient(linear, left top, right top, from(#3f4b7a), color-stop(#6a497e), to(#924474));
+  background-image: linear-gradient(to right, #3f4b7a, #6a497e, #924474);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
   width: 100%;
-  margin: auto;
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
-}
-#classPage div#answer {
-  margin: auto;
-  display: inline-block;
-  position: relative;
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  width: 94%;
-  background-color: whitesmoke;
-  color: black;
-}
-#classPage div#text, #classPage div#atext {
-  height: 100%;
-  width: 70%;
-  margin-left: 10%;
-  float: left;
-  padding: 20px;
-  border-top: 1px solid whitesmoke;
-  border-bottom: 1px solid whitesmoke;
-}
-#classPage div.vote {
-  float: left;
-  background-color: #164869;
+  padding: 3% 0;
   color: white;
-  height: 100%;
-  width: 15%;
-  position: absolute;
-  right: 0;
+}
+
+#classPage header #askQuestion:hover {
+  opacity: 0.8;
+}
+
+#classPage #blur {
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+#classPage .invisibleSpace {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   top: 0;
-  font-family: "Raleway", sans-serif;
-  font-size: 0.7vw;
-  border: none;
-  line-height: 100%;
-}
-#classPage .answerButton {
-  display: block;
-  position: absolute;
-  height: 100%;
-  width: 15%;
-  float: left;
-  color: white;
-  background: none;
-  background-color: lightgrey;
-  font-family: "Raleway", sans-serif;
-  border-style: none;
-  transition: width 0.4s ease-in-out;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: margin-left 0.4s ease-in-out;
-  -webkit-transition: margin-left 0.4s ease-in-out;
-  font-size: 1.3vw;
-}
-#classPage .answerForm {
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  width: 40%;
-  margin-left: 30%;
-  padding: 1%;
-  display: none;
-}
-#classPage .answerForm textarea {
-  border: none;
-  border-bottom: 1px solid lightgray;
-  width: 100%;
-  text-align: center;
-  color: black;
-  font-size: 1vw;
-  font-weight: 600;
-  font-family: "Raleway", sans-serif;
-}
-#classPage .answerForm input {
-  border: none;
-  width: 80%;
-  text-align: center;
-  color: black;
-  padding: 3%;
-  font-size: 1.2vw;
-  background-color: #164869;
-  font-family: "Raleway", sans-serif;
-  color: white;
-}
-#classPage .answerForm button {
-  background: none;
-  border: 1px solid #164869;
-  color: #164869;
-  padding: 1%;
-}
-#classPage .formContainer button {
-  border: none;
-  border-bottom: 1px solid lightgray;
-  margin-bottom: 6%;
-  font-family: "Raleway", sans-serif;
-}
-#classPage p#answerBack {
-  font-size: 1vw;
-  color: #595959;
-}
-#classPage input.vote {
-  color: white;
-  background: none;
-  border: none;
-}
-#classPage #voteform {
-  position: relative;
-  line-height: normal;
-}
-#classPage div.votecontainer {
-  height: 100%;
-  width: 100%;
-  position: static;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#classPage span.num {
-  font-size: 2.5vw;
-  line-height: normal;
-}
-#classPage div.formContainer {
-  text-align: center;
-  align-items: center;
-  display: none;
-}
-#classPage div.top {
-  height: 60%;
-  width: 100%;
-  position: absolute;
-}
-#classPage div.bottom {
-  height: 25%;
-  width: 100%;
-  position: absolute;
-  margin-top: 5%;
-}
-
-#questionPage h1 {
-  font-family: "Cinzel Decorative", serif;
-  font-size: 50px;
-  color: black;
-}
-#questionPage h2 {
-  font-family: "Raleway", sans-serif;
-  font-size: 40px;
-  color: #bfbfbf;
-}
-#questionPage h3 {
-  font-family: "Cinzel", serif;
-  margin-top: 5%;
-}
-#questionPage p {
-  font-family: "Raleway", sans-serif;
-  font-size: 20px;
-  color: white;
-}
-#questionPage div.body {
-  height: 89%;
-  width: 100%;
-  background-color: white;
-}
-#questionPage div.img {
-  width: 100%;
-  height: 11%;
-}
-#questionPage div.classname {
-  height: 30%;
-  width: 100%;
-  background-color: white;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#questionPage img {
-  width: 25%;
-  height: 90%;
-}
-#questionPage div.heading {
-  width: 50%;
-  padding-bottom: 10%;
-}
-#questionPage a {
-  color: white;
-}
-#questionPage a.backLink, #questionPage a:hover {
-  color: gray;
-}
-#questionPage div.ask {
-  height: 40%;
-}
-#questionPage textarea {
-  width: 40%;
-  height: 250px;
-  font-size: 30px;
-  text-align: center;
-  border: none;
-  margin-top: 2%;
-  border-left: 1px solid #164869;
-  border-right: 1px solid #164869;
-  overflow: auto;
-  font-family: "Raleway", sans-serif;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-#questionPage input {
-  width: 10%;
-  height: 50px;
-  background-color: #164869;
-  color: white;
-  border: none;
-  font-size: 20px;
-  font-family: "Cinzel", serif;
-}
-
-#teacherPage img {
-  width: 20%;
-  height: 17%;
-  padding-top: 1%;
-  width: 25%;
-  height: 7%;
-  margin-top: 1%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation-name: image;
-  animation-duration: 2s;
-  animation-delay: 1s;
-  animation-fill-mode: backwards;
-  animation-timing-function: ease;
-}
-#teacherPage div.img {
-  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
-  width: 100%;
-  background-color: white;
-  margin-left: -0.4%;
-  margin-right: -0.4%;
-  margin-top: -0.5%;
+  background: none;
+  pointer-events: none;
 }
-#teacherPage div.strip {
-  width: 100%;
-  height: 10px;
-  background-image: url(color.png);
-  background-size: cover;
-  animation-name: list;
-  animation-duration: 3s;
-  animation-delay: 1.2s;
-  animation-fill-mode: backwards;
-  -webkit-animation-name: list;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 1.2s;
-  -webkit-animation-fill-mode: backwards;
+
+#classPage .invisibleSpace .askContainer {
+  -webkit-transform: translateY(-3vh);
+          transform: translateY(-3vh);
+  pointer-events: all;
 }
-#teacherPage div.container {
-  overflow: hidden;
-  overflow: auto;
-  position: absolute;
-  margin-left: -0.4%;
-  margin-right: -0.4%;
-  margin-top: 5%;
-  height: 100%;
-  width: 101%;
-}
-#teacherPage div.header {
-  width: 100%;
-  height: 60%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url(color.png);
-  background-size: cover;
-  margin-left: -0.4%;
-  margin-right: -0.4%;
-  animation-name: list;
-  animation-duration: 3s;
-  animation-delay: 1s;
-  animation-fill-mode: backwards;
-  -webkit-animation-name: list;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 1s;
-  -webkit-animation-fill-mode: backwards;
-}
-#teacherPage div.description {
-  width: 100%;
-  height: 20%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 4%;
-  margin-bottom: 10%;
-  animation-name: list;
-  animation-duration: 3s;
-  animation-delay: 2.3s;
-  animation-fill-mode: backwards;
-  -webkit-animation-name: list;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 2.3s;
-  -webkit-animation-fill-mode: backwards;
-}
-#teacherPage div.class {
-  width: 100%;
-  height: 50%;
-  margin-top: 10%;
-}
-#teacherPage div.name {
-  width: 50%;
-  height: 100%;
-  border-right: 1px solid #164869;
-  margin-bottom: 10%;
-  float: left;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#teacherPage div.sections {
-  float: right;
-  width: 49%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  margin-right: -15px;
-}
-#teacherPage div.sub {
-  width: 100%;
-  height: 60%;
-}
-#teacherPage div.left_container {
-  width: 90%;
-  float: left;
-  padding-left: 8%;
-  z-index: 5;
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
-  -ms-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-}
-#teacherPage div.right_container {
-  float: right;
-  height: 78%;
-  width: 0%;
-  border-bottom: 10px solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #164869;
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
-  -ms-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-}
-#teacherPage div.teacher {
-  border-bottom: 1px solid #164869;
-  height: 100%;
-}
-#teacherPage div.time {
-  padding-top: -3%;
-}
-#teacherPage h1 {
-  font-family: "Cinzel Decorative", serif;
-  font-size: 6.4vw;
-  color: #164869;
-}
-#teacherPage h2 {
-  color: #164869;
-  font-size: 5vw;
-  font-family: "Cinzel", serif;
-}
-#teacherPage h3 {
-  font-size: 2vw;
-  font-family: "Cinzel", serif;
-}
-#teacherPage h4 {
-  font-family: "Raleway", sans-serif;
-  color: white;
-  font-size: 5vw;
-}
-#teacherPage p {
-  font-size: 2vw;
-  font-family: "Raleway", sans-serif;
-}
-#teacherPage input.section {
-  font-size: 4.5vw;
-  font-family: "Raleway", sans-serif;
-  color: #164869;
-  background-color: white;
+
+#classPage .invisibleSpace #basic-addon1 {
+  padding: .1rem .3rem;
   border: none;
-}
-#teacherPage a {
-  text-decoration: none;
+  margin-left: .375rem;
+  background: none;
 }
 
-/* Make it so that when the  user clicks on the section they want to see, the go button appears. */
+#classPage .invisibleSpace .form-control {
+  width: auto;
+  padding: .375rem .3rem;
+  border: none;
+  background: none;
+}
 
+#classPage .invisibleSpace .form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#classPage .invisibleSpace .input-group {
+  width: auto;
+}
+
+#classPage .invisibleSpace textarea {
+  width: 100%;
+  border: none;
+  font-size: calc(1rem + 1vw);
+  font-weight: bold;
+  opacity: 0.6;
+  padding-left: 25px;
+  overflow: auto;
+}
+
+#classPage .invisibleSpace textarea:focus {
+  outline: none;
+}
+
+#classPage .invisibleSpace #addInput {
+  color: white;
+  background: rgba(22, 72, 105, 0.51);
+  font-size: 0.6rem;
+  padding: 0rem .3rem;
+  height: 80%;
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
+}
+
+#classPage .invisibleSpace button[type="submit"] {
+  width: 100%;
+  background-color: white;
+  margin-top: 5%;
+}
+
+#classPage .invisibleSpace p {
+  font-weight: 100;
+  font-size: 1rem;
+  padding: 3%;
+  margin: 0;
+  opacity: 0.5;
+}
+
+#classPage .invisibleSpace h4 {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 4%;
+}
+
+#classPage .invisibleSpace ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  opacity: 0.3;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#classPage .invisibleSpace ::-webkit-input-placeholder:hover {
+  opacity: 0.6;
+}
+
+#classPage .invisibleSpace ::-webkit-input-placeholder:focus {
+  opacity: 0.6;
+}
+
+#classPage .invisibleSpace ::-moz-placeholder {
+  /* Firefox 19+ */
+  opacity: 0.3;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#classPage .invisibleSpace ::-moz-input-placeholder:hover {
+  opacity: 0.6;
+}
+
+#classPage .invisibleSpace ::-moz-input-placeholder:focus {
+  opacity: 0.6;
+}
+
+#classPage .invisibleSpace :-ms-input-placeholder {
+  /* IE 10+ */
+  opacity: 0.3;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#classPage .invisibleSpace :-ms-input-placeholder:hover {
+  opacity: 0.6;
+}
+
+#classPage .invisibleSpace :-ms-input-placeholder:focus {
+  opacity: 0.6;
+}
+
+#classPage .invisibleSpace :-moz-placeholder {
+  /* Firefox 18- */
+  opacity: 0.3;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#classPage .invisibleSpace :-moz-input-placeholder:hover {
+  opacity: 0.6;
+}
+
+#classPage .invisibleSpace :-moz-input-placeholder:focus {
+  opacity: 0.6;
+}
+
+#classPage #black {
+  background: rgba(0, 0, 0, 0.41);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+#classPage #classCode {
+  color: #6a497e;
+}
+
+#classPage #app {
+  padding-top: 2%;
+  background-color: rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: scroll;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transition-timing-function: cubic-bezier(0.43, 0.87, 0.44, 0.95);
+          transition-timing-function: cubic-bezier(0.43, 0.87, 0.44, 0.95);
+  height: 80vh;
+}
+
+#classPage #app .sideMenu {
+  position: fixed;
+  padding-top: 3%;
+}
+
+#classPage #app .sideMenu .menuItem {
+  cursor: pointer;
+}
+
+#classPage #app .sideMenu p {
+  padding-top: 8%;
+  padding-top: 8%;
+  font-weight: 100;
+  font-size: calc(0.5rem + 0.5vw);
+  opacity: 0.6;
+  color: #164869;
+}
+
+#classPage #app .sideMenu .active {
+  font-weight: 900;
+  font-size: calc(0.7rem + 0.5vw);
+}
+
+#classPage #app #timeMenu {
+  left: 8%;
+}
+
+#classPage #app #voteMenu {
+  right: 8%;
+}
+
+#classPage .question {
+  padding: 2%;
+}
+
+#classPage .question .voteButton {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: #164869;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-family: "Raleway", sans-serif;
+  font-size: 0.7rem;
+}
+
+#classPage .question .voteButton:hover {
+  opacity: 0.7;
+}
+
+#classPage .question #timeContainer {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#classPage .question .timestamp {
+  font-weight: 500;
+  font-size: calc(0.5rem + 0.5vw);
+  color: #164869;
+}
+
+#classPage .question .questionResponse {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgba(0, 0, 0, 0.04);
+  margin-bottom: 2%;
+}
+
+#classPage .question .questionResponse #responseContainer {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.01);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#classPage .question .questionResponse p {
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: calc(0.5rem + 1vw);
+}
+
+#classPage .active {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+#classPage .inactive {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+#classPage h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  color: rgba(22, 72, 105, 0.26);
+  font-weight: bold;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transition-timing-function: cubic-bezier(0.43, 0.87, 0.44, 0.95);
+          transition-timing-function: cubic-bezier(0.43, 0.87, 0.44, 0.95);
+}
+
+#classPage h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: calc(0.5rem + 0.5vw);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#classPage p {
+  font-size: calc(2rem + 1.5vw);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+}
+
+#headingContainer:after {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 /*# sourceMappingURL=styles.css.map */

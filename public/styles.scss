@@ -1,1154 +1,908 @@
-/*Font Links(from Google Fonts)*/
+//Font Links(from Google Fonts)
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
 @import url('https://fonts.googleapis.com/css?family=Cinzel');
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900');
 @import url('https://fonts.googleapis.com/css?family=Syncopate');
-
 //Colors
 $primaryColor: #164869;
 $secondaryColor: #6AA5BD;
 $tertiaryColor: #AE445D;
 $greyColor: #6c757d;
-
 //Fonts
-$headerFontDecorative: 'Cinzel Decorative', serif;
-$headerFont: 'Cinzel', serif;
-$subFont: 'Raleway', sans-serif;
-
+$headerFontDecorative: 'Cinzel Decorative',
+     serif;
+$headerFont: 'Cinzel',
+     serif;
+$subFont: 'Raleway',
+     sans-serif;
 //mixins
 @mixin center {
-	margin: auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+     margin: auto;
+     display: flex;
+     align-items: center;
+     justify-content: center;
 }
 
-//Misc Styles
-.card {
-	position: absolute;
-	max-width: 50%;
-	max-height: 100%;
-	border: none;
-}
-.x-position:nth-of-type(1) {
-	z-index: 0;
-	margin-left: -25%;
-}
-.x-position:nth-of-type(2) {
-	z-index: 2;
-	margin-left: -17%;
-}
-.x-position:nth-of-type(3) {
-	z-index: 1;
-	margin-left: -9%;
-}
+//Card Colors
 .card-primary {
-	.card-header {
-		background-color: $primaryColor;
-		color: white;
-		font-family: $subFont;
-	}
-	.card-title {
-		font-family: $subFont;
-		padding: 1rem;
-		font-weight: 700;
-	}
-	.card-body {
-		background-color: rgba(37, 85, 116, 0.75);
-		color: white;
-	}
-	.card-btn {
-		background: white;
-		color: $primaryColor;
-		width: 100%;
-	}
+     .card-header {
+          background-color: $primaryColor;
+          color: white;
+          font-family: $subFont;
+     }
+     .card-title {
+          font-family: $subFont;
+          padding: 1rem;
+          font-weight: 700;
+     }
+     .card-body {
+          background-color: rgba(37, 85, 116, 0.75);
+          color: white;
+     }
+     .card-btn {
+          background: white;
+          color: $primaryColor;
+          width: 100%;
+     }
 }
+
 .card-tertiary {
-	.card-header {
-		background-color: $tertiaryColor;
-		color: white;
-		font-family: $subFont;
-	}
-	.card-title {
-		font-family: $subFont;
-		padding: 1rem;
-		font-weight: 700;
-	}
-	.card-body {
-		background-color: rgba(90, 36, 49, 0.77);
-		color: white;
-
-	}
-	.card-btn {
-		background: white;
-		color: $tertiaryColor;
-		width: 100%;
-	}
+     .card-header {
+          background-color: $tertiaryColor;
+          color: white;
+          font-family: $subFont;
+     }
+     .card-title {
+          font-family: $subFont;
+          padding: 1rem;
+          font-weight: 700;
+     }
+     .card-body {
+          background-color: rgba(90, 36, 49, 0.77);
+          color: white;
+     }
+     .card-btn {
+          background: white;
+          color: $tertiaryColor;
+          width: 100%;
+     }
 }
+
 .card-quinary {
-	.card-header {
-		background-color: #4b385f;
-		color: white;
-		font-family: $subFont;
-	}
-	.card-title {
-		font-family: $subFont;
-		padding: 1rem;
-		font-weight: 700;
-	}
-	.card-body {
-		background-color: rgba(78, 60, 96, 0.8);
-		color: white;
-
-	}
-	.card-btn {
-		background: white;
-		color: #4b385f;
-		width: 100%;
-	}
+     .card-header {
+          background-color: #4b385f;
+          color: white;
+          font-family: $subFont;
+     }
+     .card-title {
+          font-family: $subFont;
+          padding: 1rem;
+          font-weight: 700;
+     }
+     .card-body {
+          background-color: rgba(78, 60, 96, 0.8);
+          color: white;
+     }
+     .card-btn {
+          background: white;
+          color: #4b385f;
+          width: 100%;
+     }
 }
+
 .card-title {
-	font-size: 2rem;
+     font-size: 2rem;
 }
+
+//Nav styles
 #logo {
-	opacity: 0.6;
-	padding: 3%;
-	margin-top: 1%;
-	height: 100%;
-	width: auto;
-}
-html, body {
-	height: 100%;
+     opacity: 0.6;
+     padding: 3%;
+     margin-top: 1%;
+     height: 100%;
+     width: auto;
 }
 
-//recuring styles
 .nav {
-	height: 4vh;
-	margin-left: 10.5%;
-	margin-right: 14%;
-	margin-top: 2%;
-}
-.nav-item {
-	height: 100%;
-}
-.nav-link {
-	color: $primaryColor;
-	font-family: $subFont;
-	font-weight: bold;
-	opacity: 0.5;
-	transition: 0.2s ease-in-out;
-}
-.nav-link:hover {
-	opacity: 1;
-	color: $primaryColor;
+     height: 4vh;
+     margin-left: 10.5%;
+     margin-right: 14%;
+     margin-top: 2%;
 }
 
+.nav-item {
+     height: 100%;
+}
+
+.nav-link {
+     color: $primaryColor;
+     font-family: $subFont;
+     font-weight: bold;
+     opacity: 0.5;
+     transition: 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+     opacity: 1;
+     color: $primaryColor;
+}
+
+html,
+body {
+     height: 100%;
+}
 
 //Index Styles
 #index {
-	//Div Styles
-	#mission {
-		height: 100vh;
-		@include center;
-		padding-left: 5%;
-		margin-left: 5%;
-		margin-right: 10%;
-		#eduMeetFuture {
-			margin-top: -10vh;
-		}
-		#question {
-			padding-left: 15px;
-		}
-	}
-
-	#floatingDivs {
-		position: relative;
-		height: 100%;
-		@include center;
-		#floatContainer {
-			position: relative;
-			height: 100%;
-			width: 100%;
-			margin-top: -50vh;
-		}
-	}
-	#footer {
-		opacity: 0.4;
-		padding-bottom: 1%;
-	}
-
-	//text styles
-	#missionh1 {
-		font-size: 4.5vw;
-	}
-	h2 {
-		font-size: 6vw;
-		font-family: $subFont;
-		font-weight: 700;
-		opacity: 0.9;
-	}
-	span.gradient {
-		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		font-family: $headerFontDecorative;
-		opacity: 1;
-	}
-	p {
-		font-family: $subFont;
-		color: $primaryColor;
-		font-size: 2rem;
-		margin-bottom: 1rem;
-	}
-	#beta {
-		color: #6B7225;
-		font-weight: bold;
-	}
-	#aua {
-		color: #6B7225;
-	}
-
+     //Div Styles
+     #mission {
+          height: 100vh;
+          @include center;
+          padding-left: 5%;
+          margin-left: 5%;
+          margin-right: 10%;
+          #eduMeetFuture {
+               margin-top: -10vh;
+          }
+          #question {
+               padding-left: 15px;
+          }
+     }
+     //Card Styles
+     .card {
+          position: absolute;
+          max-width: 50%;
+          max-height: 100%;
+          border: none;
+     }
+     #floatingDivs {
+          position: relative;
+          height: 100%;
+          @include center;
+          #floatContainer {
+               position: relative;
+               height: 100%;
+               width: 100%;
+               margin-top: -50vh;
+          }
+     }
+     .x-position:nth-of-type(1) {
+          z-index: 0;
+          margin-left: -25%;
+     }
+     .x-position:nth-of-type(2) {
+          z-index: 2;
+          margin-left: -17%;
+     }
+     .x-position:nth-of-type(3) {
+          z-index: 1;
+          margin-left: -9%;
+     }
+     #footer {
+          opacity: 0.4;
+          padding-bottom: 1%;
+     }
+     //text styles
+     #missionh1 {
+          font-size: 4.5vw;
+     }
+     h2 {
+          font-size: 6vw;
+          font-family: $subFont;
+          font-weight: 700;
+          opacity: 0.9;
+     }
+     span.gradient {
+          background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-family: $headerFontDecorative;
+          opacity: 1;
+     }
+     p {
+          font-family: $subFont;
+          color: $primaryColor;
+          font-size: 2rem;
+          margin-bottom: 1rem;
+     }
+     #beta {
+          color: #6B7225;
+          font-weight: bold;
+     }
+     #aua {
+          color: #6B7225;
+     }
 }
+
 //Index Media Queries
 @media (max-width: 1000px) {
-	#index {
-		#floatingDivs {
-			display: none;
-		}
-		#future {
-			font-size: 10vw;
-			margin-top: 20vw;
-		}
-		#mission {
-			text-align: center;
-		}
-		#footer {
-			margin-top: 5%;
-		}
-		#logo {
-			width: 60vw;
-			transform: translateX(20vw);
-		}
-		.nav-item:nth-of-type(n+2) {
-			display: none;
-		}
-	}
+     #index {
+          #floatingDivs {
+               display: none;
+          }
+          #future {
+               font-size: 10vw;
+               margin-top: 20vw;
+          }
+          #mission {
+               text-align: center;
+          }
+          #footer {
+               margin-top: 5%;
+          }
+          #logo {
+               width: 60vw;
+               transform: translateX(20vw);
+          }
+          .nav-item:nth-of-type(n+2) {
+               display: none;
+          }
+     }
 }
+
 @media (max-width: 1400px) {
-	#index {
-		#floatContainer {
-			transform: translateY(-10vh);
-		}
-	}
+     #index {
+          #floatContainer {
+               transform: translateY(-10vh);
+          }
+     }
 }
 
 //Signup Styles
 #newform {
-	//div styles
-	form {
-		font-family: 'Raleway', sans-serif;
-		font-size: 2.5rem;
-		.statusLabel {
-			font-weight: bold;
-			color: #525252;
-			width: auto;
-		}
-		select {
-			font-family: 'Raleway', sans-serif;
-			font-size: 2.3vw;
-			width: auto;
-		}
-		option {
-			font-size: 1.5vw;
-			&:hover {
-				background-color: $primaryColor;
-				box-shadow: 0 0 10px 100px $primaryColor inset;
-				color: white;
-			}
-		}
-		.formLabel {
-			color: #818181;
-		}
-		input {
-			text-align: center;
-			width: 100%;
-			&[type = 'submit'] {
-				height: 100px;
-				width: 20%;
-				background-color: $primaryColor;
-				color: white;
-				border: none;
-				font-family: 'Raleway', sans-serif;
-				font-size: 1.3vw;
-				margin: 2%;
-				transition: 0.2s ease-in;
-				&:hover {
-					color: $primaryColor;
-					background-color: white;
-					border: 1px solid $primaryColor;
-					-webkit-transition-duration: 0.2s;
-				}
-			}
-		}
-	}
-
-	//Text styles
-	h1 {
-		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		font-size: 5rem;
-		font-weight: 700;
-		font-family: $subFont;
-	}
-	p {
-		font-family: 'Raleway', sans-serif;
-		color: $primaryColor;
-		margin-top: 1%;
-		font-size: 1.6vw;
-		font-weight: 600;
-	}
-	/*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
-	#message {
-		display: none;
-		background: #f1f1f1;
-		color: #000;
-		position: relative;
-		padding: 20px;
-		margin-top: 10px;
-	}
-	#message p {
-		padding: 10px 35px;
-		font-size: 18px;
-	}
-	/* Add a green text color and a checkmark when the requirements are right */
-	.valid {
-		color: green;
-	}
-	.valid:before {
-		position: relative;
-		left: -35px;
-		content: "✔";
-	}
-	/* Add a red text color and an "x" when the requirements are wrong */
-	.invalid {
-		color: red;
-	}
-	.invalid:before {
-		position: relative;
-		left: -35px;
-		content: "✖";
-	}
+     //div styles
+     form {
+          font-family: 'Raleway', sans-serif;
+          font-size: 2.5rem;
+          .statusLabel {
+               font-weight: bold;
+               color: #525252;
+               width: auto;
+          }
+          select {
+               font-family: 'Raleway', sans-serif;
+               font-size: 2.3vw;
+               width: auto;
+          }
+          option {
+               font-size: 1.5vw;
+               &:hover {
+                    background-color: $primaryColor;
+                    box-shadow: 0 0 10px 100px $primaryColor inset;
+                    color: white;
+               }
+          }
+          .formLabel {
+               color: #818181;
+          }
+          input {
+               text-align: center;
+               width: 100%;
+               &[type='submit'] {
+                    height: 100px;
+                    width: 20%;
+                    background-color: $primaryColor;
+                    color: white;
+                    border: none;
+                    font-family: 'Raleway', sans-serif;
+                    font-size: 1.3vw;
+                    margin: 2%;
+                    transition: 0.2s ease-in;
+                    &:hover {
+                         color: $primaryColor;
+                         background-color: white;
+                         border: 1px solid $primaryColor;
+                         -webkit-transition-duration: 0.2s;
+                    }
+               }
+          }
+     }
+     //Text styles
+     h1 {
+          background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-size: 5rem;
+          font-weight: 700;
+          font-family: $subFont;
+     }
+     p {
+          font-family: 'Raleway', sans-serif;
+          color: $primaryColor;
+          margin-top: 1%;
+          font-size: 1.6vw;
+          font-weight: 600;
+     }
+     /*this segment of code is from w3 schools. This helps validate the  password so that it has the requirements nessisary to make it a safe password.*/
+     #message {
+          display: none;
+          background: #f1f1f1;
+          color: #000;
+          position: relative;
+          padding: 20px;
+          margin-top: 10px;
+     }
+     #message p {
+          padding: 10px 35px;
+          font-size: 18px;
+     }
+     /* Add a green text color and a checkmark when the requirements are right */
+     .valid {
+          color: green;
+     }
+     .valid:before {
+          position: relative;
+          left: -35px;
+          content: "✔";
+     }
+     /* Add a red text color and an "x" when the requirements are wrong */
+     .invalid {
+          color: red;
+     }
+     .invalid:before {
+          position: relative;
+          left: -35px;
+          content: "✖";
+     }
 }
 
 //Login Styles
 #logInPage {
-	#backgroundContainer {
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: -10;
-		background-image: url("lightpic.png");
-		background-size: cover;
-	}
-	#loginFormContainer {
-		@include center;
-		height: 100%;
-	}
-	#containerRow {
-		padding: 3%;
-		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
-		border-radius: 10px;
-	}
-	.loginInput {
-		font-family: $subFont;
-		padding: 5%;
-		margin-top: 15%;
-		margin-bottom: 15%;
-		color: white;
-		border: none;
-		border-left: 1px solid rgba(255, 255, 255, 0.6);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-		background: none;
-		border-radius: 10px;
-		transition: 0.3s ease-in-out;
-	}
-	.loginInput:hover {
-		border-left: 1px solid white;
-		border-bottom: 1px solid white;
-	}
-	.loginInput:focus {
-		border-left: 1px solid white;
-		border-bottom: 1px solid white;
-	}
-	input[type = "submit"] {
-		width: 100%;
-		font-family: $subFont;
-		background: none;
-		border: 1px solid rgba(255, 255, 255, 0.8);
-		margin-top: 15%;
-		padding: 5%;
-		color: rgba(255, 255, 255, 0.8);
-		transition: 0.2s ease-in-out;
-		border-radius: 7px;
-	}
-	input[type = "submit"]:hover {
-		color: $primaryColor;
-		background-color: white;
-
-	}
-
-	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-		color: white;
-		opacity: 0.3;
-		transition: 0.3s ease-in-out;
-	}
-	::-webkit-input-placeholder:hover {
-		opacity: 0.6;
-	}
-	::-webkit-input-placeholder:focus {
-		opacity: 0.6;
-	}
-	::-moz-placeholder { /* Firefox 19+ */
-		color: white;
-		opacity: 0.3;
-	}
-	::-moz-input-placeholder:hover {
-		opacity: 0.6;
-	}
-	::-moz-input-placeholder:focus {
-		opacity: 0.6;
-	}
-	:-ms-input-placeholder { /* IE 10+ */
-		color: white;
-		opacity: 0.3;
-	}
-	:-ms-input-placeholder:hover {
-		opacity: 0.6;
-	}
-	:-ms-input-placeholder:focus {
-		opacity: 0.6;
-	}
-	:-moz-placeholder { /* Firefox 18- */
-		color: white;
-		opacity: 0.3;
-	}
-	:-moz-input-placeholder:hover {
-		opacity: 0.6;
-	}
-	:-moz-input-placeholder:focus {
-		opacity: 0.6;
-	}
+     #backgroundContainer {
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: -10;
+          background-image: url("lightpic.png");
+          background-size: cover;
+     }
+     #loginFormContainer {
+          @include center;
+          height: 100%;
+     }
+     #containerRow {
+          padding: 3%;
+          background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+          border-radius: 10px;
+     }
+     .loginInput {
+          font-family: $subFont;
+          padding: 5%;
+          margin-top: 15%;
+          margin-bottom: 15%;
+          color: white;
+          border: none;
+          border-left: 1px solid rgba(255, 255, 255, 0.6);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+          background: none;
+          border-radius: 10px;
+          transition: 0.3s ease-in-out;
+     }
+     .loginInput:hover {
+          border-left: 1px solid white;
+          border-bottom: 1px solid white;
+     }
+     .loginInput:focus {
+          border-left: 1px solid white;
+          border-bottom: 1px solid white;
+     }
+     input[type="submit"] {
+          width: 100%;
+          font-family: $subFont;
+          background: none;
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          margin-top: 15%;
+          padding: 5%;
+          color: rgba(255, 255, 255, 0.8);
+          transition: 0.2s ease-in-out;
+          border-radius: 7px;
+     }
+     input[type="submit"]:hover {
+          color: $primaryColor;
+          background-color: white;
+     }
+     ::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
+          color: white;
+          opacity: 0.3;
+          transition: 0.3s ease-in-out;
+     }
+     ::-webkit-input-placeholder:hover {
+          opacity: 0.6;
+     }
+     ::-webkit-input-placeholder:focus {
+          opacity: 0.6;
+     }
+     ::-moz-placeholder {
+          /* Firefox 19+ */
+          color: white;
+          opacity: 0.3;
+     }
+     ::-moz-input-placeholder:hover {
+          opacity: 0.6;
+     }
+     ::-moz-input-placeholder:focus {
+          opacity: 0.6;
+     }
+     :-ms-input-placeholder {
+          /* IE 10+ */
+          color: white;
+          opacity: 0.3;
+     }
+     :-ms-input-placeholder:hover {
+          opacity: 0.6;
+     }
+     :-ms-input-placeholder:focus {
+          opacity: 0.6;
+     }
+     :-moz-placeholder {
+          /* Firefox 18- */
+          color: white;
+          opacity: 0.3;
+     }
+     :-moz-input-placeholder:hover {
+          opacity: 0.6;
+     }
+     :-moz-input-placeholder:focus {
+          opacity: 0.6;
+     }
 }
 
 //Account Page Styles
 #account {
-	body {
-		background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-	}
-	#logo {
-		padding: 1%;
-		opacity: 1;
-		width: 25%;
-		height: 7%;
-		animation-name: image;
-		animation-duration: 2s;
-		animation-delay: 1s;
-		animation-fill-mode: backwards;
-		animation-timing-function: ease;
-		-webkit-animation-name: image;
-		-webkit-animation-duration: 2s;
-		-webkit-animation-delay: 1s;
-		-webkit-animation-fill-mode: backwards;
-	}
-	#fullContainer {
-		padding: 0;
-		overflow-x: hidden;
-		animation-name: list;
-		animation-duration: 3s;
-		animation-delay: 1s;
-		animation-fill-mode: backwards;
-		-webkit-animation-name: list;
-		-webkit-animation-duration: 3s;
-		-webkit-animation-delay: 1s;
-		-webkit-animation-fill-mode: backwards;
-
-		#greeting {
-			text-align: left;
-			animation-name: list;
-			animation-duration: 3s;
-			animation-delay: 1s;
-			animation-fill-mode: forwards;
-			-webkit-animation-name: list;
-			-webkit-animation-duration: 3s;
-			-webkit-animation-delay: 1s;
-			-webkit-animation-fill-mode: backwards;
-		}
-
-		#svgCol {
-			padding: 0;
-		}
-
-		#classes {
-			margin-left: 10%;
-			margin-right: 10%;
-			animation-name: list;
-			animation-duration: 3s;
-			animation-delay: 1.7s;
-			animation-fill-mode: backwards;
-			-webkit-animation-name: list;
-			-webkit-animation-duration: 3s;
-			-webkit-animation-delay: 1.7s;
-			-webkit-animation-fill-mode: backwards;
-			.classItem {
-				padding: 5%;
-				.name {
-					background-color: white;
-					padding: 10% 10% 5% 10%;
-					color: #393939;
-				}
-			}
-			.sectionInfo {
-				background-color: rgba(255, 255, 255, 0.25);
-				padding: 5% 5% 5% 10%;
-			}
-		}
-
-		#logoutContainer {
-			width: 100%;
-			background-color: white;
-			border-top: 1px solid red;
-			margin: 0;
-			#logout {
-				padding-left: 7%;
-				padding-right: 7%;
-				padding-top: 2%;
-				padding-bottom: 2%;
-				background-color: white;
-				color: red;
-				border: none;
-				font-family: $subFont;
-				font-size: calc(0.8rem + 0.8vw);
-				margin: 2%;
-				-webkit-transition-duration: 0.2s;
-				/* Safari */
-				transition-duration: 0.2s;
-				&:hover {
-					color: white;
-					background-color: red;
-					border: none;
-
-				}
-			}
-		}
-	}
-
-	//SVG Styles
-	svg {
-		width: 100%;
-		height: 100%;
-		text-align: center;
-		position: relative;
-	}
-	#theSVG #txtMask {
-		font-size: 10vh;
-		font-weight: bold;
-		overflow: hidden;
-	}
-	#disclaim {
-		z-index: 10%;
-		@include center;
-		margin-top: -6%;
-	}
-
-	//Text Styles
-	h1 {
-		font-family: $subFont;
-		color: white;
-		padding-left: 3%;
-		font-size: calc(1.8rem + 1.5vw);
-	}
-	h2 {
-		font-family: $subFont;
-		font-size: calc(1.8rem + 1.5vw);
-	}
-	h3 {
-		font-family: $subFont;
-		font-weight: 100;
-		padding-left: 3%;
-		color: white;
-		font-size: calc(2.3rem + 0.6vw);
-	}
-	h4 {
-		font-family: $subFont;
-		font-size: calc(0.9rem + 0.3vw);
-	}
-	h5 {
-		color: white;
-		font-family: $subFont;
-		font-size: calc(0.6rem + 0.3vw);
-	}
-	p {
-		font-family: $subFont;
-		color: black;
-		font-size: calc(0.8rem + 0.8vw);
-	}
-
-	//Quote Row styles
-	#quoteRow {
-		background-color: white;
-	}
-	.quoteImg {
-		@include center;
-	}
-	#envelope {
-		padding-top: 6%;
-		padding-bottom: 4%;
-		@include center;
-	}
-	#quote {
-		p {
-			font-size: calc(1.2rem + 0.8vw);
-			font-family: $subFont;
-			font-style: italic;
-			padding-left: 10%;
-			padding-right: 10%;
-			&#description {
-				font-size: 20px;
-				float: right;
-			}
-		}
-	}
+     body {
+          background-image: url("accountback.png");
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+     }
+     #logo {
+          padding: 1%;
+          opacity: 1;
+          width: 25%;
+          height: 7%;
+          animation-name: image;
+          animation-duration: 2s;
+          animation-delay: 1s;
+          animation-fill-mode: backwards;
+          animation-timing-function: ease;
+          -webkit-animation-name: image;
+          -webkit-animation-duration: 2s;
+          -webkit-animation-delay: 1s;
+          -webkit-animation-fill-mode: backwards;
+     }
+     #fullContainer {
+          padding: 0;
+          overflow-x: hidden;
+          animation-name: list;
+          animation-duration: 3s;
+          animation-delay: 1s;
+          animation-fill-mode: backwards;
+          -webkit-animation-name: list;
+          -webkit-animation-duration: 3s;
+          -webkit-animation-delay: 1s;
+          -webkit-animation-fill-mode: backwards;
+          #greeting {
+               text-align: left;
+               animation-name: list;
+               animation-duration: 3s;
+               animation-delay: 1s;
+               animation-fill-mode: forwards;
+               -webkit-animation-name: list;
+               -webkit-animation-duration: 3s;
+               -webkit-animation-delay: 1s;
+               -webkit-animation-fill-mode: backwards;
+          }
+          #svgCol {
+               padding: 0;
+          }
+          #classes {
+               margin: 5% 6% 5% 6%;
+               animation-name: list;
+               animation-duration: 3s;
+               animation-delay: 1.7s;
+               animation-fill-mode: backwards;
+               -webkit-animation-name: list;
+               -webkit-animation-duration: 3s;
+               -webkit-animation-delay: 1.7s;
+               -webkit-animation-fill-mode: backwards;
+               .classItem {
+                    padding: 3%;
+                    .name {
+                         background-color: white;
+                         padding: 10% 10% 5% 10%;
+                         color: #393939;
+                    }
+               }
+               .sectionInfo {
+                    background-color: rgba(255, 255, 255, 0.25);
+                    padding: 5% 5% 5% 10%;
+               }
+          }
+          #logoutContainer {
+               width: 100%;
+               background-color: white;
+               border-top: 1px solid red;
+               margin: 0;
+               #logout {
+                    padding-left: 7%;
+                    padding-right: 7%;
+                    padding-top: 2%;
+                    padding-bottom: 2%;
+                    background-color: white;
+                    color: red;
+                    border: none;
+                    font-family: $subFont;
+                    font-size: calc(0.8rem + 0.8vw);
+                    margin: 2%;
+                    -webkit-transition-duration: 0.2s;
+                    /* Safari */
+                    transition-duration: 0.2s;
+                    &:hover {
+                         color: white;
+                         background-color: red;
+                         border: none;
+                    }
+               }
+          }
+     }
+     //SVG Styles
+     svg {
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          position: relative;
+     }
+     #theSVG #txtMask {
+          font-size: 10vh;
+          font-weight: bold;
+          overflow: hidden;
+     }
+     #disclaim {
+          z-index: 10%;
+          @include center;
+          margin-top: -6%;
+     }
+     //Text Styles
+     h1 {
+          font-family: $subFont;
+          color: white;
+          padding-left: 3%;
+          font-size: calc(1.8rem + 1.5vw);
+     }
+     h2 {
+          font-family: $subFont;
+          font-size: calc(1.8rem + 1.5vw);
+     }
+     h3 {
+          font-family: $subFont;
+          font-weight: 100;
+          padding-left: 3%;
+          color: white;
+          font-size: calc(2.3rem + 0.6vw);
+     }
+     h4 {
+          font-family: $subFont;
+          font-size: calc(0.9rem + 0.3vw);
+     }
+     h5 {
+          color: white;
+          font-family: $subFont;
+          font-size: calc(0.6rem + 0.3vw);
+     }
+     p {
+          font-family: $subFont;
+          color: black;
+          font-size: calc(0.8rem + 0.8vw);
+     }
+     //Quote Row styles
+     #quoteRow {
+          background-color: white;
+     }
+     .quoteImg {
+          @include center;
+     }
+     #envelope {
+          padding-top: 6%;
+          padding-bottom: 4%;
+          @include center;
+     }
+     #quote {
+          p {
+               font-size: calc(1.2rem + 0.8vw);
+               font-family: $subFont;
+               font-style: italic;
+               padding-left: 10%;
+               padding-right: 10%;
+               &#description {
+                    font-size: 20px;
+                    float: right;
+               }
+          }
+     }
+     //misc
+     a {
+          text-decoration: none;
+          width: 100%;
+     }
 }
 
+//Class Page Styles
 #classPage {
-  h1 {
-    font-family: $headerFontDecorative;
-    font-size: 7vw;
-    color: white;
-    font-weight: 300;
-  }
-  h2 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 40px;
-    color: #bfbfbf;
-  }
-  h3 {
-    font-family: 'Cinzel', serif;
-    font-weight: 200;
-    height: 20px;
-  }
-  h4 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 100;
-  }
-  h6 {
-    font-size: 1.4vw;
-    color: #595959;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 100;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  p {
-    &.statement {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 100;
-      color: white;
-      font-size: 3vw;
-      letter-spacing: 0.5vw;
-    }
-    &.null {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 500;
-      color: darkslategray;
-      font-size: 1.4vw;
-    }
-  }
-  input[value="VOTE"] {
-    font-family: 'Raleway', sans-serif;
-    font-size: .5vw;
-    color: white;
-  }
-  div {
-    &.img {
-      width: 100%;
-      height: 11%;
-      background-color: white;
-    }
-    &.classname {
-      width: 100%;
-      color: black;
-      padding-top: 5%;
-      padding-bottom: 5%;
-    }
-  }
-  img {
-    width: 25%;
-    height: 100%;
-  }
-  div {
-    &.statement {
-      margin-top: 2%;
-      p {
-        color: white;
-      }
-    }
-    &.outerContainer {
-      width: 100%;
-      margin: auto;
-      background-color: whitesmoke;
-    }
-    &.innerContainter {
-      height: 100%;
-      width: 60%;
-      margin: auto;
-      background-color: white;
-      padding-bottom: 4%;
-      padding-top: 5px;
-    }
-    &.ask {
-      margin-left: 30%;
-      margin-top: 6%;
-      margin-right: 30%;
-      padding-bottom: 1.7%;
-      padding-top: 1%;
-      color: white;
-      background-color: $primaryColor;
-    }
-  }
-  a {
-    color: white;
-    text-decoration: none;
-    &.backLink, &:hover {
-      color: gray;
-    }
-  }
-  div {
-    &.strip {
-      background: radial-gradient(black 50%, white 50%);
-      height: 5px;
-      width: 100%;
-      margin-bottom: 30px;
-    }
-    &#question {
-      background-color: white;
-      height: 10%;
-      width: 100%;
-      margin: auto;
-      overflow: hidden;
-      display: inline-block;
-      position: relative;
-    }
-    &#answer {
-      margin: auto;
-      display: inline-block;
-      position: relative;
-      margin-left: 3%;
-      margin-right: 3%;
-      margin-top: 1%;
-      margin-bottom: 1%;
-      width: 94%;
-      background-color: whitesmoke;
-      color: black;
-    }
-    &#text, &#atext {
-      height: 100%;
-      width: 70%;
-      margin-left: 10%;
-      float: left;
-      padding: 20px;
-      border-top: 1px solid whitesmoke;
-      border-bottom: 1px solid whitesmoke;
-    }
-    &.vote {
-      float: left;
-      background-color: $primaryColor;
-      color: white;
-      height: 100%;
-      width: 15%;
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.7vw;
-      border: none;
-      line-height: 100%;
-    }
-  }
-  .answerButton {
-    display: block;
-    position: absolute;
-    height: 100%;
-    width: 15%;
-    float: left;
-    color: white;
-    background: none;
-    background-color: lightgrey;
-    font-family: 'Raleway', sans-serif;
-    border-style: none;
-    transition: width .40s ease-in-out;
-    -webkit-transition: width .40s ease-in-out;
-    transition: margin-left .40s ease-in-out;
-    -webkit-transition: margin-left .40s ease-in-out;
-    font-size: 1.3vw;
-  }
-  .answerForm {
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    width: 40%;
-    margin-left: 30%;
-    padding: 1%;
-    display: none;
-    textarea {
-      border: none;
-      border-bottom: 1px solid lightgray;
-      width: 100%;
-      text-align: center;
-      color: black;
-      font-size: 1vw;
-      font-weight: 600;
-      font-family: 'Raleway', sans-serif;
-    }
-    input {
-      border: none;
-      width: 80%;
-      text-align: center;
-      color: black;
-      padding: 3%;
-      font-size: 1.2vw;
-      background-color: $primaryColor;
-      font-family: 'Raleway', sans-serif;
-      color: white;
-    }
-    button {
-      background: none;
-      border: 1px solid $primaryColor;
-      color: $primaryColor;
-      padding: 1%;
-    }
-  }
-  .formContainer button {
-    border: none;
-    border-bottom: 1px solid lightgray;
-    margin-bottom: 6%;
-    font-family: 'Raleway', sans-serif;
-  }
-  p#answerBack {
-    font-size: 1vw;
-    color: #595959;
-  }
-  input.vote {
-    color: white;
-    background: none;
-    border: none;
-  }
-  #voteform {
-    position: relative;
-    line-height: normal;
-  }
-  div.votecontainer {
-    height: 100%;
-    width: 100%;
-    position: static;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  span.num {
-    font-size: 2.5vw;
-    line-height: normal;
-  }
-  div {
-    &.formContainer {
-      text-align: center;
-      align-items: center;
-      display: none;
-    }
-    &.top {
-      height: 60%;
-      width: 100%;
-      position: absolute;
-    }
-    &.bottom {
-      height: 25%;
-      width: 100%;
-      position: absolute;
-      margin-top: 5%;
-    }
-  }
-}
+     font-family: $subFont;
+     #logoContainer {
+          @include center;
+          #logo {
+               width: 30vh;
+          }
+     }
+     #headingContainer {
+          @include center;
+     }
+     body {
+          background-image: white;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+     }
+     header {
+          height: 20vh;
+          transition: 0.6s;
+          transition-timing-function: cubic-bezier(.43,.87,.44,.95);
+          #navContainer {
+               @include center;
+          }
+          #askQuestion {
+               background-image: linear-gradient(to right, #3f4b7a, #6a497e, #924474);
+               transition: 0.2s;
+               width: 100%;
+               padding: 3% 0;
+               color: white;
+          }
+          #askQuestion:hover {
+               opacity: 0.8;
+          }
+     }
+     #blur {
+          filter: blur(0px);
+          -webkit-filter: blur(0px);
+          transition: 0.2s ease-in-out;
+     }
+     .invisibleSpace {
+          @include center;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 10;
+          background: none;
+          pointer-events: none;
+          .askContainer {
+               transform: translateY(-3vh);
+               pointer-events: all;
+          }
+          #basic-addon1 {
+               padding: .1rem .3rem;
+               border: none;
+               margin-left: .375rem;
+               background: none;
+          }
+          .form-control {
+               width: auto;
+               padding: .375rem .3rem;
+               border: none;
+               background: none;
+               &:focus {
+                    box-shadow: none;
+               }
+          }
+          .input-group {
+               width: auto;
+          }
+          textarea {
+               width: 100%;
+               border: none;
+               font-size: calc(1rem + 1vw);
+               font-weight: bold;
+               opacity: 0.6;
+               padding-left: 25px;
+               overflow: auto;
+               &:focus {
+                    outline: none;
+               }
+          }
+          #addInput {
+               color: white;
+               background: rgba(22, 72, 105, 0.51);
+               font-size: 0.6rem;
+               padding: 0rem .3rem;
+               height: 80%;
+               transform: translateY(20%);
+          }
+          button[type="submit"] {
+               width: 100%;
+               background-color: white;
+               margin-top: 5%;
+          }
+          p {
+               font-weight: 100;
+               font-size: 1rem;
+               padding: 3%;
+               margin: 0;
+               opacity: 0.5;
+          }
+          h4 {
+               color: white;
+               font-family: $subFont;
+               font-size: 5rem;
+               font-weight: bold;
+               margin-bottom: 4%;
+          }
+          ::-webkit-input-placeholder {
+               /* Chrome/Opera/Safari */
+               opacity: 0.3;
+               transition: 0.3s ease-in-out;
+          }
+          ::-webkit-input-placeholder:hover {
+               opacity: 0.6;
+          }
+          ::-webkit-input-placeholder:focus {
+               opacity: 0.6;
+          }
+          ::-moz-placeholder {
+               /* Firefox 19+ */
+               opacity: 0.3;
+               transition: 0.3s ease-in-out;
+          }
+          ::-moz-input-placeholder:hover {
+               opacity: 0.6;
+          }
+          ::-moz-input-placeholder:focus {
+               opacity: 0.6;
+          }
+          :-ms-input-placeholder {
+               /* IE 10+ */
+               opacity: 0.3;
+               transition: 0.3s ease-in-out;
+          }
+          :-ms-input-placeholder:hover {
+               opacity: 0.6;
+          }
+          :-ms-input-placeholder:focus {
+               opacity: 0.6;
+          }
+          :-moz-placeholder {
+               /* Firefox 18- */
+               opacity: 0.3;
+               transition: 0.3s ease-in-out;
+          }
+          :-moz-input-placeholder:hover {
+               opacity: 0.6;
+          }
+          :-moz-input-placeholder:focus {
+               opacity: 0.6;
+          }
+     }
+     #black {
+          background: rgba(0, 0, 0, 0.41);
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 5;
+     }
+     #classCode {
+          color: #6a497e;
+     }
+     #app {
+          padding-top: 2%;
+          background-color: rgba(0, 0, 0, 0.02);
+          position: relative;
+          overflow: scroll;
+          transition: 0.6s;
+          transition-timing-function: cubic-bezier(.43,.87,.44,.95);
+          height: 80vh;
+          .sideMenu {
+               position:fixed;
+               padding-top: 3%;
+               .menuItem {
+                    cursor: pointer;
+               }
+               p {
+                    padding-top: 8%;
+                    padding-top: 8%;
+                    font-weight: 100;
+                    font-size: calc(0.5rem + 0.5vw);
+                    opacity: 0.6;
+                    color: $primaryColor;
+               }
+               .active {
+                    font-weight: 900;
+                    font-size: calc(0.7rem + 0.5vw);
+               }
+          }
+          #timeMenu {
+               left: 8%;
+          }
+          #voteMenu {
+               right: 8%;
+          }
 
-#questionPage {
-  h1 {
-    font-family: $headerFontDecorative;
-    font-size: 50px;
-    color: black;
-  }
-  h2 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 40px;
-    color: #bfbfbf;
-  }
-  h3 {
-    font-family: 'Cinzel', serif;
-    margin-top: 5%;
-  }
-  p {
-    font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    color: white;
-  }
-  div {
-    &.body {
-      height: 89%;
-      width: 100%;
-      background-color: white;
-    }
-    &.img {
-      width: 100%;
-      height: 11%;
-    }
-    &.classname {
-      height: 30%;
-      width: 100%;
-      background-color: white;
-      color: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-  img {
-    width: 25%;
-    height: 90%;
-  }
-  div.heading {
-    width: 50%;
-    padding-bottom: 10%;
-  }
-  a {
-    color: white;
-    &.backLink, &:hover {
-      color: gray;
-    }
-  }
-  div.ask {
-    height: 40%;
-  }
-  textarea {
-    width: 40%;
-    height: 250px;
-    font-size: 30px;
-    text-align: center;
-    border: none;
-    margin-top: 2%;
-    border-left: 1px solid $primaryColor;
-    border-right: 1px solid $primaryColor;
-    overflow: auto;
-    font-family: $subFont;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-  input {
-    width: 10%;
-    height: 50px;
-    background-color: $primaryColor;
-    color: white;
-    border: none;
-    font-size: 20px;
-    font-family: 'Cinzel', serif;
-  }
-}
+     }
+     .question {
+          padding: 2%;
+          .voteButton {
+               width: 100%;
+               height: 100%;
+               background-color: white;
+               color: $primaryColor; //change this with the background of the header tag
+               transition: 0.2s;
+               font-family: $subFont;
+               font-size: 0.7rem;
+          }
+          .voteButton:hover {
+               opacity: 0.7;
+          }
+          #timeContainer {
+               @include center;
+          }
+          .timestamp {
+               font-weight: 500;
+               font-size: calc(0.5rem + 0.5vw);
+               color: $primaryColor;
+          }
+          .questionResponse {
+               padding-left: 20px;
+               padding-right: 20px;
+               background-color: rgba(0, 0, 0, 0.04);
+               margin-bottom: 2%;
+               #responseContainer {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.01);
+                    border-top: 1px solid rgba(0, 0, 0, 0.1);
+               }
+               p {
+                    font-weight: 100;
+                    color: rgba(0, 0, 0, 0.5);
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    font-size: calc(0.5rem + 1vw)
+               }
+          }
+     }
+     .active {
+          visibility: visible;
+          opacity: 1;
+          transition: 0.2s ease-in-out;
+     }
+     .inactive {
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.2s ease-in-out;
+     }
 
-#teacherPage {
-  img {
-    width: 20%;
-    height: 17%;
-    padding-top: 1%;
-    width: 25%;
-    height: 7%;
-    margin-top: 1%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation-name: image;
-    animation-duration: 2s;
-    animation-delay: 1s;
-    animation-fill-mode: backwards;
-    animation-timing-function: ease;
-  }
-  div {
-    &.img {
-      position: absolute;
-      z-index: 10;
-      width: 100%;
-      background-color: white;
-      margin-left: -0.4%;
-      margin-right: -0.4%;
-      margin-top: -0.5%;
-    }
-    &.strip {
-      width: 100%;
-      height: 10px;
-      background-image: url(color.png);
-      background-size: cover;
-      animation-name: list;
-      animation-duration: 3s;
-      animation-delay: 1.2s;
-      animation-fill-mode: backwards;
-      -webkit-animation-name: list;
-      -webkit-animation-duration: 3s;
-      -webkit-animation-delay: 1.2s;
-      -webkit-animation-fill-mode: backwards;
-    }
-    &.container {
-      overflow: hidden;
-      overflow: auto;
-      position: absolute;
-      margin-left: -0.4%;
-      margin-right: -0.4%;
-      margin-top: 5%;
-      height: 100%;
-      width: 101%;
-    }
-    &.header {
-      width: 100%;
-      height: 60%;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: url(color.png);
-      background-size: cover;
-      margin-left: -0.4%;
-      margin-right: -0.4%;
-      animation-name: list;
-      animation-duration: 3s;
-      animation-delay: 1s;
-      animation-fill-mode: backwards;
-      -webkit-animation-name: list;
-      -webkit-animation-duration: 3s;
-      -webkit-animation-delay: 1s;
-      -webkit-animation-fill-mode: backwards;
-    }
-    &.description {
-      width: 100%;
-      height: 20%;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 4%;
-      margin-bottom: 10%;
-      animation-name: list;
-      animation-duration: 3s;
-      animation-delay: 2.3s;
-      animation-fill-mode: backwards;
-      -webkit-animation-name: list;
-      -webkit-animation-duration: 3s;
-      -webkit-animation-delay: 2.3s;
-      -webkit-animation-fill-mode: backwards;
-    }
-    &.class {
-      width: 100%;
-      height: 50%;
-      margin-top: 10%;
-    }
-    &.name {
-      width: 50%;
-      height: 100%;
-      border-right: 1px solid $primaryColor;
-      margin-bottom: 10%;
-      float: left;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    &.sections {
-      float: right;
-      width: 49%;
-      height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
-      margin-right: -15px;
-    }
-    &.sub {
-      width: 100%;
-      height: 60%;
-    }
-    &.left_container {
-      width: 90%;
-      float: left;
-      padding-left: 8%;
-      z-index: 5;
-      -webkit-transition: all .5s ease-out;
-      -moz-transition: all .5s ease-out;
-      -o-transition: all .5s ease-out;
-      -ms-transition: all .5s ease-out;
-      transition: all .5s ease-out;
-    }
-    &.right_container {
-      float: right;
-      height: 78%;
-      width: 0%;
-      border-bottom: 10px solid white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $primaryColor;
-      -webkit-transition: all .5s ease-out;
-      -moz-transition: all .5s ease-out;
-      -o-transition: all .5s ease-out;
-      -ms-transition: all .5s ease-out;
-      transition: all .5s ease-out;
-    }
-    &.teacher {
-      border-bottom: 1px solid $primaryColor;
-      height: 100%;
-    }
-    &.time {
-      padding-top: -3%;
-    }
-  }
-  h1 {
-    font-family: $headerFontDecorative;
-    font-size: 6.4vw;
-    color: $primaryColor;
-  }
-  h2 {
-    color: $primaryColor;
-    font-size: 5vw;
-    font-family: 'Cinzel', serif;
-  }
-  h3 {
-    font-size: 2vw;
-    font-family: 'Cinzel', serif;
-  }
-  h4 {
-    font-family: 'Raleway', sans-serif;
-    color: white;
-    font-size: 5vw;
-  }
-  p {
-    font-size: 2vw;
-    font-family: 'Raleway', sans-serif;
-  }
-  input.section {
-    font-size: 4.5vw;
-    font-family: 'Raleway', sans-serif;
-    color: $primaryColor;
-    background-color: white;
-    border: none;
-  }
-  a {
-    text-decoration: none;
-  }
+     h1 {
+          font-family: $subFont;
+          font-size: 20px;
+          color: rgba(22, 72, 105, 0.26);
+          font-weight: bold;
+          transition: 0.6s;
+          transition-timing-function: cubic-bezier(.43,.87,.44,.95);
+     }
+     h3 {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: calc(0.5rem + 0.5vw);
+          margin-top: auto;
+          margin-bottom: auto;
+     }
+     p {
+          font-size: calc(2rem + 1.5vw);
+          font-weight: bold;
+          font-family: $subFont;
+     }
 }
-
-/* Make it so that when the  user clicks on the section they want to see, the go button appears. */
+#headingContainer:after {
+     @include center;
+}

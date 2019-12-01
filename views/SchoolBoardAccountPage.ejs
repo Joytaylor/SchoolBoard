@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html id = "account">
 <head>
-<!--Samuel Anozie, June 2, 2017. This is the account page. We still need to figure out how to actually create accounts. Also an idea: have a Pick your Classes page so that users can edit the classes, figure out a way to ade/subtract divs,  prob with javascript Revision August 2019-->
+<!--Samuel Anozie, June 2, 2017. This is the account page. We still need to figure out how to actually create accounts. Also an idea: have a Pick your Classes page so that users can edit the classes, figure out a way to ade/subtract divs,  prob with javascript. Revision August 2019-->
 <meta charset = "UTF-8"/>
+<title>Profile | SchoolBoard</title>
 
 	<!-- Bootstrap Links -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,8 +13,6 @@
 
 	<!--My Stuff-->
 	<link rel = "stylesheet" type = "text/css" href = "styles.css"/>
-	<script src = "img.js"></script>
-	<title>Profile | SchoolBoard</title>
 	<link rel = "icon" href = "favicon.png" type = "image/jpg"/>
 
 	<script src="universal_functions.js"></script>
@@ -72,8 +71,7 @@ function logout() {
 </div>
 <div id = "fullContainer" class = "container-fluid">
 	<div id = "greeting" class = "row">
-		<h1>Welcome,
-		<%=userData.first_name%></h1>
+		<h1>Welcome, <%=userData.first_name%></h1>
 	</div>
 	<div class = "row">
 		<div id = "svgCol" class = "col-12 position-relative">
@@ -91,9 +89,8 @@ function logout() {
 	</div>
 	<div id = "classes" class = "tabcontent row justify-content-center">
 		<% classData.forEach(function(document){%>
-		<% 	%>
-		<!--<a href = '/classPage?id=<%//=document.id%>'>-->
-		<div class="classItem active col-md-4">
+		<a class = "col-md-4" href = '/classPage?id=<%= document.id%>'>
+		<div class="classItem ">
 			<div class = 'name'>
 				<div class = "row">
 					<h2>
@@ -119,6 +116,7 @@ function logout() {
 				</div>
 			</div>
 		</div>
+		</a>
 		<%})%>
 		</div>
 	<div id = "quoteRow" class = "row justify-content-center">

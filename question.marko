@@ -1,0 +1,62 @@
+<for|question, index| of=input.question_info>
+<div class="question card-primary col-md-12">
+    <div class="header card-header row">
+        <div class="hashtags col-10 d-flex">
+            <h3 class="align-self-center">
+                <for|topic, index| of=question.hashtags>
+                    #${topic}
+                </for>
+            </h3>
+        </div>
+        <div class="vote col-2">
+            <if(question.voter_ids.includes(input.user_data.id))>
+                <button id = `${question.id}` type="submit" class="voteButton btn" onclick = `disableAndAnimate('${question.id}')` disabled>
+                    <span class = "font-weight-bold">${question.votes}</span> Votes
+                </button>
+            </if>
+            <else>
+            <button id = `${question.id}` type="submit" class="voteButton btn" onclick = `disableAndAnimate('${question.id}')`>
+                <span class = "font-weight-bold">${question.votes}</span> Votes
+            </button>
+            </else>
+                
+            <script>
+                var id = '${question.id}';
+                $(id).click(function() {
+                    $.ajax({
+                        url: "/vote",
+                        type: "POST", 
+                        data: {
+                            question_id: id
+                        }
+                    })
+                })
+            </script>
+        </div>
+    </div>
+    <div class="questionText card-body row">
+        <div class="col-12 questionBody">
+            <div class="row">
+                <div class="col-12">
+                    <p>${question.question_text}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div id="timeContainer" class="col-12 text-center">
+                    <p class="timestamp">${question.date_of_ask}</p>
+                </div>
+            </div>
+            <if(input.user_data.status == "teacher")>
+                <button class="btn card-btn">Answer</button>
+            </if>
+        </div>
+    </div>
+    <div class="questionResponse row">
+        <for|response, index| of=question.response>
+        <div id="responseContainer" class="col-12">
+            <p>${response.teacher_response}</p>
+        </div>
+        </for>
+    </div>
+</div>
+</for>
