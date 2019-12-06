@@ -1,11 +1,25 @@
-//createDiv() makes the divs that are seen in the background
+//Question data
+var questionData = [
+     {
+          "tags": "#中文",
+          "question": "如果你可以度我些什么，你怎么知道中文?",
+          "cardType": "card-tertiary"
+     },
+     {
+          "tags": "#InternationalRelations",
+          "question": "What marked the end of the US's unilateral policy?",
+          "cardType": "card-primary"
+     },
+     {
+          "tags": "#Externalities",
+          "question": "Is there no way to account for externalities within a supply-demand model?",
+          "cardType": "card-quinary"
+     }
+]
 function createDiv(v, counter) {
-	$.getJSON("qExamples.json", function(data) {
-			$(".card-header").eq(counter).text(data[v].tags);
-			$(".card-title").eq(counter).text(data[v].question);
-			$(".card").eq(counter).addClass(data[v].cardType);
-		}
-	);
+       $(".card-header").eq(counter).text(questionData[v].tags);
+       $(".card-title").eq(counter).text(questionData[v].question);
+       $(".card").eq(counter).addClass(questionData[v].cardType);
 }
 function animateDivs() {
 	anime({
