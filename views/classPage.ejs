@@ -14,24 +14,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <!--Socket-->
-    <script src="/socket.io/socket.io.js"></script>
+    <!--<script src="/socket.io/socket.io.js"></script>-->
     <script>
         /*
-                var demoObject = {
-                    class_code: "hey"
-                }
-                $(function() {
-                    var socket = io();
-                    $(".menuItem").on('click', function(e) {
-                        var data = $(this).attr('id');
-                        e.preventDefault(); // prevents page reloading
-                        socket.emit('menu', data);
-                        return false;
-                    });
-                    socket.on('rewrite', function() {
-                        class_data.class_code = "wawa"
-                    })
-                });*/
+                                                                                                                                                        var demoObject = {
+                                                                                                                                                            class_code: "hey"
+                                                                                                                                                        }
+                                                                                                                                                        $(function() {
+                                                                                                                                                            var socket = io();
+                                                                                                                                                            $(".menuItem").on('click', function(e) {
+                                                                                                                                                                var data = $(this).attr('id');
+                                                                                                                                                                e.preventDefault(); // prevents page reloading
+                                                                                                                                                                socket.emit('menu', data);
+                                                                                                                                                                return false;
+                                                                                                                                                            });
+                                                                                                                                                            socket.on('rewrite', function() {
+                                                                                                                                                                class_data.class_code = "wawa"
+                                                                                                                                                            })
+                                                                                                                                                        });*/
     </script>
 
     <!--Local Links-->
@@ -81,27 +81,27 @@
         </header>
         <div id="app" class="container-fluid">
             <div class="row justify-content-center">
+                <div id="timeMenu" class="col-2 sideMenu align-self-start">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="menuItem timeMenuItem" data-queryType="thisWeek">This Week</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="menuItem timeMenuItem" data-queryType="thisMonth">This Month</p>
+                        </div>
+                    </div>
+                    <!--Add feature for this semester-->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="menuItem timeMenuItem active" data-queryType="allTime">All Time</p>
+                        </div>
+                    </div>
+                </div>
                 <%if(question_info.length == 0) {%>
                     <p class='null'>No questions asked yet</p>
                     <%} else {%>
-                        <div id="timeMenu" class="col-2 sideMenu align-self-start">
-                            <div class="row">
-                                <div class="col-12">
-                                    <p id="thisWeek" class="menuItem active">This Week</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <p id="thisMonth" class="menuItem">This Month</p>
-                                </div>
-                            </div>
-                            <!--Add feature for this semester-->
-                            <div class="row">
-                                <div class="col-12">
-                                    <p class="menuItem">All Time</p>
-                                </div>
-                            </div>
-                        </div>
                         <div id="questionContainer" class="col-6">
                             <div class="row">
                                 <%question_info.forEach(data => {%>
@@ -116,10 +116,10 @@
                                             </div>
                                             <div class="vote col-2">
                                                 <button id="<%=data.id%>" type="submit" class="voteButton btn" onclick="disableAndAnimate('<%=data.id%>')" <%if(data.voter_ids) { data.voter_ids.forEach(voterId=> {
-                                                               if(voterId == user_data.id) { %>
-                                                          disabled
-                                                          <%}})}%>
-                                                          ><span class = "font-weight-bold"><%=data.votes%></span> Votes</button>
+                                                            if(voterId == user_data.id) { %>
+                                                        disabled
+                                                        <%}})}%>
+                                                        ><span class = "font-weight-bold"><%=data.votes%></span> Votes</button>
                                                 <script>
                                                     var id = "#<%=data.id%>"
                                                     $(id).click(function() {
@@ -169,23 +169,21 @@
                                     <%})%>
                             </div>
                         </div>
-                        <div id="voteMenu" class="col-2 sideMenu align-self-start">
-                            <div class="col-12 text-right">
-                                <p class="menuItem active">Recent Questions</p>
-                            </div>
-                            <div class="col-12 text-right">
-                                <p class="menuItem">Recent Answers</p>
-                            </div>
-                            <div class="col-12 text-right">
-                                <p class="menuItem">Most Voted</p>
-                            </div>
-                            <%if(user_data.status == "teacher") {%>
-                                <div class="col-12 text-right">
-                                    <p class="menuItem">Least Voted</p>
-                                </div>
-                                <%}%>
-                        </div>
                         <%}%>
+                            <div id="voteMenu" class="col-2 sideMenu align-self-start">
+                                <div class="col-12 text-right">
+                                    <p data-queryType="recentQuestions" class="menuItem filterMenuItem active">Recent Questions</p>
+                                </div>
+                                <!--Add Recent Answers-->
+                                <div class="col-12 text-right">
+                                    <p data-queryType="mostVoted" class="menuItem filterMenuItem">Most Voted</p>
+                                </div>
+                                <%if(user_data.status == "teacher") {%>
+                                    <div class="col-12 text-right">
+                                        <p class="menuItem filterMenuItem">Least Voted</p>
+                                    </div>
+                                    <%}%>
+                            </div>
             </div>
         </div>
     </div>
@@ -198,50 +196,52 @@
                 <div class="row justify-content-center text-center">
                     <h4>Ask a Question</h4>
                 </div>
-                <div class="row justify-content-center">
-                    <div id="askCard" class="col-md-12 card">
-                        <div id="askCardHeader" class="row">
-                            <div class="col-12">
-
-                                <input type="hidden" value="<%=class_data.id%>" name="class_id" />
-                                <div class="row card-header">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <p>Add hashtags here (all one word, CamelCase!)</p>
-                                        </div>
-                                        <div class="row">
-                                            <div id="hashtagPaste" class="col-9">
-                                                <div class="row hashtagElement">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">#</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" name="hashtags" placeholder="Hashtag" aria-label="Username" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-
+                <form action="/addQuestion" method="post">
+                    <div class="row justify-content-center">
+                        <div id="askCard" class="col-md-12 card">
+                            <div id="askCardHeader" class="row">
+                                <div class="col-12">
+                                    <input type="hidden" value="<%=class_data.id%>" name="class_id" />
+                                    <div class="row card-header">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <p>Add hashtags here (all one word, CamelCase!)</p>
                                             </div>
-                                            <div class="col-3 align-self-start">
-                                                <button type="button" id="addInput" class="btn" onclick="addHashtag()">Add #</button>
+                                            <div class="row">
+                                                <div id="hashtagPaste" class="col-9">
+                                                    <div class="row hashtagElement">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">#</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="hashtag" placeholder="Hashtag" aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-3 align-self-start">
+                                                    <button type="button" id="addInput" class="btn" onclick="addHashtag()">Add #</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p>Ask your question. Remember to be respectful!</p>
-                                        <textarea placeholder="Start typing here..." name="question"></textarea>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p>Ask your question. Remember to be respectful!</p>
+                                            <textarea placeholder="Start typing here..." name="question"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-6 text-center">
-                        <button id="questionSubmit" type="submit" class="btn">Submit</button>
+                    <div class="row justify-content-center">
+                        <div class="col-6 text-center">
+                            <button id="questionSubmit" type="submit" class="btn">Submit</button>
+                            <!--Add a function that confirms that the question has been subitted-->
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -288,9 +288,16 @@
     </div>
     <script>
         $(".menuItem").on('click', function() {
-            var data = $(this).attr('id');
+            if ($(this).hasClass("timeMenuItem")) {
+                $(".timeMenuItem").removeClass("active");
+                $(this).addClass("active");
+            } else if ($(this).hasClass("filterMenuItem")) {
+                $(".filterMenuItem").removeClass("active");
+                $(this).addClass("active");
+            }
+            var data = new Array;
+            data.append($(".menuItem.active").attr("data-queryType"));
             var classID = "<%=class_data.id%>";
-            console.log()
             $.ajax({
                 url: "/timeQuery",
                 type: 'post',
@@ -298,15 +305,8 @@
                     queryType: data,
                     classID: classID
                 }
-            })
+            }).done(res => console.log(res));
         })
-        fetch("/timeQuery", {
-                method: "post"
-            })
-            .then(res => console.log(res.clone().json()))
-            .catch(function(err) {
-                alert(err)
-            })
     </script>
 </body>
 

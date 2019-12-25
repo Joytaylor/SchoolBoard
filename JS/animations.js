@@ -6,7 +6,7 @@ function disableAndAnimate(questionID) {
         }, 500, "ease-in-out")
         .text("Voted!").css({
             color: "white"
-        })
+        }).attr("disabled", "true")
 }
 
 //Toggling display of question/answer containers
@@ -42,46 +42,55 @@ function toggleDisplays(toggleType, question, info) {
 
 //Adding hashtag input on "Add #" click
 function addHashtag() {
-    $("#hashtagPaste").append("<div class = 'row hashtagElement'><div class='input-group'><div class='input-group-prepend'><span class='input-group-text' id='basic-addon1'>#</span></div><input type='text' class='form-control' placeholder='Hashtag' aria-label='Username' aria-describedby='basic-addon1'></div></div>")
+    var component = `
+    <div class = 'row hashtagElement'>
+        <div class='input-group'>
+            <div class='input-group-prepend'>
+                <span class='input-group-text' id='basic-addon1'>#</span>
+            </div>
+            <input type='text' class='form-control' placeholder='Hashtag' aria-label='Username' aria-describedby='basic-addon1' name = "hashtag">
+        </div>
+    </div>`
+    $("#hashtagPaste").append(component)
 }
 
 //Functions manipulating scroll speed
-$.fn.scrollSpeed = function(){
-	var $window = $("#app");
-	var instances = [];
+$.fn.scrollSpeed = function() {
+    var $window = $("#app");
+    var instances = [];
 
-	$(this).each(function(){
-		instances.push(new moveItItem($(this)));
-	});
+    $(this).each(function() {
+        instances.push(new moveItItem($(this)));
+    });
 
-	window.addEventListener('scroll', function(){
-		var scrollTop = $window.scrollTop();
-		instances.forEach(function(inst){
-			inst.update(scrollTop);
-		});
-	}, {passive: true});
+    window.addEventListener('scroll', function() {
+        var scrollTop = $window.scrollTop();
+        instances.forEach(function(inst) {
+            inst.update(scrollTop);
+        });
+    }, { passive: true });
 }
-var moveItItem = function(el){
-	this.el = $(el);
-	this.speed = parseFloat(this.el.attr('data-scroll-speed'));
+var moveItItem = function(el) {
+    this.el = $(el);
+    this.speed = parseFloat(this.el.attr('data-scroll-speed'));
 };
-moveItItem.prototype.update = function(scrollTop){
-	this.el.css('transform', 'translateY(' + -(scrollTop / this.speed) + 'px)');
+moveItItem.prototype.update = function(scrollTop) {
+    this.el.css('transform', 'translateY(' + -(scrollTop / this.speed) + 'px)');
 };
 
 $(function() {
-	$("#app").on("scroll", function() {
-		var scrollTop = $("#app").scrollTop();
-		if(scrollTop > 2) {
-			$("#classCode").css("font-size", "0");
-			$("#classCode").css("opacity", "0");
-			$("header").css("height", "10vh");
-			$("#app").css("height", "90vh");
-		} else {
-			$("#classCode").css("font-size", "calc(0.6rem + 0.6vw)");
-			$("#classCode").css("opacity", "1");
-			$("header").css("height", "20vh");
-			$("#app").css("height", "80vh");
-		}
-	})
+    $("#app").on("scroll", function() {
+        var scrollTop = $("#app").scrollTop();
+        if (scrollTop > 2) {
+            $("#classCode").css("font-size", "0");
+            $("#classCode").css("opacity", "0");
+            $("header").css("height", "10vh");
+            $("#app").css("height", "90vh");
+        } else {
+            $("#classCode").css("font-size", "calc(0.6rem + 0.6vw)");
+            $("#classCode").css("opacity", "1");
+            $("header").css("height", "20vh");
+            $("#app").css("height", "80vh");
+        }
+    })
 });

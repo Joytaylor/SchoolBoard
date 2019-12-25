@@ -10,14 +10,14 @@
         </div>
         <div class="vote col-2">
             <if(question.voter_ids.includes(input.user_data.id))>
-                <button id = `${question.id}` type="submit" class="voteButton btn" onclick = `disableAndAnimate('${question.id}')` disabled>
+                <div id = `${question.id}` type="submit" class="voteButton btn" onclick = `disableAndAnimate('${question.id}')` disabled>
                     <span class = "font-weight-bold">${question.votes}</span> Votes
-                </button>
+                </div>
             </if>
             <else>
-            <button id = `${question.id}` type="submit" class="voteButton btn" onclick = `disableAndAnimate('${question.id}')`>
+            <div id = `${question.id}` type="submit" class="votediv btn" onclick = `disableAndAnimate('${question.id}')`>
                 <span class = "font-weight-bold">${question.votes}</span> Votes
-            </button>
+            </div>
             </else>
                 
             <script>
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <if(input.user_data.status == "teacher")>
-                <button class="btn card-btn">Answer</button>
+                <div class="btn card-btn">Answer</div>
             </if>
         </div>
     </div>
