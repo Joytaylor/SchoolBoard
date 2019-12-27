@@ -176,7 +176,7 @@ app.post('/logout', (req, res) => {
 
 app.get('/classPage', (req, res) => {
     if (req.query && req.query.id) {
-        var class_id = req.query.id
+        var class_id = req.query.id;
         getUserInfo(res, req, user_data => {
             getClassInfo(class_id, class_data => {
                 if (class_data != null) {
@@ -186,7 +186,6 @@ app.get('/classPage', (req, res) => {
                     query.get().then(questions => {
                         var question_info = []
                         var question_ids = []
-                        console.log(questions);
                         questions.forEach(question => {
                             var question_data = question.data()
                             question_data.id = question.id
@@ -195,17 +194,15 @@ app.get('/classPage', (req, res) => {
                             question_info.push(question_data)
                             question_ids.push(question.id)
                         })
-
                         getDocumentsByFeature(Teacher_Responses, "question_id", question_ids, [], responses => {
                             responses.forEach(response => {
-                                question_info.forEach(question => {
-                                    if (question.id == response.question_id) {
-                                        question.responses.push(response)
-                                    }
+                                    question_info.forEach(question => {
+                                        if (question.id == response.question_id) {
+                                            question.responses.push(response)
+                                        }
+                                    })
                                 })
-                            })
-
-                            //keep working here
+                                //keep working here
                             if (user_data == null) {
                                 res.redirect('/SchoolBoardLogInPage?err=' + 'no_user')
                             } else {
@@ -239,355 +236,342 @@ app.post('/vote', (req, res) => {
 })
 
 app.post("/timeQuery", (req, res) => {
-            //How this works (inefficient method, will most likely slow things down in the long run)
-            //Queries for all the questions in database for class
-            //Filters all questions via ask time/vote count
-            //Returns them
-            //Did this because I couldn't figure out how to only query for questions in specific date yet
-            var queryTypes = req.body.queryType;
-            var classID = req.body.classID;
-            if (classID) {
-                var query = Questions.where("class_id", "==", classID);
-                query.get().then(questions => {
-                        var question_info = [];
-                        questions.forEach(question => {
-                            var question_data = question.data();
-                            question_data.id = question.id;
-                            question_info.push(question_data);
-                        })
-                        let currentTime = new Date().getDate();
-                        let endTime = new Date();
-                        let sortBy;
-                        queryTypes.forEach(queryType => {
-                            switch (queryType) {
-                                case "thisWeek":
-                                    endTime.setDate(currentTime - 7);
-                                case "thisMonth":
-                                    endTime.setDate(currentTime - 30);
-                                    break;
-                                    //Add feature for "this semester"
-                                case "recentQuestions":
-                                    sortBy = "questions";
-                                    break;
-                                    //Add feature for recent answers
-                                case "mostVoted":
-                                    sortBy = "votes";
-                                    break;
-                            }
-                        })
-                        var timeFiltered = question_info.filter(question => {
-                            return question.date_of_ask > endTime;
-                        });
-                        //write comparison functions for recent questions and most voted
-                        function compare(a, b) {
-                            const a.votes
-                        }
+    //How this works (inefficient method, will most likely slow things down in the long run)
+    //Queries for all the questions in database for class
+    //Filters all questions via ask time/vote count
+    //Returns them
+    //Did this because I couldn't figure out how to only query for questions in specific date yet
+    var queryTypes = req.body.queryType;
+    var classID = req.body.classID;
+    if (classID) {
+        let query = Questions.where("class_id", "==", classID);
+        query.get().then(questions => {
+            var question_info = [];
+            questions.forEach(question => {
+                let question_data = question.data();
+                question_data.id = question.id;
+                question_data.date_of_ask = question_data.date_of_ask.toDate().toLocaleString('en-US', { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
+                question_info.push(question_data);
+            });
 
-                    }
+            let currentTime = new Date().getDate();
+            let endTime = new Date();
+            //Sorting by query type
+            queryTypes.forEach(queryType => {
+                console.log(queryType);
+                switch (queryType) {
+                    case "thisWeek":
+                        endTime.setDate(currentTime - 7);
+                    case "thisMonth":
+                        endTime.setDate(currentTime - 30);
+                        break;
+                        //Add feature for "this semester"
+                    case "recentQuestions":
+                        question_info.sort((a, b) => (a.date_of_ask > b.date_of_ask) ? 1 : -1);
+                        break;
+                        //Add feature for recent answers
+                    case "mostVoted":
+                        question_info.sort((a, b) => -(a.votes - b.votes));
+                        break;
                 }
+            });
+            //Filtering questions by time
+            var timeFiltered = question_info.filter(question => {
+                return question.date_of_ask > endTime;
+            });
 
-                if (classID) {
-                    var query = Questions.where("class_id", "==", classID)
-                    query.get().then(questions => {
-                        //Fiter the questions via query type
-                        var question_info = []
-                        questions.forEach(question => {
-                            var question_data = question.data()
-                            question_data.id = question.id
-                            question_data.date_of_ask = question_data.date_of_ask.toLocaleString('en-US', { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })
-                            question_info.push(question_data)
-                        })
-                        var user_id = req.signedCookies.user_id
-                        var query = Users.doc(user_id)
-                        query.get().then(user_data => {
-                            user_data = user_data.data()
-                            user_data.id = user_id
-                            var renderedQuestions = QuestionComp.renderToString({ question_info: question_info, user_data: user_data })
-                            res.send(renderedQuestions)
-                        })
-                    })
-                }
-            })
+            //Rendering question view with user's data via Marko
+            var user_id = req.signedCookies.user_id;
+            var query = Users.doc(user_id);
+            query.get().then(user_data => {
+                user_data = user_data.data();
+                user_data.id = user_id;
+                var renderedQuestions = QuestionComp.renderToString({ question_info: question_info, user_data: user_data });
+                res.send(renderedQuestions);
+            });
+        });
+    }
+})
 
-        //NFD: for some reason, multiple hashtags is registered as only one.
-        app.post('/addQuestion', (req, res) => {
-            if (req.signedCookies.user_id) {
-                var user_id = req.signedCookies.user_id
-                var class_id = req.body.class_id
-                var question = req.body.question
-                var hashtags = req.body.hashtag
-                insertQuestion(user_id, class_id, question, hashtags, () => {
-                    res.redirect('/classPage?id=' + class_id)
-                })
+//NFD: for some reason, multiple hashtags is registered as only one.
+app.post('/addQuestion', (req, res) => {
+    if (req.signedCookies.user_id) {
+        var user_id = req.signedCookies.user_id
+        var class_id = req.body.class_id
+        var question = req.body.question
+        var hashtags = req.body.hashtag
+        insertQuestion(user_id, class_id, question, hashtags, () => {
+            res.redirect('/classPage?id=' + class_id)
+        })
+    }
+})
+
+app.post('/addAnswer', (req, res) => {
+    if (req.signedCookies.user_id) {
+        var user_id = req.signedCookies.user_id
+        var class_id = req.body.class_id
+        var question_id = req.body.question_id
+        var teacher_response = req.body.teacher_response
+        insertTeacher_Response(user_id, question_id, teacher_response, () => {
+            res.redirect('/classPage?id=' + class_id)
+        })
+    }
+})
+
+app.listen(3000, function() {
+    console.log('listening on port 3000')
+})
+
+
+//Functions
+function sortByVotes(responses) {
+    var swapp
+    var lastIndex = responses.length - 1
+    var newResponses = responses
+    do {
+        swapp = false
+        for (var i = 0; i < lastIndex; i++) {
+            if (newResponses[i].votes < newResponses[i + 1].votes) {
+
+                var temp = newResponses[i]
+                newResponses[i] = newResponses[i + 1]
+                newResponses[i + 1] = temp
+                swapp = true
             }
-        })
-
-        app.post('/addAnswer', (req, res) => {
-            if (req.signedCookies.user_id) {
-                var user_id = req.signedCookies.user_id
-                var class_id = req.body.class_id
-                var question_id = req.body.question_id
-                var teacher_response = req.body.teacher_response
-                insertTeacher_Response(user_id, question_id, teacher_response, () => {
-                    res.redirect('/classPage?id=' + class_id)
-                })
-            }
-        })
-
-        app.listen(3000, function() {
-            console.log('listening on port 3000')
-        })
-
-
-        //Functions
-        function sortByVotes(responses) {
-            var swapp
-            var lastIndex = responses.length - 1
-            var newResponses = responses
-            do {
-                swapp = false
-                for (var i = 0; i < lastIndex; i++) {
-                    if (newResponses[i].votes < newResponses[i + 1].votes) {
-
-                        var temp = newResponses[i]
-                        newResponses[i] = newResponses[i + 1]
-                        newResponses[i + 1] = temp
-                        swapp = true
-                    }
-                }
-                lastIndex--
-            } while (swapp)
-            return newResponses
         }
+        lastIndex--
+    } while (swapp)
+    return newResponses
+}
 
-        function insertQuestion(user_id, class_id, question, hashtags, callback) {
-            Questions.add({
-                class_id: class_id,
-                date_of_ask: new Date(),
-                user_id: user_id,
-                hashtags: hashtags,
-                question_text: question,
-                voter_ids: [],
-                votes: 0
-            }).then(() => {
-                callback()
-            })
+function insertQuestion(user_id, class_id, question, hashtags, callback) {
+    Questions.add({
+        class_id: class_id,
+        date_of_ask: new Date(),
+        user_id: user_id,
+        hashtags: hashtags,
+        question_text: question,
+        voter_ids: [],
+        votes: 0
+    }).then(() => {
+        callback()
+    })
+}
+
+function insertTeacher_Response(user_id, question_id, teacher_response, callback) {
+    Teacher_Responses.add({
+        user_id: user_id,
+        question_id: question_id,
+        teacher_response: teacher_response,
+        date_of_ask: new Date(),
+        votes: 0
+
+    }).then(function() {
+        callback()
+    })
+}
+
+function insertSchool(school_name) {
+    Schools.add({
+        school_name: school_name
+    })
+}
+
+function insertClass(class_code, class_name, class_section, class_teacher, school_id) {
+    Classes.add({
+        class_code: class_code,
+        class_name: class_name,
+        class_section: class_section,
+        class_teacher: class_teacher,
+        school_id: school_id
+    })
+}
+
+function insertUser(username, aPassword, first_name, last_name, aStatus, school_id, email, callback) {
+    Users.add({
+        username: username,
+        password: trencryption.constantEncrypt(aPassword),
+        first_name: first_name,
+        last_name: last_name,
+        status: aStatus,
+        school_id: school_id,
+        email: email
+    }).then(ref => {
+        callback(ref.id)
+    })
+}
+
+function registerUser(username, aPassword, first_name, last_name, aStatus, school_name, email, callback) {
+    var validity = { school_id: false, username: false, password: false, email: false }
+    var query = Schools.where("school_name", "==", school_name)
+        //Setting password as true (check again)
+    validity.password = true
+    getIds(query, function(ids) {
+        if (ids[0]) {
+            validity.school_id = true
         }
-
-        function insertTeacher_Response(user_id, question_id, teacher_response, callback) {
-            Teacher_Responses.add({
-                user_id: user_id,
-                question_id: question_id,
-                teacher_response: teacher_response,
-                date_of_ask: new Date(),
-                votes: 0
-
-            }).then(function() {
-                callback()
-            })
-        }
-
-        function insertSchool(school_name) {
-            Schools.add({
-                school_name: school_name
-            })
-        }
-
-        function insertClass(class_code, class_name, class_section, class_teacher, school_id) {
-            Classes.add({
-                class_code: class_code,
-                class_name: class_name,
-                class_section: class_section,
-                class_teacher: class_teacher,
-                school_id: school_id
-            })
-        }
-
-        function insertUser(username, aPassword, first_name, last_name, aStatus, school_id, email, callback) {
-            Users.add({
-                username: username,
-                password: trencryption.constantEncrypt(aPassword),
-                first_name: first_name,
-                last_name: last_name,
-                status: aStatus,
-                school_id: school_id,
-                email: email
-            }).then(ref => {
-                callback(ref.id)
-            })
-        }
-
-        function registerUser(username, aPassword, first_name, last_name, aStatus, school_name, email, callback) {
-            var validity = { school_id: false, username: false, password: false, email: false }
-            var query = Schools.where("school_name", "==", school_name)
-                //Setting password as true (check again)
-            validity.password = true
-            getIds(query, function(ids) {
-                if (ids[0]) {
-                    validity.school_id = true
-                }
-                var query = Users.where("username", "==", username)
-                checkIfExists(query, function(usernameExists) {
-                    validity.username = !usernameExists
-                    var query = Users.where("email", "==", email)
-                    checkIfExists(query, function(emailExists) {
-                        validity.email = !emailExists
-                        if (validity.school_id && validity.username && validity.password && validity.email) {
-                            //inserting the user here
-                            insertUser(username, aPassword, addslashes(first_name), addslashes(last_name), aStatus, ids[0], email, function(id) {
-                                    callback(validity, id)
-                                })
-                                //redirecting the user to enrollment page
-                        } else {
-                            callback(validity, '')
-                        }
-                    })
-                })
-            })
-        }
-
-        function checkIfExists(query, callback) {
-            query.get().then(function(resultsOfQuery) {
-                if (resultsOfQuery.size > 0) {
-                    callback(true)
+        var query = Users.where("username", "==", username)
+        checkIfExists(query, function(usernameExists) {
+            validity.username = !usernameExists
+            var query = Users.where("email", "==", email)
+            checkIfExists(query, function(emailExists) {
+                validity.email = !emailExists
+                if (validity.school_id && validity.username && validity.password && validity.email) {
+                    //inserting the user here
+                    insertUser(username, aPassword, addslashes(first_name), addslashes(last_name), aStatus, ids[0], email, function(id) {
+                            callback(validity, id)
+                        })
+                        //redirecting the user to enrollment page
                 } else {
-                    callback(false)
+                    callback(validity, '')
                 }
             })
-        }
+        })
+    })
+}
 
-        function checkIfEnrolled(user_id, class_id, callback) {
-            var query = Enrollments.where("user_id", "==", user_id).where("class_id", "==", class_id)
-            checkIfExists(query, function(isEnrolled) {
-                callback(isEnrolled)
-            })
+function checkIfExists(query, callback) {
+    query.get().then(function(resultsOfQuery) {
+        if (resultsOfQuery.size > 0) {
+            callback(true)
+        } else {
+            callback(false)
         }
+    })
+}
 
-        function getIds(query, callback) {
-            query.get().then(function(resultsOfQuery) {
-                var ids = []
+function checkIfEnrolled(user_id, class_id, callback) {
+    var query = Enrollments.where("user_id", "==", user_id).where("class_id", "==", class_id)
+    checkIfExists(query, function(isEnrolled) {
+        callback(isEnrolled)
+    })
+}
+
+function getIds(query, callback) {
+    query.get().then(function(resultsOfQuery) {
+        var ids = []
+        resultsOfQuery.forEach(function(doc) {
+            ids.push(doc.id)
+        })
+        callback(ids)
+    })
+}
+
+function getDocumentsByID(collection, ids, documents, callback) {
+    if (ids.length > 0) {
+        collection.doc(ids[0]).get().then(doc => {
+            var docData = doc.data()
+            docData.id = ids[0]
+            documents.push(docData)
+            ids.shift()
+            return getDocumentsByID(collection, ids, documents, callback)
+        })
+    } else {
+        callback(documents)
+    }
+}
+
+function getDocumentsByFeature(collection, feature_title, features, documents, callback) {
+    if (features.length > 0) {
+
+        collection.where(feature_title, '==', features[0]).get().then(function(resultsOfQuery) {
+            if (resultsOfQuery.size > 0) {
                 resultsOfQuery.forEach(function(doc) {
-                    ids.push(doc.id)
-                })
-                callback(ids)
-            })
-        }
 
-        function getDocumentsByID(collection, ids, documents, callback) {
-            if (ids.length > 0) {
-                collection.doc(ids[0]).get().then(doc => {
                     var docData = doc.data()
-                    docData.id = ids[0]
+
                     documents.push(docData)
-                    ids.shift()
-                    return getDocumentsByID(collection, ids, documents, callback)
+
                 })
-            } else {
-                callback(documents)
             }
-        }
+            features.shift()
+            return getDocumentsByFeature(collection, feature_title, features, documents, callback)
+        })
+    } else {
+        callback(documents)
+    }
+}
 
-        function getDocumentsByFeature(collection, feature_title, features, documents, callback) {
-            if (features.length > 0) {
+function test_input(data) {
+    data = data.trim()
+    data = stripslashes(data)
+    data = htmlspecialchars(data)
+    return data
+}
 
-                collection.where(feature_title, '==', features[0]).get().then(function(resultsOfQuery) {
-                    if (resultsOfQuery.size > 0) {
-                        resultsOfQuery.forEach(function(doc) {
+function addslashes(str) {
+    str = str.replace(/\\/g, '\\\\')
+    str = str.replace(/\'/g, '\\\'')
+    str = str.replace(/\"/g, '\\"')
+    str = str.replace(/\0/g, '\\0')
+    return str
+}
 
-                            var docData = doc.data()
+function stripslashes(str) {
+    str = str.replace(/\\'/g, '\'')
+    str = str.replace(/\\"/g, '"')
+    str = str.replace(/\\0/g, '\0')
+    str = str.replace(/\\\\/g, '\\')
+    return str
+}
 
-                            documents.push(docData)
+function htmlspecialchars(text) {
+    var map = {
+        '&': '&amp',
+        '<': '&lt',
+        '>': '&gt',
+        '"': '&quot',
+        "'": '&#039'
+    }
 
-                        })
-                    }
-                    features.shift()
-                    return getDocumentsByFeature(collection, feature_title, features, documents, callback)
-                })
-            } else {
-                callback(documents)
-            }
-        }
+    return text.replace(/[&<>"']/g, function(m) { return map[m] })
+}
 
-        function test_input(data) {
-            data = data.trim()
-            data = stripslashes(data)
-            data = htmlspecialchars(data)
-            return data
-        }
-
-        function addslashes(str) {
-            str = str.replace(/\\/g, '\\\\')
-            str = str.replace(/\'/g, '\\\'')
-            str = str.replace(/\"/g, '\\"')
-            str = str.replace(/\0/g, '\\0')
-            return str
-        }
-
-        function stripslashes(str) {
-            str = str.replace(/\\'/g, '\'')
-            str = str.replace(/\\"/g, '"')
-            str = str.replace(/\\0/g, '\0')
-            str = str.replace(/\\\\/g, '\\')
-            return str
-        }
-
-        function htmlspecialchars(text) {
-            var map = {
-                '&': '&amp',
-                '<': '&lt',
-                '>': '&gt',
-                '"': '&quot',
-                "'": '&#039'
-            }
-
-            return text.replace(/[&<>"']/g, function(m) { return map[m] })
-        }
-
-        function getUserInfo(res, req, callback) {
-            if (req.signedCookies.user_id) {
-                var user_id = req.signedCookies.user_id
-                Users.doc(user_id).get().then(doc => {
-                    if (doc.exists) {
-                        var user_data = doc.data()
-                        user_data.first_name = stripslashes(user_data.first_name)
-                        user_data.id = user_id
-                        callback(user_data)
-                    } else {
-                        callback(null)
-                    }
-                })
+function getUserInfo(res, req, callback) {
+    if (req.signedCookies.user_id) {
+        var user_id = req.signedCookies.user_id
+        Users.doc(user_id).get().then(doc => {
+            if (doc.exists) {
+                var user_data = doc.data()
+                user_data.first_name = stripslashes(user_data.first_name)
+                user_data.id = user_id
+                callback(user_data)
             } else {
                 callback(null)
             }
-        }
+        })
+    } else {
+        callback(null)
+    }
+}
 
-        function getClassInfo(class_id, callback) {
-            Classes.doc(class_id).get().then(doc => {
-                if (doc.exists) {
-                    var class_data = doc.data()
-                    class_data.id = class_id
-                    callback(class_data)
-                } else {
-                    callback(null)
-                }
-            })
+function getClassInfo(class_id, callback) {
+    Classes.doc(class_id).get().then(doc => {
+        if (doc.exists) {
+            var class_data = doc.data()
+            class_data.id = class_id
+            callback(class_data)
+        } else {
+            callback(null)
         }
+    })
+}
 
-        function getUserAndClassInfo(res, req, callback) {
-            getUserInfo(res, req, function(user_data) {
-                if (user_data != null) {
-                    user_id = user_data.id
-                    classes = user_data.classes
-                    if (classes.length > 0) {
-                        var documentarray = []
-                        getDocumentsByID(Classes, classes, documentarray, function(documents) {
-                            callback({ user_data: user_data, class_documents: documents, err: '' })
-                        })
-                    } else {
-                        callback({ user_data: user_data, class_documents: [{ class_name: "none", id: null }], err: '' })
-                    }
-                } else {
-                    callback({ user_data: null, class_documents: [{ class_name: "none", id: null }], err: '' })
-                }
-            })
+function getUserAndClassInfo(res, req, callback) {
+    getUserInfo(res, req, function(user_data) {
+        if (user_data != null) {
+            user_id = user_data.id
+            classes = user_data.classes
+            if (classes.length > 0) {
+                var documentarray = []
+                getDocumentsByID(Classes, classes, documentarray, function(documents) {
+                    callback({ user_data: user_data, class_documents: documents, err: '' })
+                })
+            } else {
+                callback({ user_data: user_data, class_documents: [{ class_name: "none", id: null }], err: '' })
+            }
+        } else {
+            callback({ user_data: null, class_documents: [{ class_name: "none", id: null }], err: '' })
         }
+    })
+}

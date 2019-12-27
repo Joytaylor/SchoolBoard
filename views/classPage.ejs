@@ -17,21 +17,21 @@
     <!--<script src="/socket.io/socket.io.js"></script>-->
     <script>
         /*
-                                                                                                                                                        var demoObject = {
-                                                                                                                                                            class_code: "hey"
-                                                                                                                                                        }
-                                                                                                                                                        $(function() {
-                                                                                                                                                            var socket = io();
-                                                                                                                                                            $(".menuItem").on('click', function(e) {
-                                                                                                                                                                var data = $(this).attr('id');
-                                                                                                                                                                e.preventDefault(); // prevents page reloading
-                                                                                                                                                                socket.emit('menu', data);
-                                                                                                                                                                return false;
-                                                                                                                                                            });
-                                                                                                                                                            socket.on('rewrite', function() {
-                                                                                                                                                                class_data.class_code = "wawa"
-                                                                                                                                                            })
-                                                                                                                                                        });*/
+                                                                                                                                                                                                                                                                                                        var demoObject = {
+                                                                                                                                                                                                                                                                                                            class_code: "hey"
+                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                        $(function() {
+                                                                                                                                                                                                                                                                                                            var socket = io();
+                                                                                                                                                                                                                                                                                                            $(".menuItem").on('click', function(e) {
+                                                                                                                                                                                                                                                                                                                var data = $(this).attr('id');
+                                                                                                                                                                                                                                                                                                                e.preventDefault(); // prevents page reloading
+                                                                                                                                                                                                                                                                                                                socket.emit('menu', data);
+                                                                                                                                                                                                                                                                                                                return false;
+                                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                            socket.on('rewrite', function() {
+                                                                                                                                                                                                                                                                                                                class_data.class_code = "wawa"
+                                                                                                                                                                                                                                                                                                            })
+                                                                                                                                                                                                                                                                                                        });*/
     </script>
 
     <!--Local Links-->
@@ -103,7 +103,7 @@
                     <p class='null'>No questions asked yet</p>
                     <%} else {%>
                         <div id="questionContainer" class="col-6">
-                            <div class="row">
+                            <div id="questionPaste" class="row">
                                 <%question_info.forEach(data => {%>
                                     <div class="question card-primary col-md-12">
                                         <div class="header card-header row">
@@ -115,11 +115,9 @@
                                                 </h3>
                                             </div>
                                             <div class="vote col-2">
-                                                <button id="<%=data.id%>" type="submit" class="voteButton btn" onclick="disableAndAnimate('<%=data.id%>')" <%if(data.voter_ids) { data.voter_ids.forEach(voterId=> {
-                                                            if(voterId == user_data.id) { %>
-                                                        disabled
-                                                        <%}})}%>
-                                                        ><span class = "font-weight-bold"><%=data.votes%></span> Votes</button>
+                                                <div id="<%=data.id%>" type="submit" class="voteButton btn" onclick="disableAndAnimate('<%=data.id%>')" <% if(data.voter_ids) { data.voter_ids.forEach(voterId=> { if(voterId == user_data.id) { %> disabled
+                                                    <%}})}%>
+                                                        ><span class="font-weight-bold"><%=data.votes%></span> Votes</div>
                                                 <script>
                                                     var id = "#<%=data.id%>"
                                                     $(id).click(function() {
@@ -288,16 +286,22 @@
     </div>
     <script>
         $(".menuItem").on('click', function() {
+            var data = [];
+            //Changing active status and getting data
             if ($(this).hasClass("timeMenuItem")) {
                 $(".timeMenuItem").removeClass("active");
                 $(this).addClass("active");
+                data.push($(this).attr("data-queryType"));
+                data.push($(".filterMenuItem.active").attr("data-queryType"));
             } else if ($(this).hasClass("filterMenuItem")) {
                 $(".filterMenuItem").removeClass("active");
                 $(this).addClass("active");
+                data.push($(this).attr("data-queryType"));
+                data.push($(".timeMenuItem.active").attr("data-queryType"));
             }
-            var data = new Array;
-            data.append($(".menuItem.active").attr("data-queryType"));
             var classID = "<%=class_data.id%>";
+
+            //Sending data and getting res
             $.ajax({
                 url: "/timeQuery",
                 type: 'post',
@@ -305,7 +309,9 @@
                     queryType: data,
                     classID: classID
                 }
-            }).done(res => console.log(res));
+            }).done(res => {
+                $("#questionPaste").html(res)
+            });
         })
     </script>
 </body>
