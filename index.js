@@ -244,13 +244,12 @@ app.post("/timeQuery", (req, res) => {
     var queryTypes = req.body.queryType;
     var classID = req.body.classID;
     if (classID) {
-        let query = Questions.where("class_id", "==", classID);
+        let query = Questions.where("class_id", "==", classID).orderBy("date_of_ask", "desc");
         query.get().then(questions => {
             var question_info = [];
             questions.forEach(question => {
                 let question_data = question.data();
                 question_data.id = question.id;
-                question_data.date_of_ask = question_data.date_of_ask.toDate().toLocaleString('en-US', { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
                 question_info.push(question_data);
             });
 
@@ -258,26 +257,22 @@ app.post("/timeQuery", (req, res) => {
             let endTime = new Date();
             //Sorting by query type
             queryTypes.forEach(queryType => {
-                console.log(queryType);
                 switch (queryType) {
                     case "thisWeek":
-                        endTime.setDate(currentTime - 7);
+                        endTime = currentTime - 7;
                     case "thisMonth":
-                        endTime.setDate(currentTime - 30);
+                        endTime = currentTime - 30;
                         break;
-                        //Add feature for "this semester"
-                    case "recentQuestions":
-                        question_info.sort((a, b) => (a.date_of_ask > b.date_of_ask) ? 1 : -1);
-                        break;
-                        //Add feature for recent answers
                     case "mostVoted":
                         question_info.sort((a, b) => -(a.votes - b.votes));
                         break;
+                        //Add feature for "this semester"
+                        //Add feature for recent answers
                 }
             });
             //Filtering questions by time
             var timeFiltered = question_info.filter(question => {
-                return question.date_of_ask > endTime;
+                return question.date_of_ask < endTime;
             });
 
             //Rendering question view with user's data via Marko
@@ -286,6 +281,10 @@ app.post("/timeQuery", (req, res) => {
             query.get().then(user_data => {
                 user_data = user_data.data();
                 user_data.id = user_id;
+                question_info = question_info.map(question => {
+                    question.date_of_ask = question.date_of_ask.toDate().toLocaleString('en-US', { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
+                    return question;
+                })
                 var renderedQuestions = QuestionComp.renderToString({ question_info: question_info, user_data: user_data });
                 res.send(renderedQuestions);
             });
