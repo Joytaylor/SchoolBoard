@@ -900,6 +900,10 @@ body {
         font-weight: bold;
         font-family: $subFont;
     }
+    .null {
+        opacity: 0.1;
+        text-align: center;
+    }
 }
 
 #headingContainer:after {

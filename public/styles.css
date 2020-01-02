@@ -1119,6 +1119,11 @@ body {
   font-family: "Raleway", sans-serif;
 }
 
+#classPage .null {
+  opacity: 0.1;
+  text-align: center;
+}
+
 #headingContainer:after {
   margin: auto;
   display: -webkit-box;

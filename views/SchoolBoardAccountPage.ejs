@@ -1,81 +1,70 @@
 <!DOCTYPE html>
-<html id = "account">
+<html id="account">
+
 <head>
-<!--Samuel Anozie, June 2, 2017. This is the account page. We still need to figure out how to actually create accounts. Also an idea: have a Pick your Classes page so that users can edit the classes, figure out a way to ade/subtract divs,  prob with javascript. Revision August 2019-->
-<meta charset = "UTF-8"/>
-<title>Profile | SchoolBoard</title>
+    <!--Samuel Anozie, June 2, 2017. This is the account page. We still need to figure out how to actually create accounts. Also an idea: have a Pick your Classes page so that users can edit the classes, figure out a way to ade/subtract divs,  prob with javascript. Revision August 2019-->
+    <meta charset="UTF-8" />
+    <title>Profile | SchoolBoard</title>
 
-	<!-- Bootstrap Links -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-	<!--My Stuff-->
-	<link rel = "stylesheet" type = "text/css" href = "styles.css"/>
-	<link rel = "icon" href = "favicon.png" type = "image/jpg"/>
-
-	<script src="universal_functions.js"></script>
-
-<style>
-html {
-	height: 100%;
-}
-body {
-	text-align: center;
-	height: 100%;
-	overflow: auto;
-}
-@keyframes list {
-	from {opacity: 0.0;}
-	to {opacity: 1.0;}
-}
-@-webkit-keyframes list {
-	from {opacity: 0.0;}
-	to {opacity: 1.0;}
-}
- @keyframes image {
-	0% {width: 75%; height: 21%; margin-top: 20%;}
-	100% {width: 25%; height:7%; margin-top: 0%;}
-}
-@-webkit-keyframes image {
-	0% {width: 75%; height: 21%; margin-top: 20%;}
-	100% {width: 25%; height:7%; margin-top: 0%;}
-}
-</style>
-<script>
-function logout() {
-	var response = confirm("Are you sure you want to log out?");
-	if (response == true) {
-		$.ajax({
-			url: "/logout",
-			type: 'POST',
-			success: function(){
-				window.location = "/";
-			},
-			error: function(){
-				alert('Sorry, there was a problem logging you out. Please try again. If this problem continues, please contact your SchoolBoard administrator.');
-			}
-		});
-	} else {
-		alert('Okay, we will keep you logged in.');
-	}
-}
-</script>
+    <!--My Stuff-->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="icon" href="favicon.png" type="image/jpg" />
+    <% if(animate) { %>
+        <link rel="stylesheet" type="text/css" href="accountAnimate.css" />
+        <%}%>
+            <style>
+                html {
+                    height: 100%;
+                }
+                
+                body {
+                    text-align: center;
+                    height: 100%;
+                    overflow: auto;
+                }
+            </style>
+            <script>
+                function logout() {
+                    var response = confirm("Are you sure you want to log out?");
+                    if (response == true) {
+                        $.ajax({
+                            url: "/logout",
+                            type: 'POST',
+                            success: function() {
+                                window.location = "/";
+                            },
+                            error: function() {
+                                alert('Sorry, there was a problem logging you out. Please try again. If this problem continues, please contact your SchoolBoard administrator.');
+                            }
+                        });
+                    } else {
+                        alert('Okay, we will keep you logged in.');
+                    }
+                }
+            </script>
 </head>
+
 <body>
-<div class = "img">
-	<a href = "index.html">
-		<img id = "logo" src = "WhiteLogo.svg"/>
-	</a>
-</div>
-<div id = "fullContainer" class = "container-fluid">
-	<div id = "greeting" class = "row">
-		<h1>Welcome, <%=userData.first_name%></h1>
-	</div>
-	<div class = "row">
-		<div id = "svgCol" class = "col-12 position-relative">
-			<svg id="theSVG" viewBox="0 0 800 200" width="100%" height="30%">
+    <div class="img">
+        <a href="index.html">
+            <img id="logo" src="WhiteLogo.svg" />
+        </a>
+    </div>
+    <div id="fullContainer" class="container-fluid">
+        <div id="greeting" class="row">
+            <h1>Welcome,
+                <%=userData.first_name%>
+            </h1>
+        </div>
+        <div class="row">
+            <div id="svgCol" class="col-12 position-relative">
+                <svg id="theSVG" viewBox="0 0 800 200" width="100%" height="30%">
 				<defs>
 					<mask id="theMask">
 						<rect x='0' y='0' width = "100%" height = "100%" fill='white'/>
@@ -85,59 +74,60 @@ function logout() {
 				<rect id = "whitespace" mask="url(#theMask)" x="0" y="0" width="100%" height="100%" fill="rgba(255,255,255,1)" />
 				<div class = "row text-center position-absolute w-100" id = "disclaim"><p>This is where you can check the classes you're enrolled in</p></div>
 			</svg>
-		</div>
-	</div>
-	<div id = "classes" class = "tabcontent row justify-content-center">
-		<% classData.forEach(function(document){%>
-		<a class = "col-md-4" href = '/classPage?id=<%= document.id%>'>
-		<div class="classItem ">
-			<div class = 'name'>
-				<div class = "row">
-					<h2>
-						<%=document.class_code%>
-					</h2>
-				</div>
-				<div class = "row text-left">
-					<h4>
-						<%=document.class_name%>
-					</h4>
-				</div>
-			</div>
-			<div class = "sectionInfo">
-				<div class = "row">
-					<h5>
-						<%=document.class_section%>
-					</h5>
-				</div>
-				<div class = "row">
-					<h5>
-						<%=document.class_teacher%>
-					</h5>
-				</div>
-			</div>
-		</div>
-		</a>
-		<%})%>
-		</div>
-	<div id = "quoteRow" class = "row justify-content-center">
-		<div class = "quoteImg col-sm-2">
-			<img class = "img-fluid"  src = "OpenQuote.png"/>
-		</div>
-		<div id = "envelope" class = "col-sm">
-			<div id = "quote">
-				<p>We get wise by asking questions, and even if these are not answered, we get wise, for a well-packed question carries its answer on its back as a snail carries its shell.</p>
-				<p id = "description">- James Stephens, novelist</p>
-			</div>
-		</div>
-		<div class = "quoteImg col-sm-2">
-			<img class = "img-fluid"  src = "ClosingQuote.png"/>
-		</div>
-	</div>
-	<div id = "logoutContainer" class = "row justify-content-center">
-		<input id = "logout" type = "button" value = "LOGOUT" onclick = "logout()">
-	</div>
-	</div>
+            </div>
+        </div>
+        <div id="classes" class="tabcontent row justify-content-center">
+            <% classData.forEach(function(document){%>
+                <a class="col-md-4" href='/classPage?id=<%= document.id%>'>
+                    <div class="classItem ">
+                        <div class='name'>
+                            <div class="row">
+                                <h2>
+                                    <%=document.class_code%>
+                                </h2>
+                            </div>
+                            <div class="row text-left">
+                                <h4>
+                                    <%=document.class_name%>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="sectionInfo">
+                            <div class="row">
+                                <h5>
+                                    <%=document.class_section%>
+                                </h5>
+                            </div>
+                            <div class="row">
+                                <h5>
+                                    <%=document.class_teacher%>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <%})%>
+        </div>
+        <div id="quoteRow" class="row justify-content-center">
+            <div class="quoteImg col-sm-2">
+                <img class="img-fluid" src="OpenQuote.png" />
+            </div>
+            <div id="envelope" class="col-sm">
+                <div id="quote">
+                    <p>We get wise by asking questions, and even if these are not answered, we get wise, for a well-packed question carries its answer on its back as a snail carries its shell.</p>
+                    <p id="description">- James Stephens, novelist</p>
+                </div>
+            </div>
+            <div class="quoteImg col-sm-2">
+                <img class="img-fluid" src="ClosingQuote.png" />
+            </div>
+        </div>
+        <div id="logoutContainer" class="row justify-content-center">
+            <input id="logout" type="button" value="LOGOUT" onclick="logout()">
+        </div>
+    </div>
 </body>
 <script>
 </script>
+
 </html>

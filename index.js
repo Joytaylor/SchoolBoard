@@ -5,7 +5,7 @@ var app = express()
 //Marko
 var isProduction = process.env.NODE_ENV === "production";
 
-require("marko/node-require");
+require("marko/node-require").install();
 var markoExpress = require("marko/express");
 app.use(markoExpress());
 
@@ -104,7 +104,11 @@ app.post('/signup', (req, res) => {
                 httpOnly: true,
                 signed: true
                     //add maxAge attribute in milliseconds if wanted
-            })
+            });
+            res.cookie("animate", true, {
+                httpOnly: true,
+                signed: true
+            });
 
             res.redirect('/SchoolBoardAccountPage')
         } else {
@@ -133,7 +137,11 @@ app.post('/auth', (req, res) => {
                     httpOnly: true,
                     signed: true
                         //add maxAge attribute in milliseconds if wanted
-                })
+                });
+                res.cookie("animate", true, {
+                    httpOnly: true,
+                    signed: true
+                });
             })
             res.redirect('/account')
         } else {
@@ -155,6 +163,7 @@ app.get("/account", (req, res) => {
     getUserInfo(res, req, function(userData) {
         var i = 0
         var numOfClasses = userData.classes.length
+        var animate = req.signedCookies.animated;
         userData.classes.forEach(function(class_id) {
             Classes.doc(class_id).get().then(doc => {
                 var class_data = doc.data()
@@ -162,7 +171,8 @@ app.get("/account", (req, res) => {
                 classData.push(class_data)
                 i++
                 if (numOfClasses == i) {
-                    res.render("SchoolBoardAccountPage", { classData, userData })
+                    res.render("SchoolBoardAccountPage", { classData, userData, animate })
+                    req.signedCookies.animate = false;
                 }
             })
         })
@@ -170,7 +180,14 @@ app.get("/account", (req, res) => {
 })
 
 app.post('/logout', (req, res) => {
-    res.clearCookie('user_id')
+    res.clearCookie('user_id', {
+        httpOnly: true,
+        signed: true
+    })
+    res.clearCookie('animate', {
+        httpOnly: true,
+        signed: true
+    })
     res.end('')
 })
 
@@ -271,8 +288,8 @@ app.post("/timeQuery", (req, res) => {
                 }
             });
             //Filtering questions by time
-            var timeFiltered = question_info.filter(question => {
-                return question.date_of_ask < endTime;
+            var question_info = question_info.filter(question => {
+                return question.date_of_ask.toDate() < endTime;
             });
 
             //Rendering question view with user's data via Marko
@@ -285,8 +302,13 @@ app.post("/timeQuery", (req, res) => {
                     question.date_of_ask = question.date_of_ask.toDate().toLocaleString('en-US', { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
                     return question;
                 })
-                var renderedQuestions = QuestionComp.renderToString({ question_info: question_info, user_data: user_data });
-                res.send(renderedQuestions);
+                if (question_info.length) {
+                    var renderedQuestions = QuestionComp.renderToString({ question_info: question_info, user_data: user_data });
+                    res.send(renderedQuestions);
+                } else {
+                    res.send("<p class='null'>No questions available for these filters yet.</p>")
+                }
+
             });
         });
     }

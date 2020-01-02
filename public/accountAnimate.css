@@ -1,0 +1,43 @@
+@keyframes list {
+    from {
+        opacity: 0.0;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes list {
+    from {
+        opacity: 0.0;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+@keyframes image {
+    0% {
+        width: 75%;
+        height: 21%;
+        margin-top: 20%;
+    }
+    100% {
+        width: 25%;
+        height: 7%;
+        margin-top: 0%;
+    }
+}
+
+@-webkit-keyframes image {
+    0% {
+        width: 75%;
+        height: 21%;
+        margin-top: 20%;
+    }
+    100% {
+        width: 25%;
+        height: 7%;
+        margin-top: 0%;
+    }
+}
