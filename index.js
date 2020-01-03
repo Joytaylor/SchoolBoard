@@ -163,7 +163,7 @@ app.get("/account", (req, res) => {
     getUserInfo(res, req, function(userData) {
         var i = 0
         var numOfClasses = userData.classes.length
-        var animate = req.signedCookies.animated;
+        var animate = req.signedCookies.animate;
         userData.classes.forEach(function(class_id) {
             Classes.doc(class_id).get().then(doc => {
                 var class_data = doc.data()
@@ -171,8 +171,19 @@ app.get("/account", (req, res) => {
                 classData.push(class_data)
                 i++
                 if (numOfClasses == i) {
-                    res.render("SchoolBoardAccountPage", { classData, userData, animate })
-                    req.signedCookies.animate = false;
+                    res.render("SchoolBoardAccountPage", { classData, userData, animate }, (err, html) => {
+                        console.log(typeof(html))
+                        res.write(html)
+                        res.clearCookie("animate", {
+                            httpOnly: true,
+                            signed: true
+                        })
+                        res.cookie("animate", false, {
+                            httpOnly: true,
+                            signed: true
+                        })
+                        res.end();
+                    })
                 }
             })
         })
