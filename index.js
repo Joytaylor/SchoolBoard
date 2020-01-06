@@ -278,15 +278,21 @@ app.post("/timeQuery", (req, res) => {
                 question_info.push(question_data);
             });
 
-            let currentTime = new Date().getDate();
-            let endTime = new Date();
+            var currentTime = new Date().getDate();
+            var endTime = new Date();
+            var filterDate = new Date();
+
             //Sorting by query type
             queryTypes.forEach(queryType => {
                 switch (queryType) {
                     case "thisWeek":
                         endTime = currentTime - 7;
+                        break;
                     case "thisMonth":
                         endTime = currentTime - 30;
+                        break;
+                    case "allTime":
+                        endTime = currentTime - 100;
                         break;
                     case "mostVoted":
                         question_info.sort((a, b) => -(a.votes - b.votes));
@@ -296,8 +302,10 @@ app.post("/timeQuery", (req, res) => {
                 }
             });
             //Filtering questions by time
+            filterDate.setDate(endTime);
+            console.log(filterDate);
             var question_info = question_info.filter(question => {
-                return question.date_of_ask.toDate() < endTime;
+                return question.date_of_ask.toDate() > filterDate;
             });
 
             //Rendering question view with user's data via Marko
