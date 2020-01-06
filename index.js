@@ -329,13 +329,15 @@ app.post("/timeQuery", (req, res) => {
     }
 })
 
-//NFD: for some reason, multiple hashtags is registered as only one.
 app.post('/addQuestion', (req, res) => {
     if (req.signedCookies.user_id) {
         var user_id = req.signedCookies.user_id
         var class_id = req.body.class_id
         var question = req.body.question
         var hashtags = req.body.hashtag
+        if (typeof hashtags == "string") {
+            hashtags = [hashtags]
+        }
         insertQuestion(user_id, class_id, question, hashtags, () => {
             res.redirect('/classPage?id=' + class_id)
         })
