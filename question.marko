@@ -10,18 +10,18 @@
         </div>
         <div class="vote col-2">
             <if(question.voter_ids.includes(input.user_data.id))>
-                <div id = `${question.id}` type="submit" class="voteButton btn" onclick = `disableAndAnimate('${question.id}')` disabled>
+                <div id = `${question.id}` class="voteButton btn disabled" onclick = `disableAndAnimate('${question.id}')`>
                     <span class = "font-weight-bold">${question.votes}</span> Votes
                 </div>
             </if>
             <else>
-            <div id = `${question.id}` type="submit" class="votediv btn" onclick = `disableAndAnimate('${question.id}')`>
+            <div id = `${question.id}` class="voteButton btn" onclick = `disableAndAnimate('${question.id}')`>
                 <span class = "font-weight-bold">${question.votes}</span> Votes
             </div>
             </else>
                 
             <script>
-                var id = '${question.id}';
+                var id = '${question.id}'
                 $(id).click(function() {
                     $.ajax({
                         url: "/vote",

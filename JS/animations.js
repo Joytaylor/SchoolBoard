@@ -6,7 +6,7 @@ function disableAndAnimate(questionID) {
         }, 500, "ease-in-out")
         .text("Voted!").css({
             color: "white"
-        }).attr("disabled", "true")
+        }).addClass("disabled")
 }
 
 //Toggling display of question/answer containers

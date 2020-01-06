@@ -303,7 +303,6 @@ app.post("/timeQuery", (req, res) => {
             });
             //Filtering questions by time
             filterDate.setDate(endTime);
-            console.log(filterDate);
             var question_info = question_info.filter(question => {
                 return question.date_of_ask.toDate() > filterDate;
             });

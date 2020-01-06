@@ -32,15 +32,15 @@ function render(input, out, __component, component, state) {
     if (question.voter_ids.includes(input.user_data.id)) {
       out.w("<div" +
         marko_attr("id", "" + question.id) +
-        " type=\"submit\" class=\"voteButton btn\"" +
+        " class=\"voteButton btn disabled\"" +
         marko_attr("onclick", ("disableAndAnimate('" + question.id) + "')") +
-        " disabled><span class=\"font-weight-bold\">" +
+        "><span class=\"font-weight-bold\">" +
         marko_escapeXml(question.votes) +
         "</span> Votes</div>");
     } else {
       out.w("<div" +
         marko_attr("id", "" + question.id) +
-        " type=\"submit\" class=\"votediv btn\"" +
+        " class=\"voteButton btn\"" +
         marko_attr("onclick", ("disableAndAnimate('" + question.id) + "')") +
         "><span class=\"font-weight-bold\">" +
         marko_escapeXml(question.votes) +
@@ -48,7 +48,7 @@ function render(input, out, __component, component, state) {
     }
 
     out.w("<script>" +
-      marko_escapeScript(("\r\n                var id = '" + question.id) + "';\r\n                $(id).click(function() {\r\n                    $.ajax({\r\n                        url: \"/vote\",\r\n                        type: \"POST\", \r\n                        data: {\r\n                            question_id: id\r\n                        }\r\n                    })\r\n                })\r\n            ") +
+      marko_escapeScript(("\r\n                var id = '" + question.id) + "'\r\n                $(id).click(function() {\r\n                    $.ajax({\r\n                        url: \"/vote\",\r\n                        type: \"POST\", \r\n                        data: {\r\n                            question_id: id\r\n                        }\r\n                    })\r\n                })\r\n            ") +
       "</script></div></div><div class=\"questionText card-body row\"><div class=\"col-12 questionBody\"><div class=\"row\"><div class=\"col-12\"><p>" +
       marko_escapeXml(question.question_text) +
       "</p></div></div><div class=\"row\"><div id=\"timeContainer\" class=\"col-12 text-center\"><p class=\"timestamp\">" +

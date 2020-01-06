@@ -96,7 +96,7 @@ sans-serif;
 
 //Nav styles
 #logo {
-    opacity: 0.6;
+    opacity: 0.8;
     padding: 3%;
     margin-top: 1%;
     height: 100%;
@@ -194,6 +194,7 @@ body {
     }
     span.gradient {
         background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-family: $headerFontDecorative;
@@ -293,6 +294,7 @@ body {
                     background-color: white;
                     border: 1px solid $primaryColor;
                     -webkit-transition-duration: 0.2s;
+                    transition-duration: 0.2s;
                 }
             }
         }
@@ -301,6 +303,7 @@ body {
     h1 {
         background-image: linear-gradient(to right bottom, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 5rem;
         font-weight: 700;
@@ -631,6 +634,11 @@ body {
 //Class Page Styles
 #classPage {
     font-family: $subFont;
+    //Misc
+    .disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
     #logoContainer {
         @include center;
         #logo {
