@@ -460,11 +460,9 @@ body {
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
+    .nav {}
     #logo {
-        padding: 1%;
-        opacity: 1;
-        width: 25%;
-        height: 7%;
+        /*
         animation-name: image;
         animation-duration: 2s;
         animation-delay: 1s;
@@ -474,6 +472,7 @@ body {
         -webkit-animation-duration: 2s;
         -webkit-animation-delay: 1s;
         -webkit-animation-fill-mode: backwards;
+        */
     }
     #fullContainer {
         padding: 0;
@@ -496,9 +495,6 @@ body {
             -webkit-animation-duration: 3s;
             -webkit-animation-delay: 1s;
             -webkit-animation-fill-mode: backwards;
-        }
-        #svgCol {
-            padding: 0;
         }
         #classes {
             margin: 5% 6% 5% 6%;

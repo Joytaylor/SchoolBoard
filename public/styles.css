@@ -513,20 +513,17 @@ body {
 }
 
 #account #logo {
-  padding: 1%;
-  opacity: 1;
-  width: 25%;
-  height: 7%;
-  animation-name: image;
-  animation-duration: 2s;
-  animation-delay: 1s;
-  animation-fill-mode: backwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
-  -webkit-animation-name: image;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-  -webkit-animation-fill-mode: backwards;
+  /*
+        animation-name: image;
+        animation-duration: 2s;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
+        animation-timing-function: ease;
+        -webkit-animation-name: image;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-delay: 1s;
+        -webkit-animation-fill-mode: backwards;
+        */
 }
 
 #account #fullContainer {
@@ -553,10 +550,6 @@ body {
   -webkit-animation-duration: 3s;
   -webkit-animation-delay: 1s;
   -webkit-animation-fill-mode: backwards;
-}
-
-#account #fullContainer #svgCol {
-  padding: 0;
 }
 
 #account #fullContainer #classes {
