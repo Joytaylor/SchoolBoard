@@ -107,10 +107,11 @@ app.post('/signup', (req, res) => {
             });
             res.cookie("animate", true, {
                 httpOnly: true,
-                signed: true
+                signed: true,
+                overwrite: true
             });
 
-            res.redirect('/SchoolBoardAccountPage')
+            res.redirect('/accountPageAnim')
         } else {
             res.render('newform', validity)
         }
@@ -138,10 +139,12 @@ app.post('/auth', (req, res) => {
                     signed: true
                         //add maxAge attribute in milliseconds if wanted
                 });
+                /*
                 res.cookie("animate", true, {
                     httpOnly: true,
-                    signed: true
-                });
+                    signed: true,
+                    overwrite: true
+                });*/
             })
             res.redirect('/account')
         } else {
@@ -152,9 +155,9 @@ app.post('/auth', (req, res) => {
 
 app.get('/cookiecheckstart', (req, res) => {
     if (req.signedCookies.user_id) {
-        res.redirect('account')
+        res.redirect('/account')
     } else {
-        res.redirect('SchoolBoardLogInPage')
+        res.redirect('/SchoolBoardLogInPage')
     }
 })
 
@@ -171,19 +174,13 @@ app.get("/account", (req, res) => {
                 classData.push(class_data)
                 i++
                 if (numOfClasses == i) {
-                    res.render("SchoolBoardAccountPage", { classData, userData, animate }, (err, html) => {
-                        console.log(typeof(html))
-                        res.write(html)
-                        res.clearCookie("animate", {
-                            httpOnly: true,
-                            signed: true
-                        })
-                        res.cookie("animate", false, {
-                            httpOnly: true,
-                            signed: true
-                        })
-                        res.end();
-                    })
+                    //Eventually figure out toggling animation via cookies
+                    /*res.cookie("animate", false, {
+                        httpOnly: true,
+                        signed: true,
+                        overwrite: true
+                    });*/
+                    res.render("accountPage", { classData, userData })
                 }
             })
         })
@@ -240,7 +237,7 @@ app.get('/classPage', (req, res) => {
                         })
                     })
                 } else {
-                    res.redirect('/SchoolBoardAccountPage?err=' + 'no_class')
+                    res.redirect('/accountPage?err=' + 'no_class')
                 }
             })
         })

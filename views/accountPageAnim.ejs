@@ -15,39 +15,38 @@
     <!--My Stuff-->
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="icon" href="favicon.png" type="image/jpg" />
-    <% if(animate) { %>
-        <link rel="stylesheet" type="text/css" href="accountAnimate.css" />
-        <%console.log(animate) }%>
-            <style>
-                html {
-                    height: 100%;
-                }
-                
-                body {
-                    text-align: center;
-                    height: 100%;
-                    overflow: auto;
-                }
-            </style>
-            <script>
-                function logout() {
-                    var response = confirm("Are you sure you want to log out?");
-                    if (response == true) {
-                        $.ajax({
-                            url: "/logout",
-                            type: 'POST',
-                            success: function() {
-                                window.location = "/";
-                            },
-                            error: function() {
-                                alert('Sorry, there was a problem logging you out. Please try again. If this problem continues, please contact your SchoolBoard administrator.');
-                            }
-                        });
-                    } else {
-                        alert('Okay, we will keep you logged in.');
+    <link rel='stylesheet' type='text/css' href='accountAnimate.css' />
+
+    <style>
+        html {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            height: 100%;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        function logout() {
+            var response = confirm("Are you sure you want to log out?");
+            if (response == true) {
+                $.ajax({
+                    url: "/logout",
+                    type: 'POST',
+                    success: function() {
+                        window.location = "/";
+                    },
+                    error: function() {
+                        alert('Sorry, there was a problem logging you out. Please try again. If this problem continues, please contact your SchoolBoard administrator.');
                     }
-                }
-            </script>
+                });
+            } else {
+                alert('Okay, we will keep you logged in.');
+            }
+        }
+    </script>
 </head>
 
 <body>
