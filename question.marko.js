@@ -1,28 +1,26 @@
-// Compiled using marko@4.18.28 - DO NOT EDIT
+// Compiled using marko@4.18.29 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_componentType = "/schoolboard$1.0.0/question.marko",
-    components_helpers = require("marko/src/runtime/components/helpers"),
-    marko_renderer = components_helpers.r,
-    marko_defineComponent = components_helpers.c,
-    marko_helpers = require("marko/src/runtime/html/helpers"),
-    marko_forEach = marko_helpers.f,
-    marko_escapeXml = marko_helpers.x,
-    marko_attr = marko_helpers.a,
-    marko_escapeScript = marko_helpers.xs;
+    marko_renderer = require("marko/src/runtime/components/renderer"),
+    marko_forOf = require("marko/src/runtime/helpers/for-of"),
+    helpers_escape_xml = require("marko/src/runtime/html/helpers/escape-xml"),
+    marko_escapeXml = helpers_escape_xml.x,
+    marko_attr = require("marko/src/runtime/html/helpers/attr"),
+    marko_escapeScript = require("marko/src/runtime/html/helpers/escape-script-placeholder");
 
 function render(input, out, __component, component, state) {
   var data = input;
 
   var $for$0 = 0;
 
-  marko_forEach(input.question_info, function(question, index) {
+  marko_forOf(input.question_info, function(question, index) {
     var $keyScope$0 = "[" + (($for$0++) + "]");
 
     out.w("<div class=\"question card-primary col-md-12\"><div class=\"header card-header row\"><div class=\"hashtags col-10 d-flex\"><h3 class=\"align-self-center\">");
 
-    marko_forEach(question.hashtags, function(topic, index) {
+    marko_forOf(question.hashtags, function(topic, index) {
       out.w("#" +
         marko_escapeXml(topic));
     });
@@ -63,7 +61,7 @@ function render(input, out, __component, component, state) {
 
     var $for$1 = 0;
 
-    marko_forEach(question.response, function(response, index) {
+    marko_forOf(question.response, function(response, index) {
       var $keyScope$1 = "[" + ((($for$1++) + $keyScope$0) + "]");
 
       out.w("<div id=\"responseContainer\" class=\"col-12\"><p>" +
@@ -79,8 +77,6 @@ marko_template._ = marko_renderer(render, {
     ___implicit: true,
     ___type: marko_componentType
   });
-
-marko_template.Component = marko_defineComponent({}, marko_template._);
 
 marko_template.meta = {
     id: "/schoolboard$1.0.0/question.marko"

@@ -38,12 +38,14 @@ var transporter = nodemailer.createTransport({
 })
 
 //static directories for html,image, and css files
+app.use(express.static(__dirname + '/'))
 app.use(express.static(__dirname + '/views'))
 app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public/PageStyles'))
 app.use(express.static(__dirname + '/images'))
 app.use(express.static(__dirname + '/JS'))
 app.use(express.static(__dirname + '/components'))
-app.use(express.static(__dirname + '/'))
+
 
 //requires ejs to be used in the rendering of ejs files
 app.set('view engine', 'ejs')

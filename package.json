@@ -17,8 +17,9 @@
     "firebase-admin": "^8.2.0",
     "fs": "0.0.1-security",
     "http": "0.0.0",
-    "marko": "^4.18.28",
+    "marko": "^4.18.29",
     "nodemailer": "^6.2.1",
+    "sass": "^1.24.2",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0"
   },

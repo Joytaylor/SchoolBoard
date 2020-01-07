@@ -1,84 +1,90 @@
 <!DOCTYPE html>
-<!--Samuel Anozie, Beta Testing Site for SchoolBoard, August 2019-->
-<html id = "index">
-	<head>
-		<meta charset = "UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--Samuel Anozie, Landing Page, July 2019-->
+<html id="index">
 
-		<!-- Bootstrap Links -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<head>
+    <title>SchoolBoard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!--Anime.js-->
-		<script src="anime.min.js"></script>
+    <!-- Bootstrap Links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-		<!--My Stuff-->
-		<link rel = "stylesheet" type = "text/css" href = "styles.css"/>
-		<script src = "img.js"></script>
-		<title>SchoolBoard</title>
-		<link rel = "icon" href = "favicon.png" type = "image/jpg"/>
-	</head>
-	<body>
-		<ul class="nav .navbar-expand">
-			<li class="nav-item mr-auto">
-				<img id = "logo" src = "/Logo.svg" class = "img-fluid"/>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/cookiecheckstart">Log In</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/newform">Sign Up</a>
-			</li>
-		</ul>
+    <!--Anime.js-->
+    <script src="anime.min.js"></script>
 
-		<div id = "mission" class = "container-fluid">
-			<div id = "eduMeetFuture" class = "row justify-content-center">
-				<div class = "col-md-6">
-					<div class = "row">
-						<div class = "col-md-12">
-							<h2 id = "future">Education, meet <span class = "gradient">Future.</span></h2>
-							<p class = "text-dark">By combining the power of inquiry with data analytics, we're building an educational system that's responsive to student needs. <span id = "beta">Beta Testing Spring 2020.</span></p>
-						</div>
-					</div>
-					<div class = "row">
-						<p id = "question">We love questions. <a id = "aua" href="mailto:sanoziec@gmail.com?cc=jtaylor2@imsa.edu&subject=Hi! I'd like to know about SchoolBoard.&body=Hi SchoolBoard Team! My name is ___, and I am a __.">Ask us Anything.</a>
-						</p>
-					</div>
-				</div>
-				<div id = "floatingDivs" class = "col-md-6">
-					<div id = "floatContainer" class = "row justify-content-center">
-						<div class = 'card x-position'>
-							<div class = 'card-header'></div>
-							<div class = 'card-body justify-content-center'>
-								<h5 class = 'card-title'>
-								</h5>
-								<a href = '#' class = 'btn card-btn'>Answer</a>
-							</div>
-						</div>
-						<div class = 'card x-position'>
-							<div class = 'card-header'></div>
-							<div class = 'card-body justify-content-center'>
-								<h5 class = 'card-title'>
-								</h5>
-								<a href = '#' class = 'btn card-btn'>Answer</a>
-							</div>
-						</div>
-						<div class = 'card x-position'>
-							<div class = 'card-header'></div>
-							<div class = 'card-body justify-content-center'>
-								<h5 class = 'card-title'>
-								</h5>
-								<a href = '#' class = 'btn card-btn'>Answer</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id = "footer" class = "container-fluid text-center">
-			Copyright 2019 ©
-		</div>
-	</body>
+    <!--My Stuff-->
+    <link rel="stylesheet" href="index.css" />
+    <script src="img.js"></script>
+    <link rel="icon" href="favicon.png" type="image/jpg" />
+</head>
+
+<body>
+    <ul class="navbar navbar-expand">
+        <li class="nav-item mr-auto position-relative">
+            <div class="center-container posterPassive">
+                <img id="logo" src="/Logo.svg" class="img-fluid" />
+            </div>
+        </li>
+        <li class="nav-item position-relative">
+            <div class="center-container posterPassive">
+                <a class="nav-link" href="/cookiecheckstart">Log In</a>
+            </div>
+        </li>
+        <li class="nav-item position-relative">
+            <div class="center-container posterPassive">
+                <a class="nav-link" href="/newform">Sign Up</a>
+            </div>
+        </li>
+    </ul>
+    <div id="mission" class="container-fluid">
+        <div class="row justify-content-center">
+            <div id="floatingDivs" class="col-md-6">
+                <div id="floatContainer" class="row justify-content-center">
+                    <div class='card x-position'>
+                        <div class='card-header'></div>
+                        <div class='card-body justify-content-center'>
+                            <h5 class='card-title'>
+                            </h5>
+                            <a href='#' class='btn card-btn'>Answer</a>
+                        </div>
+                    </div>
+                    <div class='card x-position'>
+                        <div class='card-header'></div>
+                        <div class='card-body justify-content-center'>
+                            <h5 class='card-title'>
+                            </h5>
+                            <a href='#' class='btn card-btn'>Answer</a>
+                        </div>
+                    </div>
+                    <div class='card x-position'>
+                        <div class='card-header'></div>
+                        <div class='card-body justify-content-center'>
+                            <h5 class='card-title'>
+                            </h5>
+                            <a href='#' class='btn card-btn'>Answer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 id="future">Education, meet <span class="gradient">Future.</span></h2>
+                        <p class="text-dark">By combining the power of inquiry with data analytics, we're building an educational system that's responsive to student needs. <br><span class="gradient">Beta Testing Fall 2020.</span></p>
+                        <p id="question">We love questions. <a href="mailto:sanoziec@gmail.com?cc=jtaylor2@imsa.edu&subject=Hi! I'd like to know about SchoolBoard.&body=Hi SchoolBoard Team! My name is ___, and I am a __.">Ask us Anything.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="container text-center">
+        Copyright 2019 ©
+    </div>
+</body>
+
 </html>

@@ -1,0 +1,70 @@
+/*Font Links(from Google Fonts)*/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900');
+//Colors
+$primaryColor: #164869;
+$secondaryColor: #6AA5BD;
+$tertiaryColor: #AE445D;
+$greyColor: #6c757d;
+//Fonts
+$headerFontDecorative: 'Cinzel Decorative',
+serif;
+$headerFont: 'Cinzel',
+serif;
+$subFont: 'Raleway',
+sans-serif;
+//mixins
+@mixin center {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin poster {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.center-container {
+    @include center;
+}
+
+.poster {
+    @include poster;
+}
+
+.posterPassive {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+//Nav Styles
+.navbar {
+    height: 8vh;
+    list-style-type: none;
+    margin: 0 5rem;
+}
+
+.nav-item {
+    height: 100%;
+}
+
+.nav-link {
+    color: $primaryColor;
+    font-family: $subFont;
+    font-weight: bold;
+    opacity: 0.5;
+    transition: 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: $primaryColor;
+}
