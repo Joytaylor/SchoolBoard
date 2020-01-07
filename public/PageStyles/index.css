@@ -147,26 +147,6 @@
   font-size: 2rem;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-#mission {
-  height: 92vh;
-  width: 100%;
-  margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
 #floatingDivs {
   position: relative;
   height: 100%;
@@ -189,6 +169,26 @@ body {
   margin-top: -50vh;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+#mission {
+  height: 92vh;
+  width: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #footer {
   opacity: 0.4;
   padding-bottom: 1%;
@@ -197,13 +197,6 @@ body {
 #heroText {
   position: relative;
   bottom: 0;
-}
-
-.gradient {
-  background-image: -webkit-gradient(linear, left bottom, right top, from(#164869), color-stop(#3f4b7a), color-stop(#6a497e), color-stop(#924474), to(#ae445d));
-  background-image: linear-gradient(to right top, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 h2 {
@@ -226,6 +219,15 @@ p {
 
 a {
   color: #6B7225;
+}
+
+.gradient {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#164869), color-stop(#3f4b7a), color-stop(#6a497e), color-stop(#924474), to(#ae445d));
+  background-image: linear-gradient(to right top, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 @media (max-width: 1000px) {

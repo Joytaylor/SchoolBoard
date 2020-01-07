@@ -1,5 +1,5 @@
     @import "_foundation.scss";
-    //Cards that pop up at the beginning (each type is for different color)
+    //Floating Items 
     .card {
         position: absolute;
         max-width: 50%;
@@ -91,18 +91,6 @@
         font-size: 2rem;
     }
     
-    html,
-    body {
-        height: 100%;
-    }
-    
-    //div styles
-    #mission {
-        height: 92vh;
-        width: 100%;
-        @include center;
-    }
-    
     #floatingDivs {
         position: relative;
         height: 100%;
@@ -116,6 +104,18 @@
         margin-top: -50vh;
     }
     
+    html,
+    body {
+        height: 100%;
+    }
+    
+    //div styles
+    #mission {
+        height: 92vh;
+        width: 100%;
+        @include center;
+    }
+    
     #footer {
         opacity: 0.4;
         padding-bottom: 1%;
@@ -124,12 +124,6 @@
     #heroText {
         position: relative;
         bottom: 0;
-    }
-    
-    .gradient {
-        background-image: linear-gradient(to right top, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
     }
     
     //text styles
@@ -153,6 +147,14 @@
     
     a {
         color: #6B7225;
+    }
+    
+    .gradient {
+        background-image: linear-gradient(to right top, #164869, #3f4b7a, #6a497e, #924474, #ae445d);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
     }
     
     //Media Queries

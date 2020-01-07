@@ -1,0 +1,326 @@
+@import "_foundation.scss";
+.card-primary {
+    .card-header {
+        background-color: $primaryColor;
+        color: white;
+        font-family: $subFont;
+    }
+    .card-title {
+        font-family: $subFont;
+        padding: 1rem;
+        font-weight: 700;
+    }
+    .card-body {
+        background-color: rgba(37, 85, 116, 0.9);
+        color: white;
+    }
+    .card-btn {
+        background: white;
+        color: $primaryColor;
+        width: 100%;
+    }
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+body {
+    background-image: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    height: 20vh;
+    transition: 0.6s;
+    transition-timing-function: cubic-bezier(.43, .87, .44, .95);
+    #navContainer {
+        @include center;
+    }
+    #askQuestion {
+        background-image: linear-gradient(to right, #3f4b7a, #6a497e, #924474);
+        transition: 0.2s;
+        width: 100%;
+        padding: 3% 0;
+        color: white;
+    }
+    #askQuestion:hover {
+        opacity: 0.8;
+    }
+}
+
+#logoContainer {
+    @include center;
+    #logo {
+        width: 30vh;
+    }
+}
+
+#headingContainer {
+    @include center;
+}
+
+#blur {
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+    transition: 0.2s ease-in-out;
+    .invisibleSpace {
+        @include center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: none;
+        pointer-events: none;
+        .askContainer {
+            transform: translateY(-3vh);
+            pointer-events: all;
+        }
+        #basic-addon1 {
+            padding: .1rem .3rem;
+            border: none;
+            margin-left: .375rem;
+            background: none;
+        }
+        .form-control {
+            width: auto;
+            padding: .375rem .3rem;
+            border: none;
+            background: none;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        .input-group {
+            width: auto;
+        }
+        textarea {
+            width: 100%;
+            border: none;
+            font-size: calc(1rem + 1vw);
+            font-weight: bold;
+            opacity: 0.6;
+            padding-left: 25px;
+            overflow: auto;
+            &:focus {
+                outline: none;
+            }
+        }
+        #addInput {
+            color: white;
+            background: rgba(22, 72, 105, 0.51);
+            font-size: 0.6rem;
+            padding: 0rem .3rem;
+            height: 80%;
+            transform: translateY(20%);
+        }
+        button[type="submit"] {
+            width: 100%;
+            background-color: white;
+            margin-top: 5%;
+        }
+        p {
+            font-weight: 100;
+            font-size: 1rem;
+            padding: 3%;
+            margin: 0;
+            opacity: 0.5;
+        }
+        h4 {
+            color: white;
+            font-family: $subFont;
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 4%;
+        }
+         ::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            opacity: 0.3;
+            transition: 0.3s ease-in-out;
+        }
+         ::-webkit-input-placeholder:hover {
+            opacity: 0.6;
+        }
+         ::-webkit-input-placeholder:focus {
+            opacity: 0.6;
+        }
+         ::-moz-placeholder {
+            /* Firefox 19+ */
+            opacity: 0.3;
+            transition: 0.3s ease-in-out;
+        }
+         ::-moz-input-placeholder:hover {
+            opacity: 0.6;
+        }
+         ::-moz-input-placeholder:focus {
+            opacity: 0.6;
+        }
+         :-ms-input-placeholder {
+            /* IE 10+ */
+            opacity: 0.3;
+            transition: 0.3s ease-in-out;
+        }
+         :-ms-input-placeholder:hover {
+            opacity: 0.6;
+        }
+         :-ms-input-placeholder:focus {
+            opacity: 0.6;
+        }
+         :-moz-placeholder {
+            /* Firefox 18- */
+            opacity: 0.3;
+            transition: 0.3s ease-in-out;
+        }
+         :-moz-input-placeholder:hover {
+            opacity: 0.6;
+        }
+         :-moz-input-placeholder:focus {
+            opacity: 0.6;
+        }
+    }
+}
+
+#black {
+    background: rgba(0, 0, 0, 0.41);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+
+#classCode {
+    color: #6a497e;
+}
+
+#app {
+    padding-top: 2%;
+    background-color: rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: scroll;
+    transition: 0.6s;
+    transition-timing-function: cubic-bezier(.43, .87, .44, .95);
+    height: 80vh;
+    .sideMenu {
+        position: fixed;
+        padding-top: 3%;
+        .menuItem {
+            cursor: pointer;
+        }
+        p {
+            padding-top: 8%;
+            padding-top: 8%;
+            font-weight: 100;
+            font-size: calc(0.5rem + 0.5vw);
+            opacity: 0.6;
+            color: $primaryColor;
+        }
+        .active {
+            font-weight: 900;
+            font-size: calc(0.7rem + 0.5vw);
+        }
+    }
+    #timeMenu {
+        left: 8%;
+    }
+    #voteMenu {
+        right: 8%;
+    }
+}
+
+.question {
+    margin: 2%;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    .voteButton {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        color: $primaryColor; //change this with the background of the header tag
+        transition: 0.2s;
+        font-family: $subFont;
+        font-size: 0.7rem;
+    }
+    .voteButton:hover {
+        opacity: 0.7;
+    }
+    #timeContainer {
+        @include center;
+    }
+    .timestamp {
+        font-weight: 500;
+        font-size: calc(0.5rem + 0.5vw);
+        color: $primaryColor;
+    }
+    .questionResponse {
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: rgba(0, 0, 0, 0.04);
+        #responseContainer {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.01);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        p {
+            font-weight: 100;
+            color: rgba(0, 0, 0, 0.5);
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: calc(0.5rem + 1vw)
+        }
+    }
+}
+
+.question:hover {
+    transform: translateX(5px) translateY(-8px);
+    -webkit-box-shadow: -5px 10px 34px -8px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: -5px 10px 34px -8px rgba(0, 0, 0, 0.41);
+    box-shadow: -5px 10px 34px -8px rgba(0, 0, 0, 0.41);
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.2s ease-in-out;
+}
+
+.inactive {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+}
+
+h1 {
+    font-family: $subFont;
+    font-size: 20px;
+    color: rgba(22, 72, 105, 0.26);
+    font-weight: bold;
+    transition: 0.6s;
+    transition-timing-function: cubic-bezier(.43, .87, .44, .95);
+}
+
+h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: calc(0.5rem + 0.5vw);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+p {
+    font-size: calc(2rem + 1.5vw);
+    font-weight: bold;
+    font-family: $subFont;
+}
+
+.null {
+    opacity: 0.1;
+    text-align: center;
+}
+
+#headingContainer:after {
+    @include center;
+}

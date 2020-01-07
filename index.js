@@ -120,13 +120,13 @@ app.post('/signup', (req, res) => {
     })
 })
 
-app.get('/SchoolBoardLogInPage', (req, res) => {
+app.get('/login', (req, res) => {
     var err = ""
     if (req.query && req.query.err) {
         err = "There is something wrong with your account. Please contact your SchoolBoard administrator."
-        res.render('SchoolBoardLogInPage', { err: err })
+        res.render('login', { err: err })
     }
-    res.render('SchoolBoardLogInPage')
+    res.render('login')
 })
 
 app.post('/auth', (req, res) => {
@@ -150,7 +150,7 @@ app.post('/auth', (req, res) => {
             })
             res.redirect('/account')
         } else {
-            res.redirect('/SchoolBoardLogInPage')
+            res.redirect('/login')
         }
     })
 })
@@ -159,7 +159,7 @@ app.get('/cookiecheckstart', (req, res) => {
     if (req.signedCookies.user_id) {
         res.redirect('/account')
     } else {
-        res.redirect('/SchoolBoardLogInPage')
+        res.redirect('/login')
     }
 })
 
@@ -231,7 +231,7 @@ app.get('/classPage', (req, res) => {
                                 })
                                 //keep working here
                             if (user_data == null) {
-                                res.redirect('/SchoolBoardLogInPage?err=' + 'no_user')
+                                res.redirect('/login?err=' + 'no_user')
                             } else {
                                 //res.marko(QuestionComp, { question_info: question_info })
                                 res.render('classPage', { class_data: class_data, user_data: user_data, question_info: question_info })
@@ -290,7 +290,7 @@ app.post("/timeQuery", (req, res) => {
                     case "thisWeek":
                         endTime = currentTime - 7;
                         break;
-                    case "thisMonth":
+                    case "past30":
                         endTime = currentTime - 30;
                         break;
                     case "allTime":

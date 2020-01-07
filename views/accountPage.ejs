@@ -13,7 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <!--My Stuff-->
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="account.css" />
     <link rel="icon" href="favicon.png" type="image/jpg" />
     <style>
         html {
@@ -48,15 +48,20 @@
 </head>
 
 <body>
-    <ul class="nav navbar-expand">
+    <ul class="navbar navbar-expand">
         <li class="nav-item mr-auto">
-            <img id="logo" src="/whiteLogo.svg" class="img-fluid" />
+            <div class="center-container posterPassive">
+                <img id="logo" src="/whiteLogo.svg" class="img-fluid" />
+            </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <div class="center-container posterPassive">
+                <a class="nav-link" href="/">Home</a>
+            </div>
         </li>
         <!--Create Contact Link-->
     </ul>
+
     <div id="fullContainer" class="container-fluid">
         <div class="row">
             <div id="svgCol" class="col-12 position-relative">
@@ -74,7 +79,7 @@
         </div>
         <div id="classes" class="tabcontent row justify-content-center">
             <% classData.forEach(function(document){%>
-                <a class="col-md-4" href='/classPage?id=<%= document.id%>'>
+                <a class="col-md-4 classLink" href='/classPage?id=<%= document.id%>'>
                     <div class="classItem ">
                         <div class='name'>
                             <div class="row">

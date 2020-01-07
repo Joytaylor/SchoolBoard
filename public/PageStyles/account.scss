@@ -1,0 +1,206 @@
+@import "_foundation.scss";
+body {
+    background-image: url("accountback.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#logo {
+    /*
+        animation-name: image;
+        animation-duration: 2s;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
+        animation-timing-function: ease;
+        -webkit-animation-name: image;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-delay: 1s;
+        -webkit-animation-fill-mode: backwards;
+        */
+}
+
+#fullContainer {
+    padding: 0;
+    overflow-x: hidden;
+    animation-name: list;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+    -webkit-animation-name: list;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-fill-mode: backwards;
+    #greeting {
+        text-align: left;
+        animation-name: list;
+        animation-duration: 3s;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+        -webkit-animation-name: list;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-delay: 1s;
+        -webkit-animation-fill-mode: backwards;
+    }
+    #classes {
+        margin: 5% 6% 5% 6%;
+        animation-name: list;
+        animation-duration: 3s;
+        animation-delay: 1.7s;
+        animation-fill-mode: backwards;
+        -webkit-animation-name: list;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-delay: 1.7s;
+        -webkit-animation-fill-mode: backwards;
+        .classItem {
+            .name {
+                background-color: white;
+                padding: 10% 10% 5% 10%;
+                color: #393939;
+            }
+        }
+        .sectionInfo {
+            background-color: rgba(255, 255, 255, 0.25);
+            padding: 5% 5% 5% 10%;
+        }
+    }
+    #logoutContainer {
+        width: 100%;
+        background-color: white;
+        border-top: 1px solid red;
+        margin: 0;
+        #logout {
+            padding-left: 7%;
+            padding-right: 7%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            background-color: white;
+            color: red;
+            border: none;
+            font-family: $subFont;
+            font-size: calc(0.8rem + 0.8vw);
+            margin: 2%;
+            -webkit-transition-duration: 0.2s;
+            /* Safari */
+            transition-duration: 0.2s;
+            &:hover {
+                color: white;
+                background-color: red;
+                border: none;
+            }
+        }
+    }
+}
+
+//SVG Styles
+svg {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+#theSVG #txtMask {
+    font-size: 10vh;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+#disclaim {
+    z-index: 10%;
+    @include center;
+    margin-top: -6%;
+}
+
+//Text Styles
+h1 {
+    font-family: $subFont;
+    color: white;
+    padding-left: 3%;
+    font-size: calc(1.8rem + 1.5vw);
+}
+
+h2 {
+    font-family: $subFont;
+    font-size: calc(1.8rem + 1.5vw);
+}
+
+h3 {
+    font-family: $subFont;
+    font-weight: 100;
+    padding-left: 3%;
+    color: white;
+    font-size: calc(2.3rem + 0.6vw);
+}
+
+h4 {
+    font-family: $subFont;
+    font-size: calc(0.9rem + 0.3vw);
+}
+
+h5 {
+    color: white;
+    font-family: $subFont;
+    font-size: calc(0.6rem + 0.3vw);
+}
+
+p {
+    font-family: $subFont;
+    color: black;
+    font-size: calc(0.8rem + 0.8vw);
+}
+
+a {
+    color: white !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.classLink {
+    transition: transform 0.3s ease-in-out;
+    padding: 25px;
+    .classItem {
+        transition: box-shadow 0.3s ease-in-out;
+    }
+}
+
+.classLink:hover {
+    text-decoration-color: none;
+    transform: translateX(5px) translateY(-8px);
+    .classItem {
+        -webkit-box-shadow: -5px 10px 34px -8px rgba(0, 0, 0, 0.41);
+        -moz-box-shadow: -5px 10px 34px -8px rgba(0, 0, 0, 0.41);
+        box-shadow: -5px 10px 34px -8px rgba(0, 0, 0, 0.41);
+    }
+}
+
+//Quote Row styles
+#quoteRow {
+    background-color: white;
+}
+
+.quoteImg {
+    @include center;
+}
+
+#envelope {
+    padding-top: 6%;
+    padding-bottom: 4%;
+    @include center;
+}
+
+#quote {
+    p {
+        font-size: calc(1.2rem + 0.8vw);
+        font-family: $subFont;
+        font-style: italic;
+        padding-left: 10%;
+        padding-right: 10%;
+        &#description {
+            font-size: 20px;
+            float: right;
+        }
+    }
+}
