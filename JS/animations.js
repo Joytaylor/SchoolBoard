@@ -11,7 +11,6 @@ function disableAndAnimate(questionID) {
 
 //Toggling display of question/answer containers
 function toggleDisplays(toggleType, question, info) {
-    console.log('its here')
     switch (toggleType) {
         case "question":
             $("#invisibleQuestionContainer").removeClass("inactive").addClass("active")

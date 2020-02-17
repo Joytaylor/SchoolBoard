@@ -160,7 +160,7 @@ header #askQuestion:hover {
   transition: 0.2s ease-in-out;
 }
 
-#blur .invisibleSpace {
+.invisibleSpace {
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -180,36 +180,36 @@ header #askQuestion:hover {
   pointer-events: none;
 }
 
-#blur .invisibleSpace .askContainer {
+.invisibleSpace .askContainer {
   -webkit-transform: translateY(-3vh);
           transform: translateY(-3vh);
   pointer-events: all;
 }
 
-#blur .invisibleSpace #basic-addon1 {
+.invisibleSpace #basic-addon1 {
   padding: .1rem .3rem;
   border: none;
   margin-left: .375rem;
   background: none;
 }
 
-#blur .invisibleSpace .form-control {
+.invisibleSpace .form-control {
   width: auto;
   padding: .375rem .3rem;
   border: none;
   background: none;
 }
 
-#blur .invisibleSpace .form-control:focus {
+.invisibleSpace .form-control:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-#blur .invisibleSpace .input-group {
+.invisibleSpace .input-group {
   width: auto;
 }
 
-#blur .invisibleSpace textarea {
+.invisibleSpace textarea {
   width: 100%;
   border: none;
   font-size: calc(1rem + 1vw);
@@ -219,11 +219,11 @@ header #askQuestion:hover {
   overflow: auto;
 }
 
-#blur .invisibleSpace textarea:focus {
+.invisibleSpace textarea:focus {
   outline: none;
 }
 
-#blur .invisibleSpace #addInput {
+.invisibleSpace #addInput {
   color: white;
   background: rgba(22, 72, 105, 0.51);
   font-size: 0.6rem;
@@ -233,13 +233,13 @@ header #askQuestion:hover {
           transform: translateY(20%);
 }
 
-#blur .invisibleSpace button[type="submit"] {
+.invisibleSpace button[type="submit"] {
   width: 100%;
   background-color: white;
   margin-top: 5%;
 }
 
-#blur .invisibleSpace p {
+.invisibleSpace p {
   font-weight: 100;
   font-size: 1rem;
   padding: 3%;
@@ -247,7 +247,7 @@ header #askQuestion:hover {
   opacity: 0.5;
 }
 
-#blur .invisibleSpace h4 {
+.invisibleSpace h4 {
   color: white;
   font-family: "Raleway", sans-serif;
   font-size: 5rem;
@@ -255,63 +255,63 @@ header #askQuestion:hover {
   margin-bottom: 4%;
 }
 
-#blur .invisibleSpace ::-webkit-input-placeholder {
+.invisibleSpace ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   opacity: 0.3;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-#blur .invisibleSpace ::-webkit-input-placeholder:hover {
+.invisibleSpace ::-webkit-input-placeholder:hover {
   opacity: 0.6;
 }
 
-#blur .invisibleSpace ::-webkit-input-placeholder:focus {
+.invisibleSpace ::-webkit-input-placeholder:focus {
   opacity: 0.6;
 }
 
-#blur .invisibleSpace ::-moz-placeholder {
+.invisibleSpace ::-moz-placeholder {
   /* Firefox 19+ */
   opacity: 0.3;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-#blur .invisibleSpace ::-moz-input-placeholder:hover {
+.invisibleSpace ::-moz-input-placeholder:hover {
   opacity: 0.6;
 }
 
-#blur .invisibleSpace ::-moz-input-placeholder:focus {
+.invisibleSpace ::-moz-input-placeholder:focus {
   opacity: 0.6;
 }
 
-#blur .invisibleSpace :-ms-input-placeholder {
+.invisibleSpace :-ms-input-placeholder {
   /* IE 10+ */
   opacity: 0.3;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-#blur .invisibleSpace :-ms-input-placeholder:hover {
+.invisibleSpace :-ms-input-placeholder:hover {
   opacity: 0.6;
 }
 
-#blur .invisibleSpace :-ms-input-placeholder:focus {
+.invisibleSpace :-ms-input-placeholder:focus {
   opacity: 0.6;
 }
 
-#blur .invisibleSpace :-moz-placeholder {
+.invisibleSpace :-moz-placeholder {
   /* Firefox 18- */
   opacity: 0.3;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-#blur .invisibleSpace :-moz-input-placeholder:hover {
+.invisibleSpace :-moz-input-placeholder:hover {
   opacity: 0.6;
 }
 
-#blur .invisibleSpace :-moz-input-placeholder:focus {
+.invisibleSpace :-moz-input-placeholder:focus {
   opacity: 0.6;
 }
 

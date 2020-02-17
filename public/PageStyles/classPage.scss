@@ -67,120 +67,121 @@ header {
     filter: blur(0px);
     -webkit-filter: blur(0px);
     transition: 0.2s ease-in-out;
-    .invisibleSpace {
-        @include center;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 10;
+}
+
+.invisibleSpace {
+    @include center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: none;
+    pointer-events: none;
+    .askContainer {
+        transform: translateY(-3vh);
+        pointer-events: all;
+    }
+    #basic-addon1 {
+        padding: .1rem .3rem;
+        border: none;
+        margin-left: .375rem;
         background: none;
-        pointer-events: none;
-        .askContainer {
-            transform: translateY(-3vh);
-            pointer-events: all;
+    }
+    .form-control {
+        width: auto;
+        padding: .375rem .3rem;
+        border: none;
+        background: none;
+        &:focus {
+            box-shadow: none;
         }
-        #basic-addon1 {
-            padding: .1rem .3rem;
-            border: none;
-            margin-left: .375rem;
-            background: none;
+    }
+    .input-group {
+        width: auto;
+    }
+    textarea {
+        width: 100%;
+        border: none;
+        font-size: calc(1rem + 1vw);
+        font-weight: bold;
+        opacity: 0.6;
+        padding-left: 25px;
+        overflow: auto;
+        &:focus {
+            outline: none;
         }
-        .form-control {
-            width: auto;
-            padding: .375rem .3rem;
-            border: none;
-            background: none;
-            &:focus {
-                box-shadow: none;
-            }
-        }
-        .input-group {
-            width: auto;
-        }
-        textarea {
-            width: 100%;
-            border: none;
-            font-size: calc(1rem + 1vw);
-            font-weight: bold;
-            opacity: 0.6;
-            padding-left: 25px;
-            overflow: auto;
-            &:focus {
-                outline: none;
-            }
-        }
-        #addInput {
-            color: white;
-            background: rgba(22, 72, 105, 0.51);
-            font-size: 0.6rem;
-            padding: 0rem .3rem;
-            height: 80%;
-            transform: translateY(20%);
-        }
-        button[type="submit"] {
-            width: 100%;
-            background-color: white;
-            margin-top: 5%;
-        }
-        p {
-            font-weight: 100;
-            font-size: 1rem;
-            padding: 3%;
-            margin: 0;
-            opacity: 0.5;
-        }
-        h4 {
-            color: white;
-            font-family: $subFont;
-            font-size: 5rem;
-            font-weight: bold;
-            margin-bottom: 4%;
-        }
-         ::-webkit-input-placeholder {
-            /* Chrome/Opera/Safari */
-            opacity: 0.3;
-            transition: 0.3s ease-in-out;
-        }
-         ::-webkit-input-placeholder:hover {
-            opacity: 0.6;
-        }
-         ::-webkit-input-placeholder:focus {
-            opacity: 0.6;
-        }
-         ::-moz-placeholder {
-            /* Firefox 19+ */
-            opacity: 0.3;
-            transition: 0.3s ease-in-out;
-        }
-         ::-moz-input-placeholder:hover {
-            opacity: 0.6;
-        }
-         ::-moz-input-placeholder:focus {
-            opacity: 0.6;
-        }
-         :-ms-input-placeholder {
-            /* IE 10+ */
-            opacity: 0.3;
-            transition: 0.3s ease-in-out;
-        }
-         :-ms-input-placeholder:hover {
-            opacity: 0.6;
-        }
-         :-ms-input-placeholder:focus {
-            opacity: 0.6;
-        }
-         :-moz-placeholder {
-            /* Firefox 18- */
-            opacity: 0.3;
-            transition: 0.3s ease-in-out;
-        }
-         :-moz-input-placeholder:hover {
-            opacity: 0.6;
-        }
-         :-moz-input-placeholder:focus {
-            opacity: 0.6;
-        }
+    }
+    #addInput {
+        color: white;
+        background: rgba(22, 72, 105, 0.51);
+        font-size: 0.6rem;
+        padding: 0rem .3rem;
+        height: 80%;
+        transform: translateY(20%);
+    }
+    button[type="submit"] {
+        width: 100%;
+        background-color: white;
+        margin-top: 5%;
+    }
+    p {
+        font-weight: 100;
+        font-size: 1rem;
+        padding: 3%;
+        margin: 0;
+        opacity: 0.5;
+    }
+    h4 {
+        color: white;
+        font-family: $subFont;
+        font-size: 5rem;
+        font-weight: bold;
+        margin-bottom: 4%;
+    }
+     ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        opacity: 0.3;
+        transition: 0.3s ease-in-out;
+    }
+     ::-webkit-input-placeholder:hover {
+        opacity: 0.6;
+    }
+     ::-webkit-input-placeholder:focus {
+        opacity: 0.6;
+    }
+     ::-moz-placeholder {
+        /* Firefox 19+ */
+        opacity: 0.3;
+        transition: 0.3s ease-in-out;
+    }
+     ::-moz-input-placeholder:hover {
+        opacity: 0.6;
+    }
+     ::-moz-input-placeholder:focus {
+        opacity: 0.6;
+    }
+     :-ms-input-placeholder {
+        /* IE 10+ */
+        opacity: 0.3;
+        transition: 0.3s ease-in-out;
+    }
+     :-ms-input-placeholder:hover {
+        opacity: 0.6;
+    }
+     :-ms-input-placeholder:focus {
+        opacity: 0.6;
+    }
+     :-moz-placeholder {
+        /* Firefox 18- */
+        opacity: 0.3;
+        transition: 0.3s ease-in-out;
+    }
+     :-moz-input-placeholder:hover {
+        opacity: 0.6;
+    }
+     :-moz-input-placeholder:focus {
+        opacity: 0.6;
     }
 }
 
